@@ -1,1 +1,22 @@
-daftar
+Tugas Pkk
+
+
+	1. Kependudukan(Strategic indicator)
+		a. Jumlah Penduduk
+		
+	2. Ekonomi
+		a. Inflasi
+	3. COVID 19
+	4. Berita (covid dan sesuai lokasi)
+	5. Survey
+
+
+
+- https://data.covid19.go.id/public/api/prov.json
+
+strategic indicator
+- indicators (model)
+https://webapi.bps.go.id/v1/api/list
+
+- statictable (model)
+https://webapi.bps.go.id/v1/api/list/
