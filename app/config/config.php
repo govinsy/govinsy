@@ -1,9 +1,9 @@
 <?php 
 
-define('BASEURL', 'http://localhost/phpmvc/public');
+define('BASEURL', 'http://localhost/govinsy/public');
 
 // DB
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', 'root');
-define('DB_NAME', 'phpmvc');
+define('DB_PASS', '');
+define('DB_NAME', 'govinsy');
