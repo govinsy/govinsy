@@ -1,2 +1,2 @@
 # govinsy
-goverment information system
+goverment covid-19 impact statistics and information system
