@@ -1,9 +1,7 @@
-Tugas Pkk
-
 
 	1. Kependudukan(Strategic indicator)
 		a. Jumlah Penduduk
-		
+		b. Jumlah Penduduk miskin
 	2. Ekonomi
 		a. Inflasi
 	3. COVID 19
@@ -11,6 +9,8 @@ Tugas Pkk
 	5. Survey
 
 
+
+API
 
 - https://data.covid19.go.id/public/api/prov.json
 
