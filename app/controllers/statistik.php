@@ -1,23 +1,35 @@
 <?php 
 
 class statistik extends Controller {
-    public function index()
+
+    // Fungsi GET JSON
+    public function getData($url, $key = NULL)
     {
-        // API COVID-19 INDONESIA
-        $url = 'https://covid19.mathdro.id/api/countries/IDN';
+        $url = $url . '?' . $key;
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($curl);
         curl_close($curl);
+        return $result = json_decode($result, true);
+    }
 
-        $result = json_decode($result, true);
+    public function index()
+    {
+        // Kasus Covid-19 Indonesia
+        $kasus = $this->getData('https://covid19.mathdro.id/api/countries/IDN');
+
+        // Kasus Covid-19 Provinsi
+        $provinsi = $this->getData('https://data.covid19.go.id/public/api/prov.json');
 
         $data['judul'] = 'Daftar Statistik';
-        $data['confirmed'] = $result['confirmed']['value'];
-        $data['recovered'] = $result['recovered']['value'];
-        $data['deaths'] = $result['deaths']['value'];
-        $data['lastUpdate'] = $result['lastUpdate'];
+
+        $data['confirmed'] = $kasus['confirmed']['value'];
+        $data['recovered'] = $kasus['recovered']['value'];
+        $data['deaths'] = $kasus['deaths']['value'];
+        $data['lastUpdate'] = $kasus['lastUpdate'];
+        
+        $data['prov'] = $provinsi['list_data'];
 
         // $data['stat'] = $this->model('Statistik')->getAllStatistik();
         
