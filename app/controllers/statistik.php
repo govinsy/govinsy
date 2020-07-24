@@ -3,8 +3,24 @@
 class statistik extends Controller {
     public function index()
     {
+        // API COVID-19 INDONESIA
+        $url = 'https://covid19.mathdro.id/api/countries/IDN';
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($curl);
+        curl_close($curl);
+
+        $result = json_decode($result, true);
+
         $data['judul'] = 'Daftar Statistik';
+        $data['confirmed'] = $result['confirmed']['value'];
+        $data['recovered'] = $result['recovered']['value'];
+        $data['deaths'] = $result['deaths']['value'];
+        $data['lastUpdate'] = $result['lastUpdate'];
+
         // $data['stat'] = $this->model('Statistik')->getAllStatistik();
+        
         $this->view('templates/header', $data);
         $this->view('statistik/index', $data);
         $this->view('templates/footer');
