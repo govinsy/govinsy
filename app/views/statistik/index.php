@@ -4,47 +4,69 @@
       <p class="lead">Sistem Informasi Pemerintah dan Data Statistik Dampak dari Covid-19</p>
       <hr class="my-4">
 
-
       <!-- Kasus Seluruh Indonesia -->
-      <div class="card" style="width: 36rem;">
-        <div class="card-header">
-          INDONESIA
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Terkonfirmasi: <?= $data['confirmed']?></li>
-          <li class="list-group-item">Sembuh: <?= $data['recovered']?></li>
-          <li class="list-group-item">Meninggal: <?= $data['deaths']?></li>
-          <li class="list-group-item">Update Terakhir: <?= $data['lastUpdate']?></li>
-        </ul>
-      </div>
-      <br><br>
-
-
-      <!-- Kasus Per-Provinsi -->
-      <div class="row">
-      <?php for ($i=0; $i < count($data['prov']); $i++): ?>
-        <div class="col-4 mb-5">
-          <div class="card" style="width: 18rem;">
-            <div class="card-header">
-              <?= $data['prov'][$i]['key']; ?>
+      <div class="row mb-5">
+        <div class="col-3">
+          <div class="card text-center">
+            <div class="card-header">Terkonfirmasi</div>
+            <div class="card-body">
+              <h1 class="card-title"><?= number_format($data['indo']['confirmed']['value']); ?></h1>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Terkonfirmasi: <?= $data['prov'][$i]['jumlah_kasus']; ?></li>
-              <li class="list-group-item">Sembuh: <?= $data['prov'][$i]['jumlah_sembuh']; ?></li>
-              <li class="list-group-item">Meninggal: <?= $data['prov'][$i]['jumlah_meninggal']; ?></li>
-              <li class="list-group-item">Dirawat: <?= $data['prov'][$i]['jumlah_dirawat']; ?></li>
-            </ul>
           </div>
         </div>
-      <?php endfor; ?>
+        <div class="col-3">
+          <div class="card text-center">
+            <div class="card-header">Sembuh</div>
+            <div class="card-body">
+              <h1 class="card-title"><?= number_format($data['indo']['recovered']['value']); ?></h1>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="card text-center">
+            <div class="card-header">Meninggal</div>
+            <div class="card-body">
+              <h1 class="card-title"><?= number_format($data['indo']['deaths']['value']); ?></h1>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="card text-center">
+            <div class="card-header">Update Terakhir</div>
+            <div class="card-body">
+              <h1 class="card-title"><?= date("d/m", strtotime($data['indo']['lastUpdate'])); ?></h1>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </div>
+
+    <!-- Kasus Per-Provinsi -->
+    <div class="row">
+    <?php if ($data['prov'] != NULL): ?>
+    <?php for ($i=0; $i < count($data['prov']); $i++): ?>
+      <div class="col-3 mb-5">
+        <div class="card">
+          <div class="card-header">
+            <?= $data['prov'][$i]['key']; ?>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Terkonfirmasi: <?= number_format($data['prov'][$i]['jumlah_kasus']); ?></li>
+            <li class="list-group-item">Sembuh: <?= number_format($data['prov'][$i]['jumlah_sembuh']); ?></li>
+            <li class="list-group-item">Meninggal: <?= number_format($data['prov'][$i]['jumlah_meninggal']); ?></li>
+            <li class="list-group-item">Dirawat: <?= number_format($data['prov'][$i]['jumlah_dirawat']); ?></li>
+          </ul>
+        </div>
+      </div>
+    <?php endfor; ?>
+    <?php endif; ?>
     </div>
     
 
     <!-- Daftar domain provinsi-->
     <div class="row">
+    <?php if ($data['domain'] != NULL): ?>
       <?php foreach($data['domain'] as $domain): ?>
         <div class="col-3 mb-3">
           <div class="card">
@@ -57,6 +79,7 @@
           </div>
         </div>
       <?php endforeach; ?>
+      <?php endif; ?>
     </div>
 
 
