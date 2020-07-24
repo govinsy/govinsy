@@ -4,6 +4,7 @@
       <p class="lead">Sistem Informasi Pemerintah dan Data Statistik Dampak dari Covid-19</p>
       <hr class="my-4">
 
+
       <!-- Kasus Seluruh Indonesia -->
       <div class="card" style="width: 36rem;">
         <div class="card-header">
@@ -17,6 +18,7 @@
         </ul>
       </div>
       <br><br>
+
 
       <!-- Kasus Per-Provinsi -->
       <div class="row">
@@ -38,6 +40,23 @@
       </div>
 
       <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </div>
+    
+
+    <!-- Daftar domain provinsi-->
+    <div class="row">
+      <?php foreach($data['domain'] as $domain): ?>
+        <div class="col-3 mb-3">
+          <div class="card">
+            <div class="card-header">
+            <?= $domain['domain_name']; ?>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><?= $domain['domain_id']; ?></li>
+            </ul>
+          </div>
+        </div>
+      <?php endforeach; ?>
     </div>
 
 
