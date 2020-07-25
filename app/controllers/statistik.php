@@ -17,13 +17,15 @@ class statistik extends Controller {
         $domain = $this->getJSON($this->url['bps_domain'], $this->field['key']['bps_key'] . $this->field['type']['prov']);
 
         // Strategic Indicators
-        $strategic = $this->getJSON($this->url['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] .'domain=3300');
+        if (!empty($_POST['domain'])) {
+            $strategic = $this->getJSON($this->url['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] .'domain=' . $_POST['domain']);
+        }
 
         // XLS Eksperimen
         try {
             var_dump($this->xlsRead('https://jateng.bps.go.id/statictable/downloadapi.html?data=MAoToNCKuNNCymnn%2BKE%2BXJVgu4aEb7%2FI5HKDPsecStRySqHDdfuflTUbwFLM74Lls1qa5GuFvSj8icGgr3rSpg%3D%3D&tokenuser='));
         } catch (Exception $e) {
-            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            echo json_decode("['error' => " . $e->getMessage(). "]");
         }
 
         // Daftar variable yang bisa digunakan di /views/statistik/index.php
@@ -31,7 +33,7 @@ class statistik extends Controller {
         $data['indo'] = $kasus; // kasus covid se-indonesia
         $data['prov'] = $provinsi['list_data']; // kasus covid-19 per-provinsi
         $data['domain'] = $domain['data'][1]; // daftar domain provinsi
-        $data['strategic'] = $strategic['data'][1]; // strategic indocators
+        !empty($strategic['data'][1]) ? $data['strategic'] = $strategic['data'][1] : $data['strategic'] = []; // strategic indocators
 
         // Views
         $this->view('templates/header', $data);

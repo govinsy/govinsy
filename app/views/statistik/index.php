@@ -65,21 +65,29 @@
     
 
     <!-- Daftar domain provinsi-->
-    <div class="row">
-    <?php if ($data['domain'] != NULL): ?>
-      <?php foreach($data['domain'] as $domain): ?>
-        <div class="col-3 mb-3">
-          <div class="card">
-            <div class="card-header">
-            <?= $domain['domain_name']; ?>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><?= $domain['domain_id']; ?></li>
-            </ul>
-          </div>
-        </div>
-      <?php endforeach; ?>
-      <?php endif; ?>
+    <div class="dropdown mb-3">
+      <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <?php 
+          if( !empty($data['domain']) && !empty($_POST['domain']) ) {
+            foreach($data['domain'] as $domain) {
+              if ($domain['domain_id'] == $_POST['domain']) {
+                echo $domain['domain_name'];
+              }
+            }
+          } else {
+            echo 'Pilih Provinsi';
+          } 
+        ?>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <form action="<?= BASEURL; ?>/statistik" method="post">
+          <?php if ($data['domain'] != NULL): ?>
+          <?php foreach($data['domain'] as $domain): ?>
+            <button class="dropdown-item" name="domain" value="<?= $domain['domain_id']; ?>" type="submit"><?= $domain['domain_name']; ?></button>
+          <?php endforeach; ?>
+          <?php endif; ?>
+        </form>
+      </div>
     </div>
 
 
@@ -103,5 +111,3 @@
 
 
 </div>
-
-
