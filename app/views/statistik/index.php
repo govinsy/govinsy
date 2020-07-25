@@ -83,6 +83,25 @@
     </div>
 
 
+    <!-- Daftar Strategic Indocator-->
+    <div class="row">
+    <?php if ($data['strategic'] != NULL): ?>
+      <?php foreach($data['strategic'] as $strategic): ?>
+        <div class="col-4 mb-3">
+          <div class="card">
+            <div class="card-header">
+            <?= $strategic['title']; ?>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><?= $strategic['value']; ?></li>
+            </ul>
+          </div>
+        </div>
+      <?php endforeach; ?>
+      <?php endif; ?>
+    </div>
+
+
 </div>
 
 

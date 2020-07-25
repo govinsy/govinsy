@@ -1,6 +1,10 @@
 <?php 
 
 class Controller {
+    // Lokasi definisi di config/config.php
+    public $url = URL;
+    public $field = FIELD;
+    
     public function view($view, $data = [])
     {
         require_once '../app/views/' . $view . '.php';
@@ -22,5 +26,13 @@ class Controller {
         $result = curl_exec($curl);
         curl_close($curl);
         return $result = json_decode($result, true);
+    }
+
+    public function xlsRead($url)
+    {
+        require __DIR__ . '/../vendor/autoload.php';
+        $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
+        $spreadsheet = $reader->load($url);
+        return $spreadsheet;
     }
 }
