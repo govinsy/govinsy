@@ -10,7 +10,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-      <a class="navbar-brand" href="<?= BASEURL; ?>">Govinsy</a>
+      <a class="navbar-brand" href="<?= BASEURL; ?>"><img src="<?= BASEURL;?>/img/govinsy-black.png" width="10%" alt="" loading="lazy"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
