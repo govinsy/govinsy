@@ -7,6 +7,11 @@ class statistik extends Controller {
     
     public function index()
     {   
+        // Set Session Nomor Domain dan Nama Provinsi
+        !empty($_POST['prov']) ? $_SESSION['prov'] = $_POST['prov'] : NULL;
+        !empty($_POST['domain']) ? $_SESSION['domain'] = $_POST['domain'] : NULL;
+        !empty($_SESSION['domain']) ? $no_domain = $_SESSION['domain'] : $no_domain = NULL;
+
         // Kasus Covid-19 Indonesia
         $kasus = $this->getJSON($this->url['covid_ind']);
 
@@ -17,9 +22,7 @@ class statistik extends Controller {
         $domain = $this->getJSON($this->url['bps_domain'], $this->field['key']['bps_key'] . $this->field['type']['prov']);
 
         // Strategic Indicators
-        if (!empty($_POST['domain'])) {
-            $strategic = $this->getJSON($this->url['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] .'domain=' . $_POST['domain']);
-        }
+        $strategic = $this->getJSON($this->url['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] .'domain=' . $no_domain);
 
         // XLS Eksperimen
         try {
