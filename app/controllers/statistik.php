@@ -26,7 +26,7 @@ class statistik extends Controller {
 
         // XLS Eksperimen
         try {
-            var_dump($this->xlsRead('https://jateng.bps.go.id/statictable/downloadapi.html?data=MAoToNCKuNNCymnn%2BKE%2BXJVgu4aEb7%2FI5HKDPsecStRySqHDdfuflTUbwFLM74Lls1qa5GuFvSj8icGgr3rSpg%3D%3D&tokenuser='));
+            $statictable = $this->excelToArray(__DIR__ . '/../../public/img/Indo_13_7729776.xls');
         } catch (Exception $e) {
             echo json_decode("['error' => " . $e->getMessage(). "]");
         }
@@ -37,6 +37,7 @@ class statistik extends Controller {
         $data['prov'] = $provinsi['list_data']; // kasus covid-19 per-provinsi
         $data['domain'] = $domain['data'][1]; // daftar domain provinsi
         !empty($strategic['data'][1]) ? $data['strategic'] = $strategic['data'][1] : $data['strategic'] = []; // strategic indocators
+        $data['statictable'] = $statictable;
 
         // Views
         $this->view('templates/header', $data);

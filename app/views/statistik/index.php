@@ -192,6 +192,21 @@
         </ul>
       </div>
     </div>
+
+
+    <!-- STATICTABLE -->
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        Statictable
+      </div>
+      <ul class="list-group list-group-flush">
+        <?php for ($i=0; $i < count($data['statictable']); $i++): ?>
+        <li class="list-group-item"><?= $data['statictable'][$i]['Realisasi Proyek, Nilai Investasi dan Tenaga Kerja Penanaman Modal Asing (PMA) Menurut Negara di Provinsi Jawa Tengah, 2019'];?></li>
+        <?php endfor; ?>
+      </ul>
+    </div>
+
+
   </div>
 
 
