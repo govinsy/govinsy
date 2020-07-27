@@ -46,7 +46,8 @@
 
   <!-- KASUS PER-PROVINSI -->
   <div class="row">
-    <div class="col-6 mb-5">
+    <div class="col-4 mb-5">
+      <h2 class="font-weight-bold">Kasus Per-Provinsi</h2>
       <div class="card">
         <div class="card-header">
 
@@ -106,10 +107,17 @@
 
           <!-- Menampilkan nama provinsi sesuai dengan session -->
           <?php if ($data['prov'][$i]['key'] == $_SESSION['prov']): ?>
-          <li class="list-group-item">Terkonfirmasi: <?= number_format($data['prov'][$i]['jumlah_kasus']); ?></li>
-          <li class="list-group-item">Sembuh: <?= number_format($data['prov'][$i]['jumlah_sembuh']); ?></li>
-          <li class="list-group-item">Meninggal: <?= number_format($data['prov'][$i]['jumlah_meninggal']); ?></li>
-          <li class="list-group-item">Dirawat: <?= number_format($data['prov'][$i]['jumlah_dirawat']); ?></li>
+          <li class="list-group-item">Terkonfirmasi: <span class="font-weight-bold"><?= number_format($data['prov'][$i]['jumlah_kasus']); ?></span></li>
+          <li class="list-group-item">Sembuh: <span class="font-weight-bold"><?= number_format($data['prov'][$i]['jumlah_sembuh']); ?></span></li>
+          <li class="list-group-item">Meninggal: <span class="font-weight-bold"><?= number_format($data['prov'][$i]['jumlah_meninggal']); ?></span></li>
+          <li class="list-group-item">Dirawat: <span class="font-weight-bold"><?= number_format($data['prov'][$i]['jumlah_dirawat']); ?></span></li>
+          <?php foreach($data['prov'][$i]['jenis_kelamin'] as $jenis_kelamin): ?>
+            <li class="list-group-item"><?= ucfirst(strtolower($jenis_kelamin['key'])); ?>: <span class="font-weight-bold"><?= number_format($jenis_kelamin['doc_count']); ?></span></li>
+          <?php endforeach; ?>
+          <li class="list-group-item"><span class="font-weight-bold">Penambahan:</span></li>
+          <li class="list-group-item"> Positif: <span class="font-weight-bold">+<?= number_format($data['prov'][$i]['penambahan']['positif']); ?></span></li>
+          <li class="list-group-item"> Sembuh: <span class="font-weight-bold">+<?= number_format($data['prov'][$i]['penambahan']['sembuh']); ?></span></li>
+          <li class="list-group-item"> Meninggal: <span class="font-weight-bold">+<?= number_format($data['prov'][$i]['penambahan']['meninggal']); ?></span></li>
           <?php endif; ?>
           <?php endfor; ?>
           <?php endif; ?>
@@ -121,7 +129,8 @@
 
 
     <!-- STRATEGIC INDICATORS -->
-    <div class="col-6 mb-5">
+    <div class="col-8 mb-5">
+      <h2 class="font-weight-bold">Strategic Indicators</h2>
       <div class="card">
         <div class="card-header">
           <!-- Dropdown Pilih Provinsi -->
@@ -174,8 +183,8 @@
           <?php if (!empty($data['strategic'])): ?>
 
           <?php foreach($data['strategic'] as $strategic): ?>
-          <li class="list-group-item"><?= $strategic['title']; ?>: <p class="font-weight-bold">
-              <?= $strategic['value']; ?></p>
+          <li class="list-group-item"><?= $strategic['title']; ?>: <span class="font-weight-bold">
+              <?= $strategic['value']; ?></span>
           </li>
           <?php endforeach; ?>
           <?php endif; ?>
