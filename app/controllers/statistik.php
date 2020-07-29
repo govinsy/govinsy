@@ -24,6 +24,9 @@ class statistik extends Controller {
         // Strategic Indicators
         $strategic = $this->getJSON($this->url['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] .'domain=' . $no_domain);
 
+        // Data Covid Dari Hari 1
+        $dayone = $this->getJSON($this->url['covid_dayone']);
+
         // XLS Eksperimen
         try {
             $statictable = $this->excelToArray(__DIR__ . '/../../public/img/Indo_13_7729776.xls');
@@ -38,6 +41,15 @@ class statistik extends Controller {
         $data['domain'] = $domain['data'][1]; // daftar domain provinsi
         !empty($strategic['data'][1]) ? $data['strategic'] = $strategic['data'][1] : $data['strategic'] = []; // strategic indocators
         $data['statictable'] = $statictable;
+        
+        $data['dayone']['confirmed'] = [];
+        $data['dayone']['date'] = [];
+        for ($i=0; $i < count($dayone); $i++) { 
+            array_push($data['dayone']['confirmed'], $dayone[$i]['Confirmed']);
+        }
+        for ($i=0; $i < count($dayone); $i++) { 
+            array_push($data['dayone']['date'], date('j,', strtotime($dayone[$i]['Date'])));
+        }
 
         // Views
         $this->view('templates/header', $data);

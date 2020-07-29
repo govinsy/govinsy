@@ -15,7 +15,8 @@ define('URL', [
     'covid_prov' => 'https://data.covid19.go.id/public/api/prov.json',
     'bps_domain' => 'https://webapi.bps.go.id/v1/api/domain?',
     'bps_strategic' => 'https://webapi.bps.go.id/v1/api/list?',
-    'newsapi' => 'https://newsapi.org/v2/everything?q=covid&'
+    'newsapi' => 'https://newsapi.org/v2/everything?q=covid&',
+    'covid_dayone' => 'https://api.covid19api.com/dayone/country/indonesia'
 ]);
 define('FIELD', [
     'key' => [

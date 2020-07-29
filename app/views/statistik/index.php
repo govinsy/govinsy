@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?= BASEURL; ?>/js/Chart.js"></script>
 <div class="container">
   <div class="jumbotron mt-4">
     <h1 class="display-4">Statistik</h1>
@@ -43,9 +44,14 @@
   </div>
 
 
+  <div class="mb-5" style="width: 100%;height: 500px">
+		<canvas id="myChart"></canvas>
+	</div>
 
+  <br><br>
+  
   <!-- KASUS PER-PROVINSI -->
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-4 mb-5">
       <h2 class="font-weight-bold">Kasus Per-Provinsi</h2>
       <div class="card">
@@ -195,7 +201,7 @@
 
 
     <!-- STATICTABLE -->
-    <div class="card" style="width: 18rem;">
+    <!-- <div class="card" style="width: 18rem;">
       <div class="card-header">
         Statictable
       </div>
@@ -204,10 +210,32 @@
         <li class="list-group-item"><?= $data['statictable'][$i]['Realisasi Proyek, Nilai Investasi dan Tenaga Kerja Penanaman Modal Asing (PMA) Menurut Negara di Provinsi Jawa Tengah, 2019'];?></li>
         <?php endfor; ?>
       </ul>
-    </div>
-
+    </div> -->
 
   </div>
-
-
+  
 </div>
+
+<script>
+  var ctx = document.getElementById("myChart").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [<?= join(' ', $data['dayone']['date']); ?>],
+      datasets: [{
+        label: '',
+        data: [<?= join(', ', $data['dayone']['confirmed']); ?>],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+</script>
