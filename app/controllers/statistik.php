@@ -42,13 +42,17 @@ class statistik extends Controller {
         !empty($strategic['data'][1]) ? $data['strategic'] = $strategic['data'][1] : $data['strategic'] = []; // strategic indocators
         $data['statictable'] = $statictable;
         
-        $data['dayone']['confirmed'] = [];
         $data['dayone']['date'] = [];
-        for ($i=0; $i < count($dayone); $i++) { 
-            array_push($data['dayone']['confirmed'], $dayone[$i]['Confirmed']);
-        }
+        $data['dayone']['confirmed'] = [];
+        $data['dayone']['recovered'] = [];
+        $data['dayone']['deaths'] = [];
+        $data['dayone']['active'] = [];
         for ($i=0; $i < count($dayone); $i++) { 
             array_push($data['dayone']['date'], date('M j', strtotime($dayone[$i]['Date'])));
+            array_push($data['dayone']['confirmed'], $dayone[$i]['Confirmed']);
+            array_push($data['dayone']['recovered'], $dayone[$i]['Recovered']);
+            array_push($data['dayone']['deaths'], $dayone[$i]['Deaths']);
+            array_push($data['dayone']['active'], $dayone[$i]['Active']);
         }
 
         // Views
