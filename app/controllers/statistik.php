@@ -48,7 +48,7 @@ class statistik extends Controller {
             array_push($data['dayone']['confirmed'], $dayone[$i]['Confirmed']);
         }
         for ($i=0; $i < count($dayone); $i++) { 
-            array_push($data['dayone']['date'], date('j,', strtotime($dayone[$i]['Date'])));
+            array_push($data['dayone']['date'], date('M j', strtotime($dayone[$i]['Date'])));
         }
 
         // Views

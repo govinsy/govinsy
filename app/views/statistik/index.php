@@ -213,7 +213,6 @@
     </div> -->
 
   </div>
-  
 </div>
 
 <script>
@@ -221,7 +220,7 @@
   var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: [<?= join(' ', $data['dayone']['date']); ?>],
+      labels: ["<?= join('", "', $data['dayone']['date']); ?>"],
       datasets: [{
         label: '',
         data: [<?= join(', ', $data['dayone']['confirmed']); ?>],
