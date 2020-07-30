@@ -23,6 +23,14 @@ class statistik extends Controller {
 
         // Strategic Indicators
         $strategic = $this->getJSON($this->url['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] .'domain=' . $no_domain);
+        $indicators = [];
+        // mengambil semua data tanpa per-page
+        if (!empty($strategic['data'][0]['pages'])) {
+            $pages = $strategic['data'][0]['pages'];
+            for ($i=1; $i <= $pages; $i++) { 
+                $indicators[$i] = $this->getJSON($this->url['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] .'domain=' . $no_domain . '&page=' . $i);
+            }
+        }
 
         // Data Covid Dari Hari 1
         $dayone = $this->getJSON($this->url['covid_dayone']);
@@ -39,7 +47,7 @@ class statistik extends Controller {
         $data['indo'] = $kasus; // kasus covid se-indonesia
         $data['prov'] = $provinsi['list_data']; // kasus covid-19 per-provinsi
         $data['domain'] = $domain['data'][1]; // daftar domain provinsi
-        !empty($strategic['data'][1]) ? $data['strategic'] = $strategic['data'][1] : $data['strategic'] = []; // strategic indocators
+        !empty($indicators) ? $data['indicators'] = $indicators : $data['indicators'] = []; // strategic indocators
         $data['statictable'] = $statictable;
         
         $data['dayone']['date'] = [];

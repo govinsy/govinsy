@@ -186,19 +186,28 @@
         <ul class="list-group list-group-flush">
 
           <!-- cek ketersediaan data strategic inicators -->
-          <?php if (!empty($data['strategic'])): ?>
+          <?php if (!empty($data['indicators'])): ?>
+          
+          <!-- masuk ke array gabungan beberapa halaman -->
+          <?php for($i=1; $i <= count($data['indicators']); $i++): ?>
 
-          <?php foreach($data['strategic'] as $strategic): ?>
-          <li class="list-group-item"><?= $strategic['title']; ?>: <span class="font-weight-bold">
-              <?= $strategic['value']; ?></span>
-          </li>
-          <?php endforeach; ?>
+            <!-- masuk ke array per-judul -->
+            <?php for($j=0; $j <= count($data['indicators'][$i]['data'][1]); $j++): ?>
+
+              <!-- cek ketersedian nomor array per-judul -->
+              <?php if(!empty($data['indicators'][$i]['data'][1][$j])): ?>
+                <li class="list-group-item"><?= $data['indicators'][$i]['data'][1][$j]['title']; ?>: <span class="font-weight-bold">
+                    <?= $data['indicators'][$i]['data'][1][$j]['value']; ?></span>
+                </li>
+              <?php endif; ?>
+            <?php endfor; ?>
+          <?php endfor; ?>
           <?php endif; ?>
 
         </ul>
       </div>
     </div>
-
+    
 
     <!-- STATICTABLE -->
     <!-- <div class="card" style="width: 18rem;">
