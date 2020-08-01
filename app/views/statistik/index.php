@@ -35,7 +35,7 @@
         <div class="card text-center">
           <div class="card-header">Update Terakhir</div>
           <div class="card-body">
-            <h1 class="card-title"><?= date("d/m", strtotime($data['indo']['lastUpdate'])); ?></h1>
+            <h1 class="card-title"><?= date("F j", strtotime($data['indo']['lastUpdate'])); ?></h1>
           </div>
         </div>
       </div>
