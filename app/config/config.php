@@ -9,6 +9,9 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'govinsy');
 
+// UniqueID Maker
+define('UNIQUEID', substr(uniqid(), 8, 5));
+
 // Deklarasi Paramater API
 define('URL', [
     'covid_ind' => 'https://covid19.mathdro.id/api/countries/IDN',

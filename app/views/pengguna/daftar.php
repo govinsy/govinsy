@@ -65,15 +65,18 @@
 </head>
 
 <div class="btbody text-center">
-    <form class="form-signin" method="post" action="<?= BASEURL; ?>/pengguna/login">
+    <form class="form-signin" method="post" action="<?= BASEURL; ?>/pengguna/daftar">
         <img class="mb-4" src="<?= BASEURL; ?>/img/icon.svg" alt="" width="72" height="72">
         <?php Flasher::flash(); ?>
+        <label for="inputNama" class="sr-only">Nama</label>
+        <input name="nama" type="input" id="inputNama" class="form-control mb-2" placeholder="Nama" required autofocus>
         <label for="inputEmail" class="sr-only">Email</label>
         <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <button name="login" class="btn btn-lg btn-primary btn-block" type="submit">Masuk</button>
-        <p class="mt-3">belum memiliki akun? daftar <a class="text-decoration-none" href="<?= BASEURL; ?>/pengguna/daftar">di sini</a></p>
+        <label for="inputPassword1" class="sr-only">Password</label>
+        <input name="password1" type="password" id="inputPassword1" class="form-control" placeholder="Password" required>
+        <label for="inputPassword2" class="sr-only">Confirm Password</label>
+        <input name="password2" type="password" id="inputPassword2" class="form-control" placeholder="Confirm Password" required>
+        <button name="daftar" class="btn btn-lg btn-primary btn-block mt-2" type="submit">Daftar</button>
         <p class="mt-5 mb-3 text-muted">Govinsy &copy; 2020</p>
     </form>
 </div>

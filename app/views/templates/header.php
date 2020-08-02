@@ -21,9 +21,12 @@
           <a class="nav-item nav-link" href="<?= BASEURL; ?>/berita">Berita</a>
           <a class="nav-item nav-link" href="<?= BASEURL; ?>/about">About</a>
           <?php if(isset($_SESSION['login'])): ?>
-          <a class="nav-item nav-link" href="<?= BASEURL; ?>/pengguna/logout">Keluar</a>
+            <?php if(isset($_SESSION['profile'])): ?>
+            <a class="nav-item nav-link" href="<?= BASEURL; ?>/pengguna/login"><?= str_replace(' ', '', $_SESSION['profile']['nama']); ?></a>
+            <?php endif; ?>
+          <a class="nav-item nav-link text-danger" href="<?= BASEURL; ?>/pengguna/logout">Keluar</a>
           <? else: ?>
-          <a class="nav-item nav-link" href="<?= BASEURL; ?>/pengguna/login">Masuk</a>
+          <a class="nav-item nav-link text-primary" href="<?= BASEURL; ?>/pengguna/login">Masuk</a>
           <?php endif; ?>
         </div>
       </div>

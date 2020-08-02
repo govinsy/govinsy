@@ -3,17 +3,29 @@
 class pengguna extends Controller {
     public function login()
     {
+        // Mengambil data pengguna dari database
         $pengguna = $this->model('pengguna_model')->getAllPengguna();
+
+        // Validasi pengguna
         if (isset($_POST['login'])) {
+            $emailFound = false;
             foreach ($pengguna as $p) {
-                if ($p['email'] == $_POST['email'] && $p['password'] == md5($_POST['password'])) {
-                    $_SESSION['login'] = true;
-                    Flasher::setFlash('berhasil', 'anda berhasil masuk', 'success');
-                } else {
-                    Flasher::setFlash('gagal', 'email atau password salah', 'danger');
-                }
+                if ($p['email'] == $_POST['email']) {
+                    if ($p['password'] == md5($_POST['password'])) {
+                        $_SESSION['login'] = true;
+                        $_SESSION['profile'] = $this->model('pengguna_model')->getPenggunaById($p['id']);
+                        Flasher::setFlash('berhasil', 'anda berhasil masuk', 'success');
+                    } else {
+                        Flasher::setFlash('gagal', 'password salah', 'danger');
+                    }
+                    $emailFound = true;
+                } 
+            }
+            if ($emailFound == false) {
+                Flasher::setFlash('gagal', 'email belum terdaftar', 'danger');
             }
         }
+
         $data['judul'] = 'Masuk Govinsy';
         $this->view('templates/header', $data);
         $this->view('pengguna/login', $data);
@@ -31,6 +43,22 @@ class pengguna extends Controller {
 
         header("Location: " . BASEURL);
         exit;
+    }
+
+    public function daftar()
+    {
+        if (isset($_POST['daftar'])) {
+            if( $this->model('pengguna_model')->tambahPengguna($_POST) > 0 ) {
+                Flasher::setFlash('berhasil', 'anda berhasil mendaftar', 'success');
+            } else {
+                Flasher::setFlash('gagal', 'gagal mendaftar', 'danger');
+            }
+        }
+        
+        $data['judul'] = 'Daftar Govinsy';
+        $this->view('templates/header', $data);
+        $this->view('pengguna/daftar', $data);
+        $this->view('templates/footer');
     }
 
     // public function detail($id)

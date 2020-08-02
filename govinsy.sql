@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 01 Agu 2020 pada 13.24
+-- Waktu pembuatan: 02 Agu 2020 pada 13.52
 -- Versi server: 10.4.10-MariaDB
 -- Versi PHP: 7.3.12
 
@@ -29,7 +29,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `pengguna` (
-  `id` int(11) NOT NULL,
+  `id` varchar(5) NOT NULL,
+  `nama` varchar(64) NOT NULL,
   `email` varchar(64) NOT NULL,
   `password` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -38,8 +39,11 @@ CREATE TABLE `pengguna` (
 -- Dumping data untuk tabel `pengguna`
 --
 
-INSERT INTO `pengguna` (`id`, `email`, `password`) VALUES
-(1, 'pengguna@govinsy.com', '8b097b8a86f9d6a991357d40d3d58634');
+INSERT INTO `pengguna` (`id`, `nama`, `email`, `password`) VALUES
+('2d287', 'Bukan Admin', 'bukanadmin@user.com', '992baf4879618dbfb66e5786ebb3a923'),
+('75924', 'Opet', 'opet@govinsy.com', 'd73d5a80ce906473d290d81e5f694508'),
+('cac3e', 'User', 'user@user.com', 'ee11cbb19052e40b07aac0ca060c23ee'),
+('d6d5e', 'Pengguna', 'pengguna@govinsy.com', '8b097b8a86f9d6a991357d40d3d58634');
 
 --
 -- Indexes for dumped tables
@@ -50,16 +54,6 @@ INSERT INTO `pengguna` (`id`, `email`, `password`) VALUES
 --
 ALTER TABLE `pengguna`
   ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT untuk tabel yang dibuang
---
-
---
--- AUTO_INCREMENT untuk tabel `pengguna`
---
-ALTER TABLE `pengguna`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
