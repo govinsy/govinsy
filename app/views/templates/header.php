@@ -10,7 +10,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-      <a class="navbar-brand" href="<?= BASEURL; ?>">PHP MVC</a>
+      <a class="navbar-brand" href="<?= BASEURL; ?>"><img src="<?= BASEURL;?>/img/govinsy-black.png" width="10%" alt="" loading="lazy"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -18,7 +18,16 @@
         <div class="navbar-nav">
           <a class="nav-item nav-link active" href="<?= BASEURL; ?>">Home <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="<?= BASEURL; ?>/statistik">Statistik</a>
+          <a class="nav-item nav-link" href="<?= BASEURL; ?>/berita">Berita</a>
           <a class="nav-item nav-link" href="<?= BASEURL; ?>/about">About</a>
+          <?php if(isset($_SESSION['login'])): ?>
+            <?php if(isset($_SESSION['profile'])): ?>
+            <a class="nav-item nav-link" href="<?= BASEURL; ?>/pengguna/login"><?= str_replace(' ', '', $_SESSION['profile']['nama']); ?></a>
+            <?php endif; ?>
+          <a class="nav-item nav-link text-danger" href="<?= BASEURL; ?>/pengguna/logout">Keluar</a>
+          <? else: ?>
+          <a class="nav-item nav-link text-primary" href="<?= BASEURL; ?>/pengguna/login">Masuk</a>
+          <?php endif; ?>
         </div>
       </div>
   </div>

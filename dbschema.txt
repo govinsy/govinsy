@@ -1,0 +1,38 @@
++-----------+
+| Survey    |
+|-----------|
+| SurveyId  |
++-----------+
+
++--------------+
+| Question     |
+|--------------|
+| QuestionID   |
+| SurveyID     |
+| QuestionType |
+| Question     |
++--------------+
+
++--------------+
+| Answer       |
+|--------------|
+| AnswerID     |
+| QuestionID   |
+| Answer       |
++--------------+
+
++------------------+
+| UsersAnswer      |
+|------------------|
+| UserAnswerID     |
+| AnswerID         |
+| UserID           |
+| Response         |
++------------------+
+
++-----------+
+| User      |
+|-----------|
+| UserID    |
+| UserName  |
++-----------+
