@@ -1,6 +1,6 @@
 <?php 
 
-class Statistik {
+class statistik_model {
     private $table = 'statistik';
     private $db;
 

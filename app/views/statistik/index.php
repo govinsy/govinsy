@@ -44,12 +44,13 @@
   </div>
 
 
+  <!-- DIAGRAM -->
   <div class="mb-5" style="width: 100%;height: 500px">
 		<canvas id="myChart"></canvas>
 	</div>
-
   <br><br>
   
+
   <!-- KASUS PER-PROVINSI -->
   <div class="row mt-5">
     <div class="col-4 mb-5">

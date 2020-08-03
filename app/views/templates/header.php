@@ -16,10 +16,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="<?= BASEURL; ?>">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="<?= BASEURL; ?>">Home <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="<?= BASEURL; ?>/statistik">Statistik</a>
           <a class="nav-item nav-link" href="<?= BASEURL; ?>/berita">Berita</a>
-          <a class="nav-item nav-link" href="<?= BASEURL; ?>/about">About</a>
+          <a class="nav-item nav-link" href="<?= BASEURL; ?>/survei">Survei</a>
+          <a class="nav-item nav-link" href="<?= BASEURL; ?>/tentang">Tentang</a>
           <?php if(isset($_SESSION['login'])): ?>
             <?php if(isset($_SESSION['profile'])): ?>
             <a class="nav-item nav-link" href="<?= BASEURL; ?>/pengguna/login"><?= str_replace(' ', '', $_SESSION['profile']['nama']); ?></a>
