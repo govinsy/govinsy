@@ -1,3 +1,82 @@
+body{
+    font-family: montserrat;
+}
+
+/*  ////////////////
+///////Color  /////////
+///////////////////////////
+
+font-size 10px = 0.625rem
+font-size 16px = 1rem
+font-size 26px = 1.625rem
+font-size 42px = 2.625rem
+
+
+*/
+.color-dark-bg
+{
+    background-color: #0B0F24;
+}
+.color-dark-content
+{
+    background: #181C2F;
+}
+.color-blue-bg
+{
+    background-color:#2D8DFD;
+}
+.color-green-bg
+{
+    background-color:#15CABC;
+}
+.color-red-bg
+{
+    background-color:#FC2E7E;
+}
+.link-not-active
+{
+    color:#BFC0C2;
+}
+.color-light-font
+{
+    color:white;
+}
 .badge {
     margin-left: 3px;
+}
+
+.btn-dark-blue
+{
+    padding:0.2rem 1.5rem 0.2rem 1.5rem;
+    background-color:#2D8DFD;
+    color:white;
+    border-radius:1rem;
+}
+
+.btn-dark-blue:hover
+{
+    text-decoration:none;
+    background-color:rgba(0, 0, 0, 0);
+    box-shadow: #2D8DFD 0px 0px 5px 0px;
+    color:#2D8DFD;
+}
+/*  ////////////////
+///////End Color  /////////
+///////////////////////////
+
+*/
+
+.corner-round
+{
+    border-radius:1rem;
+}
+
+.hilang
+{
+    display:none;
+}
+
+#survey img
+{
+    background-color: #FC2E7E;
 }

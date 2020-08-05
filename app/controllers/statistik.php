@@ -1,12 +1,13 @@
-<?php 
+<?php
 
 // Lokasi method getJSON di core/Controller.php
 // Lokasi daftar url dan field di config/config.php
 
-class statistik extends Controller {
-    
+class statistik extends Controller
+{
+
     public function index()
-    {   
+    {
         // Set Session Nomor Domain dan Nama Provinsi
         !empty($_POST['prov']) ? $_SESSION['prov'] = $_POST['prov'] : NULL;
         !empty($_POST['domain']) ? $_SESSION['domain'] = $_POST['domain'] : NULL;
@@ -22,13 +23,13 @@ class statistik extends Controller {
         $domain = $this->getJSON($this->url['bps_domain'], $this->field['key']['bps_key'] . $this->field['type']['prov']);
 
         // Strategic Indicators
-        $strategic = $this->getJSON($this->url['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] .'domain=' . $no_domain);
+        $strategic = $this->getJSON($this->url['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] . 'domain=' . $no_domain);
         $indicators = [];
         // mengambil semua data tanpa per-page
         if (!empty($strategic['data'][0]['pages'])) {
             $pages = $strategic['data'][0]['pages'];
-            for ($i=1; $i <= $pages; $i++) { 
-                $indicators[$i] = $this->getJSON($this->url['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] .'domain=' . $no_domain . '&page=' . $i);
+            for ($i = 1; $i <= $pages; $i++) {
+                $indicators[$i] = $this->getJSON($this->url['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] . 'domain=' . $no_domain . '&page=' . $i);
             }
         }
 
@@ -39,7 +40,7 @@ class statistik extends Controller {
         try {
             $statictable = $this->excelToArray(__DIR__ . '/../../public/img/Indo_13_7729776.xls');
         } catch (Exception $e) {
-            echo json_decode("['error' => " . $e->getMessage(). "]");
+            echo json_decode("['error' => " . $e->getMessage() . "]");
         }
 
         // Daftar variable yang bisa digunakan di /views/statistik/index.php
@@ -49,14 +50,14 @@ class statistik extends Controller {
         $data['domain'] = $domain['data'][1]; // daftar domain provinsi
         !empty($indicators) ? $data['indicators'] = $indicators : $data['indicators'] = []; // strategic indocators
         $data['statictable'] = $statictable; // masih experimen
-        
+
         // Diagram
         $data['dayone']['date'] = [];
         $data['dayone']['confirmed'] = [];
         $data['dayone']['recovered'] = [];
         $data['dayone']['deaths'] = [];
         $data['dayone']['active'] = [];
-        for ($i=0; $i < count($dayone); $i++) { 
+        for ($i = 0; $i < count($dayone); $i++) {
             array_push($data['dayone']['date'], date('M j', strtotime($dayone[$i]['Date'])));
             array_push($data['dayone']['confirmed'], $dayone[$i]['Confirmed']);
             array_push($data['dayone']['recovered'], $dayone[$i]['Recovered']);
@@ -66,9 +67,9 @@ class statistik extends Controller {
 
         // Views
         $this->view('templates/header', $data);
+        $this->view('templates/sidebar');
+        $this->view('templates/topbar');
         $this->view('statistik/index', $data);
         $this->view('templates/footer');
-        
     }
-
 }
