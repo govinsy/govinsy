@@ -1,12 +1,13 @@
-<?php 
+<?php
 
 // Lokasi method getJSON di core/Controller.php
 // Lokasi daftar url dan field di config/config.php
 
-class berita extends Controller {
-    
+class berita extends Controller
+{
+
     public function index()
-    {   
+    {
         // Kasus Covid-19 Indonesia
         $berita = $this->getJSON($this->url['newsapi'], $this->field['key']['newsapi_key']);
 
@@ -16,9 +17,9 @@ class berita extends Controller {
 
         // Views
         $this->view('templates/header', $data);
+        $this->view('templates/sidebar', $data);
+        $this->view('templates/topbar');
         $this->view('berita/index', $data);
         $this->view('templates/footer');
-        
     }
-
 }

@@ -1,10 +1,25 @@
 <script type="text/javascript" src="<?= BASEURL; ?>/js/Chart.js"></script>
 <div class="container">
 
-  <div align="center" class="jumbotron mt-4 justify-content-end">
-    <h1 class="display-4">Data Statistik Indonesia</h1>
-
+  <!-- DATA STATISTIK INDONESIA-->
+  <div id="data-indonesia" align="center" class="jumbotron pb-5 img-content color-light-font">
+    <h1 class="mt-5">Data Statistik Indonesia</h1>
   </div>
+
+
+  <!-- DATA  STATISTIK PER PROVINSI -->
+  <div id="data-provinsi" align="center" class="jumbotron pb-5 mb-0 img-content color-light-font">
+    <h1 class="mt-5">Data Per Provinsi</h1>
+  </div>
+  <ul id="daftar-provinsi" class="color-dark-content hilang mb-0">
+    <?php foreach ($data['domain'] as $domain) : ?>
+      <li class="color-light-font"><a href="<?= BASEURL; ?>/statistik/provinsi?domain_id=<?= $domain['domain_id']; ?>"><?= $domain['domain_name']; ?></a></li>
+    <?php endforeach; ?>
+  </ul>
+  <div id="provinsi-toggle" style="border-radius: 0px 0px 20px 20px " class="color-blue-bg text-center">
+    <h3><button class="bt-none color-light-font"><i class="fas fa-chevron-down"></i></button></h3>
+  </div>
+
 
   <div class="jumbotron mt-4">
     <h1 class="display-4">Statistik</h1>
@@ -13,7 +28,7 @@
 
     <!-- KASUS SELURUH INDONESIA-->
     <div class="row mb-5">
-      <div class="col-3">
+      <div class="col-md-3">
         <div class="card text-center">
           <div class="card-header">Terkonfirmasi</div>
           <div class="card-body">
@@ -21,7 +36,7 @@
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-md-3">
         <div class="card text-center">
           <div class="card-header">Sembuh</div>
           <div class="card-body">
@@ -29,7 +44,7 @@
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-md-3">
         <div class="card text-center">
           <div class="card-header">Meninggal</div>
           <div class="card-body">
@@ -37,7 +52,7 @@
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-md-3">
         <div class="card text-center">
           <div class="card-header">Update Terakhir</div>
           <div class="card-body">

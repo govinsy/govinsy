@@ -13,27 +13,26 @@
 
 
           <!-- Nav Item - Charts -->
-          <li class="nav-item">
-              <a class="nav-link active" href="<?= BASEURL; ?>/statistik">
+          <li class="nav-item  <?php if ($data['judul'] === "Statistik")  echo "active aktif"; ?>">
+              <a class="nav-link" href="<?= BASEURL; ?>/statistik">
                   <i class="mr-3 ml-4 fas fa-fw fa-chart-area"></i>
                   <span>STATISTIK</span></a>
           </li>
 
-          <!-- Nav Item - Tables -->
-          <li class="nav-item">
-              <a class="nav-link" href="<?= BASEURL; ?>/berita">
+          <li class="nav-item <?php if ($data['judul'] === "Berita")  echo "active aktif"; ?>">
+              <a class="nav-link active" href="<?= BASEURL; ?>/berita">
                   <i class="mr-3 ml-4 fas fa-fw fa-newspaper"></i>
                   <span>BERITA</span></a>
           </li>
-          <!-- Nav Item - Tables -->
-          <li class="nav-item">
-              <a class="nav-link link-not-active" href="<?= BASEURL; ?>/survey">
+
+          <li class="nav-item <?php if ($data['judul'] === "Survey")  echo "active aktif"; ?>">
+              <a class="nav-link disable" href="<?= BASEURL; ?>/survey">
                   <i class="mr-3 ml-4 fas fa-fw fa-tag"></i>
                   <span>SURVEY</span></a>
           </li>
-          <!-- Nav Item - Tables -->
-          <li class="nav-item">
-              <a class="nav-link link-not-active" href="<?= BASEURL; ?>/about">
+
+          <li class="nav-item <?php if ($data['judul'] === "Tentang Kami")  echo "active aktif"; ?>">
+              <a class="nav-link" href="<?= BASEURL; ?>/about">
                   <i class="mr-3 ml-4 fas fa-fw fa-info"></i>
                   <span>TENTANG KAMI</span></a>
           </li>
@@ -43,9 +42,9 @@
 
           <!-- Survey -->
           <div id="survey" class="row justify-content-center position-relative">
-              <div class="col-sm-9 text-center d-none d-md-inline color-dark-bg corner-round mt-3 mb-3 pb-3 pt-0">
-                  <img src="<?= BASEURL; ?>/img/survey.png" width="60%">
-                  <p class="color-light-font mt-2">Tertarik dengan website <a href="<?= BASEURL; ?>/survey">kami ikuti survey</a> sekarang</p>
+              <div class="col-sm-9 text-center d-none d-md-inline color-dark-bg corner-round mt-5 mb-3 pb-3">
+                  <img src="<?= BASEURL; ?>/img/survey.png" width="70%">
+                  <p class="color-light-font mt-2">Tertarik dengan website kami<a href="<?= BASEURL; ?>/survey"> ikuti survey</a> sekarang</p>
                   <a class="border-0 btn-dark-blue" href="<?= BASEURL; ?>/survey">Survey &rarr;</a>
               </div>
           </div>
@@ -58,6 +57,10 @@
               </div>
           </center>
 
-
+          <script>
+              let menu = document.getElementsByClassName('nav-items');
+              menu = menu.getElementsByTagName('span');
+              alert(menu);
+          </script>
       </div>
   </ul> <!-- End of Sidebar -->

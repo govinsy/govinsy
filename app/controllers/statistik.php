@@ -44,7 +44,7 @@ class statistik extends Controller
         }
 
         // Daftar variable yang bisa digunakan di /views/statistik/index.php
-        $data['judul'] = 'Daftar Statistik';
+        $data['judul'] = 'Statistik';
         $data['indo'] = $kasus; // kasus covid se-indonesia
         $data['prov'] = $provinsi['list_data']; // kasus covid-19 per-provinsi
         $data['domain'] = $domain['data'][1]; // daftar domain provinsi
@@ -67,8 +67,8 @@ class statistik extends Controller
 
         // Views
         $this->view('templates/header', $data);
-        $this->view('templates/sidebar');
-        $this->view('templates/topbar');
+        $this->view('templates/sidebar', $data);
+        $this->view('templates/topbar', $data);
         $this->view('statistik/index', $data);
         $this->view('templates/footer');
     }

@@ -13,6 +13,36 @@ font-size 42px = 2.625rem
 
 
 */
+.aktif
+{
+    opacity: 1;
+    position:relative;
+}
+.sidebar-dark .aktif::before
+{
+    content:'';
+    background-color: #2D8DFD;
+    width:2.3%;
+    height:60%;
+    position:absolute;
+    left:0;
+    top:20%;
+}
+.sidebar-dark .aktif::after
+{
+    content:'';
+    background-color: #ffffff10;
+    width:100%;
+    height:60%;
+    position:absolute;
+    left:0;
+    top:20%;
+    z-index:-1;
+}
+.sidebar-dark .aktif:hover::after
+{
+    background-color: #ffffff06;
+}
 .color-dark-bg
 {
     background-color: #0B0F24;
@@ -24,6 +54,10 @@ font-size 42px = 2.625rem
 .color-blue-bg
 {
     background-color:#2D8DFD;
+}
+.color-blue-font
+{
+    color:#2D8DFD;
 }
 .color-green-bg
 {
@@ -65,18 +99,52 @@ font-size 42px = 2.625rem
 ///////////////////////////
 
 */
-
+.bt-none
+{
+    background:none;
+    border:none;
+}
+.font-kecil
+{
+    font-size:0.625rem;
+}
 .corner-round
 {
     border-radius:1rem;
 }
-
 .hilang
 {
     display:none;
 }
+.img-content
+{
+    position:relative;
+    background:url('http://localhost/govinsy/public/img/indonesia.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    z-index: 2;
+}
+.img-content::before
+{
+   content: '\A';
+    position: absolute;
+    width: 100%; height:100%;
+    bottom:0; left:0;
+    background:rgba(0,0,0,0.6);
+    opacity: 1;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+}
+
+
 
 #survey img
 {
-    background-color: #FC2E7E;
+    margin-top:-40px;
+}
+#daftar-provinsi button
+{
+    transition: 2s;
+    rotate: 180;
 }

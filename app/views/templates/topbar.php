@@ -36,11 +36,18 @@
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
+                    <?php if (isset($_SESSION['user'])) : ?>
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                        <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                        <div align="right" class="align-items-right">
+                            <small class="mr-2 d-none d-lg-inline text-white-600 small">Alexander</small><br>
+                            <small class="mr-2 d-none d-lg-inline text-gray-600  font-kecil"><i class="fas fa-map-marked"></i> Jawa Tengah</small>
+                        </div>
+                        <img class="img-profile rounded-circle" src="<?= BASEURL; ?>/img/profile.jpg">
                     </a>
+
+
+
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">
@@ -62,6 +69,11 @@
                         </a>
                     </div>
                 </li>
+            <?php else : ?>
+                <li class="nav-item dropdown no-arrow">
+                    <a href="<?= BASEURL; ?>/signin">Sign In</a>
+                </li>
+            <?php endif; ?>
 
             </ul>
 

@@ -9,6 +9,7 @@
     if ($(".sidebar").hasClass("toggled")) {
       $('.sidebar .collapse').collapse('hide');
       $("#survey").addClass('hilang');
+      $('.nav-link span').addClass('hilang');
     };
   });
 
@@ -49,3 +50,17 @@
   });
 
 })(jQuery); // End of use strict
+
+
+
+//Our Code///
+
+
+// Toggle data per provinsi
+$("#provinsi-toggle").on('click', function () {
+  $("#provinsi-toggle h3").toggleClass("toggled");
+  $('#daftar-provinsi').addClass('hilang');
+  if ($("#provinsi-toggle h3").hasClass("toggled")) {
+    $('#daftar-provinsi').removeClass('hilang');
+  };
+});

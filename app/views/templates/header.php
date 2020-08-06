@@ -10,8 +10,8 @@
   <!---   Css Assets    -->
   <link rel="stylesheet" href="<?= BASEURL; ?>/css/sb-admin-2.css">
   <link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.css">
-  <link rel="stylesheet" href="<?= BASEURL; ?>/css/style.css">
   <link rel="stylesheet" href="<?= BASEURL; ?>/fontawsome/css/all.min.css">
+  <link rel="stylesheet" href="<?= BASEURL; ?>/css/style.css">
   <!---   Css Assets    -->
 
   <title>Halaman <?= $data['judul']; ?></title>
