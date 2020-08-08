@@ -13,7 +13,7 @@
   </div>
   <ul id="daftar-provinsi" class="color-dark-content hilang mb-0">
     <?php foreach ($data['domain'] as $domain) : ?>
-      <li class="color-light-font"><a href="<?= BASEURL; ?>/statistik/provinsi?domain_id=<?= $domain['domain_id']; ?>"><?= $domain['domain_name']; ?></a></li>
+      <li class="color-light-font pb-1 pt-1"><a href="<?= BASEURL; ?>/statistik/provinsi?domain_id=<?= $domain['domain_id'] ?>&nama_provinsi=<?= $domain['domain_name']  ?>"><?= $domain['domain_name']; ?></a></li>
     <?php endforeach; ?>
   </ul>
   <div id="provinsi-toggle" style="border-radius: 0px 0px 20px 20px " class="color-blue-bg text-center">

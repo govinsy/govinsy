@@ -13,26 +13,26 @@
 
 
           <!-- Nav Item - Charts -->
-          <li class="nav-item  <?php if ($data['judul'] === "Statistik")  echo "active aktif"; ?>">
+          <li class="nav-item  <?php if ($data['page'] === "Statistik")  echo "active aktif"; ?>">
               <a class="nav-link" href="<?= BASEURL; ?>/statistik">
                   <i class="mr-3 ml-4 fas fa-fw fa-chart-area"></i>
                   <span>STATISTIK</span></a>
           </li>
 
-          <li class="nav-item <?php if ($data['judul'] === "Berita")  echo "active aktif"; ?>">
+          <li class="nav-item <?php if ($data['page'] === "Berita")  echo "active aktif"; ?>">
               <a class="nav-link active" href="<?= BASEURL; ?>/berita">
                   <i class="mr-3 ml-4 fas fa-fw fa-newspaper"></i>
                   <span>BERITA</span></a>
           </li>
 
-          <li class="nav-item <?php if ($data['judul'] === "Survey")  echo "active aktif"; ?>">
+          <li class="nav-item <?php if ($data['page'] === "Survey")  echo "active aktif"; ?>">
               <a class="nav-link disable" href="<?= BASEURL; ?>/survey">
                   <i class="mr-3 ml-4 fas fa-fw fa-tag"></i>
                   <span>SURVEY</span></a>
           </li>
 
-          <li class="nav-item <?php if ($data['judul'] === "Tentang Kami")  echo "active aktif"; ?>">
-              <a class="nav-link" href="<?= BASEURL; ?>/about">
+          <li class="nav-item <?php if ($data['page'] === "Tentang Kami")  echo "active aktif"; ?>">
+              <a class="nav-link" href="<?= BASEURL; ?>/tentang">
                   <i class="mr-3 ml-4 fas fa-fw fa-info"></i>
                   <span>TENTANG KAMI</span></a>
           </li>
