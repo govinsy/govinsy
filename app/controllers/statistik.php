@@ -122,8 +122,47 @@ class Statistik extends Controller
         // End Ambil Data
 
 
+        //Ambil Data Strategic indicator sesuai title (Karena indicator id per provinsi berbeda)
+            for($i = 0; $i < count($strategic['data'][1]); $i++)
+            {
+                if( strstr($strategic['data'][1][$i]['title'], 'Jumlah Penduduk' ) )
+                {
+                    $stat['jumlah_penduduk'] = $strategic['data'][1][$i];
+                }
+                elseif(strstr( $strategic['data'][1][$i]['title'], 'Persentase Penduduk' ))
+                {
+                    $stat['penduduk_miskin'] = $strategic['data'][1][$i];
+                }
+                elseif(strstr( $strategic['data'][1][$i]['title'], 'Pengangguran' ))
+                {
+                    $stat['pengangguran'] = $strategic['data'][1][$i];
+                }
+                elseif(strstr( $strategic['data'][1][$i]['title'], 'Impor' ))
+                {
+                    $stat['impor'] = $strategic['data'][1][$i];
+                }
+                elseif(strstr( $strategic['data'][1][$i]['title'], 'Ekspor' ))
+                {
+                    $stat['ekspor'] = $strategic['data'][1][$i];
+                }
+                elseif(strstr( $strategic['data'][1][$i]['title'], 'Ekonomi Triwulan' ))
+                {
+                    $stat['triwulan'] = $strategic['data'][1][$i];
+                }
+                elseif(strstr( $strategic['data'][1][$i]['title'], 'Angka Harapan Hidup' ))
+                {
+                    $stat['harapan_hidup'] = $strategic['data'][1][$i];
+                }
+                elseif(strstr( $strategic['data'][1][$i]['title'], 'Inflasi' ))
+                {
+                    $stat['inflasi'] = $strategic['data'][1][$i];
+                }
+            }
+            //End ambil data Statistik
+        
 
-        $data['stat'] = $strategic;
+
+        $data['stat'] = $stat; //Data Strategic Indicator
         $data['covid'] = ambilDataProvinsi($provinsi); //Data COVID 19 Provinsi
         $data['judul'] = "Data Provinsi " . $_GET['nama_provinsi'];
         $data['page'] = 'Statistik'; //Digunakan untuk indikator di Sidebar

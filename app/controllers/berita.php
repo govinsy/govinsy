@@ -13,6 +13,7 @@ class berita extends Controller
 
         // Daftar variable yang bisa digunakan di /views/statistik/index.php
         $data['judul'] = 'Berita';
+        $data['page'] = 'Berita';//Digunakan untuk indikator di Sidebar
         $data['berita'] = $berita['articles']; // berita covid se-indonesia
 
         // Views
