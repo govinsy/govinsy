@@ -5,13 +5,14 @@
   <div id="data-indonesia" align="center" class="jumbotron pb-5 img-content color-light-font">
     <h1 class="mt-5">Data Statistik Indonesia</h1>
   </div>
+  <!-- END DATA  STATISTIK Indonesia -->
 
 
   <!-- DATA  STATISTIK PER PROVINSI -->
   <div id="data-provinsi" align="center" class="jumbotron pb-5 mb-0 img-content color-light-font">
     <h1 class="mt-5">Data Per Provinsi</h1>
   </div>
-  <ul id="daftar-provinsi" class="color-dark-content hilang mb-0">
+  <ul id="daftar-provinsi" class="color-content hilang mb-0">
     <?php foreach ($data['domain'] as $domain) : ?>
       <li class="color-light-font pb-1 pt-1"><a href="<?= BASEURL; ?>/statistik/provinsi?domain_id=<?= $domain['domain_id'] ?>&nama_provinsi=<?= $domain['domain_name']  ?>"><?= $domain['domain_name']; ?></a></li>
     <?php endforeach; ?>
@@ -19,6 +20,7 @@
   <div id="provinsi-toggle" style="border-radius: 0px 0px 20px 20px " class="color-blue-bg text-center">
     <h3><button class="bt-none color-light-font"><i class="fas fa-chevron-down"></i></button></h3>
   </div>
+  <!-- END DATA  STATISTIK PER PROVINSI -->
 
 
   <div class="jumbotron mt-4">

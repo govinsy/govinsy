@@ -18,7 +18,7 @@ font-size 42px = 2.625rem
     opacity: 1;
     position:relative;
 }
-.sidebar-dark .aktif::before
+.dark-mode .aktif::before
 {
     content:'';
     background-color: #2D8DFD;
@@ -28,7 +28,7 @@ font-size 42px = 2.625rem
     left:0;
     top:20%;
 }
-.sidebar-dark .aktif::after
+.dark-mode .aktif::after
 {
     content:'';
     background-color: #ffffff10;
@@ -39,23 +39,27 @@ font-size 42px = 2.625rem
     top:20%;
     z-index:-1;
 }
-.sidebar-dark .aktif:hover::after
+.dark-mode .aktif:hover::after
 {
     background-color: #ffffff06;
 }
-.color-dark-bg
+.dark-mode .color-bg
 {
     background-color: #0B0F24;
 }
-.color-dark-content
+.dark-mode .color-content
 {
     background: #181C2F;
 }
-.color-blue-bg
+.dark-mode .color-font
+{
+    color:#0B0F24;   
+}
+.dark-mode .color-blue-bg
 {
     background-color:#2D8DFD;
 }
-.color-blue-font
+.dark-mode .color-blue-font
 {
     color:#2D8DFD;
 }
@@ -63,9 +67,17 @@ font-size 42px = 2.625rem
 {
     background-color:#15CABC;
 }
+.color-green-font
+{
+    color:#15CABC;
+}
 .color-red-bg
 {
     background-color:#FC2E7E;
+}
+.color-red-font
+{
+    color:#FC2E7E;
 }
 .link-not-active
 {
@@ -97,7 +109,6 @@ font-size 42px = 2.625rem
 /*  ////////////////
 ///////End Color  /////////
 ///////////////////////////
-
 */
 .bt-none
 {
@@ -111,6 +122,10 @@ font-size 42px = 2.625rem
 .corner-round
 {
     border-radius:1rem;
+}
+.corner-round-10
+{
+    border-radius:0.625rem;
 }
 .hilang
 {
@@ -136,9 +151,18 @@ font-size 42px = 2.625rem
     transition: all 1s;
     -webkit-transition: all 1s;
 }
+.cov-icon
+{
+    display: inline-block;
+    padding:1.1rem;
+    text-align: center;
+    font-size:2rem;
+}
 
-
-
+#covid li
+{
+    list-style: none;
+}
 #survey img
 {
     margin-top:-40px;

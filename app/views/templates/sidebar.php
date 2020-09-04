@@ -1,6 +1,8 @@
   <!-- Sidebar -->
-  <ul class="navbar-nav color-dark-content position-relative sidebar sidebar-dark accordion" id="accordionSidebar">
+  <ul class="navbar-nav color-content position-relative sidebar sidebar-dark accordion" id="accordionSidebar">
+
       <div class="sticky-top">
+
           <!-- Sidebar - Brand -->
           <div class="sidebar-brand d-flex align-items-left justify-content-start mb-4" href="<?= BASEURL; ?>">
               <a class="sidebar-brand-icon justify-content-start" href="<?= BASEURL; ?>">
@@ -42,7 +44,7 @@
 
           <!-- Survey -->
           <div id="survey" class="row justify-content-center position-relative">
-              <div class="col-sm-9 text-center d-none d-md-inline color-dark-bg corner-round mt-5 mb-3 pb-3">
+              <div class="col-sm-9 text-center d-none d-md-inline color-bg corner-round mt-5 mb-3 pb-3">
                   <img src="<?= BASEURL; ?>/img/survey.png" width="70%">
                   <p class="color-light-font mt-2">Tertarik dengan website kami<a href="<?= BASEURL; ?>/survey"> ikuti survey</a> sekarang</p>
                   <a class="border-0 btn-dark-blue" href="<?= BASEURL; ?>/survey">Survey &rarr;</a>
@@ -57,10 +59,9 @@
               </div>
           </center>
 
-          <script>
-              let menu = document.getElementsByClassName('nav-items');
-              menu = menu.getElementsByTagName('span');
-              alert(menu);
-          </script>
+
       </div>
-  </ul> <!-- End of Sidebar -->
+
+
+  </ul>
+  <!-- End of Sidebar -->

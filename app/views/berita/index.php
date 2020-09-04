@@ -1,6 +1,6 @@
 <div class="container">
     <h3 class="text-gray-700">BERITA TERKINI</h3>
-    <hr class="color-dark-content mb-4 divider">
+    <hr class="color-content mb-4 divider">
 
     <!-- Berita -->
 
@@ -8,7 +8,7 @@
 
         <?php foreach ($data['berita'] as $berita) : ?>
             <div class="col-lg-4 mb-4">
-                <div class="card color-dark-content">
+                <div class="card color-content">
                     <img src="<?= $berita['urlToImage']; ?>" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title color-light-font font-weight-bold"><?= $berita['title']; ?></h5>

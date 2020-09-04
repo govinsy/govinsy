@@ -24,10 +24,12 @@
 
 <script src="<?= BASEURL; ?>/js/sb-admin-2.js"></script>
 
+<!-- Page level plugins -->
+<script src="<?= BASEURL; ?>/js/chart/Chart.min.js"></script>
+
 <!-- Charts Javascript -->
-<script src="<?= BASEURL; ?>/js/chart.js/Chart.min.js"></script>
-<script src="<?= BASEURL; ?>/js/chart-area-demo.js"></script>
-<script src="<?= BASEURL; ?>/js/chart-pie-demo.js"></script>
+<script src="<?= BASEURL; ?>/js/statistic/chart-area-demo.js"></script>
+<script src="<?= BASEURL; ?>/js/statistic/chart-pie-demo.js"></script>
 </body>
 
 </html>

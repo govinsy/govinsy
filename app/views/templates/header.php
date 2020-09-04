@@ -9,10 +9,10 @@
 
   <!---   Css Assets    -->
   <link rel="stylesheet" href="<?= BASEURL; ?>/css/sb-admin-2.css">
-  <link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.css">
+  <link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?= BASEURL; ?>/fontawsome/css/all.min.css">
   <link rel="stylesheet" href="<?= BASEURL; ?>/css/style.css">
-  <!---   Css Assets    -->
+  <!---  End Css Assets    -->
 
   <title>Halaman <?= $data['judul']; ?></title>
 </head>
@@ -20,7 +20,7 @@
 <body id="page-top">
 
   <!-- Page Wrapper -->
-  <div id="wrapper">
+  <div class="dark-mode" id="wrapper">
 
     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
