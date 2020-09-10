@@ -5,10 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-lg-12">
             <div align="center" class="jumbotron color-content color-content text-align-center mb-4">
-                <h2 class="mt-0 color-light-font"><?= $_GET['nama_provinsi'] ?></h2>
-                <p class="small color-light-font">LUAS WILAYAH</p>
-                <small class="color-light-font">12000 KM<sup>2</sup></small>
-                <a href="https://www.maps.com">Lihat peta</a>
+                <img src="<?php echo BASEURL . "/img/provinsi/logo/" . $_GET['domain_id'] . ".png"; ?>" width="25%">
+                <h2 class="mt-3 color-light-font">Provinsi <?= $_GET['nama_provinsi'] ?></h2>
+                <a href="https://www.google.com/maps/place/<?php echo "" . str_replace(" ", "%", $_GET['nama_provinsi']) ?>">Lihat peta</a>
             </div>
         </div>
     </div>
@@ -32,11 +31,13 @@
                         <div class="pt-2">
                             <small class="text-gray-600 mr-1 float-left">POSITIF</small>
                             <p class="small color-blue-font mb-0"><?= '+' . $data['covid']['penambahan']['positif'] ?></p>
+
                             <?php if ($data['covid'] != false) :  ?>
                                 <h1><?= $data['covid']['jumlah_kasus'] ?></h1>
                             <?php else : ?>
                                 <h4>Belum Terdata</h4>
                             <?php endif; ?>
+
                         </div>
                     </li>
                     <li class="col-lg-4 mb-5 mt-1">
@@ -80,25 +81,39 @@
     <!-- Kependudukan -->
     <div class="row">
 
-        <!-- Pie Chart -->
-        <div class="col-lg-5">
+        <!-- Progress Card -->
+        <div class="col-lg-6">
 
-            <!-- Card Body -->
-            <div class="card color-content shadow mb-4">
-                <div class="card-body">
-                    <div class="chart-pie pt-4">
-                        <canvas wanita="<?= $data['covid']['jenis_kelamin'][1]['doc_count'] ?>" semua="<?= $data['covid']['jumlah_sembuh']  ?>" pria="<?= $data['covid']['jenis_kelamin'][0]['doc_count'] ?>" id="myPieChart"></canvas>
+            <div style="border:none;" class="card shadow color-content mb-4">
+                <div class="card-header py-3 color-blue-bg">
+                    <h6 class="m-0 font-weight-bold ">Geografi</h6>
+                </div>
+                <div class="card-body color-light-font mt-3 position-relative">
+                    <div class="row justify-content-center">
+                        <div class="peta col-md-6 text-align-center">
+                            <img class="ml-2" src="<?php echo BASEURL . "/img/provinsi/peta/" . $_GET['domain_id'] . ".svg"; ?>" width="90%" alt="">
+                        </div>
+                        <div class="info-wilayah col-md-6 pt-4">
+                            <small class="text-gray-600">LUAS WILAYAH</small>
+                            <h3 class="mb-4"><?= 5000 ?>
+                                <small style="font-size:1rem;"><sub>KM <sup>2</sup></sub></small>
+                            </h3>
+                            <small class="text-gray-600 mt-5">JUMLAH PENDUDUK</small>
+                            <h3><?= "23,000,000" ?>
+                                <small style=" font-size:1rem;"><sub>Jiwa</sub></small>
+                            </h3>
+                        </div>
                     </div>
-                    <hr>
+
                 </div>
             </div>
 
         </div>
-        <!-- Chart Pie End-->
+        <!-- Progress Card End-->
 
 
         <!-- Progress Card -->
-        <div class="col-lg-7">
+        <div class="col-lg-6">
 
             <div style="border:none;" class="card shadow color-content mb-4">
                 <div class="card-header py-3 color-blue-bg">

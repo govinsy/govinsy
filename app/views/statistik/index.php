@@ -12,10 +12,36 @@
   <div id="data-provinsi" align="center" class="jumbotron pb-5 mb-0 img-content color-light-font">
     <h1 class="mt-5">Data Per Provinsi</h1>
   </div>
-  <ul id="daftar-provinsi" class="color-content hilang mb-0">
-    <?php foreach ($data['domain'] as $domain) : ?>
-      <li class="color-light-font pb-1 pt-1"><a href="<?= BASEURL; ?>/statistik/provinsi?domain_id=<?= $domain['domain_id'] ?>&nama_provinsi=<?= $domain['domain_name']  ?>"><?= $domain['domain_name']; ?></a></li>
+  <ul id="daftar-provinsi" align="center" class="color-content hilang list-unstyled mb-0">
+
+    <?php $i = 1;
+    foreach ($data['domain'] as $domain) : ?>
+      <?php if ($i == 1) : ?>
+        <li> </li>
+        <li class="color-light-font font-bold pb-1 pt-1">SUMATERA</li>
+      <?php elseif ($i == 11) : ?>
+        <li> </li>
+        <li class="color-light-font font-bold pb-1 pt-1">JAWA</li>
+      <?php elseif ($i == 17) : ?>
+        <li> </li>
+        <li class="color-light-font font-bold pb-1 pt-1">BALI & NUSA TENGGARA</li>
+      <?php elseif ($i == 20) : ?>
+        <li> </li>
+        <li class="color-light-font font-bold pb-1 pt-1">KALIMANTAN</li>
+      <?php elseif ($i == 25) : ?>
+        <li> </li>
+        <li class="color-light-font font-bold pb-1 pt-1">SULAWESI</li>
+      <?php elseif ($i == 31) : ?>
+        <li> </li>
+        <li class="color-light-font font-bold pb-1 pt-1">MALUKU</li>
+      <?php elseif ($i == 33) : ?>
+        <li> </li>
+        <li class="color-light-font font-bold pb-1 pt-1">PAPUA</li>
+      <?php endif;
+      $i++; ?>
+      <li class="color-light-font pb-1 pt-1"><a href="<?= BASEURL; ?>/statistik/provinsi?domain_id=<?= $domain['domain_id'] ?>&nama_provinsi=<?= $domain['domain_name']  ?>">Provinsi <?= $domain['domain_name']; ?></a></li>
     <?php endforeach; ?>
+
   </ul>
   <div id="provinsi-toggle" style="border-radius: 0px 0px 20px 20px " class="color-blue-bg text-center">
     <h3><button class="bt-none color-light-font"><i class="fas fa-chevron-down"></i></button></h3>

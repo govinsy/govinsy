@@ -28,7 +28,7 @@
           </li>
 
           <li class="nav-item <?php if ($data['page'] === "Survey")  echo "active aktif"; ?>">
-              <a class="nav-link disable" href="<?= BASEURL; ?>/survey">
+              <a class="nav-link" href="<?= BASEURL; ?>/survey">
                   <i class="mr-3 ml-4 fas fa-fw fa-tag"></i>
                   <span>SURVEY</span></a>
           </li>

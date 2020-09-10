@@ -6,6 +6,10 @@
 class Statistik extends Controller
 {
 
+    public function __construct()
+    {
+        set_time_limit(500);
+    }
     public function index()
     {
         // Set Session Nomor Domain dan Nama Provinsi
@@ -37,11 +41,11 @@ class Statistik extends Controller
         $dayone = $this->getJSON($this->url['covid_dayone']);
 
         // XLS Eksperimen
-        try {
-            $statictable = $this->excelToArray(__DIR__ . '/../../public/img/Indo_13_7729776.xls');
-        } catch (Exception $e) {
-            echo json_decode("['error' => " . $e->getMessage() . "]");
-        }
+        // try {
+        //     $statictable = $this->excelToArray(__DIR__ . '/../../public/img/Indo_13_7729776.xls');
+        // } catch (Exception $e) {
+        //     echo json_decode("['error' => " . $e->getMessage() . "]");
+        // }
 
         // Daftar variable yang bisa digunakan di /views/statistik/index.php
         $data['judul'] = 'Daftar Statistik';
@@ -50,7 +54,7 @@ class Statistik extends Controller
         $data['prov'] = $provinsi['list_data']; // kasus covid-19 per-provinsi
         $data['domain'] = $domain['data'][1]; // daftar domain provinsi
         !empty($indicators) ? $data['indicators'] = $indicators : $data['indicators'] = []; // strategic indocators
-        $data['statictable'] = $statictable; // masih experimen
+        // $data['statictable'] = $statictable; // masih experimen
 
         // Diagram
         $data['dayone']['date'] = [];
