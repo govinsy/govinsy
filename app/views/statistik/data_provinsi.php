@@ -76,6 +76,32 @@
     </div>
     <!-- Data COVID 19 End -->
 
+   
+    <!-- RS Rujukan -->
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                <h6 class="m-0 font-weight-bold ">Rumah Sakit Rujukan</h6>
+                </div>
+                <div class="card-body row">
+                <?php foreach ($data['hospital'] as $h): ?>
+                    <?php if ($h['province'] == $_GET['nama_provinsi']): ?>
+                    <div class="col-4 mt-3">
+                        <ul class="list-group">
+                            <li class="list-group-item"><?= $h['name']; ?></li>
+                            <li class="list-group-item"><?= $h['region']; ?></li>
+                            <li class="list-group-item"><?= $h['address']; ?></li>
+                            <li class="list-group-item"><?= $h['phone']; ?></li>
+                        </ul>
+                    </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- RS Rujukan End -->
 
 
     <!-- Kependudukan -->

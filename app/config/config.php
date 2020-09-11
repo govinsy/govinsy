@@ -19,7 +19,8 @@ define('URL', [
     'bps_domain' => 'https://webapi.bps.go.id/v1/api/domain?',
     'bps_strategic' => 'https://webapi.bps.go.id/v1/api/list?',
     'newsapi' => 'http://newsapi.org/v2/top-headlines?country=id&category=health&',
-    'covid_dayone' => 'https://api.covid19api.com/dayone/country/indonesia'
+    'covid_dayone' => 'https://api.covid19api.com/dayone/country/indonesia',
+    'hospital' => 'https://dekontaminasi.com/api/id/covid19/hospitals'
 ]);
 define('FIELD', [
     'key' => [

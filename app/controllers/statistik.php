@@ -88,6 +88,8 @@ class Statistik extends Controller
         $provinsi = $this->getJSON($this->url['covid_prov']);
         //Ambil Data Satistik Sesuai domain ID di url 
         $strategic = $this->getJSON($this->url['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] . 'domain=' . $_GET['domain_id']);
+        // Data Rumah Sakit Rujukan
+        $hospital = $this->getJSON($this->url['hospital']);
 
         /// End Ambil JSON ///
 
@@ -158,6 +160,7 @@ class Statistik extends Controller
         $data['covid'] = ambilDataProvinsi($provinsi); //Data COVID 19 Provinsi
         $data['judul'] = "Data Provinsi " . $_GET['nama_provinsi'];
         $data['page'] = 'Statistik'; //Digunakan untuk indikator di Sidebar
+        $data['hospital'] = $hospital; // Rumah sakit rujukan
 
         //Views
         $this->view('templates/header', $data);
