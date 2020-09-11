@@ -156,9 +156,10 @@ class Statistik extends Controller
         }
         //End ambil data Statistik
 
+        $desc = [];
         // Deskripsi provinsi
         foreach ($provdesc as $p) {
-            if ($p['Provinsi'] = $_GET['nama_provinsi']) {
+            if ($p['Provinsi'] == $_GET['nama_provinsi']) {
                 $desc["pulau"] = $p["Pulau"];
                 $desc["provinsi"] = $p["Provinsi"];
                 $desc["singkatan"] = $p["Singkatan"];
@@ -171,8 +172,6 @@ class Statistik extends Controller
                 $desc["prdb"] = $p["PDRB 2014 (triliun rupiah)"];
                 $desc["prdb_per_kapita"] = $p["PDRB per kapita 2014 (juta rupiah)"];
                 $desc["ipm"] = $p["IPM 2014"];
-            } else {
-                $desc = [];
             }
         }
 
