@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class pengguna extends Controller {
+class pengguna extends Controller
+{
     public function login()
     {
         // Mengambil data pengguna dari database
@@ -19,7 +20,7 @@ class pengguna extends Controller {
                         Flasher::setFlash('gagal', 'password salah', 'danger');
                     }
                     $emailFound = true;
-                } 
+                }
             }
             if ($emailFound == false) {
                 Flasher::setFlash('gagal', 'email belum terdaftar', 'danger');
@@ -48,15 +49,17 @@ class pengguna extends Controller {
     public function daftar()
     {
         if (isset($_POST['daftar'])) {
-            if( $this->model('pengguna_model')->tambahPengguna($_POST) > 0 ) {
+            if ($this->model('pengguna_model')->tambahPengguna($_POST) > 0) {
                 Flasher::setFlash('berhasil', 'anda berhasil mendaftar', 'success');
             } else {
                 Flasher::setFlash('gagal', 'gagal mendaftar', 'danger');
             }
         }
-        
+
         $data['judul'] = 'Daftar Govinsy';
         $this->view('templates/header', $data);
+        $this->view('templates/sidebar', $data);
+        $this->view('templates/topbar', $data);
         $this->view('pengguna/daftar', $data);
         $this->view('templates/footer');
     }

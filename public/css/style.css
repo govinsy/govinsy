@@ -1,3 +1,176 @@
+body{
+    font-family: 'Karla';
+}
+
+/*  ////////////////
+///////Color  /////////
+///////////////////////////
+
+font-size 10px = 0.625rem
+font-size 16px = 1rem
+font-size 26px = 1.625rem
+font-size 42px = 2.625rem
+
+
+*/
+.aktif
+{
+    opacity: 1;
+    position:relative;
+}
+.dark-mode .aktif::before
+{
+    content:'';
+    background-color: #2D8DFD;
+    width:2.3%;
+    height:60%;
+    position:absolute;
+    left:0;
+    top:20%;
+}
+.dark-mode .aktif::after
+{
+    content:'';
+    background-color: #ffffff10;
+    width:100%;
+    height:60%;
+    position:absolute;
+    left:0;
+    top:20%;
+    z-index:-1;
+}
+.dark-mode .aktif:hover::after
+{
+    background-color: #ffffff06;
+}
+.dark-mode .color-bg
+{
+    background-color: #0B0F24;
+}
+.dark-mode .color-content
+{
+    background: #181C2F;
+}
+.dark-mode .color-font
+{
+    color:#0B0F24;   
+}
+.dark-mode .color-blue-bg
+{
+    background-color:#2D8DFD;
+}
+.dark-mode .color-blue-font
+{
+    color:#2D8DFD;
+}
+.color-green-bg
+{
+    background-color:#15CABC;
+}
+.color-green-font
+{
+    color:#15CABC;
+}
+.color-red-bg
+{
+    background-color:#FC2E7E;
+}
+.color-red-font
+{
+    color:#FC2E7E;
+}
+.link-not-active
+{
+    color:#BFC0C2;
+}
+.color-light-font
+{
+    color:white;
+}
 .badge {
     margin-left: 3px;
+}
+
+.btn-dark-blue
+{
+    padding:0.2rem 1.5rem 0.2rem 1.5rem;
+    background-color:#2D8DFD;
+    color:white;
+    border-radius:1rem;
+}
+
+.btn-dark-blue:hover
+{
+    text-decoration:none;
+    background-color:rgba(0, 0, 0, 0);
+    box-shadow: #2D8DFD 0px 0px 5px 0px;
+    color:#2D8DFD;
+}
+/*  ////////////////
+///////End Color  /////////
+///////////////////////////
+*/
+
+
+.bt-none
+{
+    background:none;
+    border:none;
+}
+.font-kecil
+{
+    font-size:0.625rem;
+}
+.corner-round
+{
+    border-radius:1rem;
+}
+.corner-round-10
+{
+    border-radius:0.625rem;
+}
+.hilang
+{
+    display:none;
+}
+.img-content
+{
+    position:relative;
+    background:url('http://localhost/govinsy/public/img/indonesia.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    z-index: 2;
+}
+.img-content::before
+{
+   content: '\A';
+    position: absolute;
+    width: 100%; height:100%;
+    bottom:0; left:0;
+    background:rgba(0,0,0,0.6);
+    opacity: 1;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+}
+.cov-icon
+{
+    display: inline-block;
+    padding:1.1rem;
+    text-align: center;
+    font-size:2rem;
+}
+
+#covid li
+{
+    list-style: none;
+}
+#survey img
+{
+    margin-top:-40px;
+}
+#daftar-provinsi button
+{
+    transition: 2s;
+    rotate: 180;
 }
