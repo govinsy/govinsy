@@ -90,6 +90,8 @@ class Statistik extends Controller
         $strategic = $this->getJSON($this->url['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] . 'domain=' . $_GET['domain_id']);
         // Data Rumah Sakit Rujukan
         $hospital = $this->getJSON($this->url['hospital']);
+        // Deskripsi Provinsi
+        $provdesc = $this->getJSON($this->url['provdesc']);
 
         /// End Ambil JSON ///
 
@@ -154,13 +156,32 @@ class Statistik extends Controller
         }
         //End ambil data Statistik
 
-
+        // Deskripsi provinsi
+        foreach ($provdesc as $p) {
+            if ($p['Provinsi'] = $_GET['nama_provinsi']) {
+                $desc["pulau"] = $p["Pulau"];
+                $desc["provinsi"] = $p["Provinsi"];
+                $desc["singkatan"] = $p["Singkatan"];
+                $desc["ibu_kota"] = $p["Ibu kota"];
+                $desc["diresmikan"] = $p["Diresmikan"];
+                $desc["populasi"] = $p["Populasi"];
+                $desc["luas_total"] = $p["Luas Total"];
+                $desc["populasi_per_luas"] = $p["Populasi / Luas"];
+                $desc["apbd"] = $p["APBD 2014 (miliar rupiah)"]; 
+                $desc["prdb"] = $p["PDRB 2014 (triliun rupiah)"];
+                $desc["prdb_per_kapita"] = $p["PDRB per kapita 2014 (juta rupiah)"];
+                $desc["ipm"] = $p["IPM 2014"];
+            } else {
+                $desc = [];
+            }
+        }
 
         $data['stat'] = $stat; //Data Strategic Indicator
         $data['covid'] = ambilDataProvinsi($provinsi); //Data COVID 19 Provinsi
         $data['judul'] = "Data Provinsi " . $_GET['nama_provinsi'];
         $data['page'] = 'Statistik'; //Digunakan untuk indikator di Sidebar
         $data['hospital'] = $hospital; // Rumah sakit rujukan
+        $data['provdesc'] = $desc; // Deskirpsi provinsi
 
         //Views
         $this->view('templates/header', $data);

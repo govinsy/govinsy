@@ -121,11 +121,11 @@
                         </div>
                         <div class="info-wilayah col-md-6 pt-4">
                             <small class="text-gray-600">LUAS WILAYAH</small>
-                            <h3 class="mb-4"><?= 5000 ?>
+                            <h3 class="mb-4"><?= $data['provdesc']['luas_total'] ?>
                                 <small style="font-size:1rem;"><sub>KM <sup>2</sup></sub></small>
                             </h3>
                             <small class="text-gray-600 mt-5">JUMLAH PENDUDUK</small>
-                            <h3><?= "23,000,000" ?>
+                            <h3><?= $data['provdesc']['populasi'] ?>
                                 <small style=" font-size:1rem;"><sub>Jiwa</sub></small>
                             </h3>
                         </div>
@@ -216,3 +216,5 @@
 
 var_dump($data['covid']);
 var_dump($data['stat']);
+echo "<br><br>";
+print_r($data['provdesc']);
