@@ -33,6 +33,13 @@ class survei_model {
         return $this->db->resultSet();
     }
 
+    public function findPengguna($id)
+    {
+        $this->db->query('SELECT * FROM ' . $this->table['jawaban_pengguna'] . ' WHERE id_pengguna=:id');
+        $this->db->bind('id', $id);
+        return ($this->db->single());
+    }
+
     public function countJawabanPengguna()
     {
         $this->db->query('SELECT * FROM ' . $this->table['jawaban_pengguna']);

@@ -16,6 +16,8 @@ class pengguna extends Controller
                         $_SESSION['login'] = true;
                         $_SESSION['profile'] = $this->model('pengguna_model')->getPenggunaById($p['id']);
                         Flasher::setFlash('berhasil', 'anda berhasil masuk', 'success');
+                        header("Location: " . BASEURL);
+                        exit;
                     } else {
                         Flasher::setFlash('gagal', 'password salah', 'danger');
                     }
