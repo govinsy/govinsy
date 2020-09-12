@@ -30,10 +30,10 @@
                         </div>
                         <div class="pt-2">
                             <small class="text-gray-600 mr-1 float-left">POSITIF</small>
-                            <p class="small color-blue-font mb-0"><?= '+' . $data['covid']['penambahan']['positif'] ?></p>
+                            <p class="small color-blue-font mb-0"><?= '+' . number_format($data['covid']['penambahan']['positif']) ?></p>
 
                             <?php if ($data['covid'] != false) :  ?>
-                                <h1><?= $data['covid']['jumlah_kasus'] ?></h1>
+                                <h1><?= number_format($data['covid']['jumlah_kasus']) ?></h1>
                             <?php else : ?>
                                 <h4>Belum Terdata</h4>
                             <?php endif; ?>
@@ -46,9 +46,9 @@
                         </div>
                         <div class="pt-2">
                             <small class="text-gray-600 mr-1 float-left">SEMBUH</small>
-                            <p class="small color-green-font mb-0"><?= '+' . $data['covid']['penambahan']['sembuh'] ?></p>
+                            <p class="small color-green-font mb-0"><?= '+' . number_format($data['covid']['penambahan']['sembuh']) ?></p>
                             <?php if ($data['covid'] != false) :  ?>
-                                <h1><?= $data['covid']['jumlah_sembuh'] ?></h1>
+                                <h1><?= number_format($data['covid']['jumlah_sembuh']) ?></h1>
                             <?php else : ?>
                                 <h4>Belum Terdata</h4>
                             <?php endif; ?>
@@ -60,9 +60,9 @@
                         </div>
                         <div class="pt-2">
                             <small class="text-gray-600 mr-1 float-left">MENINGGAL</small>
-                            <p class="small color-red-font mb-0"><?= '+' . $data['covid']['penambahan']['meninggal'] ?></p>
+                            <p class="small color-red-font mb-0"><?= '+' . number_format($data['covid']['penambahan']['meninggal']) ?></p>
                             <?php if ($data['covid'] != false) :  ?>
-                                <h1><?= $data['covid']['jumlah_meninggal'] ?></h1>
+                                <h1><?= number_format($data['covid']['jumlah_meninggal']) ?></h1>
                             <?php else : ?>
                                 <h4>Belum Terdata</h4>
                             <?php endif; ?>

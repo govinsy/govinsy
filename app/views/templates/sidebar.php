@@ -27,10 +27,10 @@
                   <span>BERITA</span></a>
           </li>
 
-          <li class="nav-item <?php if ($data['page'] === "Survey")  echo "active aktif"; ?>">
-              <a class="nav-link" href="<?= BASEURL; ?>/survey">
+          <li class="nav-item <?php if ($data['page'] === "Survei")  echo "active aktif"; ?>">
+              <a class="nav-link" href="<?= BASEURL; ?>/survei">
                   <i class="mr-3 ml-4 fas fa-fw fa-tag"></i>
-                  <span>SURVEY</span></a>
+                  <span>SURVEI</span></a>
           </li>
 
           <li class="nav-item <?php if ($data['page'] === "Tentang Kami")  echo "active aktif"; ?>">
@@ -42,12 +42,12 @@
 
 
 
-          <!-- Survey -->
-          <div id="survey" class="row justify-content-center position-relative">
+          <!-- Survei -->
+          <div id="survei" class="row justify-content-center position-relative">
               <div class="col-sm-9 text-center d-none d-md-inline color-bg corner-round mt-5 mb-3 pb-3">
                   <img src="<?= BASEURL; ?>/img/survey.png" width="70%">
-                  <p class="color-light-font mt-2">Tertarik dengan website kami<a href="<?= BASEURL; ?>/survey"> ikuti survey</a> sekarang</p>
-                  <a class="border-0 btn-dark-blue" href="<?= BASEURL; ?>/survey">Survey &rarr;</a>
+                  <p class="color-light-font mt-2">Tertarik dengan website kami<a href="<?= BASEURL; ?>/survei"> ikuti survei</a> sekarang</p>
+                  <a class="border-0 btn-dark-blue" href="<?= BASEURL; ?>/survei">Survei &rarr;</a>
               </div>
           </div>
 
