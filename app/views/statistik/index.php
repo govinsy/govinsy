@@ -248,19 +248,51 @@
         </ul>
       </div>
     </div>
+      
+      <!-- SURVEI -->
+      <div class="col-12">
+        <div style="border:none;" class="card shadow color-content mb-4">
+          <div class="card-header py-3 color-blue-bg">
+            <h6 class="m-0 font-weight-bold ">Survei Internal</h6>
+          </div>
+          <div class="row m-3">
 
+            <!-- Jumlah survei = jumlah pertanyaan -->
+            <?php foreach($data['pertanyaan'] as $p): ?>
+            <div class="col-4 mt-3">
+              <ul class="list-group">
+                <li class="list-group-item font-weight-bold d-flex justify-content-between align-items-center">
+                  <?= $p['pertanyaan'] ?>
+                </li>
+                
+                <!-- Menampilkan kalkulasi jawaban sesuai pertanyaan -->
+                <?php $tempArr = [] ?>
+                <?php foreach($data['jawaban'] as $j): ?>
+                <?php if($j['id_pertanyaan'] == $p['id']): ?>
+                <?php 
+                  $arr = array_count_values($data['hasil_survei']);
+                  $ark = array_keys(array_count_values($data['hasil_survei']));
+                    foreach ($ark as $k) {
+                      if ($k == $j['id']) {
+                        echo '<li class="list-group-item d-flex justify-content-between align-items-center">
+                        '. $j['jawaban'] .'
+                        <span class="badge badge-primary badge-pill">'. $arr[$k] .'</span>
+                      </li>';
+                      }
+                  }
+                ?>
+                </span></h6>
 
-    <!-- STATICTABLE -->
-    <!-- <div class="card" style="width: 18rem;">
-      <div class="card-header">
-        Statictable
+                <?php endif ?>
+                <?php endforeach ?>
+
+              </ul>
+            </div>
+            <?php endforeach ?>
+
+          </div>
+        </div>
       </div>
-      <ul class="list-group list-group-flush">
-        <?php for ($i = 0; $i < count($data['statictable']); $i++) : ?>
-        <li class="list-group-item"><?= $data['statictable'][$i]['Realisasi Proyek, Nilai Investasi dan Tenaga Kerja Penanaman Modal Asing (PMA) Menurut Negara di Provinsi Jawa Tengah, 2019']; ?></li>
-        <?php endfor; ?>
-      </ul>
-    </div> -->
 
   </div>
 </div>

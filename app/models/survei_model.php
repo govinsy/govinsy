@@ -27,6 +27,19 @@ class survei_model {
         return $this->db->resultSet();
     }
 
+    public function getAllJawabanPengguna()
+    {
+        $this->db->query('SELECT * FROM ' . $this->table['jawaban_pengguna']);
+        return $this->db->resultSet();
+    }
+
+    public function countJawabanPengguna()
+    {
+        $this->db->query('SELECT * FROM ' . $this->table['jawaban_pengguna']);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
     public function tambahJawabanPengguna($data)
     {
         $query = 'INSERT INTO jawaban_pengguna
