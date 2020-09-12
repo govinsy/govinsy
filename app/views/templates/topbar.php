@@ -35,11 +35,13 @@
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
-                    <?php if (isset($_SESSION['user'])) : ?>
+                    <?php if (isset($_SESSION['login'])) : ?>
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div align="right" class="align-items-right">
-                            <small class="mr-2 d-none d-lg-inline text-white-600 small">Alexander</small><br>
+                        <?php if (isset($_SESSION['profile'])) : ?>
+                            <small class="mr-2 d-none d-lg-inline text-white-600 small"><?= str_replace(' ', '', $_SESSION['profile']['nama']); ?></small><br>
+                            <?php endif ?>
                             <small class="mr-2 d-none d-lg-inline text-gray-600  font-kecil"><i class="fas fa-map-marked"></i> Jawa Tengah</small>
                         </div>
                         <img class="img-profile rounded-circle" src="<?= BASEURL; ?>/img/profile.jpg">
@@ -49,21 +51,13 @@
 
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="<?= BASEURL; ?>/pengguna/login">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Profile
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Settings
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Activity Log
+                            Login
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        <a class="dropdown-item" href="<?= BASEURL; ?>/pengguna/logout">
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Logout
                         </a>
                     </div>
@@ -71,7 +65,7 @@
                 </li>
             <?php else : ?>
                 <li class="nav-item dropdown no-arrow">
-                    <a href="<?= BASEURL; ?>/pengguna/login">Sign In</a>
+                    <a href="<?= BASEURL; ?>/pengguna/login">Masuk</a>
                 </li>
             <?php endif; ?>
 

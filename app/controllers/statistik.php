@@ -72,12 +72,14 @@ class Statistik extends Controller
         $data['dayone']['recovered'] = [];
         $data['dayone']['deaths'] = [];
         $data['dayone']['active'] = [];
-        for ($i = 0; $i < count($dayone); $i++) {
-            array_push($data['dayone']['date'], date('M j', strtotime($dayone[$i]['Date'])));
-            array_push($data['dayone']['confirmed'], $dayone[$i]['Confirmed']);
-            array_push($data['dayone']['recovered'], $dayone[$i]['Recovered']);
-            array_push($data['dayone']['deaths'], $dayone[$i]['Deaths']);
-            array_push($data['dayone']['active'], $dayone[$i]['Active']);
+        if (isset($dayone)) {
+            for ($i = 0; $i < count($dayone); $i++) {
+                array_push($data['dayone']['date'], date('M j', strtotime($dayone[$i]['Date'])));
+                array_push($data['dayone']['confirmed'], $dayone[$i]['Confirmed']);
+                array_push($data['dayone']['recovered'], $dayone[$i]['Recovered']);
+                array_push($data['dayone']['deaths'], $dayone[$i]['Deaths']);
+                array_push($data['dayone']['active'], $dayone[$i]['Active']);
+            }
         }
 
         // Views
@@ -122,12 +124,13 @@ class Statistik extends Controller
         // @param ambil dari JSON provinsi
         function ambilDataProvinsi($provinsi)
         {
-
-            for ($i = 0; $i < count($provinsi['list_data']); $i++) {
-                if ($provinsi['list_data'][$i]['key'] == strtoupper($_GET['nama_provinsi'])) {
-                    return $provinsi['list_data'][$i];
-                } elseif (namaProvinsiValid(strtoupper($_GET['nama_provinsi']), $provinsi['list_data'][$i]['key'])) {
-                    return $provinsi['list_data'][$i];
+            if (isset($provinsi)) {
+                for ($i = 0; $i < count($provinsi['list_data']); $i++) {
+                    if ($provinsi['list_data'][$i]['key'] == strtoupper($_GET['nama_provinsi'])) {
+                        return $provinsi['list_data'][$i];
+                    } elseif (namaProvinsiValid(strtoupper($_GET['nama_provinsi']), $provinsi['list_data'][$i]['key'])) {
+                        return $provinsi['list_data'][$i];
+                    }
                 }
             }
         }
@@ -145,23 +148,25 @@ class Statistik extends Controller
             'inflasi' => ['value' => null],
         ];
         //Ambil Data Strategic indicator sesuai title (Karena indicator id per provinsi berbeda)
-        for ($i = 0; $i < count($strategic['data'][1]); $i++) {
-            if (strstr($strategic['data'][1][$i]['title'], 'Jumlah Penduduk')) {
-                $stat['jumlah_penduduk'] = $strategic['data'][1][$i];
-            } elseif (strstr($strategic['data'][1][$i]['title'], 'Persentase Penduduk')) {
-                $stat['penduduk_miskin'] = $strategic['data'][1][$i];
-            } elseif (strstr($strategic['data'][1][$i]['title'], 'Pengangguran')) {
-                $stat['pengangguran'] = $strategic['data'][1][$i];
-            } elseif (strstr($strategic['data'][1][$i]['title'], 'Impor')) {
-                $stat['impor'] = $strategic['data'][1][$i];
-            } elseif (strstr($strategic['data'][1][$i]['title'], 'Ekspor')) {
-                $stat['ekspor'] = $strategic['data'][1][$i];
-            } elseif (strstr($strategic['data'][1][$i]['title'], 'Ekonomi Triwulan')) {
-                $stat['triwulan'] = $strategic['data'][1][$i];
-            } elseif (strstr($strategic['data'][1][$i]['title'], 'Angka Harapan Hidup')) {
-                $stat['harapan_hidup'] = $strategic['data'][1][$i];
-            } elseif (strstr($strategic['data'][1][$i]['title'], 'Inflasi')) {
-                $stat['inflasi'] = $strategic['data'][1][$i];
+        if (isset($strategic)) {
+            for ($i = 0; $i < count($strategic['data'][1]); $i++) {
+                if (strstr($strategic['data'][1][$i]['title'], 'Jumlah Penduduk')) {
+                    $stat['jumlah_penduduk'] = $strategic['data'][1][$i];
+                } elseif (strstr($strategic['data'][1][$i]['title'], 'Persentase Penduduk')) {
+                    $stat['penduduk_miskin'] = $strategic['data'][1][$i];
+                } elseif (strstr($strategic['data'][1][$i]['title'], 'Pengangguran')) {
+                    $stat['pengangguran'] = $strategic['data'][1][$i];
+                } elseif (strstr($strategic['data'][1][$i]['title'], 'Impor')) {
+                    $stat['impor'] = $strategic['data'][1][$i];
+                } elseif (strstr($strategic['data'][1][$i]['title'], 'Ekspor')) {
+                    $stat['ekspor'] = $strategic['data'][1][$i];
+                } elseif (strstr($strategic['data'][1][$i]['title'], 'Ekonomi Triwulan')) {
+                    $stat['triwulan'] = $strategic['data'][1][$i];
+                } elseif (strstr($strategic['data'][1][$i]['title'], 'Angka Harapan Hidup')) {
+                    $stat['harapan_hidup'] = $strategic['data'][1][$i];
+                } elseif (strstr($strategic['data'][1][$i]['title'], 'Inflasi')) {
+                    $stat['inflasi'] = $strategic['data'][1][$i];
+                }
             }
         }
         //End ambil data Statistik

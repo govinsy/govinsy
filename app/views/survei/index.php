@@ -14,6 +14,7 @@
           <div class="row">
 
               <!-- Menampilkan seluruh pertanyaan -->
+              <?php if(isset($data['pertanyaan'])): ?>
               <?php foreach($data['pertanyaan'] as $p): ?>
 
               <div class="col-4">
@@ -44,6 +45,11 @@
               </div>
 
               <?php endforeach ?>
+              <?php else: ?>
+                <div class="container">
+                  <p class="text-danger font-weight-bold">gagal mengambil data: periksa koneksi database</p>
+                </div>
+              <?php endif ?>
 
             </div>
             <input type="submit" value="submit" class="btn btn-primary mt-3">

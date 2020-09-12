@@ -14,6 +14,7 @@
   </div>
   <ul id="daftar-provinsi" align="center" class="color-content hilang list-unstyled mb-0">
 
+    <?php if(isset($data['domain'])): ?>
     <?php $i = 1;
     foreach ($data['domain'] as $domain) : ?>
       <?php if ($i == 1) : ?>
@@ -41,6 +42,9 @@
       $i++; ?>
       <li class="color-light-font pb-1 pt-1"><a href="<?= BASEURL; ?>/statistik/provinsi?domain_id=<?= $domain['domain_id'] ?>&nama_provinsi=<?= $domain['domain_name']  ?>">Provinsi <?= $domain['domain_name']; ?></a></li>
     <?php endforeach; ?>
+      <?php else: ?>
+      <p class="text-danger font-weight-bold">gagal mengambil data: periksa koneksi internet</p>
+    <?php endif ?>
 
   </ul>
   <div id="provinsi-toggle" style="border-radius: 0px 0px 20px 20px " class="color-blue-bg text-center">
@@ -84,7 +88,7 @@
         <div class="card text-center">
           <div class="card-header">Update Terakhir</div>
           <div class="card-body">
-            <h1 class="card-title"><?= date("F j", strtotime($data['indo']['lastUpdate'])); ?></h1>
+            <h1 class="card-title"><?= date("j M", strtotime($data['indo']['lastUpdate'])); ?></h1>
           </div>
         </div>
       </div>
@@ -258,6 +262,7 @@
           <div class="row m-3">
 
             <!-- Jumlah survei = jumlah pertanyaan -->
+            <?php if(isset($data['pertanyaan'])): ?>
             <?php foreach($data['pertanyaan'] as $p): ?>
             <div class="col-4 mt-3">
               <ul class="list-group">
@@ -289,6 +294,11 @@
               </ul>
             </div>
             <?php endforeach ?>
+            <?php else: ?>
+              <div class="container">
+                <p class="text-danger font-weight-bold">gagal mengambil data: periksa koneksi database</p>
+              </div>
+            <?php endif ?>
 
           </div>
         </div>

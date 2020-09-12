@@ -85,6 +85,7 @@
                 <h6 class="m-0 font-weight-bold ">Rumah Sakit Rujukan</h6>
                 </div>
                 <div class="card-body row">
+                <?php if(isset($data['hospital'])): ?>
                 <?php foreach ($data['hospital'] as $h): ?>
                     <?php if ($h['province'] == $_GET['nama_provinsi']): ?>
                     <div class="col-4 mt-3">
@@ -97,6 +98,11 @@
                     </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
+                <?php else: ?>
+                <div class="container">
+                    <p class="text-danger font-weight-bold">gagal mengambil data: periksa koneksi internet</p>
+                </div>
+                <?php endif ?>
                 </div>
             </div>
         </div>
@@ -205,16 +211,4 @@
     </div>
     <!-- Ekonomi Chart End -->
 
-
-
-
-
-
 </div>
-
-<?php
-
-var_dump($data['covid']);
-var_dump($data['stat']);
-echo "<br><br>";
-print_r($data['provdesc']);

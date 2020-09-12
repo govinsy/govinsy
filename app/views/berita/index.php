@@ -5,7 +5,7 @@
     <!-- Berita -->
 
     <div class="row row-cols-1 row-cols-md-2">
-
+        <?php if(isset($data['berita'])): ?>
         <?php foreach ($data['berita'] as $berita) : ?>
             <div class="col-lg-4 mb-4">
                 <div class="card color-content">
@@ -19,6 +19,11 @@
                 </div>
             </div>
         <?php endforeach; ?>
+        <?php else: ?>
+        <div class="container">
+            <p class="text-danger font-weight-bold">gagal mengambil data: periksa koneksi internet</p>
+        </div>
+        <?php endif ?>
 
     </div>
 
