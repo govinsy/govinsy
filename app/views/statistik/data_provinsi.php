@@ -87,13 +87,13 @@
                 <div class="card-body row">
                 <?php if(isset($data['hospital'])): ?>
                 <?php foreach ($data['hospital'] as $h): ?>
-                    <?php if ($h['province'] == $_GET['nama_provinsi']): ?>
+                    <?php if (stristr($_GET['nama_provinsi'], $h['province'])): ?>
                     <div class="col-4 mt-3">
-                        <ul class="list-group">
-                            <li class="list-group-item"><?= $h['name']; ?></li>
-                            <li class="list-group-item"><?= $h['region']; ?></li>
-                            <li class="list-group-item"><?= $h['address']; ?></li>
-                            <li class="list-group-item"><?= $h['phone']; ?></li>
+                        <ul class="list-group list-group-flush border-0">
+                            <li class="list-group-item border-0 list-group-item-action list-group-item-primary"><small class="font-weight-bold"><?= $h['name']; ?></small></li>
+                            <li class="list-group-item border-0"><small><?= $h['region']; ?></small></li>
+                            <li class="list-group-item border-0"><small><?= $h['address']; ?></small></li>
+                            <li class="list-group-item border-0"><small><?= $h['phone']; ?></small></li>
                         </ul>
                     </div>
                     <?php endif; ?>
@@ -125,15 +125,23 @@
                         <div class="peta col-md-6 text-align-center">
                             <img class="ml-2" src="<?php echo BASEURL . "/img/provinsi/peta/" . $_GET['domain_id'] . ".svg"; ?>" width="90%" alt="">
                         </div>
-                        <div class="info-wilayah col-md-6 pt-4">
+                        <div class="info-wilayah col-md-6">
                             <small class="text-gray-600">LUAS WILAYAH</small>
-                            <h3 class="mb-4"><?= $data['provdesc']['luas_total'] ?>
+                            <h5><?= $data['provdesc']['luas_total'] ?>
                                 <small style="font-size:1rem;"><sub>KM <sup>2</sup></sub></small>
-                            </h3>
+                            </h5>
                             <small class="text-gray-600 mt-5">JUMLAH PENDUDUK</small>
-                            <h3><?= $data['provdesc']['populasi'] ?>
+                            <h5><?= $data['provdesc']['populasi'] ?>
                                 <small style=" font-size:1rem;"><sub>Jiwa</sub></small>
-                            </h3>
+                            </h5>
+                            <small class="text-gray-600 mt-5">KEPADATAN PENDUDUK</small>
+                            <h5><?= $data['provdesc']['populasi_per_luas'] ?>
+                                <small style=" font-size:1rem;"><sub>Jiwa/KM <sup>2</sup></sub></small>
+                            </h5>
+                            <small class="text-gray-600 mt-5">IBU KOTA</small>
+                            <h5><?= $data['provdesc']['ibu_kota'] ?></h5>
+                            <small class="text-gray-600 mt-5">PULAU</small>
+                            <h5><?= $data['provdesc']['pulau'] ?></h5>
                         </div>
                     </div>
 
@@ -159,6 +167,10 @@
                     <h4 class="small font-weight">TINGKAT PENGANGGURAN<span class="color-blue-font float-right"><?php echo ($data['stat']['pengangguran']['value'] != null) ? $data['stat']['pengangguran']['value'] . "%" : "Belum Terdata" ?></span></h4>
                     <div class="progress color-bg mb-4" style="height:25px">
                         <div class="progress-bar" role="progressbar" style="width: <?= $data['stat']['pengangguran']['value'] ?>%" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight">INDEK PEMBANGUNAN MANUSIA<span class="color-blue-font float-right"><?= $data['provdesc']['ipm'] ?></span></h4>
+                    <div class="progress color-bg mb-4" style="height:25px">
+                        <div class="progress-bar" role="progressbar" style="width: <?= intval($data['provdesc']['ipm']) ?>%" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
             </div>
@@ -210,5 +222,41 @@
         </div>
     </div>
     <!-- Ekonomi Chart End -->
+
+    <!-- Progress Card -->
+    <div class="row">
+        <div class="col-lg-6">
+    
+        <div style="border:none;" class="card shadow color-content mt-4">
+            <div class="card-header py-3 color-blue-bg">
+                <h6 class="m-0 font-weight-bold ">Ekonomi</h6>
+            </div>
+            <div class="card-body color-light-font mt-3 position-relative">
+                <div class="row justify-content-center">
+                    <div class="peta col-md-6 text-align-center">
+                        <img src="<?php echo BASEURL . "/img/provinsi/logo/" . $_GET['domain_id'] . ".png"; ?>" class="ml-2" width="90%">
+                    </div>
+                    <div class="info-wilayah col-md-6">
+                        <small class="text-gray-600">APBD</small>
+                        <h5><?= $data['provdesc']['apbd'] ?>
+                            <small style="font-size:1rem;"><sub>miliar rupiah</sub></small>
+                        </h5>
+                        <small class="text-gray-600 mt-5">PRDB</small>
+                        <h5><?= $data['provdesc']['populasi'] ?>
+                            <small style=" font-size:1rem;"><sub>triliun rupiah</sub></small>
+                        </h5>
+                        <small class="text-gray-600 mt-5">PRDB PER KAPITA</small>
+                        <h5><?= $data['provdesc']['prdb_per_kapita'] ?>
+                            <small style=" font-size:1rem;"><sub>juta rupiah</sub></small>
+                        </h5>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    
+        </div>
+    </div>
+    <!-- Progress Card End-->
 
 </div>

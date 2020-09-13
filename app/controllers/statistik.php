@@ -94,6 +94,12 @@ class Statistik extends Controller
 
     public function provinsi()
     {
+        // Cek keterdediaan parameter GET
+        if (empty($_GET['domain_id']) || empty($_GET['nama_provinsi'])) {
+            header("Location: " . BASEURL);
+            exit;
+        }
+
         /// Ambil JSON ///
 
         // Kasus Covid-19 Per Provinsi
@@ -169,7 +175,6 @@ class Statistik extends Controller
                 }
             }
         }
-        //End ambil data Statistik
 
         $desc = [];
         // Deskripsi provinsi
