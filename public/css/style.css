@@ -18,6 +18,11 @@ font-size 42px = 2.625rem
     opacity: 1;
     position:relative;
 }
+.judul
+{
+    color:white;
+     text-align: center;   
+}
 .dark-mode .aktif::before
 {
     content:'';
@@ -28,6 +33,7 @@ font-size 42px = 2.625rem
     left:0;
     top:20%;
 }
+
 .dark-mode .aktif::after
 {
     content:'';
@@ -173,4 +179,36 @@ font-size 42px = 2.625rem
 {
     transition: 2s;
     rotate: 180;
+}
+.card-deck{
+    text-align: center;
+}
+.card{
+    background-color:#FF333333;
+    height: 320px;
+    color: white;
+    margin-top: 50px;
+    
+}
+.card-text{
+    font-size: 1rem;
+}
+.card h1{
+    color: blue;
+}
+.card-img-top{
+    border-radius: 50%;
+    width: ;
+}
+.p{
+    font-size:12px;
+}
+.x{
+    height: 1rem;
+}
+.xyz{
+    background-color:black;
+}
+.zyx{
+    background-color: #BFC0C2;
 }
