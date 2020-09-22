@@ -17,9 +17,9 @@
               <?php if(isset($data['pertanyaan'])): ?>
               <?php foreach($data['pertanyaan'] as $p): ?>
 
-              <div class="col-4">
+              <div class="col-md-4 mb-3">
                 <ul class="list-group">
-                  <li class="list-group-item"><?= $p['pertanyaan'] ?></li>
+                  <li class="list-group-item list-group-item-primary font-weight-bold"><?= $p['pertanyaan'] ?></li>
 
                   <!-- Menampilkan seluruh jawaban -->
                   <?php foreach($data['jawaban'] as $j): ?>

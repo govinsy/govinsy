@@ -266,7 +266,7 @@
             <?php foreach($data['pertanyaan'] as $p): ?>
             <div class="col-4 mt-3">
               <ul class="list-group">
-                <li class="list-group-item font-weight-bold d-flex justify-content-between align-items-center">
+                <li class="list-group-item list-group-item-primary font-weight-bold d-flex justify-content-between align-items-center">
                   <?= $p['pertanyaan'] ?>
                 </li>
                 
