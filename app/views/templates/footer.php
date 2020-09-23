@@ -30,6 +30,10 @@
 <!-- Charts Javascript -->
 <script src="<?= BASEURL; ?>/js/statistic/chart-area-demo.js"></script>
 <script src="<?= BASEURL; ?>/js/statistic/chart-pie-demo.js"></script>
+
+<!-- Slider JS -->
+<script type="module" src="<?= BASEURL; ?>/js/slider/script.js"></script>
+
 </body>
 
 </html>

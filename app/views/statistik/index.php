@@ -14,35 +14,35 @@
   </div>
   <ul id="daftar-provinsi" align="center" class="color-content hilang list-unstyled mb-0">
 
-    <?php if(isset($data['domain'])): ?>
-    <?php $i = 1;
-    foreach ($data['domain'] as $domain) : ?>
-      <?php if ($i == 1) : ?>
-        <li> </li>
-        <li class="color-light-font font-bold pb-1 pt-1">SUMATERA</li>
-      <?php elseif ($i == 11) : ?>
-        <li> </li>
-        <li class="color-light-font font-bold pb-1 pt-1">JAWA</li>
-      <?php elseif ($i == 17) : ?>
-        <li> </li>
-        <li class="color-light-font font-bold pb-1 pt-1">BALI & NUSA TENGGARA</li>
-      <?php elseif ($i == 20) : ?>
-        <li> </li>
-        <li class="color-light-font font-bold pb-1 pt-1">KALIMANTAN</li>
-      <?php elseif ($i == 25) : ?>
-        <li> </li>
-        <li class="color-light-font font-bold pb-1 pt-1">SULAWESI</li>
-      <?php elseif ($i == 31) : ?>
-        <li> </li>
-        <li class="color-light-font font-bold pb-1 pt-1">MALUKU</li>
-      <?php elseif ($i == 33) : ?>
-        <li> </li>
-        <li class="color-light-font font-bold pb-1 pt-1">PAPUA</li>
-      <?php endif;
-      $i++; ?>
-      <li class="color-light-font pb-1 pt-1"><a href="<?= BASEURL; ?>/statistik/provinsi?domain_id=<?= $domain['domain_id'] ?>&nama_provinsi=<?= $domain['domain_name']  ?>">Provinsi <?= $domain['domain_name']; ?></a></li>
-    <?php endforeach; ?>
-      <?php else: ?>
+    <?php if (isset($data['domain'])) : ?>
+      <?php $i = 1;
+      foreach ($data['domain'] as $domain) : ?>
+        <?php if ($i == 1) : ?>
+          <li> </li>
+          <li class="color-light-font font-bold pb-1 pt-1">SUMATERA</li>
+        <?php elseif ($i == 11) : ?>
+          <li> </li>
+          <li class="color-light-font font-bold pb-1 pt-1">JAWA</li>
+        <?php elseif ($i == 17) : ?>
+          <li> </li>
+          <li class="color-light-font font-bold pb-1 pt-1">BALI & NUSA TENGGARA</li>
+        <?php elseif ($i == 20) : ?>
+          <li> </li>
+          <li class="color-light-font font-bold pb-1 pt-1">KALIMANTAN</li>
+        <?php elseif ($i == 25) : ?>
+          <li> </li>
+          <li class="color-light-font font-bold pb-1 pt-1">SULAWESI</li>
+        <?php elseif ($i == 31) : ?>
+          <li> </li>
+          <li class="color-light-font font-bold pb-1 pt-1">MALUKU</li>
+        <?php elseif ($i == 33) : ?>
+          <li> </li>
+          <li class="color-light-font font-bold pb-1 pt-1">PAPUA</li>
+        <?php endif;
+        $i++; ?>
+        <li class="color-light-font pb-1 pt-1"><a href="<?= BASEURL; ?>/statistik/provinsi?domain_id=<?= $domain['domain_id'] ?>&nama_provinsi=<?= $domain['domain_name']  ?>">Provinsi <?= $domain['domain_name']; ?></a></li>
+      <?php endforeach; ?>
+    <?php else : ?>
       <p class="text-danger font-weight-bold">gagal mengambil data: periksa koneksi internet</p>
     <?php endif ?>
 
@@ -252,57 +252,57 @@
         </ul>
       </div>
     </div>
-      
-      <!-- SURVEI -->
-      <div class="col-12">
-        <div style="border:none;" class="card shadow color-content mb-4">
-          <div class="card-header py-3 color-blue-bg">
-            <h6 class="m-0 font-weight-bold ">Survei Internal</h6>
-          </div>
-          <div class="row m-3">
 
-            <!-- Jumlah survei = jumlah pertanyaan -->
-            <?php if(isset($data['pertanyaan'])): ?>
-            <?php foreach($data['pertanyaan'] as $p): ?>
-            <div class="col-4 mt-3">
-              <ul class="list-group">
-                <li class="list-group-item font-weight-bold d-flex justify-content-between align-items-center">
-                  <?= $p['pertanyaan'] ?>
-                </li>
-                
-                <!-- Menampilkan kalkulasi jawaban sesuai pertanyaan -->
-                <?php $tempArr = [] ?>
-                <?php foreach($data['jawaban'] as $j): ?>
-                <?php if($j['id_pertanyaan'] == $p['id']): ?>
-                <?php 
-                  $arr = array_count_values($data['hasil_survei']);
-                  $ark = array_keys(array_count_values($data['hasil_survei']));
-                    foreach ($ark as $k) {
-                      if ($k == $j['id']) {
-                        echo '<li class="list-group-item d-flex justify-content-between align-items-center">
-                        '. $j['jawaban'] .'
-                        <span class="badge badge-primary badge-pill">'. $arr[$k] .'</span>
+    <!-- SURVEI -->
+    <div class="col-12">
+      <div style="border:none;" class="card shadow color-content mb-4">
+        <div class="card-header py-3 color-blue-bg">
+          <h6 class="m-0 font-weight-bold ">Survei Internal</h6>
+        </div>
+        <div class="row m-3">
+
+          <!-- Jumlah survei = jumlah pertanyaan -->
+          <?php if (isset($data['pertanyaan'])) : ?>
+            <?php foreach ($data['pertanyaan'] as $p) : ?>
+              <div class="col-4 mt-3">
+                <ul class="list-group">
+                  <li class="list-group-item font-weight-bold d-flex justify-content-between align-items-center">
+                    <?= $p['pertanyaan'] ?>
+                  </li>
+
+                  <!-- Menampilkan kalkulasi jawaban sesuai pertanyaan -->
+                  <?php $tempArr = [] ?>
+                  <?php foreach ($data['jawaban'] as $j) : ?>
+                    <?php if ($j['id_pertanyaan'] == $p['id']) : ?>
+                      <?php
+                      $arr = array_count_values($data['hasil_survei']);
+                      $ark = array_keys(array_count_values($data['hasil_survei']));
+                      foreach ($ark as $k) {
+                        if ($k == $j['id']) {
+                          echo '<li class="list-group-item d-flex justify-content-between align-items-center">
+                        ' . $j['jawaban'] . '
+                        <span class="badge badge-primary badge-pill">' . $arr[$k] . '</span>
                       </li>';
+                        }
                       }
-                  }
-                ?>
-                </span></h6>
+                      ?>
+                      </span></h6>
 
-                <?php endif ?>
-                <?php endforeach ?>
+                    <?php endif ?>
+                  <?php endforeach ?>
 
-              </ul>
-            </div>
-            <?php endforeach ?>
-            <?php else: ?>
-              <div class="container">
-                <p class="text-danger font-weight-bold">gagal mengambil data: periksa koneksi database</p>
+                </ul>
               </div>
-            <?php endif ?>
+            <?php endforeach ?>
+          <?php else : ?>
+            <div class="container">
+              <p class="text-danger font-weight-bold">gagal mengambil data: periksa koneksi database</p>
+            </div>
+          <?php endif ?>
 
-          </div>
         </div>
       </div>
+    </div>
 
   </div>
 </div>

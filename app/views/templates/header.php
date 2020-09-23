@@ -12,9 +12,10 @@
   <link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?= BASEURL; ?>/fontawsome/css/all.min.css">
   <link rel="stylesheet" href="<?= BASEURL; ?>/css/style.css">
+  <link rel="stylesheet" href="<?= BASEURL; ?>/css/slider.css">
   <!---  End Css Assets    -->
 
-  <title>Halaman <?= $data['judul']; ?></title>
+  <title><?= $data['judul']; ?></title>
 </head>
 
 <body id="page-top">
