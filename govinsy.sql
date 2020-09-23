@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 12 Sep 2020 pada 04.22
+-- Waktu pembuatan: 22 Sep 2020 pada 11.19
 -- Versi server: 10.4.10-MariaDB
 -- Versi PHP: 7.3.12
 
@@ -39,10 +39,34 @@ CREATE TABLE `jawaban` (
 --
 
 INSERT INTO `jawaban` (`id`, `id_pertanyaan`, `jawaban`) VALUES
-('1082b', '4038e', 'jawaban 2 pertanyaan 2'),
-('2eecf', '96ff5', 'jawaban 2 pertanyaan 1'),
-('889b9', '4038e', 'jawaban 1 pertanyaan 2'),
-('9e9aa', '96ff5', 'jawaban 1 pertanyaan 1');
+('01f5c', 'e98e3', 'Rp. 5.000.000 -  Rp. 10.000.000'),
+('0d1b7', '7195e', 'Kos/Menyewa'),
+('0d2cb', '6f5e0', 'Katholik'),
+('1082b', '4038e', 'SMP/SLTP/Sederajat'),
+('187c1', '96ff5', 'Tidak Bekerja'),
+('1982a', '7195e', 'Menumpang (Orang Tua/Saudara/Teman)'),
+('20ef3', '4038e', 'Tidak Bersekolah'),
+('276d2', '6f5e0', 'Hindu'),
+('2d8a0', 'e98e3', 'Rp. 1.000.000 - Rp. 5.000.000'),
+('2eecf', '96ff5', 'PNS/TNI/POLRI'),
+('35ed7', '7195e', 'Rumah Sendiri'),
+('3fa31', '6f5e0', 'Buddha'),
+('436c0', '4038e', 'SMA/SMK/SLTA/Sederajat'),
+('457a4', '4038e', 'S3'),
+('483d1', 'e98e3', '> Rp. 10.000.000'),
+('4c050', '96ff5', 'Karyawan Swasta'),
+('821c3', '6f5e0', 'Islam'),
+('889b9', '4038e', 'SD'),
+('8b283', '6f5e0', 'Konghucu'),
+('9e9aa', '96ff5', 'Wirausaha'),
+('b40ea', 'e98e3', '< Rp.1.000.000'),
+('b63ad', '96ff5', 'Freelancer'),
+('bfe74', '96ff5', 'Buruh'),
+('c793b', '4038e', 'S2'),
+('dbcd6', '6f5e0', 'Kristen'),
+('dc29f', '6f5e0', 'Lainnya'),
+('e847a', '4038e', 'S1'),
+('f0a84', 'e98e3', 'Tidak Ingin Disebutkan');
 
 -- --------------------------------------------------------
 
@@ -62,10 +86,26 @@ CREATE TABLE `jawaban_pengguna` (
 --
 
 INSERT INTO `jawaban_pengguna` (`id`, `id_jawaban`, `id_pengguna`, `respon`) VALUES
-('0ba14', '9e9aa', 'd6d5e', ''),
-('19bd4', '1082b', 'd6d5e', ''),
-('35636', '9e9aa', 'cac3e', ''),
-('bd982', '889b9', 'cac3e', '');
+('1a9c5', 'dbcd6', 'cac3e', ''),
+('373a2', '35ed7', 'cac3e', ''),
+('3903a', '821c3', '75924', ''),
+('3d6a5', '9e9aa', 'cac3e', ''),
+('4b858', '436c0', 'd6d5e', ''),
+('4c20c', '2d8a0', 'cac3e', ''),
+('4f162', '0d1b7', '75924', ''),
+('5b6d2', 'b63ad', '75924', ''),
+('61944', '01f5c', '75924', ''),
+('62a3e', '436c0', 'cac3e', ''),
+('9710c', '821c3', 'd6d5e', ''),
+('b7714', 'e847a', '2d287', ''),
+('bf946', '1982a', 'd6d5e', ''),
+('c67fa', '0d2cb', '2d287', ''),
+('ceb22', '0d1b7', '2d287', ''),
+('d67e3', '187c1', 'd6d5e', ''),
+('df07f', '187c1', '2d287', ''),
+('e6dc0', 'b40ea', 'd6d5e', ''),
+('eedb2', 'e847a', '75924', ''),
+('ef6c4', 'b40ea', '2d287', '');
 
 -- --------------------------------------------------------
 
@@ -108,8 +148,11 @@ CREATE TABLE `pertanyaan` (
 --
 
 INSERT INTO `pertanyaan` (`id`, `id_survei`, `tipe`, `pertanyaan`) VALUES
-('4038e', 'e0663', 'radio', 'Pertanyaan kedua'),
-('96ff5', 'e0663', 'radio', 'Pertanyaan pertama');
+('4038e', 'e0663', 'radio', 'Pendidikan Terakhir'),
+('6f5e0', 'e0663', 'radio', 'Agama'),
+('7195e', 'e0663', 'radio', 'Status Tempat Tinggal'),
+('96ff5', 'e0663', 'radio', 'Pekerjaan'),
+('e98e3', 'e0663', 'radio', 'Gaji Rata-Rata Per Bulan');
 
 -- --------------------------------------------------------
 
