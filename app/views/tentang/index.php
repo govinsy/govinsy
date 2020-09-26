@@ -50,7 +50,7 @@
       <div class="row">
       <div class="col-lg-3 mb-4">
       <div class="card color-content color-light-font">
-          <img class="card-img-top rounded-circle profil" src="img/pp2.jpg" alt="Card image cap" >
+          <img class="card-img-top rounded-circle" style="width:10rem;margin:auto;margin-top:1rem" src="img/pp2.jpg" alt="Card image cap" >
           <div class="card-body">
             <h2 class="card-title">Ahmad N</h2>
             <p class="p">Back-end</p>
@@ -79,7 +79,7 @@
     
         <div class="col-lg-3 mb-4">
         <div class="card color-content color-light-font">
-      <img class="card-img-top rounded-circle" src="img/pp2.jpg" alt="Card image cap">
+      <img class="card-img-top rounded-circle" style="width:10rem;margin:auto;margin-top:1rem" src="img/pp2.jpg" alt="Card image cap">
       <div class="card-body">
         <h2 class="card-title">Bima S</h2>
         <p class="p">Leader</p>
@@ -108,7 +108,7 @@
     
     <div class="col-lg-3 mb-4">
     <div class="card color-content color-light-font">
-      <img class="card-img-top rounded-circle" src="img/pp2.jpg" alt="Card image cap">
+      <img class="card-img-top rounded-circle" style="width:10rem;margin:auto;margin-top:1rem" src="img/pp2.jpg" alt="Card image cap">
       <div class="card-body">
         <h2 class="card-title">Irgi A</h2>
         <p class="p">Front-end + Assets</p>
@@ -136,7 +136,7 @@
     
     <div class="col-lg-3 mb-4">
     <div class="card color-content color-light-font">
-      <img class="card-img-top rounded-circle" src="img/pp2.jpg" alt="Card image cap">
+      <img class="card-img-top rounded-circle" style="width:10rem;margin:auto;margin-top:1rem" src="img/pp2.jpg" alt="Card image cap">
       <div class="card-body">
         <h2 class="card-title">Tegar S</h2>
         <p class="p">Front-end + Assets</p>
