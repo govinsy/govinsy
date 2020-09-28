@@ -6,6 +6,7 @@ class survei extends Controller
     {
         $pertanyaan = $this->model('survei_model')->getAllPertanyaan();
         $jawaban = $this->model('survei_model')->getAllJawaban();
+        $pengguna = $this->model('pengguna_model')->getPenggunaById($_SESSION['profile']['id']);
 
         if (isset($_SESSION['profile']['id'])) {
 
@@ -42,7 +43,7 @@ class survei extends Controller
 
 
 
-        $data['ikutSurvei'] = $this->model('pengguna_model')->getPenggunaById($_SESSION['profile']['id']); // Cek apakah sudah mengikuti survei
+        $data['ikutSurvei'] = $pengguna['survei']; // Cek apakah sudah mengikuti survei
         $data['judul'] = 'Survei Govinsy';
         $data['page'] = 'Survei'; //Digunakan untuk indikator di Sidebar
         $data['pertanyaan'] = $pertanyaan;

@@ -1,5 +1,5 @@
 <div class="container">
-  <?php if ($data['ikutSurvei']['survei'] == 1) : ?>
+  <?php if ($data['ikutSurvei'] == 1) : ?>
     <div id="kesiapan" class="row justify-content-center text-center">
       <div class="col-md-10">
         <h3 class="color-light-font">Anda Sudah mengikuti survei</h3>
