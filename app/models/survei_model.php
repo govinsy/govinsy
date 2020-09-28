@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class survei_model {
+class survei_model
+{
     private $table = [
         'survei' => 'survei',
         'pertanyaan' => 'pertanyaan',
@@ -49,10 +50,10 @@ class survei_model {
 
     public function tambahJawabanPengguna($data)
     {
-        $query = 'INSERT INTO jawaban_pengguna
-                    VALUES
-                  (:id, :id_jawaban, :id_pengguna, :respon)';
-        
+        $query = ' INSERT INTO jawaban_pengguna
+                            VALUES (:id, :id_jawaban, :id_pengguna, :respon); 
+                            UPDATE pengguna SET survei=1';
+
         $this->db->query($query);
         $this->db->bind('id', $data['id']);
         $this->db->bind('id_jawaban', $data['id_jawaban']);
@@ -62,5 +63,4 @@ class survei_model {
 
         return $this->db->rowCount();
     }
-
 }

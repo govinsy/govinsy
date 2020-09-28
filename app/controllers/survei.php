@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class survei extends Controller {
+class survei extends Controller
+{
     public function index()
     {
         $pertanyaan = $this->model('survei_model')->getAllPertanyaan();
@@ -14,17 +15,16 @@ class survei extends Controller {
                 if ($cari != false) {
                     Flasher::setFlash('gagal', 'anda sudah pernah mengisi survei', 'danger');
                 } else {
-    
                     // Mengolah data dari form
                     foreach ($pertanyaan as $p) {
                         if (isset($_POST[$p['id']])) {
-                
+
                             // Menyiapkan data untuk model
                             $jp['id'] = substr(uniqid(), 8, 5);
                             $jp['id_jawaban'] = $_POST[$p['id']];
                             $jp['id_pengguna'] = $_SESSION['profile']['id'];
                             $jp['respon'] = '';
-                
+
                             // Input data
                             if ($this->model('survei_model')->tambahJawabanPengguna($jp) > 0) {
                                 Flasher::setFlash('berhasil', 'jawaban anda berhasil dimasukan', 'success');
@@ -36,13 +36,18 @@ class survei extends Controller {
                 }
             }
         } else {
-            Flasher::setFlash('gagal', 'harap <a href="'. BASEURL .'/pengguna/login">login</a> terlebih dahulu', 'danger');
+            echo "<script>alert('Anda harus login dulu sebelum mengikuti survei')</script>";
+            header('location:' . BASEURL . '/pengguna/login');
         }
 
+
+
+        $data['ikutSurvei'] = $this->model('pengguna_model')->getPenggunaById($_SESSION['profile']['id']); // Cek apakah sudah mengikuti survei
         $data['judul'] = 'Survei Govinsy';
+        $data['page'] = 'Survei'; //Digunakan untuk indikator di Sidebar
         $data['pertanyaan'] = $pertanyaan;
         $data['jawaban'] = $jawaban;
-        
+
         //Views
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);

@@ -66,22 +66,21 @@ $(document).ready(function () {
     $('.topbar').addClass('shadow');
     $('.nav-link i').removeClass('ml-4');
     $('.nav-link i').removeClass('mr-3');
-    $("#sidebarToggleTop").on('click', function (e) {
-      $('#hitam-block').removeClass("hilang");
-      $('.sidebar-brand').addClass('text-left');
-      $('.close').removeClass('hilang');
-      $(".sidebar").toggleClass("toggled");
-      $('.sidebar .collapse').collapse('hide');
-      $('.sidebar').addClass('sticky-top position-absolute');
-      $('.sidebar').css('z-index', '10000');
-    });
-
   };
-});
+
+  //Saat bars icon diklik maka jalankan perintah di bawah ini (mobile side bar ver) 
+  $("#sidebarToggleTop").on('click', function (e) {
+    $('#hitam-block').removeClass("hilang");
+    $('.sidebar-brand').addClass('text-left');
+    $('.close').removeClass('hilang');
+    $(".sidebar").toggleClass("toggled");
+    $('.sidebar .collapse').collapse('hide');
+    $('.sidebar').addClass('sticky-top position-absolute');
+    $('.sidebar').css('z-index', '10000');
+  });
 
 
-//Jika Width Layar lebih dari 768px  maka akan melakukan perintah dibawah ini
-$(document).ready(function () {
+  //Jika Width Layar lebih dari 768px  maka akan melakukan perintah dibawah ini
   if ($(window).width() > 768) {
     $('#topbar').removeClass('sticky-top');
     $('.topbar').removeClass('shadow');

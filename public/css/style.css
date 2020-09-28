@@ -76,6 +76,10 @@ font-size 42px = 2.625rem
 {
     background-color: #ffffff06;
 }
+.color-none-bg
+{
+    background-color: transparent;
+}
 .dark-mode .color-bg
 {
     background-color: #0B0F24;
@@ -112,6 +116,10 @@ font-size 42px = 2.625rem
 {
     color:#FC2E7E;
 }
+.dark-mode .color-gray-bg
+{
+    background-color: #BFC0C2;
+}
 .dark-mode .link-not-active
 {
     color:#BFC0C2;
@@ -145,11 +153,91 @@ font-size 42px = 2.625rem
 */
 
 
+/*  ////////////////
+/////// Button  /////////
+///////////////////////////
+*/
 .bt-none
 {
     background:none;
     border:none;
 }
+.dark-mode .btn-blue
+{
+    border: 2px transparent solid;
+    color:wheat ;
+    background-color: #2D8DFD;
+}
+.dark-mode .btn-outline-blue
+{
+    border: 2px #2D8DFD solid;
+    color: #2D8DFD;
+    background-color: transparent;
+}
+.dark-mode .btn-red
+{
+    border: 2px transparent solid;
+    color:wheat ;
+    background-color: #FC2E7E;
+}
+.dark-mode .btn-outline-red
+{
+    border: 2px  #FC2E7E solid;
+    color:  #FC2E7E;
+    background-color: transparent;
+}
+.dark-mode .btn-green
+{
+    border: 2px transparent solid;
+    color:wheat ;
+    background-color: #15CABC;
+}
+.dark-mode .btn-outline-green
+{
+    border: 2px  #15CABC solid;
+    color:  #15CABC;
+    background-color: transparent;
+}
+
+.dark-mode .btn-blue:hover
+{
+    border: 2px #2D8DFD solid;
+    color: #2D8DFD;
+    background-color: transparent;
+}
+.dark-mode .btn-outline-blue:hover
+{
+    color: wheat;
+    background-color:  #2D8DFD;
+}
+.dark-mode .btn-green:hover
+{
+    border: 2px #15CABC solid;
+    color: #15CABC;
+    background-color: transparent;
+}
+.dark-mode .btn-outline-green:hover
+{
+    color: wheat;
+    background-color:  #15CABC;
+}
+.dark-mode .btn-red:hover
+{
+    border: 2px #FC2E7E solid;
+    color: #FC2E7E;
+    background-color: transparent;
+}
+.dark-mode .btn-outline-red:hover
+{
+    color: wheat;
+    background-color:  #FC2E7E;
+}
+
+/*  ////////////////
+/////// End Button  /////////
+///////////////////////////
+*/
+
 .font-kecil
 {
     font-size:0.625rem;
@@ -224,7 +312,22 @@ font-size 42px = 2.625rem
     transition: 2s;
     rotate: 180;
 }
-
+#survei-pertanyaan li,#survei-pertanyaan li label
+{
+    cursor: pointer;
+}
+#indikator-pertanyaan 
+{
+    position:relative;
+}
+#indikator-pertanyaan li
+{ 
+    list-style: none;
+    width:15%;
+    height:4px;
+    border-radius:20px;
+    float:left;
+}
 
 
 @media (max-width: 768px) {

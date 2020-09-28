@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class pengguna_model {
+class pengguna_model
+{
     private $table = 'pengguna';
     private $db;
 
@@ -26,8 +27,8 @@ class pengguna_model {
     {
         $query = "INSERT INTO pengguna
                     VALUES
-                  (:id, :nama, :email, :password)";
-        
+                  (:id, :nama, :email, :password,0)";
+
         $this->db->query($query);
         $this->db->bind('id', UNIQUEID);
         $this->db->bind('nama', $data['nama']);
@@ -40,5 +41,4 @@ class pengguna_model {
 
         return $this->db->rowCount();
     }
-
 }

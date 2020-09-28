@@ -60,8 +60,6 @@ class pengguna extends Controller
 
         $data['judul'] = 'Daftar Govinsy';
         $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/topbar', $data);
         $this->view('pengguna/daftar', $data);
         $this->view('templates/footer');
     }

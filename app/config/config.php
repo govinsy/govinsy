@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Alamat utama
 define('BASEURL', 'http://localhost/govinsy/public');
@@ -33,9 +33,9 @@ define('FIELD', [
         'statictable' => 'model=statictable',
     ],
     'type' => [
-        'all' => 'type=all&', 
-        'prov' => 'type=prov&', 
-        'kab' => 'type=kab&', 
+        'all' => 'type=all&',
+        'prov' => 'type=prov&',
+        'kab' => 'type=kab&',
         'provbykab' => 'type=provbykab&'
     ]
 ]);
