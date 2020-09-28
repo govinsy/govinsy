@@ -22,6 +22,11 @@ $(document).ready(function () {
 
         $(`#survei-pertanyaan #P${urutan}`).removeClass('pilih');
         $(`#survei-pertanyaan #P${urutan}`).addClass('pilih');//Tambahkan class sebagai indikator apabila sudah memilih jawaban sesuai urutan pertanyaan
+        if (urutan == jumlahPertanyaan) {
+            $('#selesai').addClass('lengkap');
+            $('#selesai').removeClass('hilang');
+        }
+
     });
     // End Fungsi ubah background
 
@@ -45,7 +50,9 @@ $(document).ready(function () {
 
             if (urutan == jumlahPertanyaan) {
                 $('#lanjut').addClass('hilang');
-                $('#selesai').removeClass('hilang');
+                if ($('#selesai').hasClass('lengkap')) {
+                    $('#selesai').removeClass('hilang');
+                }
             }
         }
         else {
@@ -85,8 +92,6 @@ $(document).ready(function () {
 
     });
     //End fungsi tombol sebelumnya
-
-
 
 
     //Create Indikator urutan pertanyaan
