@@ -20,6 +20,11 @@ $(document).ready(function () {
         $(this).closest('#survei-pertanyaan ul li').addClass('color-blue-bg');
         //End fungsi ubah background
 
+        //Ubah background indikator pertanyaan
+        $(`#indikator-pertanyaan #IP${urutan}`).removeClass('color-gray-bg');
+        $(`#indikator-pertanyaan #IP${urutan}`).addClass('color-blue-bg');
+        // End ubah indikator pertanyaan
+
         $(`#survei-pertanyaan #P${urutan}`).removeClass('pilih');
         $(`#survei-pertanyaan #P${urutan}`).addClass('pilih');//Tambahkan class sebagai indikator apabila sudah memilih jawaban sesuai urutan pertanyaan
         if (urutan == jumlahPertanyaan) {
@@ -40,8 +45,6 @@ $(document).ready(function () {
     $('#lanjut').on('click', function () {
         if ($(`#survei-pertanyaan #P${urutan}`).hasClass('pilih')) {
             $(`#survei-pertanyaan #P${urutan}`).addClass('hilang');
-            $(`#indikator-pertanyaan #IP${urutan}`).removeClass('color-gray-bg');
-            $(`#indikator-pertanyaan #IP${urutan}`).addClass('color-blue-bg');
             urutan += 1;
             if (urutan > 1) {
                 $(`#survei-pertanyaan #P${urutan}`).removeClass('hilang');

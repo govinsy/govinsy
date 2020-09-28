@@ -265,7 +265,7 @@ font-size 42px = 2.625rem
 
 .img-content::before {    
       content: "";
-      background-image: url('http://localhost/govinsy/public/img/indonesia.jpg');
+      background-image: url('http://localhost/govinsy/public/img/provinsi.png');
       background-position:center;
       background-size: cover;
       background-repeat: no-repeat;
