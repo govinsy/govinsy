@@ -62,13 +62,13 @@
                           </div>
                         </li>
                       </label>
-                    <?php endif ?>
-                  <?php endforeach ?>
+                    <?php endif; ?>
+                  <?php endforeach; ?>
 
                 </ul>
 
 
-              <?php endforeach ?>
+              <?php endforeach; ?>
             <?php else : ?>
               <div class="container">
                 <p class="text-danger font-weight-bold">gagal mengambil data: periksa koneksi database</p>

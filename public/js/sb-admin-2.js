@@ -75,7 +75,9 @@ $(document).ready(function () {
     $('.close').removeClass('hilang');
     $(".sidebar").toggleClass("toggled");
     $('.sidebar .collapse').collapse('hide');
-    $('.sidebar').addClass('sticky-top position-absolute');
+    $('.sidebar').addClass('sticky-top position-fixed');
+    $('.sidebar .sticky-top').addClass('position-relative');
+    $('.sidebar .sticky-top').removeClass('sticky-top');
     $('.sidebar').css('z-index', '10000');
   });
 

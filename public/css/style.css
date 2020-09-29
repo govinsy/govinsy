@@ -331,6 +331,10 @@ font-size 42px = 2.625rem
 
 
 @media (max-width: 768px) {
+    .sidebar
+    {
+        height: 100%;
+    }
 .dark-mode .topbar
 {
     background-color: #181C2F;
