@@ -13,6 +13,7 @@ class tentang extends Controller
         $this->view('templates/footer');
     }
 
+
      public function agree()
     {
         $data['judul'] = 'User Agreement';
@@ -21,6 +22,6 @@ class tentang extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/topbar', $data);
         $this->view('tentang/user_agreement', $data);
-        $this->view('templates/footer');
-    }
+
+   
 }
