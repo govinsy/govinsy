@@ -1,6 +1,27 @@
 body{
     font-family: 'Karla';
 }
+.font-10
+{
+    font-size:0.625rem;
+}
+.font-12
+{
+    font-size:0.75rem;
+}
+.font-16
+{
+    font-size:1rem;
+}
+
+.font-26
+{
+    font-size:1.625rem;
+}
+.font-42
+{
+    font-size:2.625rem;
+}
 
 /*  ////////////////
 ///////Color  /////////
@@ -17,11 +38,6 @@ font-size 42px = 2.625rem
 {
     opacity: 1;
     position:relative;
-}
-.judul
-{
-    color:white;
-     text-align: center;   
 }
 .dark-mode .aktif::before
 {
@@ -180,6 +196,7 @@ font-size 42px = 2.625rem
     transition: 2s;
     rotate: 180;
 }
-.card-img-top{
-    border-radius: 0;
+.profil
+{
+    size: 150%;
 }

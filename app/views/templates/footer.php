@@ -7,6 +7,10 @@
         <div class="copyright text-center my-auto">
             <span>Copyright &copy; Govinsy <?= date('Y'); ?></span>
         </div>
+        <div class="copyright text-center mt-2">
+            <a href="<?= BASEURL; ?>/tentang/agree" class="color-light-font" target="_blank" rel="noopener noreferrer">User Agreement</a> |
+            <a href="<?= BASEURL; ?>/tentang/policy" class="color-light-font" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        </div>
     </div>
 </footer>
 <!-- End of Footer -->
