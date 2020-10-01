@@ -15,7 +15,6 @@ class pengguna extends Controller
                     if ($p['password'] == md5($_POST['password'])) {
                         $_SESSION['login'] = true;
                         $_SESSION['profile'] = $this->model('pengguna_model')->getPenggunaById($p['id']);
-                        Flasher::setFlash('berhasil', 'anda berhasil masuk', 'success');
                         header("Location: " . BASEURL);
                         exit;
                     } else {

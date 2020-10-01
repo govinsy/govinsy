@@ -98,9 +98,9 @@
 
 
   <!-- DIAGRAM -->
-  <div class="mb-5" style="width: 100%;height: 500px">
+  <!-- <div class="mb-5" style="width: 100%;height: 500px">
     <canvas id="myChart"></canvas>
-  </div>
+  </div> -->
   <br><br>
 
   <!-- KASUS PER-PROVINSI -->
@@ -306,7 +306,7 @@
 
   </div>
 </div>
-
+<!-- 
 <script>
   var ctx = document.getElementById("myChart").getContext('2d');
   var myChart = new Chart(ctx, {
@@ -353,4 +353,4 @@
       }
     }
   });
-</script>
+</script> -->

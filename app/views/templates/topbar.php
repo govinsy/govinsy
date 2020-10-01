@@ -43,11 +43,11 @@
                     <?php if (isset($_SESSION['login'])) : ?>
                         <li class="nav-item dropdown no-arrow pr-3">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="text-right">
+                                <div class="text-right mt-2">
                                     <?php if (isset($_SESSION['profile'])) : ?>
-                                        <small class="mr-2 d-none d-lg-inline text-white-600 small"><?= str_replace(' ', '', $_SESSION['profile']['nama']); ?></small><br>
+                                        <p class="mr-2 d-lg-inline text-white-600 small"><?= str_replace(' ', '', $_SESSION['profile']['nama']); ?></p><br>
                                     <?php endif; ?>
-                                    <small class="mr-2 d-none d-lg-inline text-gray-600  font-kecil"><i class="fas fa-map-marked"></i> Jawa Tengah</small>
+                                    <p class="mr-2 text-gray-600 font-kecil"><i class="fas fa-map-marked"></i> Jawa Tengah</p>
                                 </div>
                                 <img class="img-profile rounded-circle" src="<?= BASEURL; ?>/img/profile.jpg">
                             </a>
@@ -69,8 +69,8 @@
 
                         </li>
                     <?php else : ?>
-                        <li class="nav-item pr-3">
-                            <a href="<?= BASEURL; ?>/pengguna/login">Masuk</a>
+                        <li class="nav-item px-2 my-auto">
+                            <a href="<?= BASEURL; ?>/pengguna/login" class="btn btn-outline-blue corner-round"><i class="fas fa-sign-in-alt"></i> Masuk</a>
                         </li>
                     <?php endif; ?>
 

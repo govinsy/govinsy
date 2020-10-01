@@ -6,15 +6,15 @@
     $("body").toggleClass("sidebar-toggled");
     $(".sidebar").toggleClass("toggled");
     $("#survey").removeClass("hilang");
-    $('.nav-link i').addClass('ml-4');
-    $('.nav-link i').addClass('mr-3');
+    $('.sidebar .nav-link i').addClass('ml-4');
+    $('.sidebar .nav-link i').addClass('mr-3');
 
     if ($(".sidebar").hasClass("toggled")) {
       $('.sidebar .collapse').collapse('hide');
       $("#survey").addClass('hilang');
-      $('.nav-link span').addClass('hilang');
-      $('.nav-link i').removeClass('ml-4');
-      $('.nav-link i').removeClass('mr-3');
+      $('.sidebar .nav-link span').addClass('hilang');
+      $('.sidebar .nav-link i').removeClass('ml-4');
+      $('.sidebar .nav-link i').removeClass('mr-3');
       $('#sidebarToggle').addClass('mt-3');
     };
   });
@@ -64,8 +64,8 @@ $(document).ready(function () {
     $('#ekonomi .col-md-4').css('width', '26rem');
     $('#topbar').addClass('sticky-top');
     $('.topbar').addClass('shadow');
-    $('.nav-link i').removeClass('ml-4');
-    $('.nav-link i').removeClass('mr-3');
+    $('.sidebar .nav-link i').removeClass('ml-4');
+    $('.sidebar .nav-link i').removeClass('mr-3');
   };
 
   //Saat bars icon diklik maka jalankan perintah di bawah ini (mobile side bar ver) 
@@ -86,8 +86,8 @@ $(document).ready(function () {
   if ($(window).width() > 768) {
     $('#topbar').removeClass('sticky-top');
     $('.topbar').removeClass('shadow');
-    $('.nav-link i').addClass('ml-4');
-    $('.nav-link i').addClass('mr-3');
+    $('.sidebar .nav-link i').addClass('ml-4');
+    $('.sidebar .nav-link i').addClass('mr-3');
     $('#hitam-block').addClass("hilang");
     $('.sidebar').removeClass('sticky-top position-absolute');
     $('.sidebar-brand').removeClass('text-left');
@@ -103,18 +103,39 @@ $(".close").on('click', function (e) {
   $('#hitam-block').addClass("hilang");
   $(".sidebar").toggleClass("toggled");
   $('.sidebar .collapse').collapse('hide');
-  $('.sidebar').removeClass('sticky-top position-absolute');
+  $('.sidebar').removeClass('sticky-top position-fixed');
+  $('.sidebar .position-relative').addClass('sticky-top');
+  $('.sidebar .position-relative').removeClass('position-relative');
   $("#survey").addClass('hilang');
   $('.sidebar-brand').removeClass('text-left');
 });
 
 
+const putar180 = function () {
+  $('#provinsi-toggle button i').css({
+    '-webkit-transform': 'rotate(180deg)',
+    '-moz-transform': 'rotate(180deg)',
+    '-ms-transform': 'rotate(180deg)',
+    'transform': 'rotate(180deg)'
+  });
+};
+const putar0 = function () {
+  $('#provinsi-toggle button i').css({
+    '-webkit-transform': 'rotate(0deg)',
+    '-moz-transform': 'rotate(0deg)',
+    '-ms-transform': 'rotate(0deg)',
+    'transform': 'rotate(0deg)'
+  });
+};
+
 // Toggle data per provinsi
 $("#provinsi-toggle").on('click', function () {
   $("#provinsi-toggle h3").toggleClass("toggled");
   $('#daftar-provinsi').addClass('hilang');
+  putar0();
   if ($("#provinsi-toggle h3").hasClass("toggled")) {
     $('#daftar-provinsi').removeClass('hilang');
+    putar180();
   };
 });
 

@@ -1,4 +1,6 @@
 <div class="container">
+
+  <!-- Cek apakah user sudah mengikuti survei -->
   <?php if ($data['ikutSurvei'] == 1) : ?>
     <div id="kesiapan" class="row justify-content-center text-center">
       <div class="col-md-10">
@@ -8,8 +10,9 @@
     </div>
   <?php else : ?>
 
+    <!-- Persiapan user -->
     <div id="kesiapan" class="row justify-content-center text-center">
-      <div class="col-md-10">
+      <div class="col-md-10 my-auto">
 
         <div class="row">
 
@@ -20,23 +23,26 @@
         </div>
 
         <div class="row justify-content-around text-center">
-          <div class="col-lg-5 mb-3">
+          <div class="col-lg-12 mb-3">
             <button id="sudah-siap" class="btn btn-green corner-round font-26">Sudah Siap <i class="fas fa-arrow-right"></i></button>
             <p class="text-gray-600 small mt-2">Bila sudah siap klik tombol di atas ini</p>
           </div>
         </div>
 
       </div>
-
     </div>
+    <!-- End persiapan user -->
 
+    <!-- Survei -->
     <div id="survei-proses" class="row justify-content-center hilang mb-3">
       <div class="col-lg-8">
 
+        <!-- Indikator Pertanyaan Survei -->
         <div class="jumbotron mt-3 color-none-bg  text-center mb-3 py-1">
           <ul id="indikator-pertanyaan">
           </ul>
         </div>
+        <!-- End Indikator Pertanyaan Survei -->
 
         <div class="jumbotron mt-4 color-content py-4" id="survei-pertanyaan">
           <form method="post" action="<?= BASEURL; ?>/survei">
@@ -76,6 +82,8 @@
             <?php endif ?>
 
         </div>
+
+        <!-- Button control survei -->
         <div class="row justify-content-between text-center">
           <div class="col-4 text-left">
             <button type="button" id="kembali" class="btn btn-outline-blue hilang corner-round px-4"><i class="fas fa-fw fa-arrow-left"></i> Sebelumnya</button>
@@ -84,14 +92,14 @@
             <button type="button" id="lanjut" class="btn btn-outline-blue corner-round px-4">Selanjutnya <i class="fas fa-fw fa-arrow-right"></i></button>
             <button type="submit" id="selesai" class="btn hilang btn-blue corner-round px-4">Selesai <i class="fas fa-fw fa-check"></i></button>
           </div>
-
         </div>
+        <!-- End Button control survei -->
 
         </form>
 
       </div>
-
     </div>
+    <!-- End Survei -->
 
     <?php Flasher::flash(); ?>
   <?php endif; ?>
