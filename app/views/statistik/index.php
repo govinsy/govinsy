@@ -18,26 +18,19 @@
       <?php $i = 1;
       foreach ($data['domain'] as $domain) : ?>
         <?php if ($i == 1) : ?>
-          <li> </li>
-          <li class="color-light-font font-bold pb-1 pt-1">SUMATERA</li>
+          <li class="color-light-font pt-4 font-bold pb-1 pt-1">SUMATERA</li>
         <?php elseif ($i == 11) : ?>
-          <li> </li>
-          <li class="color-light-font font-bold pb-1 pt-1">JAWA</li>
+          <li class="color-light-font pt-4 font-bold pb-1 pt-1">JAWA</li>
         <?php elseif ($i == 17) : ?>
-          <li> </li>
-          <li class="color-light-font font-bold pb-1 pt-1">BALI & NUSA TENGGARA</li>
+          <li class="color-light-font pt-4 font-bold pb-1 pt-1">BALI & NUSA TENGGARA</li>
         <?php elseif ($i == 20) : ?>
-          <li> </li>
-          <li class="color-light-font font-bold pb-1 pt-1">KALIMANTAN</li>
+          <li class="color-light-font pt-4 font-bold pb-1 pt-1">KALIMANTAN</li>
         <?php elseif ($i == 25) : ?>
-          <li> </li>
-          <li class="color-light-font font-bold pb-1 pt-1">SULAWESI</li>
+          <li class="color-light-font pt-4 font-bold pb-1 pt-1">SULAWESI</li>
         <?php elseif ($i == 31) : ?>
-          <li> </li>
-          <li class="color-light-font font-bold pb-1 pt-1">MALUKU</li>
+          <li class="color-light-font pt-4 font-bold pb-1 pt-1">MALUKU</li>
         <?php elseif ($i == 33) : ?>
-          <li> </li>
-          <li class="color-light-font font-bold pb-1 pt-1">PAPUA</li>
+          <li class="color-light-font pt-4 font-bold pb-1 pt-1">PAPUA</li>
         <?php endif;
         $i++; ?>
         <li class="color-light-font pb-1 pt-1"><a href="<?= BASEURL; ?>/statistik/provinsi?domain_id=<?= $domain['domain_id'] ?>&nama_provinsi=<?= $domain['domain_name']  ?>">Provinsi <?= $domain['domain_name']; ?></a></li>

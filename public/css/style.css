@@ -124,6 +124,10 @@ font-size 42px = 2.625rem
 {
     background-color: #BFC0C2;
 }
+.dark-mode .color-gray-font
+{
+    color: #BFC0C2;
+}
 .dark-mode .link-not-active
 {
     color:#BFC0C2;
@@ -169,7 +173,7 @@ font-size 42px = 2.625rem
 .dark-mode .btn-blue
 {
     border: 2px transparent solid;
-    color:wheat ;
+    color:white ;
     background-color: #2D8DFD;
 }
 .dark-mode .btn-outline-blue
@@ -181,7 +185,7 @@ font-size 42px = 2.625rem
 .dark-mode .btn-red
 {
     border: 2px transparent solid;
-    color:wheat ;
+    color:white ;
     background-color: #FC2E7E;
 }
 .dark-mode .btn-outline-red
@@ -193,7 +197,7 @@ font-size 42px = 2.625rem
 .dark-mode .btn-green
 {
     border: 2px transparent solid;
-    color:wheat ;
+    color:white ;
     background-color: #15CABC;
 }
 .dark-mode .btn-outline-green
@@ -211,7 +215,7 @@ font-size 42px = 2.625rem
 }
 .dark-mode .btn-outline-blue:hover
 {
-    color: wheat;
+    color: white;
     background-color:  #2D8DFD;
 }
 .dark-mode .btn-green:hover
@@ -222,7 +226,7 @@ font-size 42px = 2.625rem
 }
 .dark-mode .btn-outline-green:hover
 {
-    color: wheat;
+    color: white;
     background-color:  #15CABC;
 }
 .dark-mode .btn-red:hover
@@ -233,7 +237,7 @@ font-size 42px = 2.625rem
 }
 .dark-mode .btn-outline-red:hover
 {
-    color: wheat;
+    color: white;
     background-color:  #FC2E7E;
 }
 
@@ -242,9 +246,17 @@ font-size 42px = 2.625rem
 ///////////////////////////
 */
 
-.font-kecil
+.dark-mode .form-inp
 {
-    font-size:0.625rem;
+    border:1px solid #BFC0C2;
+    color:#BFC0C2;
+    background-color: transparent;
+}
+.dark-mode .form-inp:focus
+{
+    border:1px solid #2D8DFD;
+    color:#BFC0C2;
+    background-color: transparent;
 }
 .corner-round
 {

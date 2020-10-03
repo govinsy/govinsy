@@ -62,8 +62,7 @@ $(document).ready(function () {
   if ($(window).width() < 768) {
     $(".sidebar").toggleClass("toggled");
     $('#ekonomi .col-md-4').css('width', '26rem');
-    $('#topbar').addClass('sticky-top');
-    $('.topbar').addClass('shadow');
+    $('.topbar').addClass('shadow sticky-top');
     $('.sidebar .nav-link i').removeClass('ml-4');
     $('.sidebar .nav-link i').removeClass('mr-3');
   };
@@ -84,14 +83,12 @@ $(document).ready(function () {
 
   //Jika Width Layar lebih dari 768px  maka akan melakukan perintah dibawah ini
   if ($(window).width() > 768) {
-    $('#topbar').removeClass('sticky-top');
     $('.topbar').removeClass('shadow');
     $('.sidebar .nav-link i').addClass('ml-4');
     $('.sidebar .nav-link i').addClass('mr-3');
     $('#hitam-block').addClass("hilang");
     $('.sidebar').removeClass('sticky-top position-absolute');
     $('.sidebar-brand').removeClass('text-left');
-    $('.sidebar .collapse').collapse('hide');
 
     if ($(".sidebar").hasClass("toggled")) {
       $(".sidebar").toggleClass("toggled");

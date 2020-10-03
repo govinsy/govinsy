@@ -1,82 +1,76 @@
-<head>
-    <meta charset="utf-8">
-    <title>Signin Template · Bootstrap</title>
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+<style>
+    body {
+        background-color: #0B0F24;
+    }
 
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
+    footer {
+        display: none;
+    }
+</style>
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content" class="pb-5 color-bg">
 
-        .btbody {
-            height: 100%;
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-align: center;
-            align-items: center;
-            padding-top: 40px;
-            padding-bottom: 40px;
-        }
+        <div class="container pb-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
 
-        .form-signin {
-            width: 100%;
-            max-width: 330px;
-            padding: 15px;
-            margin: auto;
-        }
+                    <div class="row">
+                        <div class="col-lg-12 text-center mt-5 mb-4">
+                            <img src="<?= BASEURL ?>/img/govinsy-dark.png" class="mb-3" width="20%" alt="">
+                            <h2 class="color-light-font mt-3 font-26 font-weight-bold mb-1">Daftar</h2>
+                            <p class="color-light-font font-12">Daftar sekarang dan dapatkan fitur lengkap</p>
+                        </div>
+                    </div>
 
-        .form-signin .checkbox {
-            font-weight: 400;
-        }
+                    <div class="card o-hidden color-content border-0 shadow-lg">
+                        <div class="card-body p-0">
 
-        .form-signin .form-control {
-            position: relative;
-            box-sizing: border-box;
-            height: auto;
-            padding: 10px;
-            font-size: 16px;
-        }
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="p-5">
+                                        <form class="user" method="POST" action="<?= BASEURL; ?>/pengguna/daftar">
+                                            <?php Flasher::flash(); ?>
+                                            <div class="form-group">
+                                                <label for="inputNama" class="font-16 color-gray-font">Nama</label>
+                                                <input name="nama" type="input" id="inputNama" class="form-control form-inp corner-round" placeholder="Nama" required autofocus>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="font-16 color-gray-font">Email</label>
+                                                <input name="email" type="email" id="inputEmail" class="form-control form-inp corner-round" placeholder="Email" required autofocus>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword1" class="font-16 color-gray-font">Password</label>
+                                                <input name="password1" type="password" id="inputPassword1" class="form-control form-inp corner-round" placeholder="Password" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword2" class="font-16 color-gray-font">Confirm Password</label>
+                                                <input name="password2" type="password" id="inputPassword2" class="form-control form-inp corner-round" placeholder="Confirm Password" required>
+                                            </div>
+                                            <hr>
+                                            <button type="submit" name="daftar" class="btn btn-blue btn-block corner-round">
+                                                Daftar
+                                            </button>
+                                            <p class="mt-3 color-light-font font-12 mt-4 mb-1 text-center">sudah punya akun? masuk sekarang</p>
+                                            <a href="<?= BASEURL; ?>/pengguna/login" class="btn btn-outline-blue corner-round btn-block"> <i class="fas fa-sign-in-alt"></i> Masuk</a>
+                                            <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
+                                                <i class="fab fa-google fa-fw"></i> Register with Google
+                                            </a>
+                                            <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                                <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                            </a> -->
+                                        </form>
+                                    </div>
+                                </div>
 
-        .form-signin .form-control:focus {
-            z-index: 2;
-        }
+                                <div class="col-lg-6 d-none d-lg-block bg-register-image"></div>
+                            </div>
 
-        .form-signin input[type="email"] {
-            margin-bottom: -1px;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-        }
+                        </div>
+                    </div>
 
-        .form-signin input[type="password"] {
-            margin-bottom: 10px;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
-    </style>
-</head>
+                </div>
 
-<div class="btbody text-center">
-    <form class="form-signin" method="post" action="<?= BASEURL; ?>/pengguna/daftar">
-        <img class="mb-4" src="<?= BASEURL; ?>/img/icon.svg" alt="" width="72" height="72">
-        <?php Flasher::flash(); ?>
-        <label for="inputNama" class="sr-only">Nama</label>
-        <input name="nama" type="input" id="inputNama" class="form-control mb-2" placeholder="Nama" required autofocus>
-        <label for="inputEmail" class="sr-only">Email</label>
-        <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-        <label for="inputPassword1" class="sr-only">Password</label>
-        <input name="password1" type="password" id="inputPassword1" class="form-control" placeholder="Password" required>
-        <label for="inputPassword2" class="sr-only">Confirm Password</label>
-        <input name="password2" type="password" id="inputPassword2" class="form-control" placeholder="Confirm Password" required>
-        <button name="daftar" class="btn btn-lg btn-primary btn-block mt-2" type="submit">Daftar</button>
-        <p class="mt-5 mb-3 text-muted">Govinsy &copy; 2020</p>
-    </form>
-</div>
+            </div>
+        </div>

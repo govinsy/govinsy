@@ -1,8 +1,64 @@
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 
+    <!-- Modal Masuk -->
+    <div class="modal bd-example-modal-lg fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="card o-hidden color-content border-0 shadow-lg">
+                    <div class="card-body p-0">
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4 class="color-blue-font font-weight-bold mb-5 mr-5">Masuk</h4>
+                                        </div>
+                                        <div class="col-6 text-right">
+                                            <a href="<?= BASEURL; ?>/pengguna/daftar" class="btn py-0 corner-round btn-outline-blue ml-5">Daftar</a>
+                                        </div>
+                                    </div>
+                                    <form class="user" method="POST" action="<?= BASEURL; ?>/pengguna/login">
+                                        <div class="form-group">
+                                            <input name="email" type="email" class="form-control form-inp corner-round" id="exampleInputEmail" placeholder="Email Address">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="password" type="password" class="form-control form-inp corner-round" id="exampleInputPassword" placeholder="Password">
+                                        </div>
+                                        <div class="text-center">
+                                            <a class="small" href="forgot-password.html">Lupa Password?</a>
+                                        </div>
+                                        <hr>
+                                        <button type="submit" name="login" class="btn btn-blue btn-block corner-round">
+                                            <i class="fas fa-sign-in-alt"></i> Masuk
+                                        </button>
+                                        <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
+                                        <i class="fab fa-google fa-fw"></i> Register with Google
+                                    </a>
+                                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                        <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                    </a> -->
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 d-none d-lg-block bg-register-image"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- End Modal Masuk -->
+
+
     <!-- Main Content -->
-    <div id="content" class="color-bg">
+    <div id="content" class="color-bg pb-5">
 
         <div id="topbar" class="position-sticky sticky-top">
             <!-- Topbar -->
@@ -43,11 +99,11 @@
                     <?php if (isset($_SESSION['login'])) : ?>
                         <li class="nav-item dropdown no-arrow pr-3">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="text-right mt-2">
+                                <div class="text-right mt-2 my-auto">
                                     <?php if (isset($_SESSION['profile'])) : ?>
-                                        <p class="mr-2 d-lg-inline text-white-600 small"><?= str_replace(' ', '', $_SESSION['profile']['nama']); ?></p><br>
+                                        <small class="mr-2 d-none d-lg-inline text-white-600l"><?= str_replace(' ', '', $_SESSION['profile']['nama']); ?></small><br>
                                     <?php endif; ?>
-                                    <p class="mr-2 text-gray-600 font-kecil"><i class="fas fa-map-marked"></i> Jawa Tengah</p>
+                                    <small class="mr-2 d-none d-lg-inline text-gray-600 font-10"><i class="fas fa-map-marked"></i> Jawa Tengah</small>
                                 </div>
                                 <img class="img-profile rounded-circle" src="<?= BASEURL; ?>/img/profile.jpg">
                             </a>
@@ -70,7 +126,7 @@
                         </li>
                     <?php else : ?>
                         <li class="nav-item px-2 my-auto">
-                            <a href="<?= BASEURL; ?>/pengguna/login" class="btn btn-outline-blue corner-round"><i class="fas fa-sign-in-alt"></i> Masuk</a>
+                            <button data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-blue corner-round"><i class="fas fa-sign-in-alt"></i> Masuk</button>
                         </li>
                     <?php endif; ?>
 

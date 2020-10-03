@@ -29,7 +29,10 @@ class pengguna extends Controller
         }
 
         $data['judul'] = 'Masuk Govinsy';
+        $data['page'] = 'Masuk Govinsy';
         $this->view('templates/header', $data);
+        $this->view('templates/sidebar', $data);
+        $this->view('templates/topbar', $data);
         $this->view('pengguna/login', $data);
         $this->view('templates/footer');
     }
