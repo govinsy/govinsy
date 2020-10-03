@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mx-4">
   <div class="row">
     <div class="col-sm-12">
      <div class="col-sm-12 mb-4 color-light-font">
