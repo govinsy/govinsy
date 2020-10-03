@@ -22,6 +22,6 @@ class tentang extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/topbar', $data);
         $this->view('tentang/user_agreement', $data);
-
-   
+    }
+       
 }
