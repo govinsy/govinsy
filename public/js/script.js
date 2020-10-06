@@ -1,5 +1,7 @@
-//Fungsi Survey
 $(document).ready(function () {
+
+
+    //Fungsi Survey
     let jumlahPertanyaan = $('#survei-pertanyaan ul').length; // Hitung jumlah ul
     let urutan = 1;
 
@@ -102,7 +104,6 @@ $(document).ready(function () {
         $('#indikator-pertanyaan').append('<li id="IP' + i + '" class="py-1 color-gray-bg mx-2"></li>');
     }
     //End indikator
-
 });
 //End fungsi survey
 

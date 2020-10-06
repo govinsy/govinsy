@@ -58,43 +58,41 @@
 
 
 //Jika Width Layar kurang dari 768px  maka akan melakukan perintah dibawah ini
-$(document).ready(function () {
-  if ($(window).width() < 768) {
-    $(".sidebar").toggleClass("toggled");
-    $('#ekonomi .col-md-4').css('width', '26rem');
-    $('.topbar').addClass('shadow sticky-top');
-    $('.sidebar .nav-link i').removeClass('ml-4');
-    $('.sidebar .nav-link i').removeClass('mr-3');
-  };
+if ($(window).width() < 768) {
+  $(".sidebar").toggleClass("toggled");
+  $('#ekonomi .col-md-4').css('width', '26rem');
+  $('.topbar').addClass('shadow sticky-top');
+  $('.sidebar .nav-link i').removeClass('ml-4');
+  $('.sidebar .nav-link i').removeClass('mr-3');
+};
 
-  //Saat bars icon diklik maka jalankan perintah di bawah ini (mobile side bar ver) 
-  $("#sidebarToggleTop").on('click', function (e) {
-    $('#hitam-block').removeClass("hilang");
-    $('.sidebar-brand').addClass('text-left');
-    $('.close').removeClass('hilang');
-    $(".sidebar").toggleClass("toggled");
-    $('.sidebar .collapse').collapse('hide');
-    $('.sidebar').addClass('sticky-top position-fixed');
-    $('.sidebar .sticky-top').addClass('position-relative');
-    $('.sidebar .sticky-top').removeClass('sticky-top');
-    $('.sidebar').css('z-index', '10000');
-  });
-
-
-  //Jika Width Layar lebih dari 768px  maka akan melakukan perintah dibawah ini
-  if ($(window).width() > 768) {
-    $('.topbar').removeClass('shadow');
-    $('.sidebar .nav-link i').addClass('ml-4');
-    $('.sidebar .nav-link i').addClass('mr-3');
-    $('#hitam-block').addClass("hilang");
-    $('.sidebar').removeClass('sticky-top position-absolute');
-    $('.sidebar-brand').removeClass('text-left');
-
-    if ($(".sidebar").hasClass("toggled")) {
-      $(".sidebar").toggleClass("toggled");
-    }
-  };
+//Saat bars icon diklik maka jalankan perintah di bawah ini (mobile side bar ver) 
+$("#sidebarToggleTop").on('click', function (e) {
+  $('#hitam-block').removeClass("hilang");
+  $('.sidebar-brand').addClass('text-left');
+  $('.close').removeClass('hilang');
+  $(".sidebar").toggleClass("toggled");
+  $('.sidebar .collapse').collapse('hide');
+  $('.sidebar').addClass('sticky-top position-fixed');
+  $('.sidebar .sticky-top').addClass('position-relative');
+  $('.sidebar .sticky-top').removeClass('sticky-top');
+  $('.sidebar').css('z-index', '10000');
 });
+
+
+//Jika Width Layar lebih dari 768px  maka akan melakukan perintah dibawah ini
+if ($(window).width() > 768) {
+  $('.topbar').removeClass('shadow');
+  $('.sidebar .nav-link i').addClass('ml-4');
+  $('.sidebar .nav-link i').addClass('mr-3');
+  $('#hitam-block').addClass("hilang");
+  $('.sidebar').removeClass('sticky-top position-absolute');
+  $('.sidebar-brand').removeClass('text-left');
+
+  if ($(".sidebar").hasClass("toggled")) {
+    $(".sidebar").toggleClass("toggled");
+  }
+};
 
 $(".close").on('click', function (e) {
   $('#hitam-block').addClass("hilang");
