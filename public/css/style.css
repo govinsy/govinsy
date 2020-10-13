@@ -246,6 +246,64 @@ font-size 42px = 2.625rem
 ///////////////////////////
 */
 
+/*  ////////////////
+/////// Border  /////////
+///////////////////////////
+*/
+.border-none
+{
+    border:none;
+}
+.dark-mode .border-blue-3
+{
+    border:3px #2D8DFD solid;
+}
+.dark-mode .border-green-3
+{
+    border:3px #15CABC solid;
+}
+.dark-mode .border-red-3
+{
+    border:3px #FC2E7E solid;
+}
+.dark-mode .border-blue-2
+{
+    border:2px #2D8DFD solid;
+}
+.dark-mode .border-green-2
+{
+    border:2px #15CABC solid;
+}
+.dark-mode .border-red-2
+{
+    border:2px #FC2E7E solid;
+}
+.dark-mode .border-blue-1
+{
+    border:1px #2D8DFD solid;
+}
+.dark-mode .border-green-1
+{
+    border:1px #15CABC solid;
+}
+.dark-mode .border-red-1
+{
+    border:1px #FC2E7E solid;
+}
+
+/*  ////////////////
+/////// End Border  /////////
+///////////////////////////
+*/
+
+.hover-opacity-6:hover
+{
+    opacity:0.6;
+}
+.pointer
+{
+    cursor: pointer;
+}
 .dark-mode .form-inp
 {
     border:1px solid #BFC0C2;
@@ -310,7 +368,10 @@ font-size 42px = 2.625rem
     font-size:2rem;
 }
 
-
+#sample_image
+{
+    height:30rem;
+}
 #logo
 {
     width:70%
@@ -368,6 +429,11 @@ font-size 42px = 2.625rem
         background-color: #181C2F;
     }
 
+
+    .cropper-container
+    {
+        width:80%;
+    }
     .light-mode .topbar
     {
         background-color: white;

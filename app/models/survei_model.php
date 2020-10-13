@@ -52,7 +52,7 @@ class survei_model
     {
         $query = ' INSERT INTO jawaban_pengguna
                             VALUES (:id, :id_jawaban, :id_pengguna, :respon); 
-                            UPDATE pengguna SET survei=1';
+                            UPDATE pengguna SET survei=1 WHERE id=:id_pengguna';
 
         $this->db->query($query);
         $this->db->bind('id', $data['id']);

@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="<?= BASEURL; ?>/fontawsome/css/all.min.css">
   <link rel="stylesheet" href="<?= BASEURL; ?>/css/style.css">
   <link rel="stylesheet" href="<?= BASEURL; ?>/css/slider.css">
+  <link rel="stylesheet" href="<?= BASEURL; ?>/css/image-cropper/dropzone.css">
+  <link rel="stylesheet" href="<?= BASEURL; ?>/css/image-cropper/cropper.css">
   <!---  End Css Assets    -->
 
   <title><?= $data['judul']; ?></title>

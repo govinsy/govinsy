@@ -66,6 +66,25 @@ class pengguna extends Controller
         $this->view('templates/footer');
     }
 
+    public function profile()
+    {
+        $data['judul'] = 'Profile Pengguna';
+        $data['page'] = 'Profile';
+        if (isset($_POST['crop'])) {
+
+            $this->model('pengguna_model')->editProfile();
+        }
+        $this->view('templates/header', $data);
+        $this->view('templates/sidebar', $data);
+        $this->view('templates/topbar', $data);
+        $this->view('pengguna/profile', $data);
+        $this->view('templates/footer');
+    }
+    public function removepic()
+    {
+        $this->model('pengguna_model')->removeImage();
+    }
+
     // public function detail($id)
     // {
     //     $data['judul'] = 'Detail Statistik';

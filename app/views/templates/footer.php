@@ -20,7 +20,6 @@
 <script src="<?= BASEURL; ?>/js/propper.min.js"></script>
 <script src="<?= BASEURL; ?>/js/bootstrap.js"></script>
 <script type="module" src="<?= BASEURL; ?>/js/pace.js"></script>
-<script src="<?= BASEURL; ?>/js/script.js"></script>
 
 <script src="<?= BASEURL; ?>/js/sb-admin-2.js"></script>
 
@@ -32,6 +31,13 @@
 
 <!-- Slider JS -->
 <script type="module" src="<?= BASEURL; ?>/js/slider/script.js"></script>
+
+<!-- Cropper JS -->
+<script type="module" src="<?= BASEURL; ?>/js/image-cropper/dropzone.js"></script>
+<script type="module" src="<?= BASEURL; ?>/js/image-cropper/cropper.js"></script>
+
+
+<script src="<?= BASEURL; ?>/js/script.js"></script>
 
 </body>
 

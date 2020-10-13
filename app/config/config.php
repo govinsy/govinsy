@@ -2,6 +2,7 @@
 
 // Alamat utama
 define('BASEURL', 'http://localhost/govinsy/public');
+define('BASEPATH', dirname(dirname(dirname(__FILE__))));
 
 // Database
 define('DB_HOST', 'localhost');

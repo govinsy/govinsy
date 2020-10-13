@@ -47,7 +47,7 @@
 
         <div class="col-lg-3 mb-4">
             <div class="card text-center py-1 pt-4 color-content color-light-font">
-                <img class="card-img-top mx-auto rounded-circle" style="width:7rem;" src="<?= BASEURL; ?>/img/profile.jpg" alt="Card image cap">
+                <img class="card-img-top mx-auto rounded-circle" style="width:7rem;" src="<?= BASEURL; ?>/img/profile/default.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title font-26 font-weight-bold mb-0">Ahmad N</h5>
                     <small class="font-10 text-gray-600">Lead Back-End & System Analyst</small>
@@ -70,7 +70,7 @@
 
         <div class="col-lg-3 mb-4">
             <div class="card text-center py-1 pt-4 color-content color-light-font">
-                <img class="card-img-top mx-auto rounded-circle" style="width:7rem;" src="<?= BASEURL; ?>/img/profile.jpg" alt="Card image cap">
+                <img class="card-img-top mx-auto rounded-circle" style="width:7rem;" src="<?= BASEURL; ?>/img/profile/default.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title font-26 font-weight-bold mb-0">Bima S</h5>
                     <small class="font-10 text-gray-600">Lead Front-End & Lead UI/UX</small>
@@ -93,7 +93,7 @@
 
         <div class="col-lg-3 mb-4">
             <div class="card text-center py-1 pt-4 color-content color-light-font">
-                <img class="card-img-top mx-auto rounded-circle" style="width:7rem;" src="<?= BASEURL; ?>/img/profile.jpg" alt="Card image cap">
+                <img class="card-img-top mx-auto rounded-circle" style="width:7rem;" src="<?= BASEURL; ?>/img/profile/default.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title font-26 font-weight-bold mb-0">Irgi A</h5>
                     <small class="font-10 text-gray-600">Front-End + Assets</small>
@@ -115,7 +115,7 @@
 
         <div class="col-lg-3 mb-4">
             <div class="card text-center py-1 pt-4 color-content color-light-font">
-                <img class="card-img-top mx-auto rounded-circle" style="width:7rem;" src="<?= BASEURL; ?>/img/profile.jpg" alt="Card image cap">
+                <img class="card-img-top mx-auto rounded-circle" style="width:7rem;" src="<?= BASEURL; ?>/img/profile/default.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title font-26 font-weight-bold mb-0">Tegar S</h5>
                     <small class="font-10 text-gray-600">Front-End + Assets</small>
