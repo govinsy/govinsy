@@ -53,7 +53,7 @@
         <div class="modal-content color-content">
 
 
-            <div class="modal-body pb-0">
+            <div class="modal-body pb-4">
                 <div class="img-container">
 
                     <!--- Crop canvas -->
