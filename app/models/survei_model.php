@@ -1,66 +1,46 @@
 <?php
 
-class survei_model
-{
-    private $table = [
-        'survei' => 'survei',
-        'pertanyaan' => 'pertanyaan',
-        'jawaban' => 'jawaban',
-        'jawaban_pengguna' => 'jawaban_pengguna',
-        'pengguna' => 'pengguna',
-    ];
-    private $db;
+namespace App\Models;
 
-    public function __construct()
-    {
-        $this->db = new Database;
-    }
+use CodeIgniter\Model;
+
+class Survei_model extends Model
+{
 
     public function getAllPertanyaan()
     {
-        $this->db->query('SELECT * FROM ' . $this->table['pertanyaan']);
-        return $this->db->resultSet();
+        return $this->db->query("SELECT * FROM pertanyaan")->getResultArray();
     }
 
     public function getAllJawaban()
     {
-        $this->db->query('SELECT * FROM ' . $this->table['jawaban']);
-        return $this->db->resultSet();
+        return $this->db->query("SELECT * FROM jawaban")->getResultArray();
     }
 
     public function getAllJawabanPengguna()
     {
-        $this->db->query('SELECT * FROM ' . $this->table['jawaban_pengguna']);
-        return $this->db->resultSet();
+        return $this->db->query("SELECT * FROM jawaban_pengguna")->getResultArray();
+        // return $this->db->query("SELECT j.id,jp.id_jawaban,j.id_pertanyaan,j.jawaban FROM jawaban_pengguna jp
+        //                                                 INNER JOIN jawaban j ON jp.id_jawaban = j.id ")->getResultArray();
     }
 
     public function findPengguna($id)
     {
-        $this->db->query('SELECT * FROM ' . $this->table['jawaban_pengguna'] . ' WHERE id_pengguna=:id');
-        $this->db->bind('id', $id);
-        return ($this->db->single());
+        return $this->db->query("SELECT * FROM jawaban_pengguna WHERE id_pengguna='{$id}' ")->getRowArray();
     }
 
     public function countJawabanPengguna()
     {
-        $this->db->query('SELECT * FROM ' . $this->table['jawaban_pengguna']);
-        $this->db->execute();
-        return $this->db->rowCount();
+        return $this->db->table('jawaban_pengguna')->countAll();
     }
 
     public function tambahJawabanPengguna($data)
     {
-        $query = ' INSERT INTO jawaban_pengguna
-                            VALUES (:id, :id_jawaban, :id_pengguna, :respon); 
-                            UPDATE pengguna SET survei=1 WHERE id=:id_pengguna';
+        $query = " INSERT INTO jawaban_pengguna
+                            VALUES ( '{$data['id']}', '{$data['id_jawaban']}', '{$data['id_pengguna']}', '{$data['respon']}' ) ";
 
-        $this->db->query($query);
-        $this->db->bind('id', $data['id']);
-        $this->db->bind('id_jawaban', $data['id_jawaban']);
-        $this->db->bind('id_pengguna', $data['id_pengguna']);
-        $this->db->bind('respon', $data['respon']);
-        $this->db->execute();
+        $this->db->table('pengguna')->where('id', $data['id_pengguna'])->update(['survei' => 1]);
 
-        return $this->db->rowCount();
+        return $this->db->query($query);
     }
 }

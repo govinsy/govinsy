@@ -18,7 +18,6 @@
 
                     <div class="row">
                         <div class="col-lg-12 text-center mt-5 mb-4">
-                            <img src="<?= BASEURL ?>/img/govinsy-dark.png" class="mb-3" width="20%" alt="">
                             <h2 class="color-light-font mt-3 font-26 font-weight-bold mb-1">Daftar</h2>
                             <p class="color-light-font font-12">Daftar sekarang dan dapatkan fitur lengkap</p>
                         </div>
@@ -30,8 +29,9 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="p-5">
-                                        <form class="user" method="POST" action="<?= BASEURL; ?>/pengguna/daftar">
-                                            <?php Flasher::flash(); ?>
+                                        <?= $validation->listErrors() ?>
+                                        <form class="user" method="POST" action="<?= base_url(); ?>/pengguna/daftar">
+                                            <?= csrf_field(); ?>
                                             <div class="form-group">
                                                 <label for="inputNama" class="font-16 color-gray-font">Nama</label>
                                                 <input name="nama" type="input" id="inputNama" class="form-control form-inp corner-round" placeholder="Nama" required autofocus>
@@ -53,7 +53,7 @@
                                                 Daftar
                                             </button>
                                             <p class="mt-3 color-light-font font-12 mt-4 mb-1 text-center">sudah punya akun? masuk sekarang</p>
-                                            <a href="<?= BASEURL; ?>/pengguna/login" class="btn btn-outline-blue corner-round btn-block"> <i class="fas fa-sign-in-alt"></i> Masuk</a>
+                                            <a href="<?= base_url(); ?>/pengguna/login" class="btn btn-outline-blue corner-round btn-block"> <i class="fas fa-sign-in-alt"></i> Masuk</a>
                                             <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
                                                 <i class="fab fa-google fa-fw"></i> Register with Google
                                             </a>

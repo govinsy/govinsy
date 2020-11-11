@@ -1,9 +1,11 @@
 <?php
 
-// Lokasi method getJSON di core/Controller.php
-// Lokasi daftar url dan field di config/config.php
+namespace App\Controllers;
 
-class Statistik extends Controller
+// Lokasi method getJSON di BaseController.php
+// Lokasi daftar url dan field di BaseController.php
+
+class Statistik extends BaseController
 {
 
     public function __construct()
@@ -41,53 +43,51 @@ class Statistik extends Controller
         $dayone = $this->getJSON($this->url['covid_dayone']);
 
         // Survei
-        try {
-            $jmlJP = $this->model('survei_model')->countJawabanPengguna();
-            $survei = $this->model('survei_model')->getAllJawabanPengguna();
-            $pertanyaan = $this->model('survei_model')->getAllPertanyaan();
-            $jawaban = $this->model('survei_model')->getAllJawaban();
-            $pengguna = $this->model('pengguna_model')->getAllPengguna();
-            $data['pertanyaan'] = $pertanyaan;
-            $data['jawaban'] = $jawaban;
-            $data['hasil_survei'] = [];
-            foreach ($survei as $s) {
-                array_push($data['hasil_survei'], $s['id_jawaban']);
-            }
-            $data['hasil_survey'] = array_count_values($data['hasil_survei']);
-        } catch (Exception $e) {
-            echo json_decode("['error' => " . $e->getMessage() . "]");
+        $jmlJP = $this->survei_model->countJawabanPengguna();
+        $pengguna = $this->pengguna_model->getAllPengguna();
+        $survei = $this->survei_model->getAllJawabanPengguna();
+        $data['pertanyaan'] = $this->survei_model->getAllPertanyaan();
+        $data['jawaban'] = $this->survei_model->getAllJawaban();
+        $data['hasil_survei'] = [];
+        foreach ($survei as $s) {
+            array_push($data['hasil_survei'], $s['id_jawaban']);
         }
+        $data['hasil_survey'] = array_count_values($data['hasil_survei']);
+        // dd($data['pertanyaan']);
 
         // Daftar variable yang bisa digunakan di /views/statistik/index.php
+
         $data['judul'] = 'Daftar Statistik';
         $data['page'] = 'Statistik'; //Digunakan untuk indikator di Sidebar
         $data['indo'] = $kasus; // kasus covid se-indonesia
         $data['prov'] = $provinsi['list_data']; // kasus covid-19 per-provinsi
-        $data['domain'] = $domain['data'][1]; // daftar domain provinsi
+        $data['domains'] = $domain['data'][1]; // daftar domain provinsi
+
+
         !empty($indicators) ? $data['indicators'] = $indicators : $data['indicators'] = []; // strategic indocators
 
         // Diagram
-        $data['dayone']['date'] = [];
-        $data['dayone']['confirmed'] = [];
-        $data['dayone']['recovered'] = [];
-        $data['dayone']['deaths'] = [];
-        $data['dayone']['active'] = [];
-        if (isset($dayone)) {
-            for ($i = 0; $i < count($dayone); $i++) {
-                array_push($data['dayone']['date'], date('M j', strtotime($dayone[$i]['Date'])));
-                array_push($data['dayone']['confirmed'], $dayone[$i]['Confirmed']);
-                array_push($data['dayone']['recovered'], $dayone[$i]['Recovered']);
-                array_push($data['dayone']['deaths'], $dayone[$i]['Deaths']);
-                array_push($data['dayone']['active'], $dayone[$i]['Active']);
-            }
-        }
+        // $data['dayone']['date'] = [];
+        // $data['dayone']['confirmed'] = [];
+        // $data['dayone']['recovered'] = [];
+        // $data['dayone']['deaths'] = [];
+        // $data['dayone']['active'] = [];
+        // if (isset($dayone)) {
+        //     for ($i = 0; $i < count($dayone); $i++) {
+        //         array_push($data['dayone']['date'], date('M j', strtotime($dayone[$i]['Date'])));
+        //         array_push($data['dayone']['confirmed'], $dayone[$i]['Confirmed']);
+        //         array_push($data['dayone']['recovered'], $dayone[$i]['Recovered']);
+        //         array_push($data['dayone']['deaths'], $dayone[$i]['Deaths']);
+        //         array_push($data['dayone']['active'], $dayone[$i]['Active']);
+        //     }
+        // }
 
         // Views
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/topbar', $data);
-        $this->view('statistik/index', $data);
-        $this->view('templates/footer');
+        echo view('templates/header', $data);
+        echo view('templates/sidebar', $data);
+        echo view('templates/topbar', $data);
+        echo view('statistik/index', $data);
+        echo view('templates/footer');
     }
 
 
@@ -96,7 +96,7 @@ class Statistik extends Controller
     {
         // Cek keterdediaan parameter GET
         if (empty($_GET['domain_id']) || empty($_GET['nama_provinsi'])) {
-            header("Location: " . BASEURL);
+            header("Location: " . base_url());
             exit;
         }
 
@@ -180,18 +180,20 @@ class Statistik extends Controller
         // Deskripsi provinsi
         foreach ($provdesc as $p) {
             if ($p['Provinsi'] == $_GET['nama_provinsi']) {
-                $desc["pulau"] = $p["Pulau"];
-                $desc["provinsi"] = $p["Provinsi"];
-                $desc["singkatan"] = $p["Singkatan"];
-                $desc["ibu_kota"] = $p["Ibu kota"];
-                $desc["diresmikan"] = $p["Diresmikan"];
-                $desc["populasi"] = $p["Populasi"];
-                $desc["luas_total"] = $p["Luas Total"];
-                $desc["populasi_per_luas"] = $p["Populasi / Luas"];
-                $desc["apbd"] = $p["APBD 2014 (miliar rupiah)"]; 
-                $desc["prdb"] = $p["PDRB 2014 (triliun rupiah)"];
-                $desc["prdb_per_kapita"] = $p["PDRB per kapita 2014 (juta rupiah)"];
-                $desc["ipm"] = $p["IPM 2014"];
+                $desc = [
+                    'pulau' => $p["Pulau"],
+                    'provinsi' => $p["Provinsi"],
+                    'singkatan' => $p["Singkatan"],
+                    'ibu_kota' => $p["Ibu kota"],
+                    'diresmikan' => $p["Diresmikan"],
+                    'populasi' => $p["Populasi"],
+                    'luas_total' => $p["Luas Total"],
+                    'populasi_per_luas' => $p["Populasi / Luas"],
+                    'apbd' => $p["APBD 2014 (miliar rupiah)"],
+                    'prdb' => $p["PDRB 2014 (triliun rupiah)"],
+                    'prdb_per_kapita' => $p["PDRB per kapita 2014 (juta rupiah)"],
+                    'ipm' => $p["IPM 2014"]
+                ];
             }
         }
 
@@ -203,10 +205,10 @@ class Statistik extends Controller
         $data['provdesc'] = $desc; // Deskirpsi provinsi
 
         //Views
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/topbar', $data);
-        $this->view('statistik/data_provinsi', $data);
-        $this->view('templates/footer');
+        echo view('templates/header', $data);
+        echo view('templates/sidebar', $data);
+        echo view('templates/topbar', $data);
+        echo view('statistik/data_provinsi', $data);
+        echo view('templates/footer');
     }
 }

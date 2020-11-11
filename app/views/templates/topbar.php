@@ -17,10 +17,11 @@
                                             <h4 class="color-blue-font font-weight-bold mb-5 mr-5">Masuk</h4>
                                         </div>
                                         <div class="col-6 text-right">
-                                            <a href="<?= BASEURL; ?>/pengguna/daftar" class="btn py-0 corner-round btn-outline-blue ml-5">Daftar</a>
+                                            <a href="<?= base_url(); ?>/pengguna/daftar" class="btn py-0 corner-round btn-outline-blue ml-5">Daftar</a>
                                         </div>
                                     </div>
-                                    <form class="user" method="POST" action="<?= BASEURL; ?>/pengguna/login">
+                                    <form class="user" method="POST" action="<?= base_url(); ?>/pengguna/login">
+                                        <?= csrf_field(); ?>
                                         <div class="form-group">
                                             <input name="email" type="email" class="form-control form-inp corner-round" id="exampleInputEmail" placeholder="Email Address">
                                         </div>
@@ -70,7 +71,7 @@
                 </button>
 
 
-                <?php if ($data['page'] === "Statistik" || $data['page'] === "Berita") : ?>
+                <?php if ($page === "Statistik" || $page === "Berita") : ?>
                     <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
@@ -105,19 +106,19 @@
                                     <?php endif; ?>
                                     <small class="mr-2 d-none d-lg-inline text-gray-600 font-10"><i class="fas fa-map-marked"></i> Jawa Tengah</small>
                                 </div>
-                                <img class="img-profile rounded-circle" src="<?= BASEURL; ?>/img/profile/<?= $_SESSION['profile']['gambar']  ?>">
+                                <img class="img-profile rounded-circle" src="<?= base_url(); ?>/img/profile/<?= $_SESSION['profile']['gambar']  ?>">
                             </a>
 
 
 
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow color-content animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item color-light-font d-block" href="<?= BASEURL; ?>/pengguna/profile">
+                                <a class="dropdown-item color-light-font d-block" href="<?= base_url(); ?>/pengguna/profile">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profil
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item color-light-font d-block" href="<?= BASEURL; ?>/pengguna/logout">
+                                <a class="dropdown-item color-light-font d-block" href="<?= base_url(); ?>/pengguna/logout">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>

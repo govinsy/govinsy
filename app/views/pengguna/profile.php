@@ -8,9 +8,9 @@
                 <div class=" card-body rounded">
                     <div class="image_area">
                         <form method="post" enctype="multipart/form-data">
-
+                            <?= csrf_field(); ?>
                             <!--- Profile Gambar -->
-                            <img src=" <?= BASEURL ?>/img/profile/<?= $_SESSION['profile']['gambar'] ?>" width="200" height="200" id="uploaded_image" class="pointer hover-opacity-6 img-responsive rounded-circle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
+                            <img src=" <?= base_url() ?>/img/profile/<?= $_SESSION['profile']['gambar'] ?>" width="200" height="200" id="uploaded_image" class="pointer hover-opacity-6 img-responsive rounded-circle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
                             <div style="margin:160px 0 0 -43px" class="rounded-circle color-blue-bg color-light-font p-2 font-12 d-inline position-absolute"><i class="fas fa-edit"></i></div>
                             <input type="file" name="image" class="image" id="upload_image" style="display:none" />
 
@@ -20,7 +20,7 @@
                                     <a class="dropdown-item d-block">Ganti Gambar</a>
                                 </label>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item d-block" href="<?= BASEURL; ?>/pengguna/removepic">Hilangkan Gambar</a>
+                                <a class="dropdown-item d-block" href="<?= base_url(); ?>/pengguna/removepic">Hilangkan Gambar</a>
                             </div>
                             <!-- End dropdown - menu gambar -->
 
@@ -30,7 +30,7 @@
                             <h2 class="color-light-font font-weight-bold mt-2 mb-0"><?= $_SESSION['profile']['nama'] ?></h2>
                             <p class="font-16 color-gray-font mt-0"><i class="fas fa-map-marked-alt"></i> Jawa Tengah</p>
                             <a href="#" class="btn btn-blue corner-round px-5 py-1 my-2"><i class="fas fa-edit"></i> Edit Profile</a><br>
-                            <a href="<?= BASEURL ?>/pengguna/logout" class="btn btn-red corner-round px-5 py-1"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+                            <a href="<?= base_url() ?>/pengguna/logout" class="btn btn-red corner-round px-5 py-1"><i class="fas fa-sign-out-alt"></i> Keluar</a>
 
                         </form>
                     </div>

@@ -5,16 +5,16 @@
     <!-- Berita -->
 
     <div class="row row-cols-1 row-cols-md-2">
-        <?php if (isset($data['berita'])) : ?>
-            <?php foreach ($data['berita'] as $berita) : ?>
+        <?php if (isset($berita)) : ?>
+            <?php foreach ($berita as $beritas) : ?>
                 <div class="col-lg-4 mb-4">
                     <div class="card color-content">
-                        <img src="<?= $berita['urlToImage']; ?>" class="card-img-top" alt="...">
+                        <img src="<?= $beritas['urlToImage']; ?>" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title color-light-font font-weight-bold"><a href="<?= $berita['url']; ?>" target="_blank" rel="noopener noreferrer" class="text-decoration-none color-light-font"><?= $berita['title']; ?></a></h5>
-                            <p class="card-text text-gray-600"><?= $berita['description']; ?> <a href="<?= $berita['url']; ?>" target="_blank" rel="noopener noreferrer" class="text-decoration-none">read more</a></p>
-                            <p class="card-text float-left"><small class="text-muted"><?= $berita['source']['name'] ?></small></p>
-                            <p class="card-text float-right"><small class="text-muted"><?= date('d/m/Y', strtotime($berita['publishedAt'])); ?></small></p>
+                            <h5 class="card-title color-light-font font-weight-bold"><a href="<?= $beritas['url']; ?>" target="_blank" rel="noopener noreferrer" class="text-decoration-none color-light-font"><?= $beritas['title']; ?></a></h5>
+                            <p class="card-text text-gray-600"><?= $beritas['description']; ?> <a href="<?= $beritas['url']; ?>" target="_blank" rel="noopener noreferrer" class="text-decoration-none">read more</a></p>
+                            <p class="card-text float-left"><small class="text-muted"><?= $beritas['source']['name'] ?></small></p>
+                            <p class="card-text float-right"><small class="text-muted"><?= date('d/m/Y', strtotime($beritas['publishedAt'])); ?></small></p>
                         </div>
                     </div>
                 </div>
@@ -26,5 +26,5 @@
         <?php endif ?>
 
     </div>
-
+    <?php var_dump($berita); ?>
 </div>

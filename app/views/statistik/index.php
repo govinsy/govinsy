@@ -1,4 +1,4 @@
-<script type="text/javascript" src="<?= BASEURL; ?>/js/Chart.js"></script>
+<script type="text/javascript" src="<?= base_url(); ?>/js/Chart.js"></script>
 <div class="container">
 
   <!-- DATA STATISTIK INDONESIA-->
@@ -14,9 +14,9 @@
   </div>
   <ul id="daftar-provinsi" align="center" class="color-content hilang list-unstyled mb-0">
 
-    <?php if (isset($data['domain'])) : ?>
+    <?php if (isset($domains)) : ?>
       <?php $i = 1;
-      foreach ($data['domain'] as $domain) : ?>
+      foreach ($domains as $domain) : ?>
         <?php if ($i == 1) : ?>
           <li class="color-light-font pt-4 font-bold pb-1 pt-1">SUMATERA</li>
         <?php elseif ($i == 11) : ?>
@@ -33,7 +33,7 @@
           <li class="color-light-font pt-4 font-bold pb-1 pt-1">PAPUA</li>
         <?php endif;
         $i++; ?>
-        <li class="color-light-font pb-1 pt-1"><a href="<?= BASEURL; ?>/statistik/provinsi?domain_id=<?= $domain['domain_id'] ?>&nama_provinsi=<?= $domain['domain_name']  ?>">Provinsi <?= $domain['domain_name']; ?></a></li>
+        <li class="color-light-font pb-1 pt-1"><a href="<?= base_url(); ?>/statistik/provinsi?domain_id=<?= $domain['domain_id'] ?>&nama_provinsi=<?= $domain['domain_name']  ?>">Provinsi <?= $domain['domain_name']; ?></a></li>
       <?php endforeach; ?>
     <?php else : ?>
       <p class="text-danger font-weight-bold">gagal mengambil data: periksa koneksi internet</p>
@@ -57,7 +57,7 @@
         <div class="card text-center">
           <div class="card-header">Terkonfirmasi</div>
           <div class="card-body">
-            <h1 class="card-title"><?= number_format($data['indo']['confirmed']['value']); ?></h1>
+            <h1 class="card-title"><?= number_format($indo['confirmed']['value']); ?></h1>
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@
         <div class="card text-center">
           <div class="card-header">Sembuh</div>
           <div class="card-body">
-            <h1 class="card-title"><?= number_format($data['indo']['recovered']['value']); ?></h1>
+            <h1 class="card-title"><?= number_format($indo['recovered']['value']); ?></h1>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
         <div class="card text-center">
           <div class="card-header">Meninggal</div>
           <div class="card-body">
-            <h1 class="card-title"><?= number_format($data['indo']['deaths']['value']); ?></h1>
+            <h1 class="card-title"><?= number_format($indo['deaths']['value']); ?></h1>
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@
         <div class="card text-center">
           <div class="card-header">Update Terakhir</div>
           <div class="card-body">
-            <h1 class="card-title"><?= date("j M", strtotime($data['indo']['lastUpdate'])); ?></h1>
+            <h1 class="card-title"><?= date("j M", strtotime($indo['lastUpdate'])); ?></h1>
           </div>
         </div>
       </div>
@@ -97,8 +97,8 @@
   <br><br>
 
   <!-- KASUS PER-PROVINSI -->
-  <div class="row mt-5">
-    <div class="col-4 mb-5">
+  <div class="row">
+    <div class="col-md-4 mb-5">
       <h2 class="font-weight-bold">Kasus Per-Provinsi</h2>
       <div class="card">
         <div class="card-header">
@@ -111,13 +111,13 @@
               <?php
 
               // Cek ketersedian data dan session
-              if (!empty($data['prov']) && !empty($_SESSION['prov'])) {
+              if (!empty($prov) && !empty($_SESSION['prov'])) {
 
-                for ($i = 0; $i < count($data['prov']); $i++) {
+                for ($i = 0; $i < count($prov); $i++) {
 
                   // Menampilkan nama provinsi sesuai dengan session
-                  if ($data['prov'][$i]['key'] == $_SESSION['prov']) {
-                    echo $data['prov'][$i]['key'];
+                  if ($prov[$i]['key'] == $_SESSION['prov']) {
+                    echo $prov[$i]['key'];
                   }
                 }
               } else {
@@ -129,14 +129,14 @@
 
             <!-- From Pilih Provinsi -->
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <form action="<?= BASEURL; ?>/statistik" method="post">
+              <form action="<?= base_url(); ?>/statistik" method="post">
 
                 <!-- Cek ketersediaan data -->
-                <?php if (!empty($data['prov'])) : ?>
+                <?php if (!empty($prov)) : ?>
 
                   <!-- Value post diubah menjadi session di controller -->
-                  <?php for ($i = 0; $i < count($data['prov']); $i++) : ?>
-                    <button class="dropdown-item" name="prov" value="<?= $data['prov'][$i]['key']; ?>" type="submit"><?= $data['prov'][$i]['key']; ?></button>
+                  <?php for ($i = 0; $i < count($prov); $i++) : ?>
+                    <button class="dropdown-item" name="prov" value="<?= $prov[$i]['key']; ?>" type="submit"><?= $prov[$i]['key']; ?></button>
                   <?php endfor; ?>
                 <?php endif; ?>
 
@@ -149,23 +149,23 @@
         <ul class="list-group list-group-flush">
 
           <!-- Cek data dan session untuk menampilkan data provinsi -->
-          <?php if (!empty($data['prov']) && !empty($_SESSION['prov'])) : ?>
+          <?php if (!empty($prov) && !empty($_SESSION['prov'])) : ?>
 
-            <?php for ($i = 0; $i < count($data['prov']); $i++) : ?>
+            <?php for ($i = 0; $i < count($prov); $i++) : ?>
 
               <!-- Menampilkan nama provinsi sesuai dengan session -->
-              <?php if ($data['prov'][$i]['key'] == $_SESSION['prov']) : ?>
-                <li class="list-group-item">Terkonfirmasi: <span class="font-weight-bold"><?= number_format($data['prov'][$i]['jumlah_kasus']); ?></span></li>
-                <li class="list-group-item">Sembuh: <span class="font-weight-bold"><?= number_format($data['prov'][$i]['jumlah_sembuh']); ?></span></li>
-                <li class="list-group-item">Meninggal: <span class="font-weight-bold"><?= number_format($data['prov'][$i]['jumlah_meninggal']); ?></span></li>
-                <li class="list-group-item">Dirawat: <span class="font-weight-bold"><?= number_format($data['prov'][$i]['jumlah_dirawat']); ?></span></li>
-                <?php foreach ($data['prov'][$i]['jenis_kelamin'] as $jenis_kelamin) : ?>
+              <?php if ($prov[$i]['key'] == $_SESSION['prov']) : ?>
+                <li class="list-group-item">Terkonfirmasi: <span class="font-weight-bold"><?= number_format($prov[$i]['jumlah_kasus']); ?></span></li>
+                <li class="list-group-item">Sembuh: <span class="font-weight-bold"><?= number_format($prov[$i]['jumlah_sembuh']); ?></span></li>
+                <li class="list-group-item">Meninggal: <span class="font-weight-bold"><?= number_format($prov[$i]['jumlah_meninggal']); ?></span></li>
+                <li class="list-group-item">Dirawat: <span class="font-weight-bold"><?= number_format($prov[$i]['jumlah_dirawat']); ?></span></li>
+                <?php foreach ($prov[$i]['jenis_kelamin'] as $jenis_kelamin) : ?>
                   <li class="list-group-item"><?= ucfirst(strtolower($jenis_kelamin['key'])); ?>: <span class="font-weight-bold"><?= number_format($jenis_kelamin['doc_count']); ?></span></li>
                 <?php endforeach; ?>
                 <li class="list-group-item"><span class="font-weight-bold">Penambahan:</span></li>
-                <li class="list-group-item"> Positif: <span class="font-weight-bold">+<?= number_format($data['prov'][$i]['penambahan']['positif']); ?></span></li>
-                <li class="list-group-item"> Sembuh: <span class="font-weight-bold">+<?= number_format($data['prov'][$i]['penambahan']['sembuh']); ?></span></li>
-                <li class="list-group-item"> Meninggal: <span class="font-weight-bold">+<?= number_format($data['prov'][$i]['penambahan']['meninggal']); ?></span></li>
+                <li class="list-group-item"> Positif: <span class="font-weight-bold">+<?= number_format($prov[$i]['penambahan']['positif']); ?></span></li>
+                <li class="list-group-item"> Sembuh: <span class="font-weight-bold">+<?= number_format($prov[$i]['penambahan']['sembuh']); ?></span></li>
+                <li class="list-group-item"> Meninggal: <span class="font-weight-bold">+<?= number_format($prov[$i]['penambahan']['meninggal']); ?></span></li>
               <?php endif; ?>
             <?php endfor; ?>
           <?php endif; ?>
@@ -177,7 +177,7 @@
 
 
     <!-- STRATEGIC INDICATORS -->
-    <div class="col-8 mb-5">
+    <div class="col-md-8 mb-5">
       <h2 class="font-weight-bold">Strategic Indicators</h2>
       <div class="card">
         <div class="card-header">
@@ -187,9 +187,9 @@
               <?php
 
               // Cek ketersediaan data dan session nomor domain
-              if (!empty($data['domain']) && !empty($_SESSION['domain'])) {
+              if (!empty($domains) && !empty($_SESSION['domain'])) {
 
-                foreach ($data['domain'] as $domain) {
+                foreach ($domains as $domain) {
 
                   // Menampilkan nama provinsi sesuai dengan session
                   if ($domain['domain_id'] == $_SESSION['domain']) {
@@ -204,13 +204,13 @@
 
             <!-- Form Pilih Provinsi -->
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <form action="<?= BASEURL; ?>/statistik" method="post">
+              <form action="<?= base_url(); ?>/statistik" method="post">
 
                 <!-- Cek ketersediaan data domain -->
-                <?php if (!empty($data['domain'])) : ?>
+                <?php if (!empty($domains)) : ?>
 
                   <!-- Value post diubah menjadi session di controller -->
-                  <?php foreach ($data['domain'] as $domain) : ?>
+                  <?php foreach ($domains as $domain) : ?>
                     <button class="dropdown-item" name="domain" value="<?= $domain['domain_id']; ?>" type="submit"><?= $domain['domain_name']; ?></button>
                   <?php endforeach; ?>
                 <?php endif; ?>
@@ -224,18 +224,18 @@
         <ul class="list-group list-group-flush">
 
           <!-- cek ketersediaan data strategic inicators -->
-          <?php if (!empty($data['indicators'])) : ?>
+          <?php if (!empty($indicators)) : ?>
 
             <!-- masuk ke array gabungan beberapa halaman -->
-            <?php for ($i = 1; $i <= count($data['indicators']); $i++) : ?>
+            <?php for ($i = 1; $i <= count($indicators); $i++) : ?>
 
               <!-- masuk ke array per-judul -->
-              <?php for ($j = 0; $j <= count($data['indicators'][$i]['data'][1]); $j++) : ?>
+              <?php for ($j = 0; $j <= count($indicators[$i]['data'][1]); $j++) : ?>
 
                 <!-- cek ketersedian nomor array per-judul -->
-                <?php if (!empty($data['indicators'][$i]['data'][1][$j])) : ?>
-                  <li class="list-group-item"><?= $data['indicators'][$i]['data'][1][$j]['title']; ?>: <span class="font-weight-bold">
-                      <?= $data['indicators'][$i]['data'][1][$j]['value']; ?></span>
+                <?php if (!empty($indicators[$i]['data'][1][$j])) : ?>
+                  <li class="list-group-item"><?= $indicators[$i]['data'][1][$j]['title']; ?>: <span class="font-weight-bold">
+                      <?= $indicators[$i]['data'][1][$j]['value']; ?></span>
                   </li>
                 <?php endif; ?>
               <?php endfor; ?>
@@ -246,90 +246,122 @@
       </div>
     </div>
 
-    <!-- SURVEI -->
+  </div>
+
+  <!-- SURVEI -->
+  <div class="row">
     <div class="col-12">
-      <div style="border:none;" class="card shadow color-content mb-4">
-        <div class="card-header py-3 color-blue-bg">
-          <h6 class="m-0 font-weight-bold ">Survei Internal</h6>
-        </div>
-        <div class="row m-3">
+      <div id="data-provinsi" align="center" class="jumbotron color-content pt-5 slide-wrapper">
 
-          <!-- Jumlah survei = jumlah pertanyaan -->
-          <?php if (isset($data['pertanyaan'])) : ?>
-            <?php foreach ($data['pertanyaan'] as $p) : ?>
-              <div class="col-4 mt-3">
-                <ul class="list-group">
-                  <li class="list-group-item list-group-item-primary font-weight-bold d-flex justify-content-between align-items-center">
-                    <?= $p['pertanyaan'] ?>
-                  </li>
 
-                  <!-- Menampilkan kalkulasi jawaban sesuai pertanyaan -->
-                  <?php $tempArr = [] ?>
-                  <?php foreach ($data['jawaban'] as $j) : ?>
-                    <?php if ($j['id_pertanyaan'] == $p['id']) : ?>
-                      <?php
-                      $arr = array_count_values($data['hasil_survei']);
-                      $ark = array_keys(array_count_values($data['hasil_survei']));
-                      foreach ($ark as $k) {
-                        if ($k == $j['id']) {
-                          echo '<li class="list-group-item d-flex justify-content-between align-items-center">
+        <h4 class="mb-5 font-weight-bold color-blue-font">SURVEI INTERNAL</h4>
+        <!-- Jumlah survei = jumlah pertanyaan -->
+        <ul class="slide mt-3" id="nomor-slide">
+          <?php if (isset($pertanyaan)) : ?>
+            <?php foreach ($pertanyaan as $p) : ?>
+              <li class="row m-3 text-center justify-content-center" style="width:100%;box-shadow:none;">
+
+                <div class="col-lg-6">
+                  <div class="chart-pie">
+                    <canvas id="<?= $p['id']  ?>"></canvas>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 pt-4">
+                  <div class="list-group color-none-bg">
+
+                    <!-- Menampilkan kalkulasi jawaban sesuai pertanyaan -->
+                    <?php $tempArr = [] ?>
+                    <?php foreach ($jawaban as $j) : ?>
+                      <?php if ($j['id_pertanyaan'] == $p['id']) : ?>
+                        <?php
+                        $arr = array_count_values($hasil_survei);
+                        $ark = array_keys(array_count_values($hasil_survei));
+                        foreach ($ark as $k) {
+                          if ($k == $j['id']) {
+                            echo '<div class="list-group-item d-flex justify-content-between align-items-center" id="' . $j['id'] . '" data-' . $j['id'] . '="' . $arr[$k] . '">
                         ' . $j['jawaban'] . '
                         <span class="badge badge-primary badge-pill">' . $arr[$k] . '</span>
-                      </li>';
+                      </div>';
+                          }
                         }
-                      }
-                      ?>
-                      </span></h6>
+                        ?>
+                        </span></h6>
 
-                    <?php endif ?>
-                  <?php endforeach ?>
+                      <?php endif; ?>
+                    <?php endforeach; ?>
 
-                </ul>
-              </div>
-            <?php endforeach ?>
-          <?php else : ?>
-            <div class="container">
-              <p class="text-danger font-weight-bold">gagal mengambil data: periksa koneksi database</p>
-            </div>
-          <?php endif ?>
+                  </div>
+                </div>
 
+              </li>
+            <?php endforeach; ?>
+
+        </ul>
+      <?php else : ?>
+        <div class="container">
+          <p class="text-danger font-weight-bold">gagal mengambil data: periksa koneksi database</p>
+        </div>
+      <?php endif; ?>
+
+      <div class="wrap-controls">
+        <div class="arrow-nav">
+          <button class="prev"></button>
+        </div>
+        <ul id="circle-pointer" class="circle-controls">
+          <li></li>
+        </ul>
+        <div class="ml-2 arrow-nav">
+          <button class="next"></button>
         </div>
       </div>
-    </div>
 
+
+      </div>
+    </div>
   </div>
+  <!-- END SURVEI -->
+
 </div>
+
+
+
 <!-- 
 <script>
   var ctx = document.getElementById("myChart").getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ["<?= join('", "', $data['dayone']['date']); ?>"],
+      labels: ["<?php  //join('", "', $data['dayone']['date']); 
+                ?>"],
       datasets: [{
           label: 'Terkonfirmasi',
-          data: [<?= join(', ', $data['dayone']['confirmed']); ?>],
+          data: [<?php  //join(', ', $data['dayone']['confirmed']); 
+                  ?>],
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'rgba(255, 99, 132, 1)',
           borderWidth: 1
         },
         {
           label: 'Sembuh',
-          data: [<?= join(', ', $data['dayone']['recovered']); ?>],
+          data: [<?php  //join(', ', $data['dayone']['recovered']); 
+                  ?>],
           backgroundColor: 'rgba(54, 162, 235, 0.2)',
           borderColor: 'rgba(54, 162, 235, 1)',
           borderWidth: 1
         },
         {
           label: 'Meninggal',
-          data: [<?= join(', ', $data['dayone']['deaths']); ?>],
+          data: [<?php  //join(', ', $data['dayone']['deaths']); 
+                  ?>],
           backgroundColor: 'rgba(255, 206, 86, 0.2)',
           borderColor: 'rgba(255, 206, 86, 1)',
           borderWidth: 1
         },
         {
           label: 'Aktif',
-          data: [<?= join(', ', $data['dayone']['active']); ?>],
+          data: [<?php //join(', ', $data['dayone']['active']); 
+                  ?>],
           backgroundColor: 'rgba(75, 192, 192, 0.2)',
           borderColor: 'rgba(75, 192, 192, 1)',
           borderWidth: 1

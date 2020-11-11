@@ -6,9 +6,9 @@
               <span aria-hidden="true">&times;</span>
           </button>
           <!-- Sidebar - Brand -->
-          <div class="sidebar-brand d-flex justify-content-start mb-4" href="<?= BASEURL; ?>">
-              <a class="sidebar-brand-icon" href="<?= BASEURL; ?>">
-                  <img src="<?= BASEURL; ?>/img/govinsy-dark.png" width="70%" alt="" id="logo" loading="lazy">
+          <div class="sidebar-brand d-flex justify-content-start mb-4" href="<?= base_url(); ?>">
+              <a class="sidebar-brand-icon" href="<?= base_url(); ?>">
+                  <img src="<?= base_url(); ?>/img/govinsy-dark.png" width="70%" alt="" id="logo" loading="lazy">
               </a>
           </div>
 
@@ -17,41 +17,42 @@
 
 
           <!-- Nav Item - Charts -->
-          <li class="nav-item  <?php if ($data['page'] === "Statistik")  echo "active aktif"; ?>">
-              <a class="nav-link" href="<?= BASEURL; ?>/statistik">
+          <li class="nav-item  <?php if ($page === "Statistik")  echo "active aktif"; ?>">
+              <a class="nav-link" href="<?= base_url(); ?>/statistik">
                   <i class="mr-3 ml-4 fas fa-fw fa-chart-area"></i>
                   <span>STATISTIK</span></a>
           </li>
 
-          <li class="nav-item <?php if ($data['page'] === "Berita")  echo "active aktif"; ?>">
-              <a class="nav-link active" href="<?= BASEURL; ?>/berita">
+          <li class="nav-item <?php if ($page === "Berita")  echo "active aktif"; ?>">
+              <a class="nav-link active" href="<?= base_url(); ?>/berita">
                   <i class="mr-3 ml-4 fas fa-fw fa-newspaper"></i>
                   <span>BERITA</span></a>
           </li>
 
-          <li class="nav-item <?php if ($data['page'] === "Survei")  echo "active aktif"; ?>">
-              <a class="nav-link" href="<?= BASEURL; ?>/survei">
+          <li class="nav-item <?php if ($page === "Survei")  echo "active aktif"; ?>">
+              <a class="nav-link" href="<?= base_url(); ?>/survei">
                   <i class="mr-3 ml-4 fas fa-fw fa-tag"></i>
                   <span>SURVEI</span></a>
           </li>
 
-          <li class="nav-item <?php if ($data['page'] === "Tentang Kami")  echo "active aktif"; ?>">
-              <a class="nav-link" href="<?= BASEURL; ?>/tentang">
+          <li class="nav-item <?php if ($page === "Tentang Kami")  echo "active aktif"; ?>">
+              <a class="nav-link" href="<?= base_url(); ?>/tentang">
                   <i class="mr-3 ml-4 fas fa-fw fa-info"></i>
                   <span>TENTANG KAMI</span></a>
           </li>
 
 
 
-
-          <!-- Survei -->
-          <div id="survey" class="row justify-content-center position-relative">
-              <div class="col-sm-9 text-center d-none d-md-inline color-bg corner-round mt-5 mb-3 pb-3">
-                  <img src="<?= BASEURL; ?>/img/survey.png" width="70%">
-                  <p class="color-light-font mt-2">Tertarik dengan website kami<a href="<?= BASEURL; ?>/survei"> ikuti survei</a> sekarang</p>
-                  <a class="border-0 btn-dark-blue" href="<?= BASEURL; ?>/survei">Survei &rarr;</a>
+          <?php if (isset($_SESSION['profile']['survei']) && $_SESSION['profile']['survei'] != 1) : ?>
+              <!-- Survei -->
+              <div id="survey" class="row justify-content-center position-relative">
+                  <div class="col-sm-9 text-center d-none d-md-inline color-bg corner-round mt-5 mb-3 pb-3">
+                      <img src="<?= base_url(); ?>/img/survey.png" width="70%">
+                      <p class="color-light-font mt-2">Tertarik dengan website kami<a href="<?= base_url(); ?>/survei"> ikuti survei</a> sekarang</p>
+                      <a class="border-0 btn-dark-blue" href="<?= base_url(); ?>/survei">Survei &rarr;</a>
+                  </div>
               </div>
-          </div>
+          <?php endif; ?>
 
 
           <!-- Sidebar Toggler (Sidebar) -->

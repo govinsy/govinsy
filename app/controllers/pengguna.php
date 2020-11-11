@@ -1,11 +1,13 @@
 <?php
 
-class pengguna extends Controller
+namespace App\Controllers;
+
+class Pengguna extends BaseController
 {
     public function login()
     {
         // Mengambil data pengguna dari database
-        $pengguna = $this->model('pengguna_model')->getAllPengguna();
+        $pengguna = $this->pengguna_model->getAllPengguna();
 
         // Validasi pengguna
         if (isset($_POST['login'])) {
@@ -14,27 +16,27 @@ class pengguna extends Controller
                 if ($p['email'] == $_POST['email']) {
                     if ($p['password'] == md5($_POST['password'])) {
                         $_SESSION['login'] = true;
-                        $_SESSION['profile'] = $this->model('pengguna_model')->getPenggunaById($p['id']);
-                        header("Location: " . BASEURL);
+                        $_SESSION['profile'] = $this->pengguna_model->getPenggunaById($p['id']);
+                        header("Location: " . base_url());
                         exit;
                     } else {
-                        Flasher::setFlash('gagal', 'password salah', 'danger');
+                        // Flasher::setFlash('gagal', 'password salah', 'danger');
                     }
                     $emailFound = true;
                 }
             }
             if ($emailFound == false) {
-                Flasher::setFlash('gagal', 'email belum terdaftar', 'danger');
+                // Flasher::setFlash('gagal', 'email belum terdaftar', 'danger');
             }
         }
 
         $data['judul'] = 'Masuk Govinsy';
         $data['page'] = 'Masuk Govinsy';
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/topbar', $data);
-        $this->view('pengguna/login', $data);
-        $this->view('templates/footer');
+        echo view('templates/header', $data);
+        echo view('templates/sidebar', $data);
+        echo view('templates/topbar', $data);
+        echo view('pengguna/login', $data);
+        echo view('templates/footer');
     }
 
     public function logout()
@@ -46,24 +48,28 @@ class pengguna extends Controller
         setcookie('id', '', time() - 3600);
         setcookie('key', '', time() - 3600);
 
-        header("Location: " . BASEURL);
+        header("Location: " . base_url());
         exit;
     }
 
     public function daftar()
     {
         if (isset($_POST['daftar'])) {
-            if ($this->model('pengguna_model')->tambahPengguna($_POST) > 0) {
-                Flasher::setFlash('berhasil', 'anda berhasil mendaftar', 'success');
+            if ($this->pengguna_model->tambahPengguna($_POST)  == true) {
+                // Flasher::setFlash('berhasil', 'anda berhasil mendaftar', 'success');
+                header('location: ' . base_url() . '/pengguna/login');
+                exit;
             } else {
-                Flasher::setFlash('gagal', 'gagal mendaftar', 'danger');
+                // Flasher::setFlash('gagal', 'gagal mendaftar', 'danger');
+                header('location: ' . base_url() . '/pengguna/daftar');
+                exit;
             }
         }
 
         $data['judul'] = 'Daftar Govinsy';
-        $this->view('templates/header', $data);
-        $this->view('pengguna/daftar', $data);
-        $this->view('templates/footer');
+        echo view('templates/header', $data);
+        echo view('pengguna/daftar', $data);
+        echo view('templates/footer');
     }
 
     public function profile()
@@ -72,17 +78,18 @@ class pengguna extends Controller
         $data['page'] = 'Profile';
         if (isset($_POST['crop'])) {
 
-            $this->model('pengguna_model')->editProfile();
+            $this->pengguna_model->editProfile();
         }
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/topbar', $data);
-        $this->view('pengguna/profile', $data);
-        $this->view('templates/footer');
+        echo view('templates/header', $data);
+        echo view('templates/sidebar', $data);
+        echo view('templates/topbar', $data);
+        echo view('pengguna/profile', $data);
+        echo view('templates/footer');
     }
     public function removepic()
     {
-        $this->model('pengguna_model')->removeImage();
+        $this->pengguna_model->removeImage();
+        header('location:' . base_url() . '/pengguna/profile');
     }
 
     // public function detail($id)
@@ -98,11 +105,11 @@ class pengguna extends Controller
     // {
     //     if( $this->model('Statistik')->tambahDataStatistik($_POST) > 0 ) {
     //         Flasher::setFlash('berhasil', 'ditambahkan', 'success');
-    //         header('Location: ' . BASEURL . '/statistik');
+    //         header('Location: ' . base_url() . '/statistik');
     //         exit;
     //     } else {
     //         Flasher::setFlash('gagal', 'ditambahkan', 'danger');
-    //         header('Location: ' . BASEURL . '/statistik');
+    //         header('Location: ' . base_url() . '/statistik');
     //         exit;
     //     }
     // }
@@ -111,11 +118,11 @@ class pengguna extends Controller
     // {
     //     if( $this->model('Statistik')->hapusDataStatistik($id) > 0 ) {
     //         Flasher::setFlash('berhasil', 'dihapus', 'success');
-    //         header('Location: ' . BASEURL . '/statistik');
+    //         header('Location: ' . base_url() . '/statistik');
     //         exit;
     //     } else {
     //         Flasher::setFlash('gagal', 'dihapus', 'danger');
-    //         header('Location: ' . BASEURL . '/statistik');
+    //         header('Location: ' . base_url() . '/statistik');
     //         exit;
     //     }
     // }
@@ -129,11 +136,11 @@ class pengguna extends Controller
     // {
     //     if( $this->model('Statistik')->ubahDataStatistik($_POST) > 0 ) {
     //         Flasher::setFlash('berhasil', 'diubah', 'success');
-    //         header('Location: ' . BASEURL . '/statistik');
+    //         header('Location: ' . base_url() . '/statistik');
     //         exit;
     //     } else {
     //         Flasher::setFlash('gagal', 'diubah', 'danger');
-    //         header('Location: ' . BASEURL . '/statistik');
+    //         header('Location: ' . base_url() . '/statistik');
     //         exit;
     //     } 
     // }

@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-lg-12">
             <div align="center" class="jumbotron color-content color-content text-align-center mb-4">
-                <img src="<?php echo BASEURL . "/img/provinsi/logo/" . $_GET['domain_id'] . ".png"; ?>" width="20%">
+                <img src="<?php echo base_url() . "/img/provinsi/logo/" . $_GET['domain_id'] . ".png"; ?>" width="20%">
                 <h2 class="mt-3 color-light-font font-weight-bold">Provinsi <?= $_GET['nama_provinsi'] ?></h2>
                 <small class="text-gray-600">IBU KOTA</small>
-                <h6 class="color-light-font"><?= $data['provdesc']['ibu_kota'] ?></h6>
+                <h6 class="color-light-font"><?= $provdesc['ibu_kota'] ?></h6>
                 <a href="https://www.google.com/maps/place/<?php echo "" . str_replace(" ", "+", $_GET['nama_provinsi']) ?>" target="_blank" rel="noopener noreferrer">Lihat peta</a>
             </div>
         </div>
@@ -27,7 +27,7 @@
                 <div class="row justify-content-center" id="covid19">
                     <div class="col-lg-12">
 
-                        <p class="color-light-font mb-4 text-center justify-content-center">DATA COVID 19 PROVINSI <?= $data['covid']['key'] ?></p>
+                        <p class="color-light-font mb-4 text-center justify-content-center">DATA COVID 19 PROVINSI <?= $covid['key'] ?></p>
                         <ul id="covid" class="color-light-font row justify-content-around pb-0 align-items-center">
                             <li class="col-lg-4 mb-5 mt-1">
                                 <div class="mr-3 color-blue-bg cov-icon corner-round-10 float-left">
@@ -35,10 +35,10 @@
                                 </div>
                                 <div class="pt-2">
                                     <small class="text-gray-600 mr-1 float-left">POSITIF</small>
-                                    <p class="small color-blue-font mb-0"><?= '+' . number_format($data['covid']['penambahan']['positif']) ?></p>
+                                    <p class="small color-blue-font mb-0"><?= '+' . number_format($covid['penambahan']['positif']) ?></p>
 
-                                    <?php if ($data['covid'] != false) :  ?>
-                                        <h1><?= number_format($data['covid']['jumlah_kasus']) ?></h1>
+                                    <?php if ($covid != false) :  ?>
+                                        <h1><?= number_format($covid['jumlah_kasus']) ?></h1>
                                     <?php else : ?>
                                         <h4>Belum Terdata</h4>
                                     <?php endif; ?>
@@ -51,9 +51,9 @@
                                 </div>
                                 <div class="pt-2">
                                     <small class="text-gray-600 mr-1 float-left">SEMBUH</small>
-                                    <p class="small color-green-font mb-0"><?= '+' . number_format($data['covid']['penambahan']['sembuh']) ?></p>
-                                    <?php if ($data['covid'] != false) :  ?>
-                                        <h1><?= number_format($data['covid']['jumlah_sembuh']) ?></h1>
+                                    <p class="small color-green-font mb-0"><?= '+' . number_format($covid['penambahan']['sembuh']) ?></p>
+                                    <?php if ($covid != false) :  ?>
+                                        <h1><?= number_format($covid['jumlah_sembuh']) ?></h1>
                                     <?php else : ?>
                                         <h4>Belum Terdata</h4>
                                     <?php endif; ?>
@@ -65,9 +65,9 @@
                                 </div>
                                 <div class="pt-2">
                                     <small class="text-gray-600 mr-1 float-left">MENINGGAL</small>
-                                    <p class="small color-red-font mb-0"><?= '+' . number_format($data['covid']['penambahan']['meninggal']) ?></p>
-                                    <?php if ($data['covid'] != false) :  ?>
-                                        <h1><?= number_format($data['covid']['jumlah_meninggal']) ?></h1>
+                                    <p class="small color-red-font mb-0"><?= '+' . number_format($covid['penambahan']['meninggal']) ?></p>
+                                    <?php if ($covid != false) :  ?>
+                                        <h1><?= number_format($covid['jumlah_meninggal']) ?></h1>
                                     <?php else : ?>
                                         <h4>Belum Terdata</h4>
                                     <?php endif; ?>
@@ -83,14 +83,14 @@
                 <!-- RS Rujukan -->
                 <div class="row mb-3" id="rumah-sakit">
                     <div class="col-12">
-                        <p class="mt-3 color-light-font mb-4 text-center justify-content-center">DAFTAR RUMAH SAKIT DI PROVINSI <?= $data['covid']['key'] ?></p>
+                        <p class="mt-3 color-light-font mb-4 text-center justify-content-center">DAFTAR RUMAH SAKIT DI PROVINSI <?= $covid['key'] ?></p>
                         <div class="card color-content border-0">
                             <div class="card-body row justify-content-center">
 
                                 <div class="col-md-12 slide-wrapper">
                                     <ul class="slide" id="nomor-slide">
-                                        <?php if (isset($data['hospital'])) : ?>
-                                            <?php foreach ($data['hospital'] as $h) : ?>
+                                        <?php if (isset($hospital)) : ?>
+                                            <?php foreach ($hospital as $h) : ?>
                                                 <?php if (stristr($_GET['nama_provinsi'], $h['province'])) : ?>
 
                                                     <li class="color-bg">
@@ -155,27 +155,27 @@
 
                         <div class="col-md-4 color-content mb-3 text-center card border-0" style="width: 18rem;">
                             <div class="card-body rounded color-bg">
-                                <img class="mt-3" src="<?= BASEURL; ?>/img/bank.png" width="35%" alt="">
+                                <img class="mt-3" src="<?= base_url(); ?>/img/bank.png" width="35%" alt="">
                                 <p class="text-gray-600 font-16 mt-3">APBD</p>
-                                <h2 class="font-weight-bold"><?= $data['provdesc']['apbd'] ?></h2>
+                                <h2 class="font-weight-bold"><?= $provdesc['apbd'] ?></h2>
                                 <p class="font-10">Miliar rupiah</p>
                             </div>
                         </div>
 
                         <div class="col-md-4 color-content mb-3 text-center card border-0" style="width: 18rem;">
                             <div class="card-body rounded color-bg">
-                                <img class="mt-3" src="<?= BASEURL; ?>/img/coin.png" width="35%" alt="">
+                                <img class="mt-3" src="<?= base_url(); ?>/img/coin.png" width="35%" alt="">
                                 <p class="text-gray-600 font-16 mt-3">PRDB</p>
-                                <h2 class="font-weight-bold"><?= $data['provdesc']['populasi'] ?></h2>
+                                <h2 class="font-weight-bold"><?= $provdesc['populasi'] ?></h2>
                                 <p class="font-10">Triliun rupiah</p>
                             </div>
                         </div>
 
                         <div class="col-md-4 color-content mb-3 text-center card border-0" style="width: 18rem;">
                             <div class="card-body rounded color-bg">
-                                <img class="mt-3" src="<?= BASEURL; ?>/img/invest.png" width="35%" alt="">
+                                <img class="mt-3" src="<?= base_url(); ?>/img/invest.png" width="35%" alt="">
                                 <p class="text-gray-600 font-16 mt-3">PRDB PER KAPITA</p>
-                                <h2 class="font-weight-bold"><?= $data['provdesc']['prdb_per_kapita'] ?></h2>
+                                <h2 class="font-weight-bold"><?= $provdesc['prdb_per_kapita'] ?></h2>
                                 <p class="font-10">Juta rupiah</p>
                             </div>
                         </div>
@@ -208,23 +208,23 @@
                 <div class="card-body color-light-font mt-3 position-relative">
                     <div class="row justify-content-center">
                         <div class="peta col-sm-6">
-                            <img class="ml-3" src="<?php echo BASEURL . "/img/provinsi/peta/" . $_GET['domain_id'] . ".svg"; ?>" width="90%" alt="">
+                            <img class="ml-3" src="<?php echo base_url() . "/img/provinsi/peta/" . $_GET['domain_id'] . ".svg"; ?>" width="90%" alt="">
                         </div>
                         <div class="info-wilayah pl-4 col-sm-6">
                             <small class="text-gray-600">LUAS WILAYAH</small>
-                            <h5><?= $data['provdesc']['luas_total'] ?>
+                            <h5><?= $provdesc['luas_total'] ?>
                                 <small style="font-size:1rem;"><sub>KM <sup>2</sup></sub></small>
                             </h5>
                             <small class="text-gray-600 mt-5">JUMLAH PENDUDUK</small>
-                            <h5><?= $data['provdesc']['populasi'] ?>
+                            <h5><?= $provdesc['populasi'] ?>
                                 <small style=" font-size:1rem;"><sub>Jiwa</sub></small>
                             </h5>
                             <small class="text-gray-600 mt-5">KEPADATAN PENDUDUK</small>
-                            <h5><?= $data['provdesc']['populasi_per_luas'] ?>
+                            <h5><?= $provdesc['populasi_per_luas'] ?>
                                 <small style=" font-size:1rem;"><sub>Jiwa/KM <sup>2</sup></sub></small>
                             </h5>
                             <small class="text-gray-600 mt-5">PULAU</small>
-                            <h5><?= $data['provdesc']['pulau'] ?></h5>
+                            <h5><?= $provdesc['pulau'] ?></h5>
                         </div>
                     </div>
 
@@ -243,17 +243,17 @@
                     <h6 class="m-0 font-weight-bold ">Sosial</h6>
                 </div>
                 <div class="card-body color-light-font mt-4">
-                    <h4 class="small font-weight">PRESENTASE PENDUDUK MISKIN <span class="float-right color-red-font"><?php echo ($data['stat']['penduduk_miskin']['value'] != null) ? $data['stat']['penduduk_miskin']['value'] . "%" : "Belum Terdata" ?></span></h4>
+                    <h4 class="small font-weight">PRESENTASE PENDUDUK MISKIN <span class="float-right color-red-font"><?php echo ($stat['penduduk_miskin']['value'] != null) ? $stat['penduduk_miskin']['value'] . "%" : "Belum Terdata" ?></span></h4>
                     <div class="progress color-bg mb-4" style="height:25px">
-                        <div class="progress-bar color-red-bg" role="progressbar" style="width: <?= $data['stat']['penduduk_miskin']['value'] ?>%" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar color-red-bg" role="progressbar" style="width: <?= $stat['penduduk_miskin']['value'] ?>%" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight">TINGKAT PENGANGGURAN<span class="color-blue-font float-right"><?php echo ($data['stat']['pengangguran']['value'] != null) ? $data['stat']['pengangguran']['value'] . "%" : "Belum Terdata" ?></span></h4>
+                    <h4 class="small font-weight">TINGKAT PENGANGGURAN<span class="color-blue-font float-right"><?php echo ($stat['pengangguran']['value'] != null) ? $stat['pengangguran']['value'] . "%" : "Belum Terdata" ?></span></h4>
                     <div class="progress color-bg mb-4" style="height:25px">
-                        <div class="progress-bar" role="progressbar" style="width: <?= $data['stat']['pengangguran']['value'] ?>%" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" role="progressbar" style="width: <?= $stat['pengangguran']['value'] ?>%" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight">INDEK PEMBANGUNAN MANUSIA<span class="color-green-font float-right"><?= $data['provdesc']['ipm'] ?>%</span></h4>
+                    <h4 class="small font-weight">INDEK PEMBANGUNAN MANUSIA<span class="color-green-font float-right"><?= $provdesc['ipm'] ?>%</span></h4>
                     <div class="progress color-bg mb-4" style="height:25px">
-                        <div class="progress-bar color-green-bg" role="progressbar" style="width: <?= intval($data['provdesc']['ipm']) ?>%" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar color-green-bg" role="progressbar" style="width: <?= intval($provdesc['ipm']) ?>%" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
             </div>

@@ -1,9 +1,11 @@
 <?php
 
+namespace App\Controllers;
+
 // Lokasi method getJSON di core/Controller.php
 // Lokasi daftar url dan field di config/config.php
 
-class berita extends Controller
+class Berita extends BaseController
 {
 
     public function index()
@@ -17,10 +19,10 @@ class berita extends Controller
         $data['berita'] = $berita['articles']; // berita covid se-indonesia
 
         // Views
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/topbar', $data);
-        $this->view('berita/index', $data);
-        $this->view('templates/footer');
+        echo view('templates/header', $data);
+        echo view('templates/sidebar', $data);
+        echo view('templates/topbar', $data);
+        echo view('berita/index', $data);
+        echo view('templates/footer');
     }
 }

@@ -1,15 +1,17 @@
 <?php
 
-class tentang extends Controller
+namespace App\Controllers;
+
+class Tentang extends BaseController
 {
     public function index()
     {
         $data['judul'] = 'Tentang Kami';
-        $data['page'] = 'Tentang Kami';//Digunakan untuk indikator di Sidebar
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/topbar', $data);
-        $this->view('tentang/index', $data);
-        $this->view('templates/footer');
+        $data['page'] = 'Tentang Kami'; //Digunakan untuk indikator di Sidebar
+        echo view('templates/header', $data);
+        echo view('templates/sidebar', $data);
+        echo view('templates/topbar', $data);
+        echo view('tentang/index', $data);
+        echo view('templates/footer');
     }
 }

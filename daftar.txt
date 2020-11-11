@@ -1,4 +1,4 @@
-GOVINSY LIST
+////GOVINSY LIST
 
 	1. Sosial (Strategic indicator)
 		a. Jumlah Penduduk
@@ -20,7 +20,7 @@ GOVINSY LIST
 
 
 
-API
+////API
 
 -https://newsapi.org/s/indonesia-news-api
 
@@ -32,3 +32,13 @@ https://webapi.bps.go.id/v1/api/list
 
 - list all statictable 
 https://webapi.bps.go.id/v1/api/list/
+
+
+
+////Fitur
+
+- Prediksi
+- Perbandingan statistik
+- Export to xls,pdf
+- Premium account
+- Map UI

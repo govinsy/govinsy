@@ -1,11 +1,11 @@
 <div class="container">
 
   <!-- Cek apakah user sudah mengikuti survei -->
-  <?php if ($data['ikutSurvei'] == 1) : ?>
+  <?php if ($ikutSurvei == 1) : ?>
     <div id="kesiapan" class="row justify-content-center text-center">
       <div class="col-md-10">
         <h3 class="color-light-font">Anda Sudah mengikuti survei</h3>
-        <a href="<?= BASEURL; ?>/statistik">Lihat hasil statistik</a>
+        <a href="<?= base_url(); ?>/statistik">Lihat hasil statistik</a>
       </div>
     </div>
   <?php else : ?>
@@ -18,7 +18,7 @@
 
           <div class="col-lg-12 mt-4 mb-5">
             <h2 class="color-light-font">Apakah anda sudah siap untuk mengikuti survei?</h2>
-            <a href="<?= BASEURL; ?>/tentang/survei">Lihat selengkapnya tentang survei</a>
+            <a href="<?= base_url(); ?>/tentang/survei">Lihat selengkapnya tentang survei</a>
           </div>
         </div>
 
@@ -45,16 +45,17 @@
         <!-- End Indikator Pertanyaan Survei -->
 
         <div class="jumbotron mt-4 color-content py-4" id="survei-pertanyaan">
-          <form method="post" action="<?= BASEURL; ?>/survei">
+          <form method="post" action="<?= base_url(); ?>/survei">
+            <?= csrf_field(); ?>
             <!-- Menampilkan seluruh pertanyaan -->
-            <?php if (isset($data['pertanyaan'])) : ?>
+            <?php if (isset($pertanyaan)) : ?>
               <?php $i = 0;
-              foreach ($data['pertanyaan'] as $p) : $i++ ?>
+              foreach ($pertanyaan as $p) : $i++ ?>
                 <ul id="P<?= $i; ?>" class="list-group hilang">
                   <p class="font-16 text-gray-600 mb-0">PERTANYAAN <?= $i ?></p>
                   <p class="font-26 link-not-active mb-5"><?= $p['pertanyaan'] ?></p>
 
-                  <?php  /*Menampilkan seluruh jawaban*/ foreach ($data['jawaban'] as $j) : ?>
+                  <?php  /*Menampilkan seluruh jawaban*/ foreach ($jawaban as $j) : ?>
 
                     <?php /*Mencari data jawaban yang sesuai dengan pertanyaan*/ if ($j['id_pertanyaan'] == $p['id']) : ?>
 
@@ -101,7 +102,8 @@
     </div>
     <!-- End Survei -->
 
-    <?php Flasher::flash(); ?>
+    <?php //Flasher::flash(); 
+    ?>
   <?php endif; ?>
 
 

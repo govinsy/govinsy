@@ -1,13 +1,12 @@
-<?php 
+<?php
 
-class statistik_model {
-    private $table = 'statistik';
-    private $db;
+namespace App\Models;
 
-    public function __construct()
-    {
-        $this->db = new Database;
-    }
+use CodeIgniter\Model;
+
+class Statistik_model extends Model
+{
+    protected $table = 'statistik';
 
     // public function getAllStatistik()
     // {
@@ -27,7 +26,7 @@ class statistik_model {
     //     $query = "INSERT INTO statistik
     //                 VALUES
     //               ('', :nama, :nrp, :email, :jurusan)";
-        
+
     //     $this->db->query($query);
     //     $this->db->bind('nama', $data['nama']);
     //     $this->db->bind('nrp', $data['nrp']);
@@ -42,7 +41,7 @@ class statistik_model {
     // public function hapusDataStatistik($id)
     // {
     //     $query = "DELETE FROM statistik WHERE id = :id";
-        
+
     //     $this->db->query($query);
     //     $this->db->bind('id', $id);
 
@@ -60,7 +59,7 @@ class statistik_model {
     //                 email = :email,
     //                 jurusan = :jurusan
     //               WHERE id = :id";
-        
+
     //     $this->db->query($query);
     //     $this->db->bind('nama', $data['nama']);
     //     $this->db->bind('nrp', $data['nrp']);

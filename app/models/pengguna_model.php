@@ -1,45 +1,37 @@
 <?php
 
-class pengguna_model
-{
-    private $table = 'pengguna';
-    private $db;
+namespace App\Models;
 
-    public function __construct()
-    {
-        $this->db = new Database;
-    }
+use CodeIgniter\Model;
+
+class Pengguna_model extends Model
+{
+    protected $table = 'pengguna';
 
     public function getAllPengguna()
     {
-        $this->db->query('SELECT * FROM ' . $this->table);
-        return $this->db->resultSet();
+        $query = $this->db->query("SELECT * FROM {$this->table}");
+        return $query->getResultArray();
     }
 
     public function getPenggunaById($id)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
-        return $this->db->single();
+        $query = $this->db->query("SELECT * FROM {$this->table} WHERE id = '{$id}' ");
+        return $query->getRowArray();
     }
 
-    public function tambahPengguna($data)
+    public function tambahPengguna()
     {
-        $query = "INSERT INTO pengguna
-                    VALUES
-                  (:id, :nama, :email, :password,0,'default.png')";
+        $data = [
+            'id' => UNIQUEID,
+            'nama'  => $_POST['nama'],
+            'email'  => $_POST['email'],
+            'password'  => md5($_POST['password1']),
+            'survei'  => 0,
+            'gambar'  => 'default.png'
+        ];
 
-        $this->db->query($query);
-        $this->db->bind('id', UNIQUEID);
-        $this->db->bind('nama', $data['nama']);
-        $this->db->bind('email', $data['email']);
-        if ($data['password1'] != $data['password2']) {
-            return 0;
-        }
-        $this->db->bind('password', md5($data['password1']));
-        $this->db->execute();
-
-        return $this->db->rowCount();
+        return $this->db->table($this->table)->insert($data);
     }
 
     // public function editPengguna($data)
@@ -77,7 +69,7 @@ class pengguna_model
         if (!in_array($ekstensi, $ekstensigambar)) {
             echo "<script>
             alert('Silahkan pilih file gambar yang valid');
-            window.location.replace('" . BASEURL . "/pengguna/profile');
+            window.location.replace('" . base_url() . "/pengguna/profile');
             </script>";
         } else {
             $namaFile = $_SESSION['profile']['id'];
@@ -91,12 +83,8 @@ class pengguna_model
             file_put_contents($image_path, $data); //Upload gambar
 
             //Mengubah nama file gambar di database
-            $query = "UPDATE pengguna SET gambar='$namaFile' WHERE id=:id";
-            $this->db->query($query);
-            $this->db->bind('id', $_SESSION['profile']['id']);
-            $this->db->execute();
+            $this->db->table($this->table)->where('id', $_SESSION['profile']['id'])->update(['gambar' => $namaFile]);
             //End mengubah nama file gambar di database
-
 
             $_SESSION['profile']['gambar'] = $namaFile; //Mengubah session nama gambar agar berubah saat berganti gambar
         }
@@ -108,7 +96,10 @@ class pengguna_model
     public function removeImage()
     {
         if ($_SESSION['profile']['gambar'] == 'default.png') {
-            header('location:' . BASEURL . '/pengguna/profile');
+            echo "<script>
+            alert('Silahkan pilih file gambar yang valid');
+            window.location.replace('" . base_url() . "/pengguna/profile');
+            </script>";
         } else {
             //Hapus gambar lama
             if (file_exists(BASEPATH . "/public/img/profile/" . $_SESSION['profile']['gambar']) && ($_SESSION['profile']['gambar'] != 'default.png')) {
@@ -117,14 +108,12 @@ class pengguna_model
             //End hapus gambar lama
 
             //Mengubah nama file gambar di database
-            $query = "UPDATE pengguna SET gambar='default.png' WHERE id=:id";
-            $this->db->query($query);
-            $this->db->bind('id', $_SESSION['profile']['id']);
-            $this->db->execute();
+            $this->db->table($this->table)->where('id', $_SESSION['profile']['id'])->update(['gambar' => 'default.png']);
             //End mengubah nama file gambar di database
 
             $_SESSION['profile']['gambar'] = 'default.png'; //Mengubah session nama gambar menjadi default
-            header('location:' . BASEURL . '/pengguna/profile');
+            header("Location:" . base_url() . "/pengguna/profile");
+            exit;
         }
     }
 }

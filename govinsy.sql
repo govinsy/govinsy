@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 28, 2020 at 04:46 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.2
+-- Waktu pembuatan: 11 Nov 2020 pada 15.30
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jawaban`
+-- Struktur dari tabel `jawaban`
 --
 
 CREATE TABLE `jawaban` (
@@ -35,7 +35,7 @@ CREATE TABLE `jawaban` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `jawaban`
+-- Dumping data untuk tabel `jawaban`
 --
 
 INSERT INTO `jawaban` (`id`, `id_pertanyaan`, `jawaban`) VALUES
@@ -71,7 +71,7 @@ INSERT INTO `jawaban` (`id`, `id_pertanyaan`, `jawaban`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jawaban_pengguna`
+-- Struktur dari tabel `jawaban_pengguna`
 --
 
 CREATE TABLE `jawaban_pengguna` (
@@ -82,14 +82,15 @@ CREATE TABLE `jawaban_pengguna` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `jawaban_pengguna`
+-- Dumping data untuk tabel `jawaban_pengguna`
 --
 
 INSERT INTO `jawaban_pengguna` (`id`, `id_jawaban`, `id_pengguna`, `respon`) VALUES
-('1048c', '1982a', '2b1c6', ''),
+('016e7', '35ed7', '5f4da', ''),
+('0f8e8', '9e9aa', '5f4da', ''),
+('17486', '187c1', '4daac', ''),
 ('1a9c5', 'dbcd6', 'cac3e', ''),
-('21284', '9e9aa', '2b1c6', ''),
-('3236e', '483d1', '2b1c6', ''),
+('2937c', '483d1', '5f4da', ''),
 ('373a2', '35ed7', 'cac3e', ''),
 ('3903a', '821c3', '75924', ''),
 ('3d6a5', '9e9aa', 'cac3e', ''),
@@ -97,25 +98,29 @@ INSERT INTO `jawaban_pengguna` (`id`, `id_jawaban`, `id_pengguna`, `respon`) VAL
 ('4c20c', '2d8a0', 'cac3e', ''),
 ('4f162', '0d1b7', '75924', ''),
 ('5b6d2', 'b63ad', '75924', ''),
+('5e57e', '2d8a0', '4daac', ''),
 ('61944', '01f5c', '75924', ''),
 ('62a3e', '436c0', 'cac3e', ''),
-('81727', '457a4', '2b1c6', ''),
 ('9710c', '821c3', 'd6d5e', ''),
+('ac603', '889b9', '4daac', ''),
 ('b7714', 'e847a', '2d287', ''),
+('bf892', 'c793b', '5f4da', ''),
 ('bf946', '1982a', 'd6d5e', ''),
 ('c67fa', '0d2cb', '2d287', ''),
+('c97ed', '3fa31', '4daac', ''),
 ('ceb22', '0d1b7', '2d287', ''),
 ('d67e3', '187c1', 'd6d5e', ''),
+('de9d5', '0d2cb', '5f4da', ''),
 ('df07f', '187c1', '2d287', ''),
 ('e6dc0', 'b40ea', 'd6d5e', ''),
-('ee355', '8b283', '2b1c6', ''),
+('ecb0f', '1982a', '4daac', ''),
 ('eedb2', 'e847a', '75924', ''),
 ('ef6c4', 'b40ea', '2d287', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengguna`
+-- Struktur dari tabel `pengguna`
 --
 
 CREATE TABLE `pengguna` (
@@ -123,25 +128,29 @@ CREATE TABLE `pengguna` (
   `nama` varchar(64) NOT NULL,
   `email` varchar(64) NOT NULL,
   `password` varchar(256) NOT NULL,
-  `survei` int(1) NOT NULL
+  `survei` int(1) NOT NULL,
+  `gambar` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pengguna`
+-- Dumping data untuk tabel `pengguna`
 --
 
-INSERT INTO `pengguna` (`id`, `nama`, `email`, `password`, `survei`) VALUES
-('2b1c6', 'Cobu', 'cobu666@gmail.com', '8f008d6527e97b8f657299683d94c9f0', 0),
-('2d287', 'Bukan Admin', 'bukanadmin@user.com', '992baf4879618dbfb66e5786ebb3a923', 1),
-('4daac', 'Usr', 'usr@gmail.com', '5c5797a735f5c133e2999b6e33377772', 1),
-('75924', 'Opet', 'opet@govinsy.com', 'd73d5a80ce906473d290d81e5f694508', 1),
-('cac3e', 'User', 'user@user.com', 'ee11cbb19052e40b07aac0ca060c23ee', 1),
-('d6d5e', 'Pengguna', 'pengguna@govinsy.com', '8b097b8a86f9d6a991357d40d3d58634', 1);
+INSERT INTO `pengguna` (`id`, `nama`, `email`, `password`, `survei`, `gambar`) VALUES
+('2b1c6', 'Cobu', 'cobu666@gmail.com', '8f008d6527e97b8f657299683d94c9f0', 0, '2b1c6.jpg'),
+('2d287', 'Bukan Admin', 'bukanadmin@user.com', '992baf4879618dbfb66e5786ebb3a923', 1, 'default.png'),
+('4daac', 'Usr', 'usr@gmail.com', '5c5797a735f5c133e2999b6e33377772', 1, '4daac.jpg'),
+('4fba9', 'Danny Sukitman', 'danny@gmail.com', 'd4e17a9b560c652ba56e912bfb37cf87', 0, '4fba9.jpg'),
+('5f4da', 'Uer', 'uer@gmail.com', '3f631b2dababf3fc4b672d4f5d92fc13', 1, '5f4da.png'),
+('75924', 'Opet', 'opet@govinsy.com', 'd73d5a80ce906473d290d81e5f694508', 1, 'default.png'),
+('c7755', 'Takahiro', 'taka@gmail.com', 'ed98a56bb72a5caee7230ff335d83f7a', 0, 'c7755.jpg'),
+('cac3e', 'User', 'user@user.com', 'ee11cbb19052e40b07aac0ca060c23ee', 1, 'default.png'),
+('d6d5e', 'Pengguna', 'pengguna@govinsy.com', '8b097b8a86f9d6a991357d40d3d58634', 1, 'default.png');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pertanyaan`
+-- Struktur dari tabel `pertanyaan`
 --
 
 CREATE TABLE `pertanyaan` (
@@ -152,7 +161,7 @@ CREATE TABLE `pertanyaan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pertanyaan`
+-- Dumping data untuk tabel `pertanyaan`
 --
 
 INSERT INTO `pertanyaan` (`id`, `id_survei`, `tipe`, `pertanyaan`) VALUES
@@ -165,7 +174,7 @@ INSERT INTO `pertanyaan` (`id`, `id_survei`, `tipe`, `pertanyaan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `survei`
+-- Struktur dari tabel `survei`
 --
 
 CREATE TABLE `survei` (
@@ -174,7 +183,7 @@ CREATE TABLE `survei` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `survei`
+-- Dumping data untuk tabel `survei`
 --
 
 INSERT INTO `survei` (`id`, `kategori`) VALUES
@@ -186,31 +195,31 @@ INSERT INTO `survei` (`id`, `kategori`) VALUES
 --
 
 --
--- Indexes for table `jawaban`
+-- Indeks untuk tabel `jawaban`
 --
 ALTER TABLE `jawaban`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `jawaban_pengguna`
+-- Indeks untuk tabel `jawaban_pengguna`
 --
 ALTER TABLE `jawaban_pengguna`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pengguna`
+-- Indeks untuk tabel `pengguna`
 --
 ALTER TABLE `pengguna`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pertanyaan`
+-- Indeks untuk tabel `pertanyaan`
 --
 ALTER TABLE `pertanyaan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `survei`
+-- Indeks untuk tabel `survei`
 --
 ALTER TABLE `survei`
   ADD PRIMARY KEY (`id`);
