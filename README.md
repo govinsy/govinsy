@@ -1,2 +1,2 @@
-# govinsy
-goverment covid-19 impact statistics and information system
+# Govinsy
+Website tentang informasi data statistik di Indonesia
