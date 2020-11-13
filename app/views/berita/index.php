@@ -21,10 +21,9 @@
             <?php endforeach; ?>
         <?php else : ?>
             <div class="container">
-                <p class="text-danger font-weight-bold">gagal mengambil data: periksa koneksi internet</p>
+                <p class="text-danger font-weight-bold">Gagal mengambil data Berita : periksa koneksi internet anda</p>
             </div>
         <?php endif ?>
 
     </div>
-    <?php var_dump($berita); ?>
 </div>

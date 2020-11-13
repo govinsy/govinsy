@@ -256,45 +256,50 @@ font-size 42px = 2.625rem
 }
 .dark-mode .border-blue-3
 {
-    border:3px #2D8DFD solid;
+    border:3px #2D8DFD solid !important;
 }
 .dark-mode .border-green-3
 {
-    border:3px #15CABC solid;
+    border:3px #15CABC solid !important;
 }
 .dark-mode .border-red-3
 {
-    border:3px #FC2E7E solid;
+    border:3px #FC2E7E solid !important;
 }
 .dark-mode .border-blue-2
 {
-    border:2px #2D8DFD solid;
+    border:2px #2D8DFD solid !important;
 }
 .dark-mode .border-green-2
 {
-    border:2px #15CABC solid;
+    border:2px #15CABC solid !important;
 }
 .dark-mode .border-red-2
 {
-    border:2px #FC2E7E solid;
+    border:2px #FC2E7E solid !important;
 }
 .dark-mode .border-blue-1
 {
-    border:1px #2D8DFD solid;
+    border:1px #2D8DFD solid !important;
 }
 .dark-mode .border-green-1
 {
-    border:1px #15CABC solid;
+    border:1px #15CABC solid !important;
 }
 .dark-mode .border-red-1
 {
-    border:1px #FC2E7E solid;
+    border:1px #FC2E7E solid !important;
 }
 
 /*  ////////////////
 /////// End Border  /////////
 ///////////////////////////
 */
+
+.opacity-5
+{
+    opacity:0.5;
+}
 
 .hover-opacity-6:hover
 {
@@ -316,6 +321,13 @@ font-size 42px = 2.625rem
     color:#BFC0C2;
     background-color: transparent;
 }
+
+/* .dark-mode .form-inp-error:focus
+{
+    border:1px solid #FC2E7E !important;
+    color:#BFC0C2;
+    background-color: transparent;
+} */
 .corner-round
 {
     border-radius:1rem;

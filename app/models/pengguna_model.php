@@ -20,6 +20,12 @@ class Pengguna_model extends Model
         return $query->getRowArray();
     }
 
+    public function getPenggunaByEmail($email)
+    {
+        $query = $this->db->query("SELECT * FROM {$this->table} WHERE email = '{$email}' ");
+        return $query->getRowArray();
+    }
+
     public function tambahPengguna()
     {
         $data = [
@@ -97,7 +103,7 @@ class Pengguna_model extends Model
     {
         if ($_SESSION['profile']['gambar'] == 'default.png') {
             echo "<script>
-            alert('Silahkan pilih file gambar yang valid');
+            alert('Anda harus mengganti gambar terlebih dahulu');
             window.location.replace('" . base_url() . "/pengguna/profile');
             </script>";
         } else {

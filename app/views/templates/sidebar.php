@@ -43,7 +43,7 @@
 
 
 
-          <?php if (isset($_SESSION['profile']['survei']) && $_SESSION['profile']['survei'] != 1) : ?>
+          <?php if ((isset($_SESSION['profile']['survei']) && $_SESSION['profile']['survei'] != 1) || !isset($_SESSION['profile']['survei'])) : ?>
               <!-- Survei -->
               <div id="survey" class="row justify-content-center position-relative">
                   <div class="col-sm-9 text-center d-none d-md-inline color-bg corner-round mt-5 mb-3 pb-3">

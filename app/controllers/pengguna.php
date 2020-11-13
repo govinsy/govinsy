@@ -4,6 +4,10 @@ namespace App\Controllers;
 
 class Pengguna extends BaseController
 {
+    public function __construct()
+    {
+        $this->validation = \Config\Services::validation(); //Deklarasi objek validation yang akan digunakan di form validation
+    }
     public function login()
     {
         // Mengambil data pengguna dari database
@@ -11,27 +15,43 @@ class Pengguna extends BaseController
 
         // Validasi pengguna
         if (isset($_POST['login'])) {
-            $emailFound = false;
-            foreach ($pengguna as $p) {
-                if ($p['email'] == $_POST['email']) {
-                    if ($p['password'] == md5($_POST['password'])) {
-                        $_SESSION['login'] = true;
-                        $_SESSION['profile'] = $this->pengguna_model->getPenggunaById($p['id']);
-                        header("Location: " . base_url());
-                        exit;
-                    } else {
-                        // Flasher::setFlash('gagal', 'password salah', 'danger');
+
+            if ($this->validate([
+                'email' =>
+                [
+                    'rules' => 'required|valid_email',
+                    'errors' => [
+                        'required' => 'Silahkan isi email anda',
+                        'valid_email' => 'Gunakan email anda yang valid',
+                    ]
+                ],
+                'password' => 'required',
+            ])) {
+
+                $emailFound = false;
+                foreach ($pengguna as $p) {
+                    if ($p['email'] == $_POST['email']) { //Cek email yang terdaftar di database
+                        if ($p['password'] == md5($_POST['password'])) { //Cek password 
+                            $_SESSION['login'] = true;
+                            $_SESSION['profile'] = $this->pengguna_model->getPenggunaById($p['id']);
+                            header("Location: " . base_url());
+                            exit;
+                        } else {
+                            session()->setFlashdata('message', '<div class="alert alert-danger" role="alert">Password salah, harap masukkan password yang benar</div> ');
+                        }
+                        $emailFound = true;
                     }
-                    $emailFound = true;
                 }
-            }
-            if ($emailFound == false) {
-                // Flasher::setFlash('gagal', 'email belum terdaftar', 'danger');
+                if ($emailFound == false) {
+                    session()->setFlashdata('message', '<div class="alert alert-danger" role="alert">Email anda belum terdaftar silahkan daftar terlebih dahulu</div> ');
+                }
+                return redirect()->back()->withInput(); //Refresh page dengan menyertakan inputan data
             }
         }
 
         $data['judul'] = 'Masuk Govinsy';
         $data['page'] = 'Masuk Govinsy';
+        $data['validation'] = $this->validation;
         echo view('templates/header', $data);
         echo view('templates/sidebar', $data);
         echo view('templates/topbar', $data);
@@ -54,18 +74,58 @@ class Pengguna extends BaseController
 
     public function daftar()
     {
+
         if (isset($_POST['daftar'])) {
-            if ($this->pengguna_model->tambahPengguna($_POST)  == true) {
-                // Flasher::setFlash('berhasil', 'anda berhasil mendaftar', 'success');
-                header('location: ' . base_url() . '/pengguna/login');
-                exit;
-            } else {
-                // Flasher::setFlash('gagal', 'gagal mendaftar', 'danger');
-                header('location: ' . base_url() . '/pengguna/daftar');
-                exit;
+
+            //Deklarasi data validasi [rules]
+            $validasi = $this->validate([
+                'nama' => [
+                    'rules' => 'required',
+                    'errors' => ['required' => 'Silahkan isi nama anda']
+                ],
+                'email' => [
+                    'rules' => 'required|valid_email|is_unique[pengguna.email]',
+                    'errors' => [
+                        'required' => 'Silahkan isi email anda',
+                        'valid_email' => 'Gunakan email anda yang valid',
+                        'is_unique' => 'Email yang anda masukkan sudah terdaftar silahkan gunakan email anda yang lain'
+                    ]
+                ],
+                'password1' => [
+                    'rules' => 'required|matches[password2]|min_length[8]',
+                    'errors' => [
+                        'required' => 'Silahkan isi password anda',
+                        'matches' => 'Password anda masukkan tidak cocok dengan confirm password',
+                        'min_length' => 'Password yang anda masukkan minimal harus 8 karakter'
+                    ]
+                ],
+                'password2' => [
+                    'rules' => 'required|matches[password1]',
+                    'errors' => [
+                        'required' => 'Silahkan isi password anda',
+                        'matches' => 'Password yang anda masukkan tidak cocok dengan password',
+                    ]
+                ],
+            ]);
+            //End deklarasi data validasi [rules]
+
+            if ($validasi) {
+
+                if ($this->pengguna_model->tambahPengguna($_POST)  == true) {
+                    session()->setFlashdata('message', '<div class="alert alert-success" role="alert">Selamat anda berhasil mendaftar</div> ');
+                    $_SESSION['login'] = true;
+                    $_SESSION['profile'] = $this->pengguna_model->getPenggunaByEmail($_POST['email']);
+                    header('location: ' . base_url());
+                    exit;
+                } else {
+                    session()->setFlashdata('message', '<div class="alert alert-danger" role="alert">Anda gagal mendaftar</div> ');
+                    return redirect()->back()->withInput();
+                }
             }
+            return redirect()->back()->withInput();
         }
 
+        $data['validation'] = $this->validation;
         $data['judul'] = 'Daftar Govinsy';
         echo view('templates/header', $data);
         echo view('pengguna/daftar', $data);
@@ -76,74 +136,33 @@ class Pengguna extends BaseController
     {
         $data['judul'] = 'Profile Pengguna';
         $data['page'] = 'Profile';
-        if (isset($_POST['crop'])) {
 
+        //Ganti gambar
+        if (isset($_POST['crop'])) {
             $this->pengguna_model->editProfile();
         }
+        //End ganti gambar
+
         echo view('templates/header', $data);
         echo view('templates/sidebar', $data);
         echo view('templates/topbar', $data);
         echo view('pengguna/profile', $data);
         echo view('templates/footer');
     }
+
+    //Method set gambar profile pengguna menjadi default
     public function removepic()
     {
         $this->pengguna_model->removeImage();
         header('location:' . base_url() . '/pengguna/profile');
     }
-
-    // public function detail($id)
-    // {
-    //     $data['judul'] = 'Detail Statistik';
-    //     $data['mhs'] = $this->model('Statistik')->getStatistikById($id);
-    //     $this->view('templates/header', $data);
-    //     $this->view('statistik/detail', $data);
-    //     $this->view('templates/footer');
-    // }
-
-    // public function tambah()
-    // {
-    //     if( $this->model('Statistik')->tambahDataStatistik($_POST) > 0 ) {
-    //         Flasher::setFlash('berhasil', 'ditambahkan', 'success');
-    //         header('Location: ' . base_url() . '/statistik');
-    //         exit;
-    //     } else {
-    //         Flasher::setFlash('gagal', 'ditambahkan', 'danger');
-    //         header('Location: ' . base_url() . '/statistik');
-    //         exit;
-    //     }
-    // }
-
-    // public function hapus($id)
-    // {
-    //     if( $this->model('Statistik')->hapusDataStatistik($id) > 0 ) {
-    //         Flasher::setFlash('berhasil', 'dihapus', 'success');
-    //         header('Location: ' . base_url() . '/statistik');
-    //         exit;
-    //     } else {
-    //         Flasher::setFlash('gagal', 'dihapus', 'danger');
-    //         header('Location: ' . base_url() . '/statistik');
-    //         exit;
-    //     }
-    // }
+    //End method set gambar
 
     // public function getubah()
     // {
     //     echo json_encode($this->model('Statistik')->getStatistikById($_POST['id']));
     // }
 
-    // public function ubah()
-    // {
-    //     if( $this->model('Statistik')->ubahDataStatistik($_POST) > 0 ) {
-    //         Flasher::setFlash('berhasil', 'diubah', 'success');
-    //         header('Location: ' . base_url() . '/statistik');
-    //         exit;
-    //     } else {
-    //         Flasher::setFlash('gagal', 'diubah', 'danger');
-    //         header('Location: ' . base_url() . '/statistik');
-    //         exit;
-    //     } 
-    // }
 
     // public function cari()
     // {

@@ -17,7 +17,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 
-session_start();
+// session_start();
 
 // Alamat utama
 define('BASEPATH', dirname(dirname(dirname(__FILE__))));
@@ -92,7 +92,7 @@ class BaseController extends Controller
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------
 		// E.g.:
-		// $this->session = \Config\Services::session();
+		$this->session = \Config\Services::session();
 		$this->pengguna_model = new \App\Models\Pengguna_model();
 		$this->survei_model = new \App\Models\Survei_model();
 		$this->statistik_model = new \App\Models\Statistik_model();

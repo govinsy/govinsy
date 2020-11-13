@@ -16,11 +16,13 @@
 
                             <!-- Dropdown - menu gambar -->
                             <div style="margin-left:10px;" class="dropdown-menu dropdown-menu-center shadow animated--grow-in text-center" aria-labelledby="userDropdown">
-                                <label for="upload_image" class="pointer">
-                                    <a class="dropdown-item d-block">Ganti Gambar</a>
+                                <label for="upload_image" class="pointer dropdown-item d-block">
+                                    Ganti Gambar
                                 </label>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item d-block" href="<?= base_url(); ?>/pengguna/removepic">Hilangkan Gambar</a>
+                                <?php if ($_SESSION['profile']['gambar'] != 'default.png') : ?>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item d-block" href="<?= base_url(); ?>/pengguna/removepic">Hilangkan Gambar</a>
+                                <?php endif; ?>
                             </div>
                             <!-- End dropdown - menu gambar -->
 
