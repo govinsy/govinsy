@@ -134,6 +134,15 @@ $("#provinsi-toggle").on('click', function () {
   };
 });
 
+// Toggle button edit
+$("#btn-edit").on('click', function () {
+  $("#btn-edit").toggleClass("toggled");
+  $('#form-edit').addClass('hilang');
+  if ($("#btn-edit").hasClass("toggled")) {
+    $('#form-edit').removeClass('hilang');
+  };
+});
+
 
 //Create Slide circle button
 let cobu = $('#nomor-slide li').length; // Hitung jumlah li yang ada di ul id nomor-slide

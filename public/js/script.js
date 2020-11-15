@@ -177,3 +177,25 @@ $(document).ready(function () {
 
 });
 // End fungsi crop dan upload gambar
+
+
+
+//Fungsi Form Validation
+$(document).ready(function () {
+    jQuery(function () {
+        // jQuery("#ValidNumber").validate({
+        //     expression: "if (!isNaN(VAL) && VAL) return true; else return false;",
+        //     message: "Should be a number"
+        // });
+        jQuery("#inputEmail").validate({
+            expression: "if (VAL.match(/^[^\\W][a-zA-Z0-9\\_\\-\\.]+([a-zA-Z0-9\\_\\-\\.]+)*\\@[a-zA-Z0-9_]+(\\.[a-zA-Z0-9_]+)*\\.[a-zA-Z]{2,4}$/)) { $('#emailValid i').addClass('color-green-font'); $('#emailValid i').addClass('fa-check'); $('#emailValid i').removeClass('fa-times'); $('#emailValid i').removeClass('color-red-font'); return true; } else { $('#emailValid i').removeClass('color-green-font'); $('#emailValid i').removeClass('fa-check'); $('#emailValid i').addClass('fa-times'); $('#emailValid i').addClass('color-red-font'); return false; }",
+        });
+        jQuery("#inputPassword1").validate({
+            expression: "if (VAL.length >= 8) { $('#password i').addClass('color-green-font'); $('#password i').addClass('fa-check'); $('#password i').removeClass('fa-times'); $('#password i').removeClass('color-red-font'); return true; } else { $('#password i').removeClass('color-green-font'); $('#password i').removeClass('fa-check'); $('#password i').addClass('fa-times'); $('#password i').addClass('color-red-font'); return false; }",
+        });
+        jQuery("#inputPassword2").validate({
+            expression: "if (VAL == jQuery('#inputPassword1').val() && VAL ) { $('#password1 i').addClass('color-green-font'); $('#password1 i').addClass('fa-check'); $('#password1 i').removeClass('fa-times'); $('#password1 i').removeClass('color-red-font'); return true; } else { $('#password1 i').removeClass('color-green-font'); $('#password1 i').removeClass('fa-check'); $('#password1 i').addClass('fa-times'); $('#password1 i').addClass('color-red-font'); return false; }",
+        });
+    });
+});
+//End Fungsi Form Validation

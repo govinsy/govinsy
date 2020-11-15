@@ -40,20 +40,11 @@ class Pengguna_model extends Model
         return $this->db->table($this->table)->insert($data);
     }
 
-    // public function editPengguna($data)
-    // {
-    //     $query = "UPDATE FROM pengguna
-    //                 SET
-    //               ()";
-
-    //     $this->db->query($query);
-    //     $this->db->bind('id', $data['id']);
-    //     $this->db->bind('nama', $data['nama']);
-    //     $this->db->bind('email', $data['email']);
-    //     $this->db->execute();
-
-    //     return $this->db->rowCount();
-    // }
+    public function editPengguna()
+    {
+        $this->db->table($this->table)->where('id', $_SESSION['profile']['id'])->update(['nama' => $_POST['nama']]);
+        return $_SESSION['profile']['nama'] = $_POST['nama'];
+    }
 
     public function editProfile()
     {
@@ -91,8 +82,8 @@ class Pengguna_model extends Model
             //Mengubah nama file gambar di database
             $this->db->table($this->table)->where('id', $_SESSION['profile']['id'])->update(['gambar' => $namaFile]);
             //End mengubah nama file gambar di database
-
             $_SESSION['profile']['gambar'] = $namaFile; //Mengubah session nama gambar agar berubah saat berganti gambar
+            session()->setFlashdata('message', '<div class="alert alert-success" role="alert">Selamat anda berhasil mengubah foto profile anda</div> ');
         }
         /// End cek apakah yang diupload file gambar
 

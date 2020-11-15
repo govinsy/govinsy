@@ -7,6 +7,7 @@
         display: none;
     }
 </style>
+
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
     <!-- Main Content -->
@@ -49,6 +50,7 @@
                                                 <div class="invalid-feedback color-red-font">
                                                     <?= $validation->getError('email') ?>
                                                 </div>
+                                                <div id="emailValid" class="font-12 text-gray-600 mt-1"><i class="fas fa-times color-red-font"></i> Format Email Valid</div>
                                             </div>
 
 
@@ -60,7 +62,7 @@
                                                         <?= $validation->getError('password1') ?>
                                                     </div>
                                                 <?php else : ?>
-                                                    <div class="font-12 text-gray-600 mt-1">Minimal 8 karakter</div>
+                                                    <div id="password" class="font-12 text-gray-600 mt-1"><i class="fas fa-times color-red-font"></i> Berisi 8 karakter</div>
                                                 <?php endif; ?>
                                             </div>
 
@@ -71,6 +73,7 @@
                                                 <div class="invalid-feedback color-red-font">
                                                     <?= $validation->getError('password2') ?>
                                                 </div>
+                                                <div id="password1" class="font-12 text-gray-600 mt-1"><i class="fas fa-times color-red-font"></i> Cocok dengan input password</div>
                                             </div>
 
 

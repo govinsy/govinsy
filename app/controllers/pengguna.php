@@ -127,13 +127,16 @@ class Pengguna extends BaseController
 
         $data['validation'] = $this->validation;
         $data['judul'] = 'Daftar Govinsy';
+        $data['page'] = 'Daftar User';
         echo view('templates/header', $data);
         echo view('pengguna/daftar', $data);
-        echo view('templates/footer');
+        echo view('templates/footer', $data);
     }
+
 
     public function profile()
     {
+        $data['validation'] = $this->validation;
         $data['judul'] = 'Profile Pengguna';
         $data['page'] = 'Profile';
 
@@ -142,6 +145,30 @@ class Pengguna extends BaseController
             $this->pengguna_model->editProfile();
         }
         //End ganti gambar
+
+        if (isset($_POST['edit'])) {
+            //Deklarasi data validasi [rules]
+            $validasi = $this->validate([
+                'nama' => [
+                    'rules' => 'required',
+                    'errors' => ['required' => 'Silahkan isi nama anda']
+                ]
+            ]);
+            //End deklarasi data validasi [rules]
+
+            if ($validasi) {
+
+                if ($this->pengguna_model->editPengguna()  == true) {
+                    session()->setFlashdata('message', '<div class="alert alert-success" role="alert">Selamat anda berhasil mengubah data anda</div> ');
+                    return redirect()->back();
+                } else {
+                    session()->setFlashdata('message', '<div class="alert alert-danger" role="alert">Anda gagal mengubah profile</div> ');
+                    return redirect()->back();
+                }
+            }
+        }
+
+
 
         echo view('templates/header', $data);
         echo view('templates/sidebar', $data);

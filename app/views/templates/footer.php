@@ -23,20 +23,26 @@
 
 <script src="<?= base_url(); ?>/js/sb-admin-2.js"></script>
 
-<!-- Slider JS -->
-<script type="module" src="<?= base_url(); ?>/js/slider/script.js"></script>
+<?php if ($page == "Statistik") :  ?>
+    <!-- Slider JS -->
+    <script type="module" src="<?= base_url(); ?>/js/slider/script.js"></script>
 
-<!-- Page level plugins -->
-<script src="<?= base_url(); ?>/js/chart/Chart.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="<?= base_url(); ?>/js/chart/Chart.min.js"></script>
 
-<!-- Charts Javascript -->
-<script src="<?= base_url(); ?>/js/statistic/chart-pie-demo.js"></script>
+    <!-- Charts Javascript -->
+    <script src="<?= base_url(); ?>/js/statistic/chart-pie-demo.js"></script>
+<?php endif;  ?>
+
+<!-- Form Validation JQuery -->
+<script src="<?= base_url(); ?>/js/form-validation/jquery.validate.js"></script>
 
 
-<!-- Cropper JS -->
-<script type="module" src="<?= base_url(); ?>/js/image-cropper/dropzone.js"></script>
-<script type="module" src="<?= base_url(); ?>/js/image-cropper/cropper.js"></script>
-
+<?php if ($page == "Profile") :  ?>
+    <!-- Cropper JS -->
+    <script type="module" src="<?= base_url(); ?>/js/image-cropper/dropzone.js"></script>
+    <script type="module" src="<?= base_url(); ?>/js/image-cropper/cropper.js"></script>
+<?php endif;  ?>
 
 <script src="<?= base_url(); ?>/js/script.js"></script>
 

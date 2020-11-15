@@ -4,6 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-5">
 
+            <?= session()->getFlashdata('message') ?>
             <div class="color-content mb-3 text-center card border-0 py-4 rounded">
                 <div class=" card-body rounded">
                     <div class="image_area">
@@ -28,11 +29,34 @@
 
                             <!--- End profile Gambar -->
 
-
                             <h2 class="color-light-font font-weight-bold mt-2 mb-0"><?= $_SESSION['profile']['nama'] ?></h2>
                             <p class="font-16 color-gray-font mt-0"><i class="fas fa-map-marked-alt"></i> Jawa Tengah</p>
-                            <a href="#" class="btn btn-blue corner-round px-5 py-1 my-2"><i class="fas fa-edit"></i> Edit Profile</a><br>
-                            <a href="<?= base_url() ?>/pengguna/logout" class="btn btn-red corner-round px-5 py-1"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+
+                            <div class="row justify-content-center">
+                                <div class="col-6 text-center px-2">
+
+                                    <button type="button" id="btn-edit" class="btn btn-blue-opt corner-round px-5 py-1 my-2"><i class="fas fa-edit"></i> Edit Profile</button><br>
+                                    <div class="color-gray-bg pt-4 pb-4 p-2 mb-2 hilang" id="form-edit" style="margin: -20px 2px 0 2px;border-radius:0 0 1rem 1rem">
+                                        <form method="POST" action="">
+                                            <?= csrf_field(); ?>
+
+                                            <div class="form-group">
+                                                <input name="nama" type="text" id="inputNama" class="form-inp-dark corner-round <?php($validation->hasError('nama')) ? 'is-invalid border-red-1' : ''; ?>" placeholder="Nama" value="<?= $_SESSION['profile']['nama']; ?>" required autofocus>
+                                                <div class="invalid-feedback color-red-font">
+                                                    <?= $validation->getError('password2') ?>
+                                                </div>
+                                            </div>
+
+                                            <button type="submit" name="edit" class="btn btn-green btn-block corner-round">Edit</button>
+
+                                        </form>
+                                    </div>
+
+                                    <a href="<?= base_url() ?>/pengguna/logout" class="btn btn-red corner-round px-5 py-1"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+
+                                </div>
+                            </div>
+
 
                         </form>
                     </div>
