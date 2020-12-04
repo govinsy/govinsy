@@ -1,10 +1,10 @@
-<div class="container-fluid">
+<div class="container">
 
 
     <!--  Data Provinsi -->
-    <div class="row justify-content-center">
-        <div class="col-lg-12">
-            <div align="center" class="jumbotron color-content color-content text-align-center mb-4">
+    <div class="jumbotron corner-round prov-back text-center shadow mb-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
                 <img src="<?php echo base_url() . "/img/provinsi/logo/" . $_GET['domain_id'] . ".png"; ?>" width="20%">
                 <h2 class="mt-3 color-light-font font-weight-bold">Provinsi <?= $_GET['nama_provinsi'] ?></h2>
                 <small class="text-gray-600">IBU KOTA</small>

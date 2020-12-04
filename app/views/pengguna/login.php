@@ -13,7 +13,10 @@
                         <?= $validation->getError('email') ?>
                     </div>
                     <label for="inputPassword" class="sr-only">Password</label>
-                    <input name="password" type="password" id="inputPassword" class="form-control form-inp mt-4 corner-round <?= ($validation->hasError('password')) ? 'is-invalid border-red-1' : 'mb-4'; ?>" placeholder="Password" required>
+                    <div class="password position-relative">
+                        <i id="togglePassword" class="fas fa-eye color-gray-font position-absolute pointer click-opacity" style="right:0;margin:12px 20px 0 0;"></i>
+                        <input name="password" type="password" id="inputPassword" class="form-control form-inp mt-4 corner-round <?= ($validation->hasError('password')) ? 'is-invalid border-red-1' : 'mb-4'; ?>" placeholder="Password" required>
+                    </div>
                     <div class="invalid-feedback color-red-font">
                         <?= $validation->getError('password') ?>
                     </div>

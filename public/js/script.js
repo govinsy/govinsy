@@ -193,9 +193,51 @@ $(document).ready(function () {
         jQuery("#inputPassword1").validate({
             expression: "if (VAL.length >= 8) { $('#password i').addClass('color-green-font'); $('#password i').addClass('fa-check'); $('#password i').removeClass('fa-times'); $('#password i').removeClass('color-red-font'); return true; } else { $('#password i').removeClass('color-green-font'); $('#password i').removeClass('fa-check'); $('#password i').addClass('fa-times'); $('#password i').addClass('color-red-font'); return false; }",
         });
+        jQuery("#inputPassword1").validate({
+            expression: "if (VAL.match(/\s?[a-z0-9\_]+[A-Z]/)) { $('#password_spc i').addClass('color-green-font'); $('#password_spc i').addClass('fa-check'); $('#password_spc i').removeClass('fa-times'); $('#password_spc i').removeClass('color-red-font'); return true; } else { $('#password_spc i').removeClass('color-green-font'); $('#password_spc i').removeClass('fa-check'); $('#password_spc i').addClass('fa-times'); $('#password_spc i').addClass('color-red-font'); return false; }",
+        });
+        jQuery("#inputPassword1").validate({
+            expression: "if (VAL.match(/^[a-z0-9]+$/gi)) { $('#password_chr i').addClass('color-green-font'); $('#password_chr i').addClass('fa-check'); $('#password_chr i').removeClass('fa-times'); $('#password_chr i').removeClass('color-red-font'); return true; } else { $('#password_chr i').removeClass('color-green-font'); $('#password_chr i').removeClass('fa-check'); $('#password_chr i').addClass('fa-times'); $('#password_chr i').addClass('color-red-font'); return false; }",
+        });
         jQuery("#inputPassword2").validate({
             expression: "if (VAL == jQuery('#inputPassword1').val() && VAL ) { $('#password1 i').addClass('color-green-font'); $('#password1 i').addClass('fa-check'); $('#password1 i').removeClass('fa-times'); $('#password1 i').removeClass('color-red-font'); return true; } else { $('#password1 i').removeClass('color-green-font'); $('#password1 i').removeClass('fa-check'); $('#password1 i').addClass('fa-times'); $('#password1 i').addClass('color-red-font'); return false; }",
         });
     });
 });
 //End Fungsi Form Validation
+
+
+
+$(document).ready(function () {
+
+    $('#togglePassword').on('click', function () {
+        $("#togglePassword").toggleClass("toggled");
+        $('#togglePassword').addClass('fa-eye');
+        $('#togglePassword').removeClass('fa-eye-slash');
+        $('form input[type=password]').addClass('passwordToggle');
+        $('.passwordToggle').attr('type', 'password');
+
+        if ($("#togglePassword").hasClass("toggled")) {
+            $('.passwordToggle').attr('type', 'text');
+            $('#togglePassword').removeClass('fa-eye');
+            $('#togglePassword').addClass('fa-eye-slash');
+        }
+    });
+
+});
+
+
+$(document).ready(function () {
+
+    $('#more').on('click', function () {
+        if ($('#morle').hasClass('hilang')) {
+            $("#morle").removeClass("hilang");
+            $("#more").html('Lihat Lebih Sedikit');
+        }
+        else {
+            $("#morle").addClass("hilang");
+            $("#more").html('Lihat Lebih Banyak');
+        }
+    });
+
+});

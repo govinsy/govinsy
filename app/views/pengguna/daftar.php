@@ -56,14 +56,16 @@
 
                                             <div class="form-group">
                                                 <label for="inputPassword1" class="font-16 <?= ($validation->hasError('password1')) ? 'color-red-font' : 'color-gray-font'; ?>">Password</label>
-                                                <input name="password1" type="password" id="inputPassword1" class="form-control form-inp corner-round <?= ($validation->hasError('password1')) ? 'is-invalid border-red-1' : ''; ?>" placeholder="Password" required>
-                                                <?php if ($validation->hasError('password1')) : ?>
-                                                    <div class="invalid-feedback color-red-font">
-                                                        <?= $validation->getError('password1') ?>
-                                                    </div>
-                                                <?php else : ?>
-                                                    <div id="password" class="font-12 text-gray-600 mt-1"><i class="fas fa-times color-red-font"></i> Berisi 8 karakter</div>
-                                                <?php endif; ?>
+                                                <div class="password position-relative">
+                                                    <i id="togglePassword" class="fas fa-eye color-gray-font position-absolute pointer click-opacity" style="right:0;margin:12px 20px 0 0;"></i>
+                                                    <input name="password1" type="password" id="inputPassword1" class="form-control form-inp corner-round <?= ($validation->hasError('password1')) ? 'is-invalid border-red-1' : ''; ?>" placeholder="Password" required>
+                                                </div>
+                                                <div class="invalid-feedback color-red-font">
+                                                    <?= $validation->getError('password1') ?>
+                                                </div>
+                                                <div id="password" class="font-12 text-gray-600 mt-1"><i class="fas fa-times color-red-font"></i> Beisi setidaknya 8 karakter</div>
+                                                <div id="password_spc" class="font-12 text-gray-600 mt-1"><i class="fas fa-times color-red-font"></i> Terdapat setidaknya 1 huruf kapital</div>
+                                                <div id="password_chr" class="font-12 text-gray-600 mt-1"><i class="fas fa-times color-red-font"></i> Tidak terdapat karakter spesial</div>
                                             </div>
 
 

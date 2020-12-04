@@ -4,9 +4,9 @@
     <!-- Modal Masuk -->
     <div class="modal bd-example-modal-lg fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
+            <div class="modal-content corner-round">
 
-                <div class="card o-hidden color-content border-0 shadow-lg">
+                <div class="card corner-round o-hidden color-content border-0 shadow-lg">
                     <div class="card-body p-0">
 
                         <div class="row">
@@ -26,7 +26,10 @@
                                             <input name="email" type="email" class="form-control form-inp corner-round" id="exampleInputEmail" placeholder="Email Address">
                                         </div>
                                         <div class="form-group">
-                                            <input name="password" type="password" class="form-control form-inp corner-round" id="exampleInputPassword" placeholder="Password">
+                                            <div class="password position-relative">
+                                                <i id="togglePassword" class="fas fa-eye color-gray-font position-absolute pointer click-opacity" style="right:0;margin:12px 20px 0 0;"></i>
+                                                <input name="password" type="password" class="form-control form-inp corner-round" id="exampleInputPassword" placeholder="Password">
+                                            </div>
                                         </div>
                                         <div class="text-center">
                                             <a class="small" href="forgot-password.html">Lupa Password?</a>

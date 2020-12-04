@@ -46,50 +46,6 @@
   <!-- END DATA  STATISTIK PER PROVINSI -->
 
 
-  <div class="jumbotron mt-4">
-    <h1 class="display-4">Statistik</h1>
-    <p class="lead">Sistem Informasi Pemerintah dan Data Statistik Dampak dari Covid-19</p>
-    <hr class="my-4">
-
-    <!-- KASUS SELURUH INDONESIA-->
-    <div class="row mb-5">
-      <div class="col-md-3">
-        <div class="card text-center">
-          <div class="card-header">Terkonfirmasi</div>
-          <div class="card-body">
-            <h1 class="card-title"><?= number_format($indo['confirmed']['value']); ?></h1>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card text-center">
-          <div class="card-header">Sembuh</div>
-          <div class="card-body">
-            <h1 class="card-title"><?= number_format($indo['recovered']['value']); ?></h1>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card text-center">
-          <div class="card-header">Meninggal</div>
-          <div class="card-body">
-            <h1 class="card-title"><?= number_format($indo['deaths']['value']); ?></h1>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card text-center">
-          <div class="card-header">Update Terakhir</div>
-          <div class="card-body">
-            <h1 class="card-title"><?= date("j M", strtotime($indo['lastUpdate'])); ?></h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-
   <!-- DIAGRAM -->
   <!-- <div class="mb-5" style="width: 100%;height: 500px">
     <canvas id="myChart"></canvas>
