@@ -3,28 +3,28 @@
     <!--  Data Pengunjung & User -->
     <div class="row justify-content-center">
         <div class="col-lg-12">
-            <div align="center" class="jumbotron color-content text-align-center mb-4">
+            <div align="center" class="jumbotron shadow color-content text-align-center mb-4">
 
-                <div class="card-deck">
+                <div class="card-deck color-content-font">
 
                     <div class="card border-0 rounded">
                         <div class="card-body color-bg rounded text-center">
                             <h1 class="card-title color-blue-font">260</h1>
-                            <p class="card-text font-10 color-light-font">PENGUNJUNG WEBSITE</p>
+                            <p class="card-text font-10">PENGUNJUNG WEBSITE</p>
                         </div>
                     </div>
 
                     <div class="card border-0 rounded">
                         <div class="card-body color-bg rounded text-center">
                             <h1 class="card-title color-blue-font">260</h1>
-                            <p class="card-text font-10 color-light-font">PENGUNJUNG WEBSITE</p>
+                            <p class="card-text font-10">PENGUNJUNG WEBSITE</p>
                         </div>
                     </div>
 
                     <div class="card border-0 rounded">
                         <div class="card-body color-bg rounded text-center">
                             <h1 class="card-title color-blue-font">260</h1>
-                            <p class="card-text font-10 color-light-font">PENGUNJUNG WEBSITE</p>
+                            <p class="card-text font-10">PENGUNJUNG WEBSITE</p>
                         </div>
                     </div>
 
@@ -37,8 +37,8 @@
 
 
     <div class="row justify-content-center text-center">
-        <div class="col-lg-7 mb-4 color-light-font">
-            <h2 class="mt-3 font-42 font-weight-bold">Tim Kami</h2>
+        <div class="col-lg-7 mb-4">
+            <h2 class="mt-3 font-42 color-content-font font-weight-bold">Tim Kami</h2>
             <p class="font-16 text-gray-700">Kami bekerja kreatif dengan melibatkan pengujian kegunaan untuk membuat aplikasi yang berguna untuk semua orang</p>
         </div>
     </div>
@@ -46,7 +46,7 @@
     <div class="row justify-content-end">
 
         <div class="col-lg-3 mb-4">
-            <div class="card text-center py-1 pt-4 color-content color-light-font">
+            <div class="card text-center py-1 pt-4 color-content color-content-font hover-card corner-round">
                 <img class="card-img-top mx-auto rounded-circle" style="width:7rem;" src="<?= base_url(); ?>/img/profile/default.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title font-26 font-weight-bold mb-0">Ahmad N</h5>
@@ -69,7 +69,7 @@
 
 
         <div class="col-lg-3 mb-4">
-            <div class="card text-center py-1 pt-4 color-content color-light-font">
+            <div class="card text-center py-1 pt-4 color-content color-content-font hover-card corner-round">
                 <img class="card-img-top mx-auto rounded-circle" style="width:7rem;" src="<?= base_url(); ?>/img/profile/default.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title font-26 font-weight-bold mb-0">Bima S</h5>
@@ -92,7 +92,7 @@
 
 
         <div class="col-lg-3 mb-4">
-            <div class="card text-center py-1 pt-4 color-content color-light-font">
+            <div class="card text-center py-1 pt-4 color-content color-content-font hover-card corner-round">
                 <img class="card-img-top mx-auto rounded-circle" style="width:7rem;" src="<?= base_url(); ?>/img/profile/default.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title font-26 font-weight-bold mb-0">Irgi A</h5>
@@ -114,7 +114,7 @@
         </div>
 
         <div class="col-lg-3 mb-4">
-            <div class="card text-center py-1 pt-4 color-content color-light-font">
+            <div class="card text-center py-1 pt-4 color-content color-content-font hover-card corner-round">
                 <img class="card-img-top mx-auto rounded-circle" style="width:7rem;" src="<?= base_url(); ?>/img/profile/default.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title font-26 font-weight-bold mb-0">Tegar S</h5>

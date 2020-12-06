@@ -2,7 +2,7 @@
 
 
     <!--  Data Provinsi -->
-    <div class="jumbotron corner-round prov-back text-center shadow mb-4">
+    <div class="jumbotron corner-round shadow prov-back text-center shadow mb-4">
         <div class="row justify-content-center">
             <div class="col-lg-12">
                 <img src="<?php echo base_url() . "/img/provinsi/logo/" . $_GET['domain_id'] . ".png"; ?>" width="20%">
@@ -21,17 +21,17 @@
     <div class="row justify-content-center">
         <div class="col-lg-12">
 
-            <div class="jumbotron justify-content-center color-content mb-4 pb-2">
+            <div class="jumbotron shadow justify-content-center corner-round color-content mb-4 pb-2">
 
                 <!-- Data COVID 19 -->
                 <div class="row justify-content-center" id="covid19">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 color-content-font">
 
-                        <p class="color-light-font mb-4 text-center justify-content-center">DATA COVID 19 PROVINSI <?= $covid['key'] ?></p>
-                        <ul id="covid" class="color-light-font row justify-content-around pb-0 align-items-center">
+                        <p class="mb-4 text-center justify-content-center">DATA COVID 19 PROVINSI <?= $covid['key'] ?></p>
+                        <ul id="covid" class="row justify-content-around pb-0 align-items-center">
                             <li class="col-lg-4 mb-5 mt-1">
                                 <div class="mr-3 color-blue-bg cov-icon corner-round-10 float-left">
-                                    <i class="fas fa-fw fa-user"></i>
+                                    <i class="fas fa-fw color-light-font fa-user"></i>
                                 </div>
                                 <div class="pt-2">
                                     <small class="text-gray-600 mr-1 float-left">POSITIF</small>
@@ -47,7 +47,7 @@
                             </li>
                             <li class="col-lg-4 mb-5 mt-1">
                                 <div class="mr-3 color-green-bg cov-icon corner-round-10 float-left">
-                                    <i class="fas fa-fw fa-syringe"></i>
+                                    <i class="fas fa-fw color-light-font fa-syringe"></i>
                                 </div>
                                 <div class="pt-2">
                                     <small class="text-gray-600 mr-1 float-left">SEMBUH</small>
@@ -61,7 +61,7 @@
                             </li>
                             <li class="col-lg-4 mb-5 mt-1">
                                 <div class="mr-3 color-red-bg cov-icon corner-round-10 float-left">
-                                    <i class="fas fa-fw fa-skull"></i>
+                                    <i class="fas fa-fw color-light-font fa-skull"></i>
                                 </div>
                                 <div class="pt-2">
                                     <small class="text-gray-600 mr-1 float-left">MENINGGAL</small>
@@ -82,8 +82,8 @@
 
                 <!-- RS Rujukan -->
                 <div class="row mb-3" id="rumah-sakit">
-                    <div class="col-12">
-                        <p class="mt-3 color-light-font mb-4 text-center justify-content-center">DAFTAR RUMAH SAKIT DI PROVINSI <?= $covid['key'] ?></p>
+                    <div class="col-12 color-content-font">
+                        <p class="mt-3 mb-4 text-center justify-content-center">DAFTAR RUMAH SAKIT DI PROVINSI <?= $covid['key'] ?></p>
                         <div class="card color-content border-0">
                             <div class="card-body row justify-content-center">
 
@@ -96,9 +96,9 @@
                                                     <li class="color-bg">
                                                         <div class="list-group list-group-flush border-0">
                                                             <div class="list-group-item border-0 list-group-item-action list-group-item-primary color-blue-bg"><small class="font-weight-bold"><?= $h['name']; ?></small></div>
-                                                            <div class="list-group-item border-0 color-bg"><i class="fas fa-map-marked color-blue-font"> </i> <small class="color-light-font"><?= $h['region']; ?></small></div>
-                                                            <div class="list-group-item border-0 color-bg"><i class="fas fa-map-marked color-blue-font"></i> <small class="color-light-font"><?= $h['address']; ?></small></div>
-                                                            <div class="list-group-item border-0 color-bg"><i class="fas fa-phone color-blue-font"></i> <?php if ($h['phone'] != null) : ?> <small class="color-light-font"><?= $h['phone']; ?></small> <?php else : ?> <small class="color-light-font">Tidak ada nomor</small> <?php endif; ?></div>
+                                                            <div class="list-group-item border-0 color-bg"><i class="fas fa-map-marked color-blue-font"> </i> <small><?= $h['region']; ?></small></div>
+                                                            <div class="list-group-item border-0 color-bg"><i class="fas fa-map-marked color-blue-font"></i> <small><?= $h['address']; ?></small></div>
+                                                            <div class="list-group-item border-0 color-bg"><i class="fas fa-phone color-blue-font"></i> <?php if ($h['phone'] != null) : ?> <small><?= $h['phone']; ?></small> <?php else : ?> <small class="color-light-font">Tidak ada nomor</small> <?php endif; ?></div>
                                                         </div>
                                                     </li>
 
@@ -150,7 +150,7 @@
                 <div class="card-header py-3 color-blue-bg">
                     <h6 class="m-0 font-weight-bold ">Ekonomi</h6>
                 </div>
-                <div class="card-body color-light-font mt-3">
+                <div class="card-body color-content-font mt-3">
                     <div class="row justify-content-center">
 
                         <div class="col-md-4 color-content mb-3 text-center card border-0" style="width: 18rem;">
@@ -205,7 +205,7 @@
                 <div class="card-header py-3 color-blue-bg">
                     <h6 class="m-0 font-weight-bold ">Geografi</h6>
                 </div>
-                <div class="card-body color-light-font mt-3 position-relative">
+                <div class="card-body color-content-font mt-3 position-relative">
                     <div class="row justify-content-center">
                         <div class="peta col-sm-6">
                             <img class="ml-3" src="<?php echo base_url() . "/img/provinsi/peta/" . $_GET['domain_id'] . ".svg"; ?>" width="90%" alt="">
@@ -242,7 +242,7 @@
                 <div class="card-header py-3 color-blue-bg">
                     <h6 class="m-0 font-weight-bold ">Sosial</h6>
                 </div>
-                <div class="card-body color-light-font mt-4">
+                <div class="card-body color-content-font mt-4">
                     <h4 class="small font-weight">PRESENTASE PENDUDUK MISKIN <span class="float-right color-red-font"><?php echo ($stat['penduduk_miskin']['value'] != null) ? $stat['penduduk_miskin']['value'] . "%" : "Belum Terdata" ?></span></h4>
                     <div class="progress color-bg mb-4" style="height:25px">
                         <div class="progress-bar color-red-bg" role="progressbar" style="width: <?= $stat['penduduk_miskin']['value'] ?>%" aria-valuemin="0" aria-valuemax="100"></div>

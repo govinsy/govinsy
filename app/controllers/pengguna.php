@@ -185,6 +185,15 @@ class Pengguna extends BaseController
     }
     //End method set gambar
 
+    public function gantiTema()
+    {
+        $idUser = $_POST['userID'];
+        $userTema = $_POST['userTema'];
+        $this->pengguna_model->ganti_tema();
+    }
+
+
+
     // public function getubah()
     // {
     //     echo json_encode($this->model('Statistik')->getStatistikById($_POST['id']));

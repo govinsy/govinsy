@@ -5,8 +5,8 @@
         <div class="col-md-5">
 
             <?= session()->getFlashdata('message') ?>
-            <div class="color-content mb-3 text-center card border-0 py-4 rounded">
-                <div class=" card-body rounded">
+            <div class="color-content mb-3 text-center shadow corner-round card border-0 py-4">
+                <div class=" card-body corner-round">
                     <div class="image_area">
                         <form method="post" enctype="multipart/form-data">
                             <?= csrf_field(); ?>
@@ -29,7 +29,7 @@
 
                             <!--- End profile Gambar -->
 
-                            <h2 class="color-light-font font-weight-bold mt-2 mb-0"><?= $_SESSION['profile']['nama'] ?></h2>
+                            <h2 class="color-content-font font-weight-bold mt-2 mb-0"><?= $_SESSION['profile']['nama'] ?></h2>
                             <p class="font-16 color-gray-font mt-0"><i class="fas fa-map-marked-alt"></i> Jawa Tengah</p>
 
                             <div class="row justify-content-center">

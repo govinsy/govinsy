@@ -4,7 +4,7 @@
   <?php if ($ikutSurvei == 1) : ?>
     <div id="kesiapan" class="row justify-content-center text-center">
       <div class="col-md-10">
-        <h3 class="color-light-font">Anda Sudah mengikuti survei</h3>
+        <h3 class="color-content-font">Anda Sudah mengikuti survei</h3>
         <a href="<?= base_url(); ?>/statistik">Lihat hasil statistik</a>
       </div>
     </div>
@@ -17,7 +17,7 @@
         <div class="row">
 
           <div class="col-lg-12 mt-4 mb-5">
-            <h2 class="color-light-font">Apakah anda sudah siap untuk mengikuti survei?</h2>
+            <h2 class="color-content-font">Apakah anda sudah siap untuk mengikuti survei?</h2>
             <a href="<?= base_url(); ?>/tentang/survei">Lihat selengkapnya tentang survei</a>
           </div>
         </div>

@@ -2,35 +2,35 @@
 <div class="container">
 
   <!-- DATA STATISTIK INDONESIA-->
-  <div id="data-indonesia" align="center" class="jumbotron pb-5 img-content color-light-font">
+  <div id="data-indonesia" align="center" class="jumbotron shadow pb-5 img-content color-light-font">
     <h1 class="mt-5">Data Statistik Indonesia</h1>
   </div>
   <!-- END DATA  STATISTIK Indonesia -->
 
 
   <!-- DATA  STATISTIK PER PROVINSI -->
-  <div id="data-provinsi" align="center" class="jumbotron pb-5 mb-0 img-content color-light-font">
+  <div id="data-provinsi" align="center" class="jumbotron shadow pb-5 mb-0 img-content color-light-font">
     <h1 class="mt-5">Data Per Provinsi</h1>
   </div>
-  <ul id="daftar-provinsi" align="center" class="color-content hilang list-unstyled mb-0">
+  <ul id="daftar-provinsi" align="center" class="color-content shadow color-content-font hilang list-unstyled mb-0">
 
     <?php if (isset($domains)) : ?>
       <?php $i = 1;
       foreach ($domains as $domain) : ?>
         <?php if ($i == 1) : ?>
-          <li class="color-light-font pt-4 font-bold pb-1 pt-1">SUMATERA</li>
+          <li class="pt-4 font-bold pb-1 pt-1">SUMATERA</li>
         <?php elseif ($i == 11) : ?>
-          <li class="color-light-font pt-4 font-bold pb-1 pt-1">JAWA</li>
+          <li class="pt-4 font-bold pb-1 pt-1">JAWA</li>
         <?php elseif ($i == 17) : ?>
-          <li class="color-light-font pt-4 font-bold pb-1 pt-1">BALI & NUSA TENGGARA</li>
+          <li class="pt-4 font-bold pb-1 pt-1">BALI & NUSA TENGGARA</li>
         <?php elseif ($i == 20) : ?>
-          <li class="color-light-font pt-4 font-bold pb-1 pt-1">KALIMANTAN</li>
+          <li class="pt-4 font-bold pb-1 pt-1">KALIMANTAN</li>
         <?php elseif ($i == 25) : ?>
-          <li class="color-light-font pt-4 font-bold pb-1 pt-1">SULAWESI</li>
+          <li class="pt-4 font-bold pb-1 pt-1">SULAWESI</li>
         <?php elseif ($i == 31) : ?>
-          <li class="color-light-font pt-4 font-bold pb-1 pt-1">MALUKU</li>
+          <li class="pt-4 font-bold pb-1 pt-1">MALUKU</li>
         <?php elseif ($i == 33) : ?>
-          <li class="color-light-font pt-4 font-bold pb-1 pt-1">PAPUA</li>
+          <li class="pt-4 font-bold pb-1 pt-1">PAPUA</li>
         <?php endif;
         $i++; ?>
         <li class="color-light-font pb-1 pt-1"><a href="<?= base_url(); ?>/statistik/provinsi?domain_id=<?= $domain['domain_id'] ?>&nama_provinsi=<?= $domain['domain_name']  ?>">Provinsi <?= $domain['domain_name']; ?></a></li>
@@ -207,7 +207,7 @@
   <!-- SURVEI -->
   <div class="row">
     <div class="col-12">
-      <div id="data-provinsi" align="center" class="jumbotron color-content pt-5 slide-wrapper">
+      <div id="data-provinsi" align="center" class="jumbotron shadow color-content pt-5 slide-wrapper">
 
 
         <h4 class="mb-5 font-weight-bold color-blue-font">SURVEI INTERNAL</h4>

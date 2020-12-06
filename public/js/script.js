@@ -241,3 +241,32 @@ $(document).ready(function () {
     });
 
 });
+
+$(".switch").enhancedSwitch();
+
+$("#activeFirst").enhancedSwitch('setTrue');
+
+$(".switch").click(function () {
+    var selectedSwitch = $(this);
+    selectedSwitch.enhancedSwitch('toggle');
+    console.log(selectedSwitch.enhancedSwitch('state'));
+    const url = $(this).data('url');
+    const userID = $(this).data('uid');
+    const userTema = $(this).data('tema');
+    const nowURL = $(this).data('now');
+
+    $.ajax({
+        url: url + "/pengguna/gantiTema",
+        type: "POST",
+        data: {
+            userID: userID,
+            userTema: userTema
+        },
+        success: function () {
+            document.location.href = nowURL;
+        }
+    });
+
+
+
+});

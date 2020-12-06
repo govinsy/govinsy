@@ -2,9 +2,9 @@
 <!-- End of Main Content -->
 
 <!-- Footer -->
-<footer class="sticky-footer color-blue-bg">
+<footer class="sticky-footer color-footer-bg">
     <div class="container my-auto">
-        <div class="copyright text-center my-auto">
+        <div class="copyright color-light-font text-center my-auto">
             <span>Copyright &copy; Govinsy <?= date('Y'); ?></span>
         </div>
     </div>
@@ -36,6 +36,9 @@
 
 <!-- Form Validation JQuery -->
 <script src="<?= base_url(); ?>/js/form-validation/jquery.validate.js"></script>
+
+<!-- Switch Toggle JQuery -->
+<script src="<?= base_url(); ?>/js/jquery.enhanced-switch.js"></script>
 
 
 <?php if ($page == "Profile") :  ?>

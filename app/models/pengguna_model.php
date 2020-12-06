@@ -113,4 +113,19 @@ class Pengguna_model extends Model
             exit;
         }
     }
+
+
+    public function ganti_tema()
+    {
+        $idUser = $_POST['userID'];
+        $userTema = $_POST['userTema'];
+
+        if ($userTema == 1) {
+            $this->db->table($this->table)->where('id', $idUser)->update(['tema' => 0]);
+            $_SESSION['profile']['tema'] = 0;
+        } elseif ($userTema == 0) {
+            $this->db->table($this->table)->where('id', $idUser)->update(['tema' => 1]);
+            $_SESSION['profile']['tema'] = 1;
+        }
+    }
 }

@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="<?= base_url(); ?>/css/pace-theme-minimal.css">
   <link rel="stylesheet" href="<?= base_url(); ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?= base_url(); ?>/fontawsome/css/all.min.css">
+  <link rel="stylesheet" href="<?= base_url(); ?>/css/jquery.enhanced-switch-pingpong.css">
   <link rel="stylesheet" href="<?= base_url(); ?>/css/style.css">
 
   <?php if ($page == "Statistik") :  ?>
@@ -30,4 +31,8 @@
 <body id="page-top">
 
   <!-- Page Wrapper -->
-  <div class="dark-mode" id="wrapper">
+  <div class="<?php if (isset($_SESSION['profile']['tema'])) {
+                if ($_SESSION['profile']['tema'] == 1) {
+                  echo "light-mode";
+                } else echo "dark-mode";
+              } else echo "dark-mode"; ?>" id="wrapper">

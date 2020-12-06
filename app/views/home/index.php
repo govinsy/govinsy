@@ -58,7 +58,7 @@
               <img src="<?= base_url(); ?>/img/bps.png" class="mx-auto mt-5" width="40%" alt="...">
             </div>
             <div class="card-body">
-              <h5 class="card-title color-light-font font-weight-bold font-16">BADAN PUSAT STATISTIK</h5>
+              <h5 class="card-title color-content-font font-weight-bold font-16">BADAN PUSAT STATISTIK</h5>
               <p class="font-12 color-gray-font">Badan Pusat Statistik merupakan Biro Pusat Statistik, yang dibentuk berdasarkan UU Nomor 6 Tahun 1960 tentang Sensus dan UU Nomor 7 Tahun 1960 tentang Statistik.</p>
               <a href="https://www.bps.g.id" class="color-blue-font">Lihat Website &rarr;</a>
             </div>
@@ -71,7 +71,7 @@
               <img src="<?= base_url(); ?>/img/newsapi.png" class="mx-auto mt-5" width="50%" alt="...">
             </div>
             <div class="card-body">
-              <h5 class="card-title color-light-font font-weight-bold font-16">NEWS API</h5>
+              <h5 class="card-title color-content-font font-weight-bold font-16">NEWS API</h5>
               <p class="font-12 color-gray-font">News Api merupakan layanan penyedia data berita dan artikel dari seluruh dunia.</p>
               <a href="https://www.bps.g.id" class="color-blue-font">Lihat Website &rarr;</a>
             </div>
@@ -84,7 +84,7 @@
               <img src="<?= base_url(); ?>/img/gucov.png" class="mx-auto mt-5" width="35%" alt="...">
             </div>
             <div class="card-body">
-              <h5 class="card-title color-light-font font-weight-bold font-16">GUGUS TUGAS PERCEPATAN PENANGANAN COVID 19</h5>
+              <h5 class="card-title color-content-font font-weight-bold font-16">GUGUS TUGAS PERCEPATAN PENANGANAN COVID 19</h5>
               <p class="font-12 color-gray-font">Gugus Tugas Percepatan Penanganan COVID 19 adalah sebuah gugus tugas yang dibentuk pemerintah Indonesia untuk mengkoordinasikan kegiatan antarlembaga dalam upaya mencegah dan menanggulangi dampak penyakit koronavirus baru di Indonesia.</p>
               <a href="https://www.bps.g.id" class="color-blue-font">Lihat Website &rarr;</a>
             </div>
@@ -112,10 +112,10 @@
           <div class="col-lg-12">
 
             <p class="color-blue-font mb-4 text-left">DATA COVID 19 INDONESIA</p>
-            <ul id="covid" class="color-light-font row justify-content-around pb-0 align-items-center">
+            <ul id="covid" class="color-content-font row justify-content-around pb-0 align-items-center">
               <li class="col-lg-4 mb-5 mt-1">
                 <div class="mr-3 color-blue-bg cov-icon corner-round-10 float-left">
-                  <i class="fas fa-fw fa-user"></i>
+                  <i class="fas fa-fw color-light-font fa-user"></i>
                 </div>
                 <div class="pt-2">
                   <small class="text-gray-600 mr-1">POSITIF</small>
@@ -129,7 +129,7 @@
               </li>
               <li class="col-lg-4 mb-5 mt-1">
                 <div class="mr-3 color-green-bg cov-icon corner-round-10 float-left">
-                  <i class="fas fa-fw fa-syringe"></i>
+                  <i class="fas fa-fw color-light-font fa-syringe"></i>
                 </div>
                 <div class="pt-2">
                   <small class="text-gray-600 mr-1">SEMBUH</small>
@@ -142,7 +142,7 @@
               </li>
               <li class="col-lg-4 mb-5 mt-1">
                 <div class="mr-3 color-red-bg cov-icon corner-round-10 float-left">
-                  <i class="fas fa-fw fa-skull"></i>
+                  <i class="fas fa-fw color-light-font fa-skull"></i>
                 </div>
                 <div class="pt-2">
                   <small class="text-gray-600 mr-1">MENINGGAL</small>
@@ -175,7 +175,7 @@
                 <?php for ($i = 0; $i < count($prov); $i++) : ?>
                   <?php if ($i < 5) :  ?>
                     <tr>
-                      <td class="color-light-font"><img src="<?php echo base_url() . "/img/provinsi/logo/" . $prov[$i]['prov_id'] ?>.png" width="2.5%" alt=""> &ensp;<?= $prov[$i]['key'] ?></td>
+                      <td class="color-content-font"><img src="<?php echo base_url() . "/img/provinsi/logo/" . $prov[$i]['prov_id'] ?>.png" width="2.5%" alt=""> &ensp;<?= $prov[$i]['key'] ?></td>
                       <td class="color-blue-font"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_kasus'])) ?></td>
                       <td class="color-green-font"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_sembuh'])) ?></td>
                       <td class="color-red-font"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_meninggal'])) ?></td>
@@ -185,7 +185,7 @@
               <tbody id="morle" class="hilang">
               <?php else :  ?>
                 <tr>
-                  <td class="color-light-font"><img src="<?php echo base_url() . "/img/provinsi/logo/" . $prov[$i]['prov_id'] ?>.png" width="2.5%" alt=""> &ensp;<?= $prov[$i]['key'] ?></td>
+                  <td class="color-content-font"><img src="<?php echo base_url() . "/img/provinsi/logo/" . $prov[$i]['prov_id'] ?>.png" width="2.5%" alt=""> &ensp;<?= $prov[$i]['key'] ?></td>
                   <td class="color-blue-font"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_kasus'])) ?></td>
                   <td class="color-green-font"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_sembuh'])) ?></td>
                   <td class="color-red-font"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_meninggal'])) ?></td>
@@ -238,10 +238,10 @@
             <div class="col-lg-4 mb-4">
               <a href="<?= $berita[$i]['url']; ?>" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
                 <div class="card color-content corner-round hover-card">
-                  <img src="<?= $berita[$i]['urlToImage']; ?>" class="corner-round card-img-top" alt="...">
+                  <img src="<?= $berita[$i]['urlToImage']; ?>" class="corner-round-top card-img-top" alt="...">
                   <div class="card-body">
                     <div class="bar-blue my-3"></div>
-                    <h5 class="card-title color-light-font font-weight-bold"><?= $berita[$i]['title']; ?></h5>
+                    <h5 class="card-title color-content-font font-weight-bold"><?= $berita[$i]['title']; ?></h5>
                     <p class="card-text float-left"><small class="color-blue-font "><?= $berita[$i]['source']['name'] ?></small></p>
                     <p class="card-text float-right"><small class="text-muted"><?= date('d/m/Y', strtotime($berita[$i]['publishedAt'])); ?></small></p>
                   </div>

@@ -29,6 +29,10 @@ font-size 42px = 2.625rem
 {
     font-size:1rem;
 }
+.font-20
+{
+    font-size:1.25rem;
+}
 .font-26
 {
     font-size:1.625rem;
@@ -94,7 +98,11 @@ font-size 42px = 2.625rem
 }
 .dark-mode .color-content
 {
-    background: #181C2F;
+    background-color: #181C2F;
+}
+.dark-mode .color-content-sidebar
+{
+    background-color: #181C2F;
 }
 .dark-mode .color-font
 {
@@ -136,7 +144,7 @@ font-size 42px = 2.625rem
 {
     color:#BFC0C2;
 }
-.dark-mode .color-light-font
+.color-light-font
 {
     color:white;
 }
@@ -144,7 +152,12 @@ font-size 42px = 2.625rem
 {
     color:#181C2F !important;
 }
-.badge {
+.dark-mode .color-footer-bg
+{
+    background-color:#2D8DFD;
+}
+.badge 
+{
     margin-left: 3px;
 }
 
@@ -155,7 +168,14 @@ font-size 42px = 2.625rem
     color:white;
     border-radius:1rem;
 }
-
+.dark-mode .color-content-font
+{
+    color:#ffffff ;
+}
+.dark-mode .color-content-font:link
+{
+    color:#ffffff ;
+}
 .btn-dark-blue:hover
 {
     text-decoration:none;
@@ -164,13 +184,140 @@ font-size 42px = 2.625rem
     color:#2D8DFD;
 }
 /*  ////////////////
-///////End Color  /////////
+///////End Color Dark /////////
 ///////////////////////////
 */
 
 
+
 /*  ////////////////
-/////// Button  /////////
+///////Color Light  /////////
+///////////////////////////
+*/
+.light-mode .aktif
+{
+    color:white !important;
+}
+.light-mode .aktif::before
+{
+    content:'';
+    background-color: #ffffff;
+    width:2.3%;
+    height:60%;
+    position:absolute;
+    left:0;
+    top:20%;
+}
+.light-mode .aktif::after
+{
+    content:'';
+    background-color: #ffffff10;
+    width:100%;
+    height:60%;
+    position:absolute;
+    left:0;
+    top:20%;
+    z-index:-1;
+}
+.light-mode .aktif:hover::after
+{
+    background-color: #ffffff06;
+}
+
+.color-none-bg
+{
+    background-color: transparent;
+}
+.light-mode .color-bg
+{
+    background-color: #EFF2F9;
+}
+.light-mode .color-content
+{
+    background-color: #ffffff;
+}
+.light-mode .color-content-sidebar
+{
+    background-color: #4E73DF;
+}
+.light-mode .color-font
+{
+    color:#0B0F24;   
+}
+.light-mode .color-blue-bg
+{
+    background-color:#4E73DF;
+}
+.light-mode .color-blue-font
+{
+    color:#4E73DF !important;
+}
+.light-mode .color-green-bg
+{
+    background-color:#15CABC;
+}
+.light-mode .color-green-font
+{
+    color:#15CABC !important;
+}
+.light-mode .color-red-bg
+{
+    background-color:#FC2E7E;
+}
+.light-mode .color-red-font
+{
+    color:#FC2E7E !important;
+}
+.light-mode .color-gray-bg
+{
+    background-color:#BFC0C2;
+}
+.light-mode .color-gray-font
+{
+    color:#BFC0C2 !important;
+}
+.light-mode .link-not-active
+{
+    color:#BFC0C2;
+}
+.light-mode .color-content-font
+{
+    color:#303132;
+}
+.light-mode .color-dark-font
+{
+    color:#181C2F !important;
+}
+.light-mode .btn-dark-blue
+{
+    padding:0.2rem 1.5rem 0.2rem 1.5rem;
+    background-color:#4E73DF;
+    color:white;
+    border-radius:1rem;
+}
+.light-mode .color-footer-bg
+{
+    background-color:#303132;
+}
+
+.light-mode .btn-dark-blue:hover
+{
+    text-decoration:none;
+    background-color:rgba(0, 0, 0, 0);
+    box-shadow: #4E73DF 0px 0px 5px 0px;
+    color:#4E73DF;
+}
+/*  ////////////////
+///////End Color Light  /////////
+///////////////////////////
+*/
+
+
+
+
+
+/*  ////////////////
+/////// Button Dark  /////////
 ///////////////////////////
 */
 .bt-none
@@ -262,9 +409,113 @@ font-size 42px = 2.625rem
 }
 
 /*  ////////////////
-/////// End Button  /////////
+/////// End Button Dark  /////////
 ///////////////////////////
 */
+
+
+
+/*  ////////////////
+/////// Button Light  /////////
+///////////////////////////
+*/
+.bt-none
+{
+    background:none;
+    border:none;
+}
+.light-mode .btn-blue
+{
+    border: 2px transparent solid;
+    color:white ;
+    background-color:#4E73DF;
+}
+.light-mode .btn-blue-opt
+{
+    border: 2px transparent solid;
+    color:white ;
+    background-color:#4E73DF;
+}
+.light-mode .btn-outline-blue
+{
+    border: 2px#4E73DF solid;
+    color:#4E73DF;
+    background-color: transparent;
+}
+.light-mode .btn-red
+{
+    border: 2px transparent solid;
+    color:white ;
+    background-color: #E74A3B;
+}
+.light-mode .btn-outline-red
+{
+    border: 2px  #E74A3B solid;
+    color:  #E74A3B;
+    background-color: transparent;
+}
+.light-mode .btn-green
+{
+    border: 2px transparent solid;
+    color:white ;
+    background-color: #1CC88A;
+}
+.light-mode .btn-outline-green
+{
+    border: 2px  #1CC88A solid;
+    color:  #1CC88A;
+    background-color: transparent;
+}
+
+.light-mode .btn-blue:hover
+{
+    border: 2px #4E73DF solid;
+    color: #4E73DF;
+    background-color: transparent;
+}
+.light-mode .btn-blue-opt:hover
+{
+   border: 2px transparent solid;
+    color:white ;
+    background-color: #4E73DF;
+}
+.light-mode .btn-outline-blue:hover
+{
+    color: white;
+    background-color:  #4E73DF;
+}
+.light-mode .btn-green:hover
+{
+    border: 2px #1CC88A solid;
+    color: #1CC88A;
+    background-color: transparent;
+}
+.light-mode .btn-outline-green:hover
+{
+    color: white;
+    background-color:  #1CC88A;
+}
+.light-mode .btn-red:hover
+{
+    border: 2px #E74A3B solid;
+    color: #E74A3B;
+    background-color: transparent;
+}
+.light-mode .btn-outline-red:hover
+{
+    color: white;
+    background-color:  #E74A3B;
+}
+
+/*  ////////////////
+/////// End Button Light  /////////
+///////////////////////////
+*/
+
+
+
+
+
 
 /*  ////////////////
 /////// Border  /////////
@@ -332,6 +583,14 @@ font-size 42px = 2.625rem
     transform:scale(1.01);
 }
 
+.light-mode .hover-card:hover
+{
+    box-shadow: #a0a0a090 1px 1px 4px 0px;
+    transition:0.4s;
+    transform:scale(1.01);
+}
+
+
 .opacity-5
 {
     opacity:0.5;
@@ -391,6 +650,14 @@ font-size 42px = 2.625rem
 .corner-round::before
 {
     border-radius:1rem;
+}
+.corner-round-top
+{
+    border-radius:1rem 1rem 0 0;
+}
+.corner-round-top::before
+{
+    border-radius:1rem 1rem 0 0;
 }
 .corner-round-10
 {

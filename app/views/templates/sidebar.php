@@ -1,5 +1,5 @@
   <!-- Sidebar -->
-  <ul class="navbar-nav color-content position-relative sidebar sidebar-dark accordion" id="accordionSidebar">
+  <ul class="navbar-nav color-content-sidebar position-relative sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <div class="sticky-top">
           <button type="button" class="close color-blue-font mt-3 mr-3" style="transform:scale(2)" aria-label="Close">
@@ -48,7 +48,7 @@
               <div id="survey" class="row justify-content-center position-relative">
                   <div class="col-sm-9 text-center d-none d-md-inline color-bg corner-round mt-5 mb-3 pb-3">
                       <img src="<?= base_url(); ?>/img/survey.png" width="70%">
-                      <p class="color-light-font mt-2">Tertarik dengan website kami<a href="<?= base_url(); ?>/survei"> ikuti survei</a> sekarang</p>
+                      <p class="color-content-font mt-2">Tertarik dengan website kami<a href="<?= base_url(); ?>/survei"> ikuti survei</a> sekarang</p>
                       <a class="border-0 btn-dark-blue" href="<?= base_url(); ?>/survei">Survei &rarr;</a>
                   </div>
               </div>

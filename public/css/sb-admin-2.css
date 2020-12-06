@@ -10431,13 +10431,22 @@ a:focus {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.sidebar-dark .nav-item.active .nav-link {
+.dark-mode .sidebar-dark .nav-item.active .nav-link {
   color: #2D8DFD;
 }
 
-.sidebar-dark .nav-item.active .nav-link i {
+.dark-mode .sidebar-dark .nav-item.active .nav-link i {
   color: #2D8DFD;
 }
+
+.light-mode .sidebar-dark .nav-item.active .nav-link {
+  color: #ffffff;
+}
+
+.light-mode .sidebar-dark .nav-item.active .nav-link i {
+  color: #ffffff;
+}
+
 
 .sidebar-dark #sidebarToggle {
   background-color: rgba(255, 255, 255, 0.2);

@@ -18,9 +18,9 @@
                 <div class="col-lg-10">
 
                     <div class="row">
-                        <div class="col-lg-12 text-center mt-5 mb-4">
-                            <h2 class="color-light-font mt-3 font-26 font-weight-bold mb-1">Daftar</h2>
-                            <p class="color-light-font font-12">Daftar sekarang dan dapatkan fitur lengkap</p>
+                        <div class="col-lg-12 color-content-font text-center mt-5 mb-4">
+                            <h2 class="mt-3 font-26 font-weight-bold mb-1">Daftar</h2>
+                            <p class="font-12">Daftar sekarang dan dapatkan fitur lengkap</p>
                         </div>
                     </div>
 

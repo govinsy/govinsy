@@ -105,7 +105,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="text-right mt-2 my-auto">
                                     <?php if (isset($_SESSION['profile'])) : ?>
-                                        <small class="mr-2 d-none d-lg-inline text-white-600l"><?= str_replace(' ', '', $_SESSION['profile']['nama']); ?></small><br>
+                                        <small class="mr-2 d-none d-lg-inline color-content-font"><?= str_replace(' ', '', $_SESSION['profile']['nama']); ?></small><br>
                                     <?php endif; ?>
                                     <small class="mr-2 d-none d-lg-inline text-gray-600 font-10"><i class="fas fa-map-marked"></i> Jawa Tengah</small>
                                 </div>
@@ -115,16 +115,40 @@
 
 
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow color-content animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item color-light-font d-block" href="<?= base_url(); ?>/pengguna/profile">
+                            <div class="dropdown-menu dropdown-menu-right color-content-font shadow color-content animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item .color-content-font d-block" href="<?= base_url(); ?>/pengguna/profile">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profil
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item color-light-font d-block" href="<?= base_url(); ?>/pengguna/logout">
+                                <a class="dropdown-item .color-content-font d-block" href="<?= base_url(); ?>/pengguna/logout">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
+                                <div class="dropdown-divider"></div>
+                                <div class="container">
+
+                                    <div id="tema-toggle" class="row position-relative text-center justify-content-center mt-3">
+                                        <div class="col-2">
+                                        </div>
+                                        <i style="margin-left:-5px;" class="fas fa-moon font-20"></i>
+                                        <div class="col-6 text-center">
+                                            <div style="margin-left:-6px;" class="switch pointer" data-url="<?= base_url(); ?>" data-uid="<?= $_SESSION['profile']['id'] ?>" data-now="<?= $_SERVER['REQUEST_URI']; ?>" data-tema="<?= $_SESSION['profile']['tema'] ?>" <?php if (isset($_SESSION['profile']['tema'])) {
+                                                                                                                                                                                                                                                                            if ($_SESSION['profile']['tema'] == 1) {
+                                                                                                                                                                                                                                                                                echo "id='activeFirst'";
+                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                        } ?>></div>
+                                        </div>
+                                        <div class="col-2 text-left">
+                                            <i style="margin-left:-16px;text-align:left;" class="fas fa-sun font-20"></i>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+
                             </div>
 
                         </li>
