@@ -1,3 +1,5 @@
+<?= $this->extend('templates/base') ?>
+<?= $this->section('content') ?>
 <div class="container">
 
     <!--  Data Pengunjung & User -->
@@ -137,3 +139,4 @@
 
     </div>
 </div>
+<?= $this->endSection() ?>

@@ -1,3 +1,5 @@
+<?= $this->extend('templates/base') ?>
+<?= $this->section('content') ?>
 <div class="container">
     <h3 class="text-gray-700">BERITA TERKINI</h3>
     <hr class="color-content mb-4 divider">
@@ -27,3 +29,4 @@
 
     </div>
 </div>
+<?= $this->endSection() ?>

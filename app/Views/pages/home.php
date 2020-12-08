@@ -1,3 +1,5 @@
+<?= $this->extend('templates/base') ?>
+<?= $this->section('content') ?>
 <div class="container">
   <?= session()->getFlashdata('message') ?>
   <div class="jumbotron mt-4">
@@ -6,3 +8,4 @@
   </div>
 
 </div>
+<?= $this->endSection() ?>
