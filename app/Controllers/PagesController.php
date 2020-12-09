@@ -13,11 +13,10 @@ class PagesController extends BaseController
 
     public function berita()
     {
-        // Kasus Covid-19 Indonesia
+        // Berita Covid-19 Indonesia
         $newsapi = $this->urlModel->where(['name' => 'newsapi'])->first();
         $berita = $this->getJSON($newsapi['url'] . $newsapi['key']);
 
-        // Daftar variable yang bisa digunakan di /views/statistik/index.php
         $data['judul'] = 'Berita';
         $data['page'] = 'Berita'; //Digunakan untuk indikator di Sidebar
         $data['berita'] = $berita['articles']; // berita covid se-indonesia

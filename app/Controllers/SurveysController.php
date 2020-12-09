@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class Survei extends BaseController
+class SurveysController extends BaseController
 {
     public function index()
     {

@@ -1,9 +1,11 @@
+<?= $this->extend('templates/base') ?>
+<?= $this->section('content') ?>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-5">
 
             <div class="jumbotron mt-4 color-content py-5 px-5 text-center">
-                <form class="form-signin" method="POST" action="<?= base_url(); ?>/pengguna/login">
+                <form class="form-signin" method="POST" action="<?= base_url(); ?>/login">
                     <img class="mb-5" src="<?= base_url(); ?>/img/govinsy-dark.png" alt="" width="40%">
                     <?= csrf_field(); ?>
                     <?= session()->getFlashdata('message') ?>
@@ -28,3 +30,4 @@
         </div>
     </div>
 </div>
+<?= $this->endSection() ?>

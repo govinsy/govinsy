@@ -16,6 +16,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\UrlModel;
+use App\Models\UserModel;
 
 class BaseController extends Controller
 {
@@ -47,6 +48,7 @@ class BaseController extends Controller
 	
 		session();
 		$this->urlModel = new UrlModel();
+		$this->userModel = new UserModel();
 	}
 
 	public function getJSON($url, $arg = NULL)

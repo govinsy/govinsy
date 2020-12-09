@@ -25,9 +25,10 @@ class Users extends Migration
 				'type' => 'VARCHAR',
 				'constraint' => 255
 			],
-			'survei' => [
-				'type' => 'BOOLEAN',
-				'default' => FALSE
+			'picture' => [
+				'type' => 'VARCHAR',
+				'constraint' => 255,
+				'null' => TRUE
 			],
 			'created_at' => [
 				'type' => 'DATETIME',

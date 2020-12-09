@@ -1,3 +1,5 @@
+<?= $this->extend('templates/base') ?>
+<?= $this->section('content') ?>
 <script type="text/javascript" src="<?= base_url(); ?>/js/Chart.js"></script>
 <div class="container">
 
@@ -248,80 +250,6 @@
 
   </div>
 
-  <!-- SURVEI -->
-  <div class="row">
-    <div class="col-12">
-      <div id="data-provinsi" align="center" class="jumbotron color-content pt-5 slide-wrapper">
-
-
-        <h4 class="mb-5 font-weight-bold color-blue-font">SURVEI INTERNAL</h4>
-        <!-- Jumlah survei = jumlah pertanyaan -->
-        <ul class="slide mt-3" id="nomor-slide">
-          <?php if (isset($pertanyaan)) : ?>
-            <?php foreach ($pertanyaan as $p) : ?>
-              <li class="row m-3 text-center justify-content-center" style="width:100%;box-shadow:none;">
-
-                <div class="col-lg-6">
-                  <div class="chart-pie">
-                    <canvas id="<?= $p['id']  ?>"></canvas>
-                  </div>
-                </div>
-
-                <div class="col-lg-4 pt-4">
-                  <div class="list-group color-none-bg">
-
-                    <!-- Menampilkan kalkulasi jawaban sesuai pertanyaan -->
-                    <?php $tempArr = [] ?>
-                    <?php foreach ($jawaban as $j) : ?>
-                      <?php if ($j['id_pertanyaan'] == $p['id']) : ?>
-                        <?php
-                        $arr = array_count_values($hasil_survei);
-                        $ark = array_keys(array_count_values($hasil_survei));
-                        foreach ($ark as $k) {
-                          if ($k == $j['id']) {
-                            echo '<div class="list-group-item d-flex justify-content-between align-items-center" id="' . $j['id'] . '" data-' . $j['id'] . '="' . $arr[$k] . '">
-                        ' . $j['jawaban'] . '
-                        <span class="badge badge-primary badge-pill">' . $arr[$k] . '</span>
-                      </div>';
-                          }
-                        }
-                        ?>
-                        </span></h6>
-
-                      <?php endif; ?>
-                    <?php endforeach; ?>
-
-                  </div>
-                </div>
-
-              </li>
-            <?php endforeach; ?>
-
-        </ul>
-      <?php else : ?>
-        <div class="container">
-          <p class="text-danger font-weight-bold">gagal mengambil data: periksa koneksi database</p>
-        </div>
-      <?php endif; ?>
-
-      <div class="wrap-controls">
-        <div class="arrow-nav">
-          <button class="prev"></button>
-        </div>
-        <ul id="circle-pointer" class="circle-controls">
-          <li></li>
-        </ul>
-        <div class="ml-2 arrow-nav">
-          <button class="next"></button>
-        </div>
-      </div>
-
-
-      </div>
-    </div>
-  </div>
-  <!-- END SURVEI -->
-
 </div>
 
 
@@ -379,3 +307,5 @@
     }
   });
 </script> -->
+
+<?= $this->endSection() ?>

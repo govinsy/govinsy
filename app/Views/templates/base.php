@@ -117,11 +117,11 @@
                                                     <h4 class="color-blue-font font-weight-bold mb-5 mr-5">Masuk</h4>
                                                 </div>
                                                 <div class="col-6 text-right">
-                                                    <a href="<?= base_url(); ?>/pengguna/daftar"
+                                                    <a href="<?= base_url(); ?>/register"
                                                         class="btn py-0 corner-round btn-outline-blue ml-5">Daftar</a>
                                                 </div>
                                             </div>
-                                            <form class="user" method="POST" action="<?= base_url(); ?>/pengguna/login">
+                                            <form class="user" method="POST" action="<?= base_url(); ?>/login">
                                                 <?= csrf_field(); ?>
                                                 <div class="form-group">
                                                     <input name="email" type="email"
@@ -213,13 +213,13 @@
                                     <div class="text-right mt-2 my-auto">
                                         <?php if (isset($_SESSION['profile'])) : ?>
                                         <small
-                                            class="mr-2 d-none d-lg-inline text-white-600l"><?= str_replace(' ', '', $_SESSION['profile']['nama']); ?></small><br>
+                                            class="mr-2 d-none d-lg-inline text-white-600l"><?= str_replace(' ', '', session()->get('profile')['name']); ?></small><br>
                                         <?php endif; ?>
                                         <small class="mr-2 d-none d-lg-inline text-gray-600 font-10"><i
                                                 class="fas fa-map-marked"></i> Jawa Tengah</small>
                                     </div>
                                     <img class="img-profile rounded-circle"
-                                        src="<?= base_url(); ?>/img/profile/<?= $_SESSION['profile']['gambar']  ?>">
+                                        src="<?= base_url() ?>/img/profile/430da.jpg">
                                 </a>
 
 
@@ -234,7 +234,7 @@
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item color-light-font d-block"
-                                        href="<?= base_url(); ?>/pengguna/logout">
+                                        href="<?= base_url(); ?>/logout">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Logout
                                     </a>

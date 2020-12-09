@@ -44,6 +44,20 @@ class UrlSeeder extends Seeder
 				'author' => 'Govinsy',
 				'url' => base_url() . '/json/provdesc.json',
 				'created_at' => Time::now()
+			],
+			[
+				'name' => 'bps_domain',
+				'author' => 'Badan Pusat Statistik',
+				'url' => 'https://webapi.bps.go.id/v1/api/domain?type=prov&key=',
+				'key' => 'ae16cc87c0398c4ab14d22fa99deed75',
+				'created_at' => Time::now()
+			],
+			[
+				'name' => 'bps_strategic',
+				'author' => 'Badan Pusat Statistik',
+				'url' => 'https://webapi.bps.go.id/v1/api/list?model=indicators&key=',
+				'key' => 'ae16cc87c0398c4ab14d22fa99deed75',
+				'created_at' => Time::now()
 			]
 		];
 
