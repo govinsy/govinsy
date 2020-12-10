@@ -2,7 +2,7 @@
 
 use CodeIgniter\Database\Migration;
 
-class Users extends Migration
+class Surveys extends Migration
 {
 	public function up()
 	{
@@ -13,31 +13,12 @@ class Users extends Migration
 				'unsigned' => TRUE,
 				'auto_increment' => TRUE
 			],
-			'name' => [
+			'title' => [
 				'type' => 'VARCHAR',
 				'constraint' => 255
 			],
-			'email' => [
-				'type' => 'VARCHAR',
-				'constraint' => 255
-			],
-			'password' => [
-				'type' => 'VARCHAR',
-				'constraint' => 255
-			],
-			'picture' => [
-				'type' => 'VARCHAR',
-				'constraint' => 255,
-				'null' => TRUE
-			],
-			'is_admin' => [
-				'type' => 'BOOLEAN'
-			],
-			'is_active' => [
-				'type' => 'BOOLEAN'
-			],
-			'last_login' => [
-				'type' => 'DATETIME',
+			'description' => [
+				'type' => 'TEXT',
 				'null' => TRUE
 			],
 			'created_at' => [
@@ -50,13 +31,13 @@ class Users extends Migration
 			]
 		]);
 		$this->forge->addKey('id', TRUE);
-		$this->forge->createTable('users');
+		$this->forge->createTable('surveys');
 	}
 
 	//--------------------------------------------------------------------
 
 	public function down()
 	{
-		$this->forge->dropTable('users');
+		$this->forge->dropTable('surveys');
 	}
 }

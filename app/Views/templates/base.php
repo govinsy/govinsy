@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="<?= base_url(); ?>/css/image-cropper/cropper.css">
     <!---  End Css Assets    -->
 
-    <title><?= $judul; ?></title>
+    <title><?= $title; ?></title>
 </head>
 
 <body id="page-top">
@@ -44,25 +44,25 @@
 
                 <!-- Nav Item - Charts -->
                 <li class="nav-item  <?php if ($page === "Statistik")  echo "active aktif"; ?>">
-                    <a class="nav-link" href="<?= base_url(); ?>/statistik">
+                    <a class="nav-link" href="<?= base_url(); ?>/statistic">
                         <i class="mr-3 ml-4 fas fa-fw fa-chart-area"></i>
                         <span>STATISTIK</span></a>
                 </li>
 
                 <li class="nav-item <?php if ($page === "Berita")  echo "active aktif"; ?>">
-                    <a class="nav-link active" href="<?= base_url(); ?>/berita">
+                    <a class="nav-link active" href="<?= base_url(); ?>/news">
                         <i class="mr-3 ml-4 fas fa-fw fa-newspaper"></i>
                         <span>BERITA</span></a>
                 </li>
 
                 <li class="nav-item <?php if ($page === "Survei")  echo "active aktif"; ?>">
-                    <a class="nav-link" href="<?= base_url(); ?>/survei">
+                    <a class="nav-link" href="<?= base_url(); ?>/survey">
                         <i class="mr-3 ml-4 fas fa-fw fa-tag"></i>
                         <span>SURVEI</span></a>
                 </li>
 
                 <li class="nav-item <?php if ($page === "Tentang Kami")  echo "active aktif"; ?>">
-                    <a class="nav-link" href="<?= base_url(); ?>/tentang">
+                    <a class="nav-link" href="<?= base_url(); ?>/about">
                         <i class="mr-3 ml-4 fas fa-fw fa-info"></i>
                         <span>TENTANG KAMI</span></a>
                 </li>

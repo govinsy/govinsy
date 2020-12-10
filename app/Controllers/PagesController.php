@@ -6,29 +6,33 @@ class PagesController extends BaseController
 {
 	public function home()
 	{
-		$data['judul'] = 'Home';
+		$data['title'] = 'Home';
 		$data['page'] = 'Home'; //Digunakan untuk indikator di Sidebar
 		echo view('pages/home', $data);
     }
 
-    public function berita()
+    public function news()
     {
         // Berita Covid-19 Indonesia
         $newsapi = $this->urlModel->where(['name' => 'newsapi'])->first();
-        $berita = $this->getJSON($newsapi['url'] . $newsapi['key']);
+        $news = $this->getJSON($newsapi['url'] . $newsapi['key']);
 
-        $data['judul'] = 'Berita';
+        if (empty($news)) {
+            $news['articles'] = [];
+        }
+
+        $data['title'] = 'Berita';
         $data['page'] = 'Berita'; //Digunakan untuk indikator di Sidebar
-        $data['berita'] = $berita['articles']; // berita covid se-indonesia
+        $data['news'] = $news['articles']; // berita covid se-indonesia
 
         // Views
-        echo view('berita/index', $data);
+        echo view('pages/news', $data);
     }
     
-    public function tentang()
+    public function about()
 	{
-		$data['judul'] = 'Tentang Kami';
+		$data['title'] = 'Tentang Kami';
 		$data['page'] = 'Tentang Kami'; //Digunakan untuk indikator di Sidebar
-		echo view('pages/tentang', $data);
+		echo view('pages/about', $data);
 	}
 }

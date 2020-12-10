@@ -8,10 +8,11 @@ class UserSeeder extends Seeder
 	public function run()
 	{
 		$data = [
-			'name' => 'test',
-			'email' => 'test@example.com',
-			'password' => password_hash('test', PASSWORD_DEFAULT),
+			'name' => 'admin',
+			'email' => 'admin@govinsy.com',
+			'password' => password_hash('admin', PASSWORD_DEFAULT),
 			'picture' => '430da.jpg',
+			'is_admin' => 1,
 			'created_at' => Time::now()
 		];
 

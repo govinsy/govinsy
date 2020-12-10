@@ -32,11 +32,10 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 $routes->get('/', 'PagesController::home');
-$routes->get('/berita', 'PagesController::berita');
-$routes->get('/tentang', 'PagesController::tentang');
-$routes->get('/statistik', 'StatisticsController::index');
-$routes->get('/pengguna', 'UsersController::index');
-$routes->get('/survei', 'SurveysController::index');
+$routes->get('/news', 'PagesController::news');
+$routes->get('/about', 'PagesController::about');
+$routes->get('/statistic', 'StatisticsController::index');
+$routes->get('/survey', 'SurveysController::index');
 $routes->get('/login', 'UsersController::login');
 $routes->post('/login', 'UsersController::check');
 $routes->get('/logout', 'UsersController::logout');

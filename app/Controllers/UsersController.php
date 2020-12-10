@@ -12,7 +12,7 @@ class UsersController extends BaseController
 
     public function login()
     {
-        $data['judul'] = 'Masuk Govinsy';
+        $data['title'] = 'Masuk Govinsy';
         $data['page'] = 'Masuk Govinsy';
         $data['validation'] = $this->validation;
         
@@ -37,6 +37,11 @@ class UsersController extends BaseController
             $user = $this->userModel->where('email', $this->request->getVar('email'))->first();
             if ($user > 0) {
                 if (password_verify($this->request->getVar('password'), $user['password'])) {
+                    $this->userModel
+                        ->set('is_active', 1)
+                        ->set('last_login', Time::now())
+                        ->where('id', $user['id'])
+                        ->update();
                     session()->set([
                         'login' => true,
                         'profile' => $user
@@ -55,6 +60,11 @@ class UsersController extends BaseController
 
     public function logout()
     {
+        $this->userModel
+            ->set('is_active', 0)
+            ->set('last_login', Time::now())
+            ->where('id', session()->get('profile')['id'])
+            ->update();
         session()->destroy();
         return redirect()->to('/');
     }
@@ -63,7 +73,7 @@ class UsersController extends BaseController
     {
         $data['validation'] = $this->validation;
         $data['page'] = [];
-        $data['judul'] = 'Daftar Govinsy';
+        $data['title'] = 'Daftar Govinsy';
 
         echo view('users/register', $data);
     }
@@ -121,7 +131,7 @@ class UsersController extends BaseController
 
     public function profile()
     {
-        $data['judul'] = 'Profile Pengguna';
+        $data['title'] = 'Profile Pengguna';
         $data['page'] = 'Profile';
 
         //Ganti gambar

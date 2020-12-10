@@ -9,16 +9,16 @@
     <!-- Berita -->
 
     <div class="row row-cols-1 row-cols-md-2">
-        <?php if (isset($berita)) : ?>
-            <?php foreach ($berita as $beritas) : ?>
+        <?php if (isset($news)) : ?>
+            <?php foreach ($news as $new) : ?>
                 <div class="col-lg-4 mb-4">
                     <div class="card color-content">
-                        <img src="<?= $beritas['urlToImage']; ?>" class="card-img-top" alt="...">
+                        <img src="<?= $new['urlToImage']; ?>" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title color-light-font font-weight-bold"><a href="<?= $beritas['url']; ?>" target="_blank" rel="noopener noreferrer" class="text-decoration-none color-light-font"><?= $beritas['title']; ?></a></h5>
-                            <p class="card-text text-gray-600"><?= $beritas['description']; ?> <a href="<?= $beritas['url']; ?>" target="_blank" rel="noopener noreferrer" class="text-decoration-none">read more</a></p>
-                            <p class="card-text float-left"><small class="text-muted"><?= $beritas['source']['name'] ?></small></p>
-                            <p class="card-text float-right"><small class="text-muted"><?= DateTimeHumanizer::difference(Time::now(), new \DateTime($beritas['publishedAt']), 'id_ID');?></small></p>
+                            <h5 class="card-title color-light-font font-weight-bold"><a href="<?= $new['url']; ?>" target="_blank" rel="noopener noreferrer" class="text-decoration-none color-light-font"><?= $new['title']; ?></a></h5>
+                            <p class="card-text text-gray-600"><?= $new['description']; ?> <a href="<?= $new['url']; ?>" target="_blank" rel="noopener noreferrer" class="text-decoration-none">read more</a></p>
+                            <p class="card-text float-left"><small class="text-muted"><?= $new['source']['name'] ?></small></p>
+                            <p class="card-text float-right"><small class="text-muted"><?= DateTimeHumanizer::difference(Time::now(), new \DateTime($new['publishedAt']), 'id_ID');?></small></p>
                         </div>
                     </div>
                 </div>

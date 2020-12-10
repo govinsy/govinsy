@@ -52,7 +52,7 @@ class StatisticsController extends BaseController
         $db = \Config\Database::connect();
         $jp = $db->table('jawaban_pengguna');
         $jmlJP = $jp->selectCount('id');
-        $pengguna = $db->table('pengguna')->get();
+        $pengguna = $db->table('users')->get();
         $survei = $jp->get();
         $data['pertanyaan'] = $db->table('pertanyaan')->get();
         $data['jawaban'] = $db->table('jawaban')->get();
@@ -65,7 +65,7 @@ class StatisticsController extends BaseController
 
         // Daftar variable yang bisa digunakan di /views/statistik/index.php
 
-        $data['judul'] = 'Daftar Statistik';
+        $data['title'] = 'Daftar Statistik';
         $data['page'] = 'Statistik'; //Digunakan untuk indikator di Sidebar
         $data['indo'] = $kasus; // kasus covid se-indonesia
         $data['prov'] = $provinsi['list_data']; // kasus covid-19 per-provinsi
@@ -203,7 +203,7 @@ class StatisticsController extends BaseController
 
         $data['stat'] = $stat; //Data Strategic Indicator
         $data['covid'] = ambilDataProvinsi($provinsi); //Data COVID 19 Provinsi
-        $data['judul'] = "Data Provinsi " . $_GET['nama_provinsi'];
+        $data['title'] = "Data Provinsi " . $_GET['nama_provinsi'];
         $data['page'] = 'Statistik'; //Digunakan untuk indikator di Sidebar
         $data['hospital'] = $hospital; // Rumah sakit rujukan
         $data['provdesc'] = $desc; // Deskirpsi provinsi
