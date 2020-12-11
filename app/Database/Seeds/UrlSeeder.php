@@ -9,7 +9,7 @@ class UrlSeeder extends Seeder
 	{
 		$data = [
 			[
-				'name' => 'covid_ind',
+				'name' => 'covid_id',
 				'author' => 'Mathdroid',
 				'url' => 'https://covid19.mathdro.id/api/countries/IDN',
 				'created_at' => Time::now()
@@ -40,7 +40,7 @@ class UrlSeeder extends Seeder
 				'created_at' => Time::now()
 			],
 			[
-				'name' => 'provdesc',
+				'name' => 'prov_desc',
 				'author' => 'Govinsy',
 				'url' => base_url() . '/json/provdesc.json',
 				'created_at' => Time::now()

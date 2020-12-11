@@ -7,7 +7,7 @@
   <div id="kesiapan" class="row justify-content-center text-center">
     <div class="col-md-10">
       <h3 class="color-light-font">Anda Sudah mengikuti survei</h3>
-      <a href="<?= base_url(); ?>/statistik">Lihat hasil statistik</a>
+      <a href="<?= base_url(); ?>/statistic">Lihat hasil statistik</a>
     </div>
   </div>
   <?php else : ?>
@@ -48,30 +48,30 @@
       <!-- End Indikator Pertanyaan Survei -->
 
       <div class="jumbotron mt-4 color-content py-4" id="survei-pertanyaan">
-        <form method="post" action="<?= base_url(); ?>/survei">
+        <form method="post" action="<?= base_url(); ?>/survey">
           <?= csrf_field(); ?>
           <!-- Menampilkan seluruh pertanyaan -->
           <?php if (isset($questions)) : ?>
           <?php $i = 0;
-              foreach ($questions->getResult() as $question) : $i++ ?>
+              foreach ($questions as $question) : $i++ ?>
           <ul id="P<?= $i; ?>" class="list-group hilang">
             <p class="font-16 text-gray-600 mb-0">PERTANYAAN <?= $i ?></p>
-            <p class="font-26 link-not-active mb-5"><?= $question->question ?></p>
+            <p class="font-26 link-not-active mb-5"><?= $question['question'] ?></p>
 
             <!-- Menampilkan seluruh jawaban -->
-            <?php foreach ($answers->getResult() as $answer) : ?>
+            <?php foreach ($answers as $answer) : ?>
 
             <!-- Mencari data jawaban yang sesuai dengan pertanyaan -->
-            <?php if ($answer->question_id == $question->id) : ?>
+            <?php if ($answer['question_id'] == $question['id']) : ?>
 
-            <label for="<?= $answer->id ?>">
-              <li id="J-<?= $answer->id ?>" class="list-group-item mb-3 rounded">
+            <label for="<?= $answer['id'] ?>">
+              <li id="J-<?= $answer['id'] ?>" class="list-group-item mb-3 rounded">
                 <div class="form-check">
 
 
-                  <input class="form-check-input hilang" type="radio" name="<?= $question->id ?>" id="<?= $answer->id ?>"
-                    value="<?= $answer->id ?>" onChange="autoSubmit()">
-                  <label class="form-check-label" for="<?= $answer->id ?>"><?= $answer->answer; ?></label>
+                  <input class="form-check-input hilang" type="radio" name="<?= $question['id'] ?>" id="<?= $answer['id'] ?>"
+                    value="<?= $answer['id'] ?>" onChange="autoSubmit()">
+                  <label class="form-check-label" for="<?= $answer['id'] ?>"><?= $answer['answer']; ?></label>
                 </div>
               </li>
             </label>

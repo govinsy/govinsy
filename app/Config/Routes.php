@@ -36,6 +36,7 @@ $routes->get('/news', 'PagesController::news');
 $routes->get('/about', 'PagesController::about');
 $routes->get('/statistic', 'StatisticsController::index');
 $routes->get('/survey', 'SurveysController::index');
+$routes->post('/survey', 'SurveysController::save');
 $routes->get('/login', 'UsersController::login');
 $routes->post('/login', 'UsersController::check');
 $routes->get('/logout', 'UsersController::logout');

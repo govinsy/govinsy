@@ -15,11 +15,17 @@ class SurveysController extends BaseController
 
     public function index()
     {
+        $data['has_filled'] = 0;
+
+        // Cek user telah mengisi
+        if (!empty($this->userAnswerModel->getWhere(['user_id' => session()->get('profile')['id']]))) {
+            $data['has_filled'] = 1;
+        }
+
         $data['title'] = 'Survei Govinsy';
         $data['page'] = 'Survei'; //Digunakan untuk indikator di Sidebar
-        $data['questions'] = $this->questionModel->get();
-        $data['answers'] = $this->answerModel->get();
-        $data['has_filled'] = 0;
+        $data['questions'] = $this->questionModel->findAll();
+        $data['answers'] = $this->answerModel->findAll();
 
         //Views
         echo view('surveys/index', $data);
@@ -27,26 +33,12 @@ class SurveysController extends BaseController
 
     public function save()
     {
-        // Mengolah data dari form
-        foreach ($questions as $p) {
-            if (isset($_POST[$p['id']])) {
-
-                // Menyiapkan data untuk model
-                $jp['id'] = substr(uniqid(), 8, 5);
-                $jp['id_jawaban'] = $_POST[$p['id']];
-                $jp['id_pengguna'] = $_SESSION['profile']['id'];
-                $jp['respon'] = "";
-
-                // Input data
-                if ($this->survei_model->tambahJawabanPengguna($jp)) {
-                    // Flasher::setFlash('berhasil', 'jawaban anda berhasil dimasukan', 'success');
-
-                    // $this->survei_model->tambahJawabanPengguna($jp);
-                } else {
-                    // Flasher::setFlash('gagal', 'jawaban anda gagal dimasukan', 'danger');
-
-                }
-            }
+        for ($i=1; $i < count($this->request->getVar()); $i++) { 
+            $this->userAnswerModel->save([
+                'user_id' => session()->get('profile')['id'],
+                'answer_id' => $this->request->getVar()[$i]
+            ]);
         }
+        return redirect()->to('/survey');
     }
 }

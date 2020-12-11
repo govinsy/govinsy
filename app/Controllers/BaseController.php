@@ -20,6 +20,7 @@ use App\Models\UserModel;
 use App\Models\SurveyModel;
 use App\Models\QuestionModel;
 use App\Models\AnswerModel;
+use App\Models\UserAnswerModel;
 
 class BaseController extends Controller
 {
@@ -36,6 +37,7 @@ class BaseController extends Controller
 	protected $surveyModel;
 	protected $questionModel;
 	protected $answerModel;
+	protected $userAnswerModel;
 
 	/**
 	 * Constructor.
@@ -58,6 +60,7 @@ class BaseController extends Controller
 		$this->surveyModel = new SurveyModel();
 		$this->questionModel = new QuestionModel();
 		$this->answerModel = new AnswerModel();
+		$this->userAnswerModel = new UserAnswerModel();
 	}
 
 	public function getJSON($url, $arg = NULL)

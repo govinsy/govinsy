@@ -1,97 +1,105 @@
 <?php
 
 namespace App\Controllers;
+use CodeIgniter\I18n\Time;
 
 // Lokasi method getJSON di BaseController.php
 // Lokasi daftar url dan field di BaseController.php
 
 class StatisticsController extends BaseController
 {
-
-    public function __construct()
-    {
-        set_time_limit(500);
-    }
-
     public function index()
     {
-        // Set Session Nomor Domain dan Nama Provinsi
-        !empty($_POST['prov']) ? $_SESSION['prov'] = $_POST['prov'] : NULL;
-        !empty($_POST['domain']) ? $_SESSION['domain'] = $_POST['domain'] : NULL;
-        !empty($_SESSION['domain']) ? $no_domain = $_SESSION['domain'] : $no_domain = NULL;
+        // // Set Session Nomor Domain dan Nama Provinsi
+        // !empty($_POST['prov']) ? $_SESSION['prov'] = $_POST['prov'] : NULL;
+        // !empty($_POST['domain']) ? $_SESSION['domain'] = $_POST['domain'] : NULL;
+        // !empty($_SESSION['domain']) ? $no_domain = $_SESSION['domain'] : $no_domain = NULL;
 
-        // Kasus Covid-19 Indonesia
-        $kasus = $this->urlModel->where(['name' => 'covid_ind'])->first();
-        $kasus = $this->getJSON($kasus['url']);
+        // // Kasus Covid-19 Indonesia
+        // $kasus = $this->urlModel->where(['name' => 'covid_ind'])->first();
+        // $kasus = $this->getJSON($kasus['url']);
 
-        // Kasus Covid-19 Provinsi
-        $provinsi = $this->urlModel->where(['name' => 'covid_prov'])->first();
-        $provinsi = $this->getJSON($provinsi['url']);
-
-        // Daftar Domain Provinsi
-        $domain = $this->urlModel->where(['name' => 'bps_domain'])->first();
-        $domain = $this->getJSON($domain['url'], $domain['key']);
-
-        // Strategic Indicators
-        $strategic = $this->urlModel->where(['name' => 'bps_strategic'])->first();
-        $strategic = $this->getJSON($strategic['url'], $strategic['key'] . '&domain=' . $no_domain);
-        $indicators = [];
-        // mengambil semua data tanpa per-page
-        if (!empty($strategic['data'][0]['pages'])) {
-            $pages = $strategic['data'][0]['pages'];
-            for ($i = 1; $i <= $pages; $i++) {
-                $indicators[$i] = $this->getJSON($this->urlModel->where['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] . 'domain=' . $no_domain . '&page=' . $i);
-            }
-        }
-
-        // Data Covid Dari Hari 1
-        $dayone = $this->urlModel->where(['name' => 'covid_dayone'])->first();
-        $dayone = $this->getJSON($dayone['url']);
-
-        // Survei
-        $db = \Config\Database::connect();
-        $jp = $db->table('jawaban_pengguna');
-        $jmlJP = $jp->selectCount('id');
-        $pengguna = $db->table('users')->get();
-        $survei = $jp->get();
-        $data['pertanyaan'] = $db->table('pertanyaan')->get();
-        $data['jawaban'] = $db->table('jawaban')->get();
-        // $data['hasil_survei'] = [];
-        // foreach ($survei->getResult() as $s) {
-        //     array_push($data['hasil_survei'], $s->id_jawaban);
-        // }
-        $data['hasil_survei'] = $jmlJP;
-        // dd($data['pertanyaan']);
-
-        // Daftar variable yang bisa digunakan di /views/statistik/index.php
-
-        $data['title'] = 'Daftar Statistik';
-        $data['page'] = 'Statistik'; //Digunakan untuk indikator di Sidebar
-        $data['indo'] = $kasus; // kasus covid se-indonesia
-        $data['prov'] = $provinsi['list_data']; // kasus covid-19 per-provinsi
-        $data['domains'] = $domain['data'][1]; // daftar domain provinsi
+        // // Kasus Covid-19 Provinsi
+        // $provinsi = $this->urlModel->where(['name' => 'covid_prov'])->first();
+        // $provinsi = $this->getJSON($provinsi['url']);
 
 
-        !empty($indicators) ? $data['indicators'] = $indicators : $data['indicators'] = []; // strategic indocators
+        // // Daftar Domain Provinsi
+        // $domain = $this->urlModel->where(['name' => 'bps_domain'])->first();
+        // $domain = $this->getJSON($domain['url'], $domain['key']);
 
-        // Diagram
-        // $data['dayone']['date'] = [];
-        // $data['dayone']['confirmed'] = [];
-        // $data['dayone']['recovered'] = [];
-        // $data['dayone']['deaths'] = [];
-        // $data['dayone']['active'] = [];
-        // if (isset($dayone)) {
-        //     for ($i = 0; $i < count($dayone); $i++) {
-        //         array_push($data['dayone']['date'], date('M j', strtotime($dayone[$i]['Date'])));
-        //         array_push($data['dayone']['confirmed'], $dayone[$i]['Confirmed']);
-        //         array_push($data['dayone']['recovered'], $dayone[$i]['Recovered']);
-        //         array_push($data['dayone']['deaths'], $dayone[$i]['Deaths']);
-        //         array_push($data['dayone']['active'], $dayone[$i]['Active']);
+        // // Strategic Indicators
+        // $strategic = $this->urlModel->where(['name' => 'bps_strategic'])->first();
+        // $strategic = $this->getJSON($strategic['url'], $strategic['key'] . '&domain=' . $no_domain);
+        // $indicators = [];
+        // // mengambil semua data tanpa per-page
+        // if (!empty($strategic['data'][0]['pages'])) {
+        //     $pages = $strategic['data'][0]['pages'];
+        //     for ($i = 1; $i <= $pages; $i++) {
+        //         $indicators[$i] = $this->getJSON($this->urlModel->where(['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] . 'domain=' . $no_domain . '&page=' . $i));
         //     }
         // }
 
-        // Views
-        echo view('statistics/index', $data);
+        // // Data Covid Dari Hari 1
+        // $covid_dayone = $this->urlModel->where(['name' => 'covid_dayone'])->first();
+        // $covid_dayone = $this->getJSON($covid_dayone['url']);
+        
+        // // Cek data
+        // empty($provinsi) ? $provinsi['list_data'] = [] : $provinsi['list_data'];
+        // empty($domain) ? $domain['data'][1] = [] : $domain['data'][1];
+        // if (empty($kasus)) {
+        //     $kasus['confirmed']['value'] = 0;
+        //     $kasus['recovered']['value'] = 0;
+        //     $kasus['deaths']['value'] = 0;
+        //     $kasus['lastUpdate'] = Time::now();
+        // }
+
+        // // Daftar variable yang bisa digunakan di /views/statistik/index.php
+        // $data['indo'] = $kasus; // kasus covid se-indonesia
+        // $data['prov'] = $provinsi['list_data']; // kasus covid-19 per-provinsi
+        // $data['domains'] = $domain['data'][1]; // daftar domain provinsi
+        // $data['questions'] = $this->questionModel->findAll();
+        // $data['answers'] = $this->answerModel->findAll();
+
+        // !empty($indicators) ? $data['indicators'] = $indicators : $data['indicators'] = []; // strategic indocators
+
+
+        $data['title'] = 'Daftar Statistik';
+        $data['page'] = 'Statistik';
+        $data['covid_id'] = base_url('/StatisticsController/covid_id');
+        $data['covid_dayone'] = base_url('/StatisticsController/covid_dayone');
+
+        return view('statistics/index', $data);
+    }
+
+    public function covid_id()
+    {
+        $covid_id = $this->urlModel->where(['name' => 'covid_id'])->first();
+        $data['covid_id'] = $this->getJSON($covid_id['url']);
+        echo view('statistics/covid_id', $data);
+    }
+
+    public function covid_dayone()
+    {
+        $covid_dayone = $this->urlModel->where(['name' => 'covid_dayone'])->first();
+        $covid_dayone = $this->getJSON($covid_dayone['url']);
+
+        $data['covid_dayone']['date'] = [];
+        $data['covid_dayone']['confirmed'] = [];
+        $data['covid_dayone']['recovered'] = [];
+        $data['covid_dayone']['deaths'] = [];
+        $data['covid_dayone']['active'] = [];
+        if (isset($covid_dayone)) {
+            for ($i = 1; $i < count($covid_dayone); $i++) {
+                array_push($data['covid_dayone']['date'], date('M j', strtotime($covid_dayone[$i]['Date'])));
+                array_push($data['covid_dayone']['confirmed'], $covid_dayone[$i]['Confirmed'] - $covid_dayone[$i-1]['Confirmed']);
+                array_push($data['covid_dayone']['recovered'], $covid_dayone[$i]['Recovered'] - $covid_dayone[$i-1]['Recovered']);
+                array_push($data['covid_dayone']['deaths'], $covid_dayone[$i]['Deaths'] - $covid_dayone[$i-1]['Deaths']);
+                array_push($data['covid_dayone']['active'], $covid_dayone[$i]['Active']);
+            }
+        }
+        
+        echo view('statistics/covid_dayone', $data);
     }
 
 

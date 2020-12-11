@@ -121,6 +121,11 @@ class UsersController extends BaseController
                 'login' => true,
                 'profile' => $this->userModel->where('email', $this->request->getVar('email'))->first()
                 ]);
+            $this->userModel
+                ->set('is_active', 1)
+                ->set('last_login', Time::now())
+                ->where('id', session()->get('profile')['id'])
+                ->update();
             session()->setFlashdata('message', '<div class="alert alert-success" role="alert">Selamat anda berhasil mendaftar</div> ');
             return redirect()->to('/');
         } else {

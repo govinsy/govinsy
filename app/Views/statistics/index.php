@@ -1,6 +1,5 @@
 <?= $this->extend('templates/base') ?>
 <?= $this->section('content') ?>
-<script type="text/javascript" src="<?= base_url(); ?>/js/Chart.js"></script>
 <div class="container">
 
   <!-- DATA STATISTIK INDONESIA-->
@@ -54,49 +53,23 @@
     <hr class="my-4">
 
     <!-- KASUS SELURUH INDONESIA-->
-    <div class="row mb-5">
-      <div class="col-md-3">
-        <div class="card text-center">
-          <div class="card-header">Terkonfirmasi</div>
-          <div class="card-body">
-            <h1 class="card-title"><?= number_format($indo['confirmed']['value']); ?></h1>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card text-center">
-          <div class="card-header">Sembuh</div>
-          <div class="card-body">
-            <h1 class="card-title"><?= number_format($indo['recovered']['value']); ?></h1>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card text-center">
-          <div class="card-header">Meninggal</div>
-          <div class="card-body">
-            <h1 class="card-title"><?= number_format($indo['deaths']['value']); ?></h1>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card text-center">
-          <div class="card-header">Update Terakhir</div>
-          <div class="card-body">
-            <h1 class="card-title"><?= date("j M", strtotime($indo['lastUpdate'])); ?></h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <div id="covid_id"></div>
+    
   </div>
 
-
   <!-- DIAGRAM -->
-  <!-- <div class="mb-5" style="width: 100%;height: 500px">
-    <canvas id="myChart"></canvas>
-  </div> -->
-  <br><br>
+  <div id="covid_dayone"></div>
+
+<script src="<?= base_url(); ?>/js/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#covid_id').load('<?= $covid_id ?>')
+        $('#covid_dayone').load('<?= $covid_dayone ?>')
+    })
+</script>  
+<?= $this->endSection() ?>
+
+
 
   <!-- KASUS PER-PROVINSI -->
   <div class="row">
@@ -251,61 +224,3 @@
   </div>
 
 </div>
-
-
-
-<!-- 
-<script>
-  var ctx = document.getElementById("myChart").getContext('2d');
-  var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ["<?php  //join('", "', $data['dayone']['date']); 
-                ?>"],
-      datasets: [{
-          label: 'Terkonfirmasi',
-          data: [<?php  //join(', ', $data['dayone']['confirmed']); 
-                  ?>],
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgba(255, 99, 132, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Sembuh',
-          data: [<?php  //join(', ', $data['dayone']['recovered']); 
-                  ?>],
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
-          borderColor: 'rgba(54, 162, 235, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Meninggal',
-          data: [<?php  //join(', ', $data['dayone']['deaths']); 
-                  ?>],
-          backgroundColor: 'rgba(255, 206, 86, 0.2)',
-          borderColor: 'rgba(255, 206, 86, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Aktif',
-          data: [<?php //join(', ', $data['dayone']['active']); 
-                  ?>],
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          borderColor: 'rgba(75, 192, 192, 1)',
-          borderWidth: 1
-        }
-      ]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      }
-    }
-  });
-</script> -->
-
-<?= $this->endSection() ?>
