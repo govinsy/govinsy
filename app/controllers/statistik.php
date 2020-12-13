@@ -8,10 +8,6 @@ namespace App\Controllers;
 class Statistik extends BaseController
 {
 
-    public function __construct()
-    {
-        set_time_limit(500);
-    }
     public function index()
     {
         // Set Session Nomor Domain dan Nama Provinsi
