@@ -285,9 +285,6 @@
     <!-- Slider JS -->
     <script type="module" src="<?= base_url(); ?>/js/slider/script.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="<?= base_url(); ?>/js/chart/Chart.min.js"></script>
-
     <!-- Charts Javascript -->
     <script src="<?= base_url(); ?>/js/statistic/chart-pie-demo.js"></script>
 

@@ -11,21 +11,21 @@
 
                     <div class="card border-0 rounded">
                         <div class="card-body color-bg rounded text-center">
-                            <h1 class="card-title color-blue-font">260</h1>
+                            <h1 class="card-title color-blue-font"><?= $visitor ?></h1>
                             <p class="card-text font-10 color-light-font">PENGUNJUNG WEBSITE</p>
                         </div>
                     </div>
 
                     <div class="card border-0 rounded">
                         <div class="card-body color-bg rounded text-center">
-                            <h1 class="card-title color-blue-font">260</h1>
+                            <h1 class="card-title color-blue-font"><?= $visitor ?></h1>
                             <p class="card-text font-10 color-light-font">PENGUNJUNG WEBSITE</p>
                         </div>
                     </div>
 
                     <div class="card border-0 rounded">
                         <div class="card-body color-bg rounded text-center">
-                            <h1 class="card-title color-blue-font">260</h1>
+                            <h1 class="card-title color-blue-font"><?= $visitor ?></h1>
                             <p class="card-text font-10 color-light-font">PENGUNJUNG WEBSITE</p>
                         </div>
                     </div>

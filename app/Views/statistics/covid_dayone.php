@@ -1,11 +1,11 @@
-<div class="mb-5" style="width: 100%;height: 100%;">
-    <canvas id="chart1"></canvas>
+<div class="mb-5">
+    <canvas id="covidChart"></canvas>
 </div>
 
 <script type="text/javascript" src="<?= base_url(); ?>/js/Chart.js"></script>
 <script>
-  const ctx = document.getElementById("chart1").getContext('2d');
-  const chart1 = new Chart(ctx, {
+  var ctx = document.getElementById("covidChart").getContext('2d');
+  var covidChart = new Chart(ctx, {
             type: 'line',
                 data: {
                     labels: ["<?= join('", "', $covid_dayone['date']);  ?> "],

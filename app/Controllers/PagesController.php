@@ -32,7 +32,8 @@ class PagesController extends BaseController
     public function about()
 	{
 		$data['title'] = 'Tentang Kami';
-		$data['page'] = 'Tentang Kami'; //Digunakan untuk indikator di Sidebar
+        $data['page'] = 'Tentang Kami'; //Digunakan untuk indikator di Sidebar
+        $data['visitor'] = $this->agentModel->countAll();
 		echo view('pages/about', $data);
 	}
 }
