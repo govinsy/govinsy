@@ -177,3 +177,32 @@ $(document).ready(function () {
 
 });
 // End fungsi crop dan upload gambar
+
+
+//Ambil data provinsi
+$(document).ready(function(){
+
+$('#cariProv').keyup(function(){
+    
+    const url = $(this).data('url');
+    const prov_names = $(this).val();
+
+ $.ajax({
+    url: 'statistik/cariProv',
+    method: 'POST', dataType: 'JSON',
+    data: {
+            prov_name: prov_names
+          },
+        success: function (data) {
+            let asa = $.each(data, function(i) {
+
+                "<a href="+url+"/statistik/provinsi?domain_id="+data[i].prov_id+"&nama_provinsi="+data[i].prov_name+"><li>"+data[i].prov_name+"</li></a>"
+                });
+            asa = ''+asa;
+            console.log(asa);
+            $('#dataProv').html(asa);
+
+            }
+        });
+    });
+ });

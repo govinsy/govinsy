@@ -12,6 +12,24 @@ class Statistik extends BaseController
     {
         set_time_limit(500);
     }
+     public function cariProv()
+    {
+        $prov=[];
+
+       // Daftar Domain Provinsi
+        $domain = $this->getJSON($this->url['bps_domain'], $this->field['key']['bps_key'] . $this->field['type']['prov']);
+
+        foreach ($domain['data'][1] as $dom) {
+            if(strstr(strtolower( $dom['domain_name']),strtolower($_POST['prov_name']) ))
+            {
+                array_push($prov, [
+                    'prov_id' => $dom['domain_id'],
+                    'prov_name' => $dom['domain_name']  ]);
+            } 
+        }
+        // var_dump($prov);
+        return json_encode($prov);
+    }
     public function index()
     {
         // Set Session Nomor Domain dan Nama Provinsi
@@ -38,6 +56,7 @@ class Statistik extends BaseController
                 $indicators[$i] = $this->getJSON($this->url['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] . 'domain=' . $no_domain . '&page=' . $i);
             }
         }
+
 
         // Data Covid Dari Hari 1
         $dayone = $this->getJSON($this->url['covid_dayone']);
