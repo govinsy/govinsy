@@ -2,12 +2,90 @@
 
   <!-- Cek apakah user sudah mengikuti survei -->
   <?php if ($ikutSurvei == 1) : ?>
+
+
     <div id="kesiapan" class="row justify-content-center text-center">
       <div class="col-md-10">
         <h3 class="color-content-font">Anda Sudah mengikuti survei</h3>
-        <a href="<?= base_url(); ?>/statistik">Lihat hasil statistik</a>
       </div>
     </div>
+
+
+    <!-- SURVEI -->
+    <div class="row">
+      <div class="col-12">
+        <div id="data-provinsi" align="center" class="jumbotron shadow color-content pt-5 slide-wrapper">
+
+
+          <h4 class="mb-5 font-weight-bold color-blue-font">SURVEI INTERNAL</h4>
+          <!-- Jumlah survei = jumlah pertanyaan -->
+          <ul class="slide mt-3" id="nomor-slide">
+            <?php if (isset($pertanyaan)) : ?>
+              <?php foreach ($pertanyaan as $p) : ?>
+                <li class="row m-3 text-center justify-content-center" style="width:100%;box-shadow:none;">
+
+                  <div class="col-lg-6">
+                    <div class="chart-pie">
+                      <canvas id="<?= $p['id']  ?>"></canvas>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4 pt-4">
+                    <div class="list-group color-none-bg">
+
+                      <!-- Menampilkan kalkulasi jawaban sesuai pertanyaan -->
+                      <?php $tempArr = [] ?>
+                      <?php foreach ($jawaban as $j) : ?>
+                        <?php if ($j['id_pertanyaan'] == $p['id']) : ?>
+                          <?php
+                          $arr = array_count_values($hasil_survei);
+                          $ark = array_keys(array_count_values($hasil_survei));
+                          foreach ($ark as $k) {
+                            if ($k == $j['id']) {
+                              echo '<div class="list-group-item d-flex justify-content-between align-items-center" id="' . $j['id'] . '" data-' . $j['id'] . '="' . $arr[$k] . '">
+                        ' . $j['jawaban'] . '
+                        <span class="badge badge-primary badge-pill">' . $arr[$k] . '</span>
+                      </div>';
+                            }
+                          }
+                          ?>
+                          </span></h6>
+
+                        <?php endif; ?>
+                      <?php endforeach; ?>
+
+                    </div>
+                  </div>
+
+                </li>
+              <?php endforeach; ?>
+
+          </ul>
+        <?php else : ?>
+          <div class="container">
+            <p class="text-danger font-weight-bold">gagal mengambil data: periksa koneksi database</p>
+          </div>
+        <?php endif; ?>
+
+        <div class="wrap-controls">
+          <div class="arrow-nav">
+            <button class="prev"></button>
+          </div>
+          <ul id="circle-pointer" class="circle-controls">
+            <li></li>
+          </ul>
+          <div class="ml-2 arrow-nav">
+            <button class="next"></button>
+          </div>
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+    <!-- END SURVEI -->
+
+
   <?php else : ?>
 
     <!-- Persiapan user -->
@@ -53,17 +131,15 @@
               foreach ($pertanyaan as $p) : $i++ ?>
                 <ul id="P<?= $i; ?>" class="list-group hilang">
                   <p class="font-16 text-gray-600 mb-0">PERTANYAAN <?= $i ?></p>
-                  <p class="font-26 link-not-active mb-5"><?= $p['pertanyaan'] ?></p>
+                  <p class="font-26 color-content-font mb-5"><?= $p['pertanyaan'] ?></p>
 
                   <?php  /*Menampilkan seluruh jawaban*/ foreach ($jawaban as $j) : ?>
 
                     <?php /*Mencari data jawaban yang sesuai dengan pertanyaan*/ if ($j['id_pertanyaan'] == $p['id']) : ?>
 
                       <label for="<?= $j['id'] ?>">
-                        <li id="J-<?= $j['id'] ?>" class="list-group-item mb-3 rounded">
+                        <li id="J-<?= $j['id'] ?>" class="list-group-item mb-3  rounded">
                           <div class="form-check">
-
-
                             <input class="form-check-input hilang" type="radio" name="<?= $p['id'] ?>" id="<?= $j['id'] ?>" value="<?= $j['id'] ?>" onChange="autoSubmit()">
                             <label class="form-check-label" for="<?= $j['id'] ?>"><?= $j['jawaban']; ?></label>
                           </div>

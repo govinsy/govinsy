@@ -1,11 +1,67 @@
-<script type="text/javascript" src="<?= base_url(); ?>/js/Chart.js"></script>
-<div class="container">
+<div class="container" id="page" data-page="Statistik">
 
-  <!-- DATA STATISTIK INDONESIA-->
-  <div id="data-indonesia" align="center" class="jumbotron shadow pb-5 img-content color-light-font">
-    <h1 class="mt-5">Data Statistik Indonesia</h1>
+
+  <!-- Map Provinsi -->
+  <div class="row justify-content-center">
+    <div class="col-lg-12 mb-5">
+
+      <div class="jumbotron border-gray-1 justify-content-center color-bg mb-4 shadow corner-round">
+
+
+        <!-- Hoverable map -->
+
+        <div class="row  corner-round">
+          <div class="col-lg-8">
+
+            <?php readfile(base_url() . '/img/map_indonesia.html');    ?>
+
+
+            <!-- Deskripsi map  -->
+            <div class="descriptions color-content shadow">
+              <?php foreach ($desc as $des) :  ?>
+                <div class="map-prov hilang <?= $des['id_prov'] ?>">
+                  <div class="row">
+                    <div class="col-sm-12 text-center">
+
+                      <img width="8%" src="<?= base_url(); ?>/img/provinsi/logo/<?= $des['id_prov'] ?>.png">
+                      <p class="font-20 mt-2 font-weight-bold color-content-font"><?= $des['Provinsi'] ?></p>
+                      <hr class="color-gray-bg">
+                      <small class="text-gray-600 font-12" style="margin-top: 0px">JUMLAH PENDUDUK</small>
+                      <p class="font-16 font-weight-bold color-content-font"><?= $des['Populasi'] ?> <sub>Jiwa</sub></p>
+                      <small class="text-gray-600 font-12" style="margin-top: 0px">LUAS WILAYAH</small>
+                      <p class="font-16 font-weight-bold color-content-font"><?= $des['Luas Total'] ?> <sub>KM <sup>2</sup></sub></p>
+
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+            <!-- Deskripsi map End -->
+
+
+
+          </div>
+          <div class="col-lg-4 color-content corner-round shadow color-content-font px-4 hilang py-3" id="map_desc" data-url="<?= base_url() ?>">
+            <h4 class="font-weight-bold">Provinsi</h4>
+            <div id="map_spot" class="corner-round my-4"></div><br>
+            <p id="luas_wilayah" class="font-16 font-weight-bold color-blue-font  float-right">0 <sub>KM <sup>2</sup></sub></p>
+            <p class="font-16">Luas Wilayah</p>
+            <p id="populasi" class="font-16 font-weight-bold color-blue-font float-right">0 <sub>Jiwa</sub></p>
+            <p class="font-16">Populasi</p>
+            <a href="" class="px-5 btn btn-blue corner-round my-4" style="width:100%">Lihat Statistik <i class="fas fa-fw fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <!-- Hoverable map End -->
+
+
+
+
+      </div>
+
+
+    </div>
   </div>
-  <!-- END DATA  STATISTIK Indonesia -->
+  <!-- END Map Provinsi -->
 
 
   <!-- DATA  STATISTIK PER PROVINSI -->
@@ -204,79 +260,6 @@
 
   </div>
 
-  <!-- SURVEI -->
-  <div class="row">
-    <div class="col-12">
-      <div id="data-provinsi" align="center" class="jumbotron shadow color-content pt-5 slide-wrapper">
-
-
-        <h4 class="mb-5 font-weight-bold color-blue-font">SURVEI INTERNAL</h4>
-        <!-- Jumlah survei = jumlah pertanyaan -->
-        <ul class="slide mt-3" id="nomor-slide">
-          <?php if (isset($pertanyaan)) : ?>
-            <?php foreach ($pertanyaan as $p) : ?>
-              <li class="row m-3 text-center justify-content-center" style="width:100%;box-shadow:none;">
-
-                <div class="col-lg-6">
-                  <div class="chart-pie">
-                    <canvas id="<?= $p['id']  ?>"></canvas>
-                  </div>
-                </div>
-
-                <div class="col-lg-4 pt-4">
-                  <div class="list-group color-none-bg">
-
-                    <!-- Menampilkan kalkulasi jawaban sesuai pertanyaan -->
-                    <?php $tempArr = [] ?>
-                    <?php foreach ($jawaban as $j) : ?>
-                      <?php if ($j['id_pertanyaan'] == $p['id']) : ?>
-                        <?php
-                        $arr = array_count_values($hasil_survei);
-                        $ark = array_keys(array_count_values($hasil_survei));
-                        foreach ($ark as $k) {
-                          if ($k == $j['id']) {
-                            echo '<div class="list-group-item d-flex justify-content-between align-items-center" id="' . $j['id'] . '" data-' . $j['id'] . '="' . $arr[$k] . '">
-                        ' . $j['jawaban'] . '
-                        <span class="badge badge-primary badge-pill">' . $arr[$k] . '</span>
-                      </div>';
-                          }
-                        }
-                        ?>
-                        </span></h6>
-
-                      <?php endif; ?>
-                    <?php endforeach; ?>
-
-                  </div>
-                </div>
-
-              </li>
-            <?php endforeach; ?>
-
-        </ul>
-      <?php else : ?>
-        <div class="container">
-          <p class="text-danger font-weight-bold">gagal mengambil data: periksa koneksi database</p>
-        </div>
-      <?php endif; ?>
-
-      <div class="wrap-controls">
-        <div class="arrow-nav">
-          <button class="prev"></button>
-        </div>
-        <ul id="circle-pointer" class="circle-controls">
-          <li></li>
-        </ul>
-        <div class="ml-2 arrow-nav">
-          <button class="next"></button>
-        </div>
-      </div>
-
-
-      </div>
-    </div>
-  </div>
-  <!-- END SURVEI -->
 
 </div>
 

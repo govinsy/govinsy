@@ -24,7 +24,7 @@
 </style>
 
 
-<div class="container">
+<div class="container" id="page" data-page="Home">
   <?= session()->getFlashdata('message') ?>
 
   <!-- DATA STATISTIK INDONESIA-->
@@ -118,7 +118,7 @@
                   <i class="fas fa-fw color-light-font fa-user"></i>
                 </div>
                 <div class="pt-2">
-                  <small class="text-gray-600 mr-1">POSITIF</small>
+                  <small class="text-gray-600 font-12 mr-1">POSITIF</small>
                   <?php if ($indo != false) :  ?>
                     <h1><?= str_replace(',', '.', number_format($indo['confirmed']['value'])) ?></h1>
                   <?php else : ?>
@@ -132,7 +132,7 @@
                   <i class="fas fa-fw color-light-font fa-syringe"></i>
                 </div>
                 <div class="pt-2">
-                  <small class="text-gray-600 mr-1">SEMBUH</small>
+                  <small class="text-gray-600 font-12 mr-1">SEMBUH</small>
                   <?php if ($indo != false) :  ?>
                     <h1><?= str_replace(',', '.', number_format($indo['recovered']['value'])) ?></h1>
                   <?php else : ?>
@@ -145,7 +145,7 @@
                   <i class="fas fa-fw color-light-font fa-skull"></i>
                 </div>
                 <div class="pt-2">
-                  <small class="text-gray-600 mr-1">MENINGGAL</small>
+                  <small class="text-gray-600 font-12 mr-1">MENINGGAL</small>
                   <?php if ($indo != false) :  ?>
                     <h1><?= str_replace(',', '.', number_format($indo['deaths']['value'])) ?></h1>
                   <?php else : ?>
@@ -159,36 +159,186 @@
         </div>
         <!-- Data COVID 19 End -->
 
+      </div>
+
+    </div>
+  </div>
+  <!-- End COVID 19 Indonesia -->
+
+  <!-- COVID 19 Provinsi -->
+  <div class="row justify-content-center">
+    <div class="col-lg-12 mb-5">
+
+      <div class="jumbotron justify-content-center color-content pt-4 mb-4 pb-2 shadow corner-round">
+        <p class="color-blue-font mb-4 text-left">DATA COVID 19 PROVINSI</p>
+
+
+        <!-- Hoverable map covid 19 -->
+
+        <div class="row mb-5">
+          <div class="col-lg-12 border-gray-1 pb-3 corner-round">
+
+            <?php readfile(base_url() . '/img/map_indonesia.html');    ?>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="circle-shape color-green-bg float-left"></div>
+                <p class="color-content-font font-12 ml-4">
+                  Kurang dari 5000 Kasus Positif
+                </p>
+              </div>
+              <div class="col-sm-3">
+                <div class="circle-shape color-yellow-bg float-left"></div>
+                <p class="color-content-font font-12 ml-4">
+                  5000-15.000 Kasus Positif
+                </p>
+              </div>
+              <div class="col-sm-3">
+                <div class="circle-shape color-red-bg float-left"></div>
+                <p class="color-content-font font-12 ml-4">
+                  Lebih dari 15.000 Kasus Positif
+                </p>
+              </div>
+            </div>
+
+            <!-- Deskripsi map covid 19 -->
+            <div class="descriptions shadow">
+              <?php foreach ($prov as $provinsi) : ?>
+                <div class="map-prov <?= $provinsi['prov_id'] ?> <?php if ($provinsi['jumlah_kasus'] > 15000) echo "bahaya";
+                                                                  elseif ($provinsi['jumlah_kasus'] < 15000 && $provinsi['jumlah_kasus'] > 5000) echo "peringatan";
+                                                                  elseif ($provinsi['jumlah_kasus'] < 5000) echo "siaga";  ?> hilang">
+                  <div class="row">
+                    <div class="col-sm-12">
+
+                      <img class="float-left size-20 mr-2" src="<?= base_url(); ?>/img/provinsi/logo/<?= $provinsi['prov_id'] ?>.png">
+                      <p class="font-20 font-weight-bold color-content-font"><?= $provinsi['key'] ?></p>
+                      <hr class="color-gray-bg">
+
+
+                      <ul id="covid" class="color-content-font row pl-0 mb-0 justify-content-around">
+                        <li class="col-4 mb-2 mt-1">
+                          <div class="mr-2 color-blue-bg cov-icon-circle-small float-left">
+                            <i class="fas fa-fw color-light-font fa-user"></i>
+                          </div>
+                          <div class="pt-0" style="margin-top:-7px">
+                            <small class="text-gray-600 font-12">POSITIF</small>
+                            <?php if ($provinsi != false) :  ?>
+                              <p class="font-16 color-content-font font-weight-bold" style="margin-top:-15px"><?= str_replace(',', '.', number_format($provinsi['jumlah_kasus'])) ?></p>
+                            <?php else : ?>
+                              <h4>Belum Terdata</h4>
+                            <?php endif; ?>
+
+                          </div>
+                        </li>
+                        <li class="col-4 mb-2 mt-1">
+                          <div class="mr-2 color-green-bg cov-icon-circle-small float-left">
+                            <i class="fas fa-fw color-light-font fa-syringe"></i>
+                          </div>
+                          <div class="pt-0" style="margin-top:-7px">
+                            <small class="text-gray-600 font-12">SEMBUH</small>
+                            <?php if ($provinsi != false) :  ?>
+                              <p class="font-16 color-content-font font-weight-bold" style="margin-top:-15px"><?= str_replace(',', '.', number_format($provinsi['jumlah_sembuh'])) ?></p>
+                            <?php else : ?>
+                              <h4>Belum Terdata</h4>
+                            <?php endif; ?>
+                          </div>
+                        </li>
+                        <li class="col-4 mb-2 mt-1">
+                          <div class="mr-2 color-red-bg cov-icon-circle-small float-left">
+                            <i class="fas fa-fw color-light-font fa-skull"></i>
+                          </div>
+                          <div class="pt-0" style="margin-top:-7px">
+                            <small class="text-gray-600 font-12">MENINGGAL</small>
+                            <?php if ($provinsi != false) :  ?>
+                              <p class="font-16 color-content-font font-weight-bold" style="margin-top:-15px"><?= str_replace(',', '.', number_format($provinsi['jumlah_meninggal'])) ?></p>
+                            <?php else : ?>
+                              <h4>Belum Terdata</h4>
+                            <?php endif; ?>
+                          </div>
+                        </li>
+                      </ul>
+
+                      <?php if ($provinsi['jumlah_kasus'] < 5000) :  ?>
+
+                        <div class="circle-shape color-green-bg float-left"></div>
+                        <p class="color-content-font font-12 ml-4">
+                          Kurang dari 5000 Kasus Positif
+                        </p>
+                      <?php elseif ($provinsi['jumlah_kasus'] < 15000 && $provinsi['jumlah_kasus'] > 5000) : ?>
+
+                        <div class="circle-shape color-yellow-bg float-left"></div>
+                        <p class="color-content-font font-12 ml-4">
+                          5000-15.000 Kasus Positif
+                        </p>
+
+                      <?php elseif ($provinsi['jumlah_kasus'] > 15000) : ?>
+
+                        <div class="circle-shape color-red-bg float-left"></div>
+                        <p class="color-content-font font-12 ml-4">
+                          Lebih dari 15.000 Kasus Positif
+                        </p>
+
+                      <?php endif; ?>
+
+
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+
+            </div>
+            <!-- Deskripsi map covid 19 End -->
+
+
+
+          </div>
+        </div>
+        <!-- Hoverable map covid 19 End -->
+
+
+
         <!-- Data COVID 19 Provinsi-->
         <div class="row justify-content-center">
           <div class="col-md-12 pb-3">
             <table class="table table-hover" id="covid-prov">
-              <thead>
-                <tr class="border-none">
+              <thead class="border-none-top">
+                <tr class="border-none-top text-gray-600">
                   <td scope="col">LOKASI</td>
-                  <td scope="col">POSITIF</td>
-                  <td scope="col">SEMBUH</td>
-                  <td scope="col">MENINGGAL</td>
+                  <td scope="col">
+                    <div class="mr-2 color-blue-bg cov-icon-circle-vsmall float-left">
+                      <i class="fas fa-fw color-light-font fa-user"></i>
+                    </div> POSITIF
+                  </td>
+                  <td scope="col">
+                    <div class="mr-2 color-green-bg cov-icon-circle-vsmall float-left">
+                      <i class="fas fa-fw color-light-font fa-syringe"></i>
+                    </div> SEMBUH
+                  </td>
+                  <td scope="col">
+                    <div class="mr-2 color-red-bg cov-icon-circle-vsmall float-left">
+                      <i class="fas fa-fw color-light-font fa-skull"></i>
+                    </div> MENINGGAL
+                  </td>
                 </tr>
               </thead>
               <tbody>
                 <?php for ($i = 0; $i < count($prov); $i++) : ?>
                   <?php if ($i < 5) :  ?>
                     <tr>
-                      <td class="color-content-font"><img src="<?php echo base_url() . "/img/provinsi/logo/" . $prov[$i]['prov_id'] ?>.png" width="2.5%" alt=""> &ensp;<?= $prov[$i]['key'] ?></td>
-                      <td class="color-blue-font"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_kasus'])) ?></td>
-                      <td class="color-green-font"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_sembuh'])) ?></td>
-                      <td class="color-red-font"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_meninggal'])) ?></td>
+                      <td class="color-content-font"><img class="size-16" src="<?php echo base_url() . "/img/provinsi/logo/" . $prov[$i]['prov_id'] ?>.png" alt=""> &ensp;<?= $prov[$i]['key'] ?></td>
+                      <td class="color-blue-font font-weight-bold"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_kasus'])) ?></td>
+                      <td class="color-green-font font-weight-bold"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_sembuh'])) ?></td>
+                      <td class="color-red-font font-weight-bold"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_meninggal'])) ?></td>
                     </tr>
                   <?php elseif ($i == 5) :  ?>
               </tbody>
               <tbody id="morle" class="hilang">
               <?php else :  ?>
                 <tr>
-                  <td class="color-content-font"><img src="<?php echo base_url() . "/img/provinsi/logo/" . $prov[$i]['prov_id'] ?>.png" width="2.5%" alt=""> &ensp;<?= $prov[$i]['key'] ?></td>
-                  <td class="color-blue-font"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_kasus'])) ?></td>
-                  <td class="color-green-font"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_sembuh'])) ?></td>
-                  <td class="color-red-font"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_meninggal'])) ?></td>
+                  <td class="color-content-font"><img class="size-16" src="<?php echo base_url() . "/img/provinsi/logo/" . $prov[$i]['prov_id'] ?>.png" alt=""> &ensp;<?= $prov[$i]['key'] ?></td>
+                  <td class="color-blue-font font-weight-bold"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_kasus'])) ?></td>
+                  <td class="color-green-font font-weight-bold"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_sembuh'])) ?></td>
+                  <td class="color-red-font font-weight-bold"><?= str_replace(',', '.', number_format($prov[$i]['jumlah_meninggal'])) ?></td>
                 </tr>
               <?php endif;  ?>
             <?php endfor; ?>
@@ -200,11 +350,14 @@
 
         <!-- Data COVID 19 Provinsi End -->
 
+
       </div>
+
 
     </div>
   </div>
-  <!-- End COVID 19 -->
+  <!-- END COVID 19 Provinsi -->
+
 
 
   <!-- Berita -->

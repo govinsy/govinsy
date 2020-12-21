@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="<?= base_url(); ?>/css/jquery.enhanced-switch-pingpong.css">
   <link rel="stylesheet" href="<?= base_url(); ?>/css/style.css">
 
-  <?php if ($page == "Statistik") :  ?>
+  <?php if ($page == "Statistik" || $page == "Survei") :  ?>
     <link rel="stylesheet" href="<?= base_url(); ?>/css/slider.css">
   <?php endif; ?>
 

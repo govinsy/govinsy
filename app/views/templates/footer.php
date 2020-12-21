@@ -16,14 +16,14 @@
 
 </div>
 <!-- End of Page Wrapper -->
-<script src="<?= base_url(); ?>/js/jquery-3.4.1.min.js"></script>
+<script src="<?= base_url(); ?>/js/jquery-3.5.1.min.js"></script>
 <script src="<?= base_url(); ?>/js/propper.min.js"></script>
-<script src="<?= base_url(); ?>/js/bootstrap.js"></script>
+<script src="<?= base_url(); ?>/js/bootstrap.min.js"></script>
 <script type="module" src="<?= base_url(); ?>/js/pace.js"></script>
 
 <script src="<?= base_url(); ?>/js/sb-admin-2.js"></script>
 
-<?php if ($page == "Statistik") :  ?>
+<?php if ($page == "Statistik" || $page == "Survei") :  ?>
     <!-- Slider JS -->
     <script type="module" src="<?= base_url(); ?>/js/slider/script.js"></script>
 
@@ -32,21 +32,20 @@
 
     <!-- Charts Javascript -->
     <script src="<?= base_url(); ?>/js/statistic/chart-pie-demo.js"></script>
+
+
+<?php elseif ($page == "Profile") :  ?>
+    <!-- Cropper JS -->
+    <script type="module" src="<?= base_url(); ?>/js/image-cropper/dropzone.js"></script>
+    <script type="module" src="<?= base_url(); ?>/js/image-cropper/cropper.js"></script>
 <?php endif;  ?>
+
 
 <!-- Form Validation JQuery -->
 <script src="<?= base_url(); ?>/js/form-validation/jquery.validate.js"></script>
 
 <!-- Switch Toggle JQuery -->
 <script src="<?= base_url(); ?>/js/jquery.enhanced-switch.js"></script>
-
-
-<?php if ($page == "Profile") :  ?>
-    <!-- Cropper JS -->
-    <script type="module" src="<?= base_url(); ?>/js/image-cropper/dropzone.js"></script>
-    <script type="module" src="<?= base_url(); ?>/js/image-cropper/cropper.js"></script>
-<?php endif;  ?>
-
 <script src="<?= base_url(); ?>/js/script.js"></script>
 
 </body>

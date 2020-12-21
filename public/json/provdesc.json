@@ -1,4 +1,5 @@
 [{
+    "id_prov": "1100",
     "Pulau": "Sumatera",
     "Provinsi": "Aceh",
     "Singkatan": "AC",
@@ -13,6 +14,7 @@
     "IPM 2014": "68,81"
   },
   {
+    "id_prov": "1200",
     "Pulau": "Sumatera",
     "Provinsi": "Sumatera Utara",
     "Singkatan": "SU",
@@ -27,6 +29,7 @@
     "IPM 2014": "68,87"
   },
   {
+    "id_prov": "1300",
     "Pulau": "Sumatera",
     "Provinsi": "Sumatera Barat",
     "Singkatan": "SB",
@@ -41,6 +44,7 @@
     "IPM 2014": "69,36"
   },
   {
+    "id_prov": "1400",
     "Pulau": "Sumatera",
     "Provinsi": "Riau",
     "Singkatan": "RI",
@@ -55,6 +59,7 @@
     "IPM 2014": "70,33"
   },
   {
+    "id_prov": "2100",
     "Pulau": "Sumatera",
     "Provinsi": "Kep. Riau",
     "Singkatan": "KR",
@@ -69,6 +74,7 @@
     "IPM 2014": "73,40"
   },
   {
+    "id_prov": "1500",
     "Pulau": "Sumatera",
     "Provinsi": "Jambi",
     "Singkatan": "JA",
@@ -83,6 +89,7 @@
     "IPM 2014": "68,24"
   },
   {
+    "id_prov": "1700",
     "Pulau": "Sumatera",
     "Provinsi": "Bengkulu",
     "Singkatan": "BE",
@@ -97,6 +104,7 @@
     "IPM 2014": "68,06"
   },
   {
+    "id_prov": "1600",
     "Pulau": "Sumatera",
     "Provinsi": "Sumatera Selatan",
     "Singkatan": "SS",
@@ -111,6 +119,7 @@
     "IPM 2014": "66,75"
   },
   {
+    "id_prov": "1900",
     "Pulau": "Sumatera",
     "Provinsi": "Kep. Bangka Belitung",
     "Singkatan": "BB",
@@ -125,6 +134,7 @@
     "IPM 2014": "68,27"
   },
   {
+    "id_prov": "1800",
     "Pulau": "Sumatera",
     "Provinsi": "Lampung",
     "Singkatan": "LA",
@@ -139,6 +149,7 @@
     "IPM 2014": "66,42"
   },
   {
+    "id_prov": "3600",
     "Pulau": "Jawa",
     "Provinsi": "Banten",
     "Singkatan": "BT",
@@ -153,6 +164,7 @@
     "IPM 2014": "69,89"
   },
   {
+    "id_prov": "3200",
     "Pulau": "Jawa",
     "Provinsi": "Jawa Barat",
     "Singkatan": "JB",
@@ -167,6 +179,7 @@
     "IPM 2014": "68,80"
   },
   {
+    "id_prov": "3100",
     "Pulau": "Jawa",
     "Provinsi": "Dki Jakarta",
     "Singkatan": "JK",
@@ -181,6 +194,7 @@
     "IPM 2014": "78,39"
   },
   {
+    "id_prov": "3300",
     "Pulau": "Jawa",
     "Provinsi": "Jawa Tengah",
     "Singkatan": "JT",
@@ -195,6 +209,7 @@
     "IPM 2014": "68,78"
   },
   {
+    "id_prov": "3400",
     "Pulau": "Jawa",
     "Provinsi": "Di Yogyakarta",
     "Singkatan": "YO",
@@ -209,6 +224,7 @@
     "IPM 2014": "76,81"
   },
   {
+    "id_prov": "3500",
     "Pulau": "Jawa",
     "Provinsi": "Jawa Timur",
     "Singkatan": "JI",
@@ -223,6 +239,7 @@
     "IPM 2014": "68,14"
   },
   {
+    "id_prov": "5100",
     "Pulau": "Kepulauan Nusa Tenggara",
     "Provinsi": "Bali",
     "Singkatan": "BA",
@@ -237,6 +254,7 @@
     "IPM 2014": "72,48"
   },
   {
+    "id_prov": "5200",
     "Pulau": "Kepulauan Nusa Tenggara",
     "Provinsi": "Nusa Tenggara Barat",
     "Singkatan": "NB",
@@ -251,6 +269,7 @@
     "IPM 2014": "64,31"
   },
   {
+    "id_prov": "5300",
     "Pulau": "Kepulauan Nusa Tenggara",
     "Provinsi": "Nusa Tenggara Timur",
     "Singkatan": "NT",
@@ -265,6 +284,7 @@
     "IPM 2014": "62,26"
   },
   {
+    "id_prov": "6100",
     "Pulau": "Kalimantan",
     "Provinsi": "Kalimantan Barat",
     "Singkatan": "KB",
@@ -279,6 +299,7 @@
     "IPM 2014": "64,89"
   },
   {
+    "id_prov": "6300",
     "Pulau": "Kalimantan",
     "Provinsi": "Kalimantan Selatan",
     "Singkatan": "KS",
@@ -293,6 +314,7 @@
     "IPM 2014": "67,63"
   },
   {
+    "id_prov": "6200",
     "Pulau": "Kalimantan",
     "Provinsi": "Kalimantan Tengah",
     "Singkatan": "KT",
@@ -307,6 +329,7 @@
     "IPM 2014": "67,77"
   },
   {
+    "id_prov": "6400",
     "Pulau": "Kalimantan",
     "Provinsi": "Kalimantan Timur",
     "Singkatan": "KI",
@@ -321,6 +344,7 @@
     "IPM 2014": "73,82"
   },
   {
+    "id_prov": "6500",
     "Pulau": "Kalimantan",
     "Provinsi": "Kalimantan Utara",
     "Singkatan": "KU",
@@ -335,6 +359,7 @@
     "IPM 2014": "68,64"
   },
   {
+    "id_prov": "7500",
     "Pulau": "Sulawesi",
     "Provinsi": "Gorontalo",
     "Singkatan": "GO",
@@ -349,6 +374,7 @@
     "IPM 2014": "65,17"
   },
   {
+    "id_prov": "7600",
     "Pulau": "Sulawesi",
     "Provinsi": "Sulawesi Barat",
     "Singkatan": "SR",
@@ -363,6 +389,7 @@
     "IPM 2014": "62,24"
   },
   {
+    "id_prov": "7300",
     "Pulau": "Sulawesi",
     "Provinsi": "Sulawesi Selatan",
     "Singkatan": "SN",
@@ -377,6 +404,7 @@
     "IPM 2014": "68,49"
   },
   {
+    "id_prov": "7200",
     "Pulau": "Sulawesi",
     "Provinsi": "Sulawesi Tengah",
     "Singkatan": "ST",
@@ -391,6 +419,7 @@
     "IPM 2014": "66,43"
   },
   {
+    "id_prov": "7400",
     "Pulau": "Sulawesi",
     "Provinsi": "Sulawesi Tenggara",
     "Singkatan": "SG",
@@ -405,6 +434,7 @@
     "IPM 2014": "68,07"
   },
   {
+    "id_prov": "7100",
     "Pulau": "Sulawesi",
     "Provinsi": "Sulawesi Utara",
     "Singkatan": "SA",
@@ -419,6 +449,7 @@
     "IPM 2014": "69,96"
   },
   {
+    "id_prov": "8100",
     "Pulau": "Kepulauan Maluku",
     "Provinsi": "Maluku",
     "Singkatan": "MA",
@@ -433,6 +464,7 @@
     "IPM 2014": "66,74"
   },
   {
+    "id_prov": "8200",
     "Pulau": "Kepulauan Maluku",
     "Provinsi": "Maluku Utara",
     "Singkatan": "MU",
@@ -447,6 +479,7 @@
     "IPM 2014": "65,18"
   },
   {
+    "id_prov": "9100",
     "Pulau": "Papua",
     "Provinsi": "Papua Barat",
     "Singkatan": "PB",
@@ -461,6 +494,7 @@
     "IPM 2014": "61,28"
   },
   {
+    "id_prov": "9400",
     "Pulau": "Papua",
     "Provinsi": "Papua",
     "Singkatan": "PA",

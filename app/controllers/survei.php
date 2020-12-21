@@ -6,6 +6,17 @@ class Survei extends BaseController
 {
     public function index()
     {
+
+
+        // Survei
+        $survei = $this->survei_model->getAllJawabanPengguna();
+        $data['hasil_survei'] = [];
+        foreach ($survei as $s) {
+            array_push($data['hasil_survei'], $s['id_jawaban']);
+        }
+        $data['hasil_survey'] = array_count_values($data['hasil_survei']);
+
+
         $pertanyaan = $this->survei_model->getAllPertanyaan();
         $jawaban = $this->survei_model->getAllJawaban();
 
@@ -63,6 +74,6 @@ class Survei extends BaseController
         echo view('templates/sidebar', $data);
         echo view('templates/topbar', $data);
         echo view('survei/index', $data);
-        echo view('templates/footer');
+        echo view('templates/footer', $data);
     }
 }

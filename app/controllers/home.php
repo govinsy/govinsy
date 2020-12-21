@@ -51,7 +51,6 @@ class Home extends BaseController
 
 
 		$data['judul'] = 'Daftar Statistik';
-		$data['page'] = 'Statistik'; //Digunakan untuk indikator di Sidebar
 		$data['indo'] = $kasus; // kasus covid se-indonesia
 		$data['prov'] = $covProv; // kasus covid-19 per-provinsi
 		$data['berita'] = $berita['articles'];

@@ -27,6 +27,9 @@ class Statistik extends BaseController
 
         // Daftar Domain Provinsi
         $domain = $this->getJSON($this->url['bps_domain'], $this->field['key']['bps_key'] . $this->field['type']['prov']);
+        // Deskripsi Provinsi
+        $provdesc = $this->getJSON($this->url['provdesc']);
+
 
         // Strategic Indicators
         $strategic = $this->getJSON($this->url['bps_strategic'], $this->field['key']['bps_key'] . $this->field['model']['indicators'] . 'domain=' . $no_domain);
@@ -40,23 +43,39 @@ class Statistik extends BaseController
         }
 
         // Data Covid Dari Hari 1
-        $dayone = $this->getJSON($this->url['covid_dayone']);
+        // $dayone = $this->getJSON($this->url['covid_dayone']);
 
         // Survei
-        $jmlJP = $this->survei_model->countJawabanPengguna();
-        $pengguna = $this->pengguna_model->getAllPengguna();
-        $survei = $this->survei_model->getAllJawabanPengguna();
-        $data['pertanyaan'] = $this->survei_model->getAllPertanyaan();
-        $data['jawaban'] = $this->survei_model->getAllJawaban();
-        $data['hasil_survei'] = [];
-        foreach ($survei as $s) {
-            array_push($data['hasil_survei'], $s['id_jawaban']);
-        }
-        $data['hasil_survey'] = array_count_values($data['hasil_survei']);
+        // $jmlJP = $this->survei_model->countJawabanPengguna();
+        // $pengguna = $this->pengguna_model->getAllPengguna();
+        // $survei = $this->survei_model->getAllJawabanPengguna();
+        // $data['pertanyaan'] = $this->survei_model->getAllPertanyaan();
+        // $data['jawaban'] = $this->survei_model->getAllJawaban();
+        // $data['hasil_survei'] = [];
+        // foreach ($survei as $s) {
+        //     array_push($data['hasil_survei'], $s['id_jawaban']);
+        // }
+        // $data['hasil_survey'] = array_count_values($data['hasil_survei']);
         // dd($data['pertanyaan']);
 
         // Daftar variable yang bisa digunakan di /views/statistik/index.php
 
+        // $desc = [];
+        // foreach ($provdesc as $pd) {
+        //     foreach ($domain['data'][1] as $dom) {
+        //         if ($dom['domain_id'] == $pd['id_prov']) {
+        //             array_push($desc, [
+        //                 'id_prov' => $dom['domain_id'],
+        //                 'nama_prov' => $dom['domain_name'],
+        //                 'populasi' => $pd['Populasi'],
+        //                 'luas_wilayah' => $pd['Luas Total'],
+        //             ]);
+        //         }
+        //     }
+        // }
+
+        // var_dump($desc);
+        $data['desc'] = $provdesc;
         $data['judul'] = 'Daftar Statistik';
         $data['page'] = 'Statistik'; //Digunakan untuk indikator di Sidebar
         $data['indo'] = $kasus; // kasus covid se-indonesia
@@ -210,5 +229,30 @@ class Statistik extends BaseController
         echo view('templates/topbar', $data);
         echo view('statistik/data_provinsi', $data);
         echo view('templates/footer');
+    }
+
+    public function ambilProvinsi()
+    {
+
+        // Daftar Domain Provinsi
+        $domain = $this->getJSON($this->url['bps_domain'], $this->field['key']['bps_key'] . $this->field['type']['prov']);
+        // Deskripsi Provinsi
+        $provdesc = $this->getJSON($this->url['provdesc']);
+
+        $desc = [];
+        foreach ($provdesc as $pd) {
+            foreach ($domain['data'][1] as $dom) {
+                if ($dom['domain_id'] == $pd['id_prov'] && $_POST['provID'] == $pd['id_prov']) {
+                    array_push($desc, [
+                        'id_prov' => $dom['domain_id'],
+                        'nama_prov' => $dom['domain_name'],
+                        'populasi' => $pd['Populasi'],
+                        'luas_wilayah' => $pd['Luas Total'],
+                    ]);
+                }
+            }
+        }
+
+        return json_encode($desc);
     }
 }

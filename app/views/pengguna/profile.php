@@ -33,7 +33,7 @@
                             <p class="font-16 color-gray-font mt-0"><i class="fas fa-map-marked-alt"></i> Jawa Tengah</p>
 
                             <div class="row justify-content-center">
-                                <div class="col-6 text-center px-2">
+                                <div class="col-6 text-center px-1">
 
                                     <button type="button" id="btn-edit" class="btn btn-blue-opt corner-round px-5 py-1 my-2"><i class="fas fa-edit"></i> Edit Profile</button><br>
                                     <div class="color-gray-bg pt-4 pb-4 p-2 mb-2 hilang" id="form-edit" style="margin: -20px 2px 0 2px;border-radius:0 0 1rem 1rem">

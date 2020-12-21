@@ -1,5 +1,7 @@
 $(document).ready(function () {
-
+    $(function () {
+        $("[rel='tooltip']").tooltip();
+    });
 
     //Fungsi Survey
     let jumlahPertanyaan = $('#survei-pertanyaan ul').length; // Hitung jumlah ul
@@ -242,31 +244,129 @@ $(document).ready(function () {
 
 });
 
-$(".switch").enhancedSwitch();
+$(document).ready(function () {
 
-$("#activeFirst").enhancedSwitch('setTrue');
+    $(".switch").enhancedSwitch();
 
-$(".switch").click(function () {
-    var selectedSwitch = $(this);
-    selectedSwitch.enhancedSwitch('toggle');
-    console.log(selectedSwitch.enhancedSwitch('state'));
-    const url = $(this).data('url');
-    const userID = $(this).data('uid');
-    const userTema = $(this).data('tema');
-    const nowURL = $(this).data('now');
+    $("#activeFirst").enhancedSwitch('setTrue');
 
-    $.ajax({
-        url: url + "/pengguna/gantiTema",
-        type: "POST",
-        data: {
-            userID: userID,
-            userTema: userTema
-        },
-        success: function () {
-            document.location.href = nowURL;
-        }
+    $(".switch").click(function () {
+        var selectedSwitch = $(this);
+        selectedSwitch.enhancedSwitch('toggle');
+        console.log(selectedSwitch.enhancedSwitch('state'));
+        const url = $(this).data('url');
+        const userID = $(this).data('uid');
+        const userTema = $(this).data('tema');
+        const nowURL = $(this).data('now');
+
+        $.ajax({
+            url: url + "/pengguna/gantiTema",
+            type: "POST",
+            data: {
+                userID: userID,
+                userTema: userTema
+            },
+            success: function () {
+                document.location.href = nowURL;
+            }
+        });
+
     });
 
+});
 
+
+$description = $(".descriptions");
+
+$('.enabled').hover(function () {
+
+    $description.addClass('active');
+    let prov_id = $(this).closest('g').attr('id');
+    $('.' + prov_id).removeClass('hilang');
+}, function () {
+    $description.removeClass('active');
+    $('.map-prov').addClass('hilang');
+});
+
+$(document).on('mousemove', function (e) {
+
+    if ($("#page").data('page') == "Home") {
+        $description.css({
+            left: e.clientX + 20,
+            top: e.clientY - 230
+        });
+    }
+    else if ($("#page").data('page') == "Statistik") {
+        $description.css({
+            left: e.clientX + 15,
+            top: e.clientY - 320,
+            width: '200px',
+        });
+    }
+
+
+});
+
+
+for (k = 1000; k <= 9400; k += 100) {
+    if ($('.' + k).hasClass('bahaya')) {
+        $('#' + k + ' .map-loc').addClass('color-red-fill');
+    }
+    else if ($('.' + k).hasClass('peringatan')) {
+        $('#' + k + ' .map-loc').addClass('color-yellow-fill');
+    }
+    else if ($('.' + k).hasClass('siaga')) {
+        $('#' + k + ' .map-loc').addClass('color-green-fill');
+    }
+}
+
+
+
+$(document).ready(function () {
+    if ($("#page").data('page') == "Statistik") {
+        $(".enabled").click(function () {
+            let prov_id = $(this).closest('g').attr('id');
+            const url = $('#map_desc').data('url');
+            $('#map_desc').removeClass('hilang');
+            $('.enabled').removeClass('color-blue-fill');
+            $(this).addClass('color-blue-fill');
+
+
+            $.ajax({
+                url: url + "/Statistik/ambilProvinsi",
+                type: "POST",
+                data: {
+                    provID: prov_id,
+                },
+                dataType: 'JSON',
+                success: function (data) {
+                    $('#map_desc h4').html('<img class="float-left size-20 mr-2" src="' + url + '/img/provinsi/logo/' + data[0].id_prov + '.png"> Provinsi ' + data[0].nama_prov);
+                    $('#populasi').html(data[0].populasi + ' <sub>Jiwa</sub>');
+                    $('#luas_wilayah').html(data[0].luas_wilayah + ' <sub>KM <sup>2</sup></sub>');
+                    $('#map_desc a').attr('href', url + '/statistik/provinsi?domain_id=' + data[0].id_prov + '&nama_provinsi=' + data[0].nama_prov);
+                    $('#map_spot').css('background-image', 'url(' + url + '/img/provinsi/spot/' + data[0].id_prov + '.jpg)');
+                    $('#map_spot').css('background-size', 'cover');
+                    console.log(data[0].id_prov);
+                }
+            });
+
+        });
+
+        // //Deskripsi Provinsi Map
+        // $('.enabled').click(function (e) {
+
+        //     $description.addClass('active');
+        //     let prov_id = $(this).closest('g').attr('id');
+        //     $('.' + prov_id).removeClass('hilang');
+
+        //     $description.css({
+        //         left: e.clientX + 20,
+        //         top: e.clientY - 230
+        //     });
+        // }, function () {
+        //     $description.removeClass('active');
+        //     $('.map-prov').addClass('hilang');
+        // });
+    }
 
 });
