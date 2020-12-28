@@ -15,11 +15,11 @@ class SurveysController extends BaseController
 
     public function index()
     {
-        $data['has_filled'] = 0;
+        $data['has_filled'] = 1;
 
         // Cek user telah mengisi
-        if (!empty($this->userAnswerModel->getWhere(['user_id' => session()->get('profile')['id']]))) {
-            $data['has_filled'] = 1;
+        if (count($this->userAnswerModel->getWhere(['user_id' => session()->get('profile')['id']])->getResult()) == 0) {
+            $data['has_filled'] = 0;
         }
 
         $data['title'] = 'Survei Govinsy';

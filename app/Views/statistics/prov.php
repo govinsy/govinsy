@@ -1,21 +1,20 @@
+<?= $this->extend('templates/base') ?>
+<?= $this->section('content') ?>
 <div class="container-fluid">
-
 
     <!--  Data Provinsi -->
     <div class="row justify-content-center">
         <div class="col-lg-12">
             <div align="center" class="jumbotron color-content color-content text-align-center mb-4">
-                <img src="<?php echo base_url() . "/img/provinsi/logo/" . $_GET['domain_id'] . ".png"; ?>" width="20%">
-                <h2 class="mt-3 color-light-font font-weight-bold">Provinsi <?= $_GET['nama_provinsi'] ?></h2>
+                <img src="<?php echo base_url() . "/img/provinsi/logo/" . $domain . ".png"; ?>" width="20%">
+                <h2 class="mt-3 color-light-font font-weight-bold">Provinsi <?= $prov_name ?></h2>
                 <small class="text-gray-600">IBU KOTA</small>
-                <h6 class="color-light-font"><?= $provdesc['ibu_kota'] ?></h6>
-                <a href="https://www.google.com/maps/place/<?php echo "" . str_replace(" ", "+", $_GET['nama_provinsi']) ?>" target="_blank" rel="noopener noreferrer">Lihat peta</a>
+                <h6 class="color-light-font"><?= $prov_name ?></h6>
+                <a href="https://www.google.com/maps/place/<?php echo "" . str_replace(" ", "+", $prov_name) ?>" target="_blank" rel="noopener noreferrer">Lihat peta</a>
             </div>
         </div>
     </div>
     <!--  Data Provinsi End -->
-
-
 
     <!-- COVID 19-->
     <div class="row justify-content-center">
@@ -89,16 +88,16 @@
 
                                 <div class="col-md-12 slide-wrapper">
                                     <ul class="slide" id="nomor-slide">
-                                        <?php if (isset($hospital)) : ?>
-                                            <?php foreach ($hospital as $h) : ?>
-                                                <?php if (stristr($_GET['nama_provinsi'], $h['province'])) : ?>
+                                        <?php if (isset($hospitals)) : ?>
+                                            <?php foreach ($hospitals as $hospital) : ?>
+                                                <?php if (stristr($prov_name, $hospital['province'])) : ?>
 
                                                     <li class="color-bg">
                                                         <div class="list-group list-group-flush border-0">
-                                                            <div class="list-group-item border-0 list-group-item-action list-group-item-primary color-blue-bg"><small class="font-weight-bold"><?= $h['name']; ?></small></div>
-                                                            <div class="list-group-item border-0 color-bg"><i class="fas fa-map-marked color-blue-font"> </i> <small class="color-light-font"><?= $h['region']; ?></small></div>
-                                                            <div class="list-group-item border-0 color-bg"><i class="fas fa-map-marked color-blue-font"></i> <small class="color-light-font"><?= $h['address']; ?></small></div>
-                                                            <div class="list-group-item border-0 color-bg"><i class="fas fa-phone color-blue-font"></i> <?php if ($h['phone'] != null) : ?> <small class="color-light-font"><?= $h['phone']; ?></small> <?php else : ?> <small class="color-light-font">Tidak ada nomor</small> <?php endif; ?></div>
+                                                            <div class="list-group-item border-0 list-group-item-action list-group-item-primary color-blue-bg"><small class="font-weight-bold"><?= $hospital['name']; ?></small></div>
+                                                            <div class="list-group-item border-0 color-bg"><i class="fas fa-map-marked color-blue-font"> </i> <small class="color-light-font"><?= $hospital['region']; ?></small></div>
+                                                            <div class="list-group-item border-0 color-bg"><i class="fas fa-map-marked color-blue-font"></i> <small class="color-light-font"><?= $hospital['address']; ?></small></div>
+                                                            <div class="list-group-item border-0 color-bg"><i class="fas fa-phone color-blue-font"></i> <?php if ($hospital['phone'] != null) : ?> <small class="color-light-font"><?= $hospital['phone']; ?></small> <?php else : ?> <small class="color-light-font">Tidak ada nomor</small> <?php endif; ?></div>
                                                         </div>
                                                     </li>
 
@@ -157,7 +156,7 @@
                             <div class="card-body rounded color-bg">
                                 <img class="mt-3" src="<?= base_url(); ?>/img/bank.png" width="35%" alt="">
                                 <p class="text-gray-600 font-16 mt-3">APBD</p>
-                                <h2 class="font-weight-bold"><?= $provdesc['apbd'] ?></h2>
+                                <h2 class="font-weight-bold"><?= $prov_name ?></h2>
                                 <p class="font-10">Miliar rupiah</p>
                             </div>
                         </div>
@@ -166,7 +165,7 @@
                             <div class="card-body rounded color-bg">
                                 <img class="mt-3" src="<?= base_url(); ?>/img/coin.png" width="35%" alt="">
                                 <p class="text-gray-600 font-16 mt-3">PRDB</p>
-                                <h2 class="font-weight-bold"><?= $provdesc['populasi'] ?></h2>
+                                <h2 class="font-weight-bold"><?= $prov_name ?></h2>
                                 <p class="font-10">Triliun rupiah</p>
                             </div>
                         </div>
@@ -175,7 +174,7 @@
                             <div class="card-body rounded color-bg">
                                 <img class="mt-3" src="<?= base_url(); ?>/img/invest.png" width="35%" alt="">
                                 <p class="text-gray-600 font-16 mt-3">PRDB PER KAPITA</p>
-                                <h2 class="font-weight-bold"><?= $provdesc['prdb_per_kapita'] ?></h2>
+                                <h2 class="font-weight-bold"><?= $prov_name ?></h2>
                                 <p class="font-10">Juta rupiah</p>
                             </div>
                         </div>
@@ -208,23 +207,23 @@
                 <div class="card-body color-light-font mt-3 position-relative">
                     <div class="row justify-content-center">
                         <div class="peta col-sm-6">
-                            <img class="ml-3" src="<?php echo base_url() . "/img/provinsi/peta/" . $_GET['domain_id'] . ".svg"; ?>" width="90%" alt="">
+                            <img class="ml-3" src="<?php echo base_url() . "/img/provinsi/peta/" . $domain . ".svg"; ?>" width="90%" alt="">
                         </div>
                         <div class="info-wilayah pl-4 col-sm-6">
                             <small class="text-gray-600">LUAS WILAYAH</small>
-                            <h5><?= $provdesc['luas_total'] ?>
+                            <h5><?= $prov_name ?>
                                 <small style="font-size:1rem;"><sub>KM <sup>2</sup></sub></small>
                             </h5>
                             <small class="text-gray-600 mt-5">JUMLAH PENDUDUK</small>
-                            <h5><?= $provdesc['populasi'] ?>
+                            <h5><?= $prov_name ?>
                                 <small style=" font-size:1rem;"><sub>Jiwa</sub></small>
                             </h5>
                             <small class="text-gray-600 mt-5">KEPADATAN PENDUDUK</small>
-                            <h5><?= $provdesc['populasi_per_luas'] ?>
+                            <h5><?= $prov_name ?>
                                 <small style=" font-size:1rem;"><sub>Jiwa/KM <sup>2</sup></sub></small>
                             </h5>
                             <small class="text-gray-600 mt-5">PULAU</small>
-                            <h5><?= $provdesc['pulau'] ?></h5>
+                            <h5><?= $prov_name ?></h5>
                         </div>
                     </div>
 
@@ -243,17 +242,17 @@
                     <h6 class="m-0 font-weight-bold ">Sosial</h6>
                 </div>
                 <div class="card-body color-light-font mt-4">
-                    <h4 class="small font-weight">PRESENTASE PENDUDUK MISKIN <span class="float-right color-red-font"><?php echo ($stat['penduduk_miskin']['value'] != null) ? $stat['penduduk_miskin']['value'] . "%" : "Belum Terdata" ?></span></h4>
+                    <h4 class="small font-weight">PRESENTASE PENDUDUK MISKIN <span class="float-right color-red-font"><?= ($stat['penduduk_miskin']['value'] != null) ? $stat['penduduk_miskin']['value'] . "%" : "Belum Terdata" ?></span></h4>
                     <div class="progress color-bg mb-4" style="height:25px">
                         <div class="progress-bar color-red-bg" role="progressbar" style="width: <?= $stat['penduduk_miskin']['value'] ?>%" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight">TINGKAT PENGANGGURAN<span class="color-blue-font float-right"><?php echo ($stat['pengangguran']['value'] != null) ? $stat['pengangguran']['value'] . "%" : "Belum Terdata" ?></span></h4>
+                    <h4 class="small font-weight">TINGKAT PENGANGGURAN<span class="color-blue-font float-right"><?= ($stat['pengangguran']['value'] != null) ? $stat['pengangguran']['value'] . "%" : "Belum Terdata" ?></span></h4>
                     <div class="progress color-bg mb-4" style="height:25px">
                         <div class="progress-bar" role="progressbar" style="width: <?= $stat['pengangguran']['value'] ?>%" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight">INDEK PEMBANGUNAN MANUSIA<span class="color-green-font float-right"><?= $provdesc['ipm'] ?>%</span></h4>
+                    <h4 class="small font-weight">INDEK PEMBANGUNAN MANUSIA<span class="color-green-font float-right"><?= ''//$prov_name['ipm'] ?>%</span></h4>
                     <div class="progress color-bg mb-4" style="height:25px">
-                        <div class="progress-bar color-green-bg" role="progressbar" style="width: <?= intval($provdesc['ipm']) ?>%" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar color-green-bg" role="progressbar" style="width: <?= '' //intval($prov_name['ipm']) ?>%" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
             </div>
@@ -268,3 +267,4 @@
 
 
 </div>
+<?= $this->endSection() ?>

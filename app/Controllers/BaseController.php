@@ -70,7 +70,7 @@ class BaseController extends Controller
 		$ip = $this->request->getIPAddress();
 
 		// Mengumpulkan data pengunjung web
-		if (empty(session()->get('agent'))) {
+		if (session()->has('agent') == FALSE) {
 			$this->agentModel->save([
 				'agent' => $agent->getAgentString(),
 				'platform' => $agent->getPlatform(),
@@ -84,7 +84,6 @@ class BaseController extends Controller
 				'valid_ip' => $request->isValidIP($ip),
 				'visited_at' => Time::now()
 			]);
-			
 			session()->set(['agent' => $this->agentModel->getInsertID()]);
 		}
 
