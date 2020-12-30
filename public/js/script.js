@@ -177,3 +177,10 @@ $(document).ready(function () {
 
 });
 // End fungsi crop dan upload gambar
+
+//fungsi tooltip
+$(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
+});
+//end fungsi tooltip
+
