@@ -8,10 +8,6 @@ namespace App\Controllers;
 class Statistik extends BaseController
 {
 
-    public function __construct()
-    {
-        set_time_limit(500);
-    }
     public function index()
     {
         // Set Session Nomor Domain dan Nama Provinsi
@@ -75,12 +71,12 @@ class Statistik extends BaseController
         // }
 
         // var_dump($desc);
-        $data['desc'] = $provdesc;
-        $data['judul'] = 'Daftar Statistik';
-        $data['page'] = 'Statistik'; //Digunakan untuk indikator di Sidebar
-        $data['indo'] = $kasus; // kasus covid se-indonesia
-        $data['prov'] = $provinsi['list_data']; // kasus covid-19 per-provinsi
-        $data['domains'] = $domain['data'][1]; // daftar domain provinsi
+        $data['desc']           = $provdesc;
+        $data['judul']          = 'Daftar Statistik';
+        $data['page']          = 'Statistik'; //Digunakan untuk indikator di Sidebar
+        $data['indo']           = $kasus; // kasus covid se-indonesia
+        $data['prov']           = $provinsi['list_data']; // kasus covid-19 per-provinsi
+        $data['domains']   = $domain['data'][1]; // daftar domain provinsi
 
 
         !empty($indicators) ? $data['indicators'] = $indicators : $data['indicators'] = []; // strategic indocators
@@ -163,7 +159,7 @@ class Statistik extends BaseController
 
 
         $stat = [
-            'jumlah_penduduk' => ['value' => null],
+            'jumlah_penduduk'   => ['value' => null],
             'penduduk_miskin' => ['value' => null],
             'pengangguran' => ['value' => null],
             'impor' => ['value' => null],
@@ -200,28 +196,28 @@ class Statistik extends BaseController
         foreach ($provdesc as $p) {
             if ($p['Provinsi'] == $_GET['nama_provinsi']) {
                 $desc = [
-                    'pulau' => $p["Pulau"],
-                    'provinsi' => $p["Provinsi"],
-                    'singkatan' => $p["Singkatan"],
-                    'ibu_kota' => $p["Ibu kota"],
-                    'diresmikan' => $p["Diresmikan"],
-                    'populasi' => $p["Populasi"],
-                    'luas_total' => $p["Luas Total"],
-                    'populasi_per_luas' => $p["Populasi / Luas"],
-                    'apbd' => $p["APBD 2014 (miliar rupiah)"],
-                    'prdb' => $p["PDRB 2014 (triliun rupiah)"],
-                    'prdb_per_kapita' => $p["PDRB per kapita 2014 (juta rupiah)"],
-                    'ipm' => $p["IPM 2014"]
+                    'pulau'                         => $p["Pulau"],
+                    'provinsi'                     => $p["Provinsi"],
+                    'singkatan'                 => $p["Singkatan"],
+                    'ibu_kota'                    => $p["Ibu kota"],
+                    'diresmikan'               => $p["Diresmikan"],
+                    'populasi'                    => $p["Populasi"],
+                    'luas_total'                  => $p["Luas Total"],
+                    'populasi_per_luas'  => $p["Populasi / Luas"],
+                    'apbd'                          => $p["APBD 2014 (miliar rupiah)"],
+                    'prdb'                          => $p["PDRB 2014 (triliun rupiah)"],
+                    'prdb_per_kapita'    => $p["PDRB per kapita 2014 (juta rupiah)"],
+                    'ipm'                           => $p["IPM 2014"]
                 ];
             }
         }
 
-        $data['stat'] = $stat; //Data Strategic Indicator
-        $data['covid'] = ambilDataProvinsi($provinsi); //Data COVID 19 Provinsi
-        $data['judul'] = "Data Provinsi " . $_GET['nama_provinsi'];
-        $data['page'] = 'Statistik'; //Digunakan untuk indikator di Sidebar
-        $data['hospital'] = $hospital; // Rumah sakit rujukan
-        $data['provdesc'] = $desc; // Deskirpsi provinsi
+        $data['stat']             = $stat; //Data Strategic Indicator
+        $data['covid']          = ambilDataProvinsi($provinsi); //Data COVID 19 Provinsi
+        $data['judul']          = "Data Provinsi " . $_GET['nama_provinsi'];
+        $data['page']          = 'Statistik'; //Digunakan untuk indikator di Sidebar
+        $data['hospital']     = $hospital; // Rumah sakit rujukan
+        $data['provdesc']   = $desc; // Deskirpsi provinsi
 
         //Views
         echo view('templates/header', $data);
@@ -244,9 +240,9 @@ class Statistik extends BaseController
             foreach ($domain['data'][1] as $dom) {
                 if ($dom['domain_id'] == $pd['id_prov'] && $_POST['provID'] == $pd['id_prov']) {
                     array_push($desc, [
-                        'id_prov' => $dom['domain_id'],
-                        'nama_prov' => $dom['domain_name'],
-                        'populasi' => $pd['Populasi'],
+                        'id_prov'           => $dom['domain_id'],
+                        'nama_prov'    => $dom['domain_name'],
+                        'populasi'         => $pd['Populasi'],
                         'luas_wilayah' => $pd['Luas Total'],
                     ]);
                 }

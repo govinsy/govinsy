@@ -10,19 +10,20 @@ class Pengguna extends BaseController
     }
     public function login()
     {
-        // Mengambil data pengguna dari database
-        $pengguna = $this->pengguna_model->getAllPengguna();
 
         // Validasi pengguna
         if (isset($_POST['login'])) {
 
+            // Mengambil data pengguna dari database
+            $pengguna = $this->pengguna_model->getAllPengguna();
+
             if ($this->validate([
                 'email' =>
                 [
-                    'rules' => 'required|valid_email',
-                    'errors' => [
-                        'required' => 'Silahkan isi email anda',
-                        'valid_email' => 'Gunakan email anda yang valid',
+                    'rules'                  => 'required|valid_email',
+                    'errors'                => [
+                        'required'       => 'Silahkan isi email anda',
+                        'valid_email'  => 'Gunakan email anda yang valid',
                     ]
                 ],
                 'password' => 'required',
@@ -32,8 +33,8 @@ class Pengguna extends BaseController
                 foreach ($pengguna as $p) {
                     if ($p['email'] == $_POST['email']) { //Cek email yang terdaftar di database
                         if ($p['password'] == md5($_POST['password'])) { //Cek password 
-                            $_SESSION['login'] = true;
-                            $_SESSION['profile'] = $this->pengguna_model->getPenggunaById($p['id']);
+                            $_SESSION['login']       = true;
+                            $_SESSION['profile']    = $this->pengguna_model->getPenggunaById($p['id']);
                             header("Location: " . base_url());
                             exit;
                         } else {
@@ -49,14 +50,16 @@ class Pengguna extends BaseController
             }
         }
 
-        $data['judul'] = 'Masuk Govinsy';
-        $data['page'] = 'Masuk Govinsy';
-        $data['validation'] = $this->validation;
+        $data['judul']              = 'Masuk Govinsy';
+        $data['page']              = 'Masuk Govinsy';
+        $data['validation']     = $this->validation;
+
+
         echo view('templates/header', $data);
         echo view('templates/sidebar', $data);
         echo view('templates/topbar', $data);
         echo view('pengguna/login', $data);
-        echo view('templates/footer');
+        echo view('templates/footer', $data);
     }
 
     public function logout()
@@ -79,31 +82,31 @@ class Pengguna extends BaseController
 
             //Deklarasi data validasi [rules]
             $validasi = $this->validate([
-                'nama' => [
-                    'rules' => 'required',
-                    'errors' => ['required' => 'Silahkan isi nama anda']
+                'nama'         => [
+                    'rules'        => 'required',
+                    'errors'      => ['required' => 'Silahkan isi nama anda']
                 ],
-                'email' => [
-                    'rules' => 'required|valid_email|is_unique[pengguna.email]',
-                    'errors' => [
-                        'required' => 'Silahkan isi email anda',
-                        'valid_email' => 'Gunakan email anda yang valid',
-                        'is_unique' => 'Email yang anda masukkan sudah terdaftar silahkan gunakan email anda yang lain'
+                'email'         => [
+                    'rules'         => 'required|valid_email|is_unique[pengguna.email]',
+                    'errors'       => [
+                        'required'        => 'Silahkan isi email anda',
+                        'valid_email'   => 'Gunakan email anda yang valid',
+                        'is_unique'      => 'Email yang anda masukkan sudah terdaftar silahkan gunakan email anda yang lain'
                     ]
                 ],
                 'password1' => [
-                    'rules' => 'required|matches[password2]|min_length[8]',
-                    'errors' => [
-                        'required' => 'Silahkan isi password anda',
-                        'matches' => 'Password anda masukkan tidak cocok dengan confirm password',
-                        'min_length' => 'Password yang anda masukkan minimal harus 8 karakter'
+                    'rules'          => 'required|matches[password2]|min_length[8]',
+                    'errors'        => [
+                        'required'        => 'Silahkan isi password anda',
+                        'matches'        => 'Password anda masukkan tidak cocok dengan confirm password',
+                        'min_length'  => 'Password yang anda masukkan minimal harus 8 karakter'
                     ]
                 ],
                 'password2' => [
-                    'rules' => 'required|matches[password1]',
-                    'errors' => [
-                        'required' => 'Silahkan isi password anda',
-                        'matches' => 'Password yang anda masukkan tidak cocok dengan password',
+                    'rules'         => 'required|matches[password1]',
+                    'errors'       => [
+                        'required'        => 'Silahkan isi password anda',
+                        'matches'        => 'Password yang anda masukkan tidak cocok dengan password',
                     ]
                 ],
             ]);
@@ -113,8 +116,8 @@ class Pengguna extends BaseController
 
                 if ($this->pengguna_model->tambahPengguna($_POST)  == true) {
                     session()->setFlashdata('message', '<div class="alert alert-success" role="alert">Selamat anda berhasil mendaftar</div> ');
-                    $_SESSION['login'] = true;
-                    $_SESSION['profile'] = $this->pengguna_model->getPenggunaByEmail($_POST['email']);
+                    $_SESSION['login']       =   true;
+                    $_SESSION['profile']    =   $this->pengguna_model->getPenggunaByEmail($_POST['email']);
                     header('location: ' . base_url());
                     exit;
                 } else {
@@ -125,9 +128,11 @@ class Pengguna extends BaseController
             return redirect()->back()->withInput();
         }
 
-        $data['validation'] = $this->validation;
-        $data['judul'] = 'Daftar Govinsy';
-        $data['page'] = 'Daftar User';
+        $data['validation']  = $this->validation;
+        $data['judul']           = 'Daftar Govinsy';
+        $data['page']           = 'Daftar User';
+
+
         echo view('templates/header', $data);
         echo view('pengguna/daftar', $data);
         echo view('templates/footer', $data);
@@ -136,9 +141,9 @@ class Pengguna extends BaseController
 
     public function profile()
     {
-        $data['validation'] = $this->validation;
-        $data['judul'] = 'Profile Pengguna';
-        $data['page'] = 'Profile';
+        $data['validation']   = $this->validation;
+        $data['judul']            = 'Profile Pengguna';
+        $data['page']            = 'Profile';
 
         //Ganti gambar
         if (isset($_POST['crop'])) {
@@ -150,8 +155,8 @@ class Pengguna extends BaseController
             //Deklarasi data validasi [rules]
             $validasi = $this->validate([
                 'nama' => [
-                    'rules' => 'required',
-                    'errors' => ['required' => 'Silahkan isi nama anda']
+                    'rules'     => 'required',
+                    'errors'   => ['required' => 'Silahkan isi nama anda']
                 ]
             ]);
             //End deklarasi data validasi [rules]
@@ -174,7 +179,7 @@ class Pengguna extends BaseController
         echo view('templates/sidebar', $data);
         echo view('templates/topbar', $data);
         echo view('pengguna/profile', $data);
-        echo view('templates/footer');
+        echo view('templates/footer', $data);
     }
 
     //Method set gambar profile pengguna menjadi default
@@ -187,8 +192,8 @@ class Pengguna extends BaseController
 
     public function gantiTema()
     {
-        $idUser = $_POST['userID'];
-        $userTema = $_POST['userTema'];
+        $idUser                 = $_POST['userID'];
+        $userTema           = $_POST['userTema'];
         $this->pengguna_model->ganti_tema();
     }
 

@@ -52,10 +52,10 @@ define('FIELD', [
 		'statictable' => 'model=statictable',
 	],
 	'type' => [
-		'all' => 'type=all&',
-		'prov' => 'type=prov&',
-		'kab' => 'type=kab&',
-		'provbykab' => 'type=provbykab&'
+		'all'						=> 'type=all&',
+		'prov'					=> 'type=prov&',
+		'kab'					=> 'type=kab&',
+		'provbykab'		=> 'type=provbykab&'
 	]
 ]);
 

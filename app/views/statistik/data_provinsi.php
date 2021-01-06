@@ -148,7 +148,7 @@
 
             <div style="border:none;" class="card shadow color-content mt-4">
                 <div class="card-header py-3 color-blue-bg">
-                    <h6 class="m-0 font-weight-bold ">Ekonomi</h6>
+                    <h6 class="m-0 font-weight-bold color-light-font">Ekonomi</h6>
                 </div>
                 <div class="card-body color-content-font mt-3">
                     <div class="row justify-content-center">
@@ -203,7 +203,7 @@
 
             <div style="border:none;" class="card shadow color-content mb-4">
                 <div class="card-header py-3 color-blue-bg">
-                    <h6 class="m-0 font-weight-bold ">Geografi</h6>
+                    <h6 class="m-0 font-weight-bold color-light-font">Geografi</h6>
                 </div>
                 <div class="card-body color-content-font mt-3 position-relative">
                     <div class="row justify-content-center">
@@ -240,18 +240,18 @@
 
             <div style="border:none;" class="card shadow color-content mb-4">
                 <div class="card-header py-3 color-blue-bg">
-                    <h6 class="m-0 font-weight-bold ">Sosial</h6>
+                    <h6 class="m-0 font-weight-bold color-light-font">Sosial</h6>
                 </div>
                 <div class="card-body color-content-font mt-4">
-                    <h4 class="small font-weight">PRESENTASE PENDUDUK MISKIN <span class="float-right color-red-font"><?php echo ($stat['penduduk_miskin']['value'] != null) ? $stat['penduduk_miskin']['value'] . "%" : "Belum Terdata" ?></span></h4>
+                    <h4 class="small font-weight">PRESENTASE PENDUDUK MISKIN <span class="float-right font-weight-bold color-red-font"><?php echo ($stat['penduduk_miskin']['value'] != null) ? $stat['penduduk_miskin']['value'] . "%" : "Belum Terdata" ?></span></h4>
                     <div class="progress color-bg mb-4" style="height:25px">
                         <div class="progress-bar color-red-bg" role="progressbar" style="width: <?= $stat['penduduk_miskin']['value'] ?>%" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight">TINGKAT PENGANGGURAN<span class="color-blue-font float-right"><?php echo ($stat['pengangguran']['value'] != null) ? $stat['pengangguran']['value'] . "%" : "Belum Terdata" ?></span></h4>
+                    <h4 class="small font-weight">TINGKAT PENGANGGURAN<span class="color-blue-font float-right font-weight-bold"><?php echo ($stat['pengangguran']['value'] != null) ? $stat['pengangguran']['value'] . "%" : "Belum Terdata" ?></span></h4>
                     <div class="progress color-bg mb-4" style="height:25px">
                         <div class="progress-bar" role="progressbar" style="width: <?= $stat['pengangguran']['value'] ?>%" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight">INDEK PEMBANGUNAN MANUSIA<span class="color-green-font float-right"><?= $provdesc['ipm'] ?>%</span></h4>
+                    <h4 class="small font-weight">INDEK PEMBANGUNAN MANUSIA<span class="color-green-font float-right font-weight-bold"><?= $provdesc['ipm'] ?>%</span></h4>
                     <div class="progress color-bg mb-4" style="height:25px">
                         <div class="progress-bar color-green-bg" role="progressbar" style="width: <?= intval($provdesc['ipm']) ?>%" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>

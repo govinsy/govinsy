@@ -37,6 +37,7 @@ $routes->get('/survei', 'Survei::index');
 $routes->get('/tentang', 'Tentang::index');
 $routes->get('/berita', 'Berita::index');
 $routes->get('/pengguna', 'Pengguna::index');
+$routes->get('/premium', 'Premium::Komparasi');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

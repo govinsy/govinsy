@@ -41,6 +41,12 @@
                   <span>TENTANG KAMI</span></a>
           </li>
 
+          <li class="nav-item <?php if ($page === "Komparasi")  echo "active aktif"; ?>">
+              <a class="nav-link" href="<?= base_url(); ?>/premium/komparasi">
+                  <i class="mr-3 ml-4 fas fa-fw fa-info"></i>
+                  <span>KOMPARASI</span></a>
+          </li>
+
 
 
           <?php if ((isset($_SESSION['profile']['survei']) && $_SESSION['profile']['survei'] != 1) || !isset($_SESSION['profile']['survei'])) : ?>

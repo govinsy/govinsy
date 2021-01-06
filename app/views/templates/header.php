@@ -35,4 +35,4 @@
                 if ($_SESSION['profile']['tema'] == 1) {
                   echo "light-mode";
                 } else echo "dark-mode";
-              } else echo "dark-mode"; ?>" id="wrapper">
+              } else echo "dark-mode"; ?>" id="wrapper" data-baseurl="<?= base_url() ?>">

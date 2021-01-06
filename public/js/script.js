@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+    let baseURL = $('#wrapper').data('baseurl');
+
     $(function () {
         $("[rel='tooltip']").tooltip();
     });
@@ -17,7 +20,7 @@ $(document).ready(function () {
 
 
 
-    // Ubah background li pada parent input radio saat memilih jawaban
+    // Ubah background li pada parent input radio saat memilih jawaban survei
     $('#survei-pertanyaan input').on("change", function () {
         //Fungsi ubah backround proses
         $(`#survei-pertanyaan #P${urutan} .color-blue-bg`).removeClass('color-blue-bg');
@@ -37,7 +40,7 @@ $(document).ready(function () {
         }
 
     });
-    // End Fungsi ubah background
+    // End Fungsi ubah background-color survei
 
     if (urutan == 1) {
         $('#survei-pertanyaan #P1').removeClass('hilang');
@@ -66,9 +69,8 @@ $(document).ready(function () {
             alert('Pilih salah satu opsi sebelum lanjut ke pertanyaan berikutnya');
         }
 
+        // End fungsi tombol selanjutnya
     });
-    // End fungsi tombol selanjutnya
-
 
 
     //Fungsi bila tombol sebelumnya diclick
@@ -95,24 +97,22 @@ $(document).ready(function () {
             $('#selesai').addClass('hilang');
             $('#kembali').addClass('hilang');
         }
-        console.log(urutan);
 
     });
     //End fungsi tombol sebelumnya
-
 
     //Create Indikator urutan pertanyaan
     for (i = 1; i <= jumlahPertanyaan; i++) {
         $('#indikator-pertanyaan').append('<li id="IP' + i + '" class="py-1 color-gray-bg mx-2"></li>');
     }
     //End indikator
-});
-//End fungsi survey
 
 
-// Fungsi crop dan upload gambar
-$(document).ready(function () {
+    //End fungsi survey
 
+
+
+    // Fungsi crop dan upload gambar
     var $modal = $('#modal');
 
     var image = document.getElementById('sample_image');
@@ -177,13 +177,13 @@ $(document).ready(function () {
         });
     });
 
-});
-// End fungsi crop dan upload gambar
+    // End fungsi crop dan upload gambar
 
 
 
-//Fungsi Form Validation
-$(document).ready(function () {
+    //////////////////////////////////////////////////////////////
+    ///// Code Validasi Daftar Form /////
+    ////////////////////////////////////////////////////////////
     jQuery(function () {
         // jQuery("#ValidNumber").validate({
         //     expression: "if (!isNaN(VAL) && VAL) return true; else return false;",
@@ -205,13 +205,16 @@ $(document).ready(function () {
             expression: "if (VAL == jQuery('#inputPassword1').val() && VAL ) { $('#password1 i').addClass('color-green-font'); $('#password1 i').addClass('fa-check'); $('#password1 i').removeClass('fa-times'); $('#password1 i').removeClass('color-red-font'); return true; } else { $('#password1 i').removeClass('color-green-font'); $('#password1 i').removeClass('fa-check'); $('#password1 i').addClass('fa-times'); $('#password1 i').addClass('color-red-font'); return false; }",
         });
     });
-});
-//End Fungsi Form Validation
+    //////////////////////////////////////////////////////////////
+    ///// End Code Validasi Daftar Form /////
+    ////////////////////////////////////////////////////////////
 
 
 
-$(document).ready(function () {
 
+    //////////////////////////////////////////////////////////////
+    ///// Code Password Toggle /////
+    ////////////////////////////////////////////////////////////
     $('#togglePassword').on('click', function () {
         $("#togglePassword").toggleClass("toggled");
         $('#togglePassword').addClass('fa-eye');
@@ -225,11 +228,11 @@ $(document).ready(function () {
             $('#togglePassword').addClass('fa-eye-slash');
         }
     });
+    //////////////////////////////////////////////////////////////
+    ///// End Code Password Toggle /////
+    ////////////////////////////////////////////////////////////
 
-});
 
-
-$(document).ready(function () {
 
     $('#more').on('click', function () {
         if ($('#morle').hasClass('hilang')) {
@@ -242,9 +245,7 @@ $(document).ready(function () {
         }
     });
 
-});
 
-$(document).ready(function () {
 
     $(".switch").enhancedSwitch();
 
@@ -273,56 +274,52 @@ $(document).ready(function () {
 
     });
 
-});
+
+    $description = $(".descriptions");
+
+    $('.enabled').hover(function () {
+
+        $description.addClass('active');
+        let prov_id = $(this).closest('g').attr('id');
+        $('.' + prov_id).removeClass('hilang');
+    }, function () {
+        $description.removeClass('active');
+        $('.map-prov').addClass('hilang');
+    });
+
+    $(document).on('mousemove', function (e) {
+
+        if ($("#page").data('page') == "Home") {
+            $description.css({
+                left: e.clientX + 20,
+                top: e.clientY - 230
+            });
+        }
+        else if ($("#page").data('page') == "Statistik") {
+            $description.css({
+                left: e.clientX + 15,
+                top: e.clientY - 320,
+                width: '200px',
+            });
+        }
 
 
-$description = $(".descriptions");
+    });
 
-$('.enabled').hover(function () {
 
-    $description.addClass('active');
-    let prov_id = $(this).closest('g').attr('id');
-    $('.' + prov_id).removeClass('hilang');
-}, function () {
-    $description.removeClass('active');
-    $('.map-prov').addClass('hilang');
-});
-
-$(document).on('mousemove', function (e) {
-
-    if ($("#page").data('page') == "Home") {
-        $description.css({
-            left: e.clientX + 20,
-            top: e.clientY - 230
-        });
+    for (k = 1000; k <= 9400; k += 100) {
+        if ($('.' + k).hasClass('bahaya')) {
+            $('#' + k + ' .map-loc').addClass('color-red-fill');
+        }
+        else if ($('.' + k).hasClass('peringatan')) {
+            $('#' + k + ' .map-loc').addClass('color-yellow-fill');
+        }
+        else if ($('.' + k).hasClass('siaga')) {
+            $('#' + k + ' .map-loc').addClass('color-green-fill');
+        }
     }
-    else if ($("#page").data('page') == "Statistik") {
-        $description.css({
-            left: e.clientX + 15,
-            top: e.clientY - 320,
-            width: '200px',
-        });
-    }
 
 
-});
-
-
-for (k = 1000; k <= 9400; k += 100) {
-    if ($('.' + k).hasClass('bahaya')) {
-        $('#' + k + ' .map-loc').addClass('color-red-fill');
-    }
-    else if ($('.' + k).hasClass('peringatan')) {
-        $('#' + k + ' .map-loc').addClass('color-yellow-fill');
-    }
-    else if ($('.' + k).hasClass('siaga')) {
-        $('#' + k + ' .map-loc').addClass('color-green-fill');
-    }
-}
-
-
-
-$(document).ready(function () {
     if ($("#page").data('page') == "Statistik") {
         $(".enabled").click(function () {
             let prov_id = $(this).closest('g').attr('id');
@@ -368,5 +365,60 @@ $(document).ready(function () {
         //     $('.map-prov').addClass('hilang');
         // });
     }
+
+
+
+    //////////////////////////////////////////////////////////////
+    ///// Code Halaman Komparasi /////
+    ////////////////////////////////////////////////////////////
+    let pilihProvinsi = 'provinsi';
+    let provinsi1 = false;
+    let provinsi2 = false;
+
+    $('#provinsi1').click(function () {
+        pilihProvinsi = 'provinsi1';
+    });
+
+    $('#provinsi2').click(function () {
+        pilihProvinsi = 'provinsi2';
+    });
+
+    $('.modal-provinsi').click(function () {
+
+        if ($('.modal-provinsi').hasClass(pilihProvinsi)) {
+            $('.' + pilihProvinsi).children('input').attr('checked', false);
+            $('.' + pilihProvinsi).removeClass('color-green-bg');
+            $('.' + pilihProvinsi).addClass('color-bg');
+            $('.modal-provinsi').removeClass(pilihProvinsi);
+        }
+
+        if (pilihProvinsi == 'provinsi1') {
+            provinsi1 = true;
+            $(this).addClass(pilihProvinsi);
+            $(this).addClass('color-green-bg');
+            $(this).removeClass('color-bg');
+            $(this).children('input').attr('checked', true);
+        }
+        else if (pilihProvinsi == 'provinsi2') {
+            provinsi2 = true;
+            $(this).addClass(pilihProvinsi);
+            $(this).addClass('color-green-bg');
+            $(this).removeClass('color-bg');
+            $(this).children('input').attr('checked', true);
+        }
+
+        if (provinsi1 == true && provinsi2 == true) {
+            $('#bandingkan').attr('class', 'btn btn-blue corner-round');
+            $('#bandingkan').attr('type', 'submit');
+        }
+
+        $('#' + pilihProvinsi + ' input').val($(this).data('provid'));
+        $('#' + pilihProvinsi + ' img').attr('src', baseURL + '/img/provinsi/logo/' + $(this).data('provid') + '.png');
+        $('#' + pilihProvinsi + ' p').html($(this).data('provnama'));
+    });
+
+    //////////////////////////////////////////////////////////////////////
+    ///// End Code Halaman Komparasi /////
+    ////////////////////////////////////////////////////////////////////
 
 });
