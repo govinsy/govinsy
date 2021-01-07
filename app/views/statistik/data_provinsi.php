@@ -156,7 +156,7 @@
                         <div class="col-md-4 color-content mb-3 text-center card border-0" style="width: 18rem;">
                             <div class="card-body rounded color-bg">
                                 <img class="mt-3" src="<?= base_url(); ?>/img/bank.png" width="35%" alt="">
-                                <p class="text-gray-600 font-16 mt-3" title="APBD" data-toggle="popover" data-trigger="hover" data-content="Anggaran Pendapatan dan Belanja Daerah, adalah rencana keuangan tahunan pemerintah daerah di Indonesia yang disetujui oleh Dewan Perwakilan Rakyat Daerah.">APBD</p>
+                                <p class="text-gray-600 font-16 mt-3" data-html="true" data-toggle="popover" data-trigger="hover" data-content="<b>APBD</b> <p class='color-red-font font-12'>Anggaran Pendapatan dan Belanja Daerah, adalah rencana keuangan tahunan pemerintah daerah di Indonesia yang disetujui oleh Dewan Perwakilan Rakyat Daerah.</p>">APBD</p>
                                 <h2 class="font-weight-bold"><?= $provdesc['apbd'] ?></h2>
                                 <p class="font-10">Miliar rupiah</p>
                             </div>
@@ -268,36 +268,3 @@
 
 
 </div>
-<style>
-     /* Popover */
-.popover {
-    border: 2px dotted red;
-  }
-  /* Popover Header */
-.popover-header {
-    background-color: red !important; 
-    color: #FFFFFF !important; 
-    font-size: 28px !important;
-    text-align:center !important;
-  }
-  /* Popover Body */
-.popover-body {
-    content:'';
-    background-color: coral;
-    color: #FFFFFF ;
-    padding: 25px ;
-  }
-.popover-body::after 
-{
-    content:'';
-    background-color: red;
-    width:10px;
-    position:absolute;
-    right:10;
-    z-index:10;
-} 
-  /* Popover Arrow */
-.arrow {
-    border-right-color: red !important;
-  }
-</style>

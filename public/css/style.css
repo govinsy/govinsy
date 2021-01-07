@@ -429,6 +429,44 @@ font-size 42px = 2.625rem
 
 
 
+/* Popover */
+  .popover
+  {
+      position:relative;
+      border-radius:1rem;
+  }
+
+    /* Popover Header */
+    .dark-mode .popover-header {
+        background-color: #2D8DFD !important;
+    }
+
+    /* Popover Body */
+     .popover-body {
+        padding: 25px;
+        border-radius:1rem;
+        background-color: #0B0F24;
+    }
+    .popover-body::after {
+        border-radius:1rem;
+    }
+
+    .popover-header::after {
+        content: '';
+        background-color: blue;
+        width: 100px;
+        position: relative;
+        right: 0;
+        z-index: 9999;
+    }
+
+    /* Popover Arrow */
+    .arrow {
+        border-right-color: red !important;
+    }
+
+
+
 
 
 @media (max-width: 768px) {
