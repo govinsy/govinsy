@@ -47,7 +47,7 @@
 
 
   <div class="jumbotron mt-4">
-    <h1 class="display-4">Statistik</h1>
+    <h1 class="display-4" title="Statistik" data-toggle="popover" data-trigger="hover" data-content="Suatu kumpulan data yang berbentuk angka dan disusun dalam bentuk diagram dan/ atau tabel dimana isinya menjelaskan mengenai masalah tertentu.">Statistik</h1>
     <p class="lead">Sistem Informasi Pemerintah dan Data Statistik Dampak dari Covid-19</p>
     <hr class="my-4">
 
