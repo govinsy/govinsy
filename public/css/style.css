@@ -92,6 +92,10 @@ font-size 42px = 2.625rem
 {
     background: #181C2F;
 }
+.dark-mode .color-content-font
+{
+    color:white;
+}
 .dark-mode .color-font
 {
     color:#0B0F24;   
@@ -445,24 +449,27 @@ font-size 42px = 2.625rem
      .popover-body {
         padding: 25px;
         border-radius:1rem;
-        background-color: #0B0F24;
+        background-color: #BFC0C2;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+     .popover-body b {
+        color: #2D8DFD;
     }
     .popover-body::after {
-        border-radius:1rem;
+        content:'';
+        background-color:#2D8DFD;
+        width:15px;
+        height:100%;
+        position:absolute;
+        right:0;
+        top:0;
+        border-radius:0 1rem 1rem 0;
     }
 
-    .popover-header::after {
-        content: '';
-        background-color: blue;
-        width: 100px;
-        position: relative;
-        right: 0;
-        z-index: 9999;
-    }
 
     /* Popover Arrow */
     .arrow {
-        border-right-color: red !important;
+       border-color: #BFC0C2 !important;
     }
 
 
