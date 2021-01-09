@@ -77,12 +77,20 @@
                     <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 
+                       <!--  <div class="input-group md-form form-sm form-2 pl-0">
+                         <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search" aria-label="Search">
+                        <div class="input-group-append">
+                         <span class="input-group-text amber lighten-3" id="basic-text1"><i class="fas fa-search text-grey"
+                            aria-hidden="true"></i></span>
+                        </div>
+                        </div>
+ -->
                         <div class="input-group">
                             <input type="text" id="cariProv" data-url="<?= base_url() ?>" class="form-control color-content border-0 small" placeholder="Searching " aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
 
-                                <button class="btn color-blue-bg" type="button">
-                                    <i class="fas fa-search fa-sm color-light-font"></i>
+                                <button class="btn color-black-bg" type="button">
+                                    <i class="fas fa-search fa-sm color-black-font"></i>
                                 </button>
                             </div>
                         </div>
