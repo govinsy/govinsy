@@ -227,8 +227,8 @@ class Statistik extends BaseController
                     'luas_total'                  => $p["Luas Total"],
                     'populasi_per_luas'  => $p["Populasi / Luas"],
                     'apbd'                          => $p["APBD 2014 (miliar rupiah)"],
-                    'prdb'                          => $p["PDRB 2014 (triliun rupiah)"],
-                    'prdb_per_kapita'    => $p["PDRB per kapita 2014 (juta rupiah)"],
+                    'pdrb'                          => $p["PDRB 2014 (triliun rupiah)"],
+                    'pdrb_per_kapita'    => $p["PDRB per kapita 2014 (juta rupiah)"],
                     'ipm'                           => $p["IPM 2014"]
                 ];
             }

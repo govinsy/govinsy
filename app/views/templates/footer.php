@@ -7,8 +7,8 @@
         <div class="copyright color-light-font text-center my-auto">
             <span>Copyright &copy; Govinsy <?= date('Y'); ?></span>
         </div>
-        <div class="copyright text-center mt-2">    
-        <a href="<?= base_url(); ?>/tentang/glosarium" class="color-light-font" target="_blank" rel="noopener noreferrer">Glosarium</a>
+        <div class="copyright text-center mt-2">
+            <a href="<?= base_url(); ?>/tentang/glosarium" class="color-light-font">Glosarium</a>
         </div>
     </div>
 </footer>

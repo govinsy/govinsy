@@ -50,9 +50,10 @@ class Premium extends BaseController
                     }
                 }
             }
+
+            $data['desc']           = $stat;
         }
 
-        $data['desc']           = $stat;
         $data['judul']          = 'Komparasi Statistik';
         $data['page']          = 'Komparasi'; //Digunakan untuk indikator di Sidebar
         $data['domains']   = $domain['data'][1]; // daftar domain provinsi
