@@ -2,6 +2,11 @@ $(document).ready(function () {
 
     let baseURL = $('#wrapper').data('baseurl');
 
+
+    //fungsi tooltip
+    $('[data-toggle="popover"]').popover();
+    //end fungsi tooltip
+
     $(function () {
         $("[rel='tooltip']").tooltip();
     });
@@ -496,5 +501,7 @@ $(document).ready(function () {
 
 
 });
+// End fungsi crop dan upload gambar
+
 
 

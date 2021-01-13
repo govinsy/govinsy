@@ -14,4 +14,15 @@ class Tentang extends BaseController
         echo view('tentang/index', $data);
         echo view('templates/footer');
     }
+
+    public function glosarium()
+    {
+        $data['judul'] = 'Glosarium';
+        $data['page'] = 'Glosarium'; //Digunakan untuk indikator di Sidebar
+        echo view('templates/header', $data);
+        echo view('templates/sidebar', $data);
+        echo view('templates/topbar', $data);
+        echo view('tentang/glosarium', $data);
+        echo view('templates/footer');
+    }
 }

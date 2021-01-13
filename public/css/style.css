@@ -144,6 +144,10 @@ font-size 42px = 2.625rem
 {
     color: white;
 }
+.dark-mode .color-content-font
+{
+    color:white;
+}
 .dark-mode .color-font
 {
     color:#0B0F24;   
@@ -1128,6 +1132,47 @@ border-top: 10px solid #EFF2F9;
     width:100%;
 }
 
+/* Popover */
+  .popover
+  {
+      position:relative;
+      border-radius:1rem;
+  }
+
+    /* Popover Header */
+    .dark-mode .popover-header {
+        background-color: #2D8DFD !important;
+    }
+
+    /* Popover Body */
+     .popover-body {
+        padding: 25px;
+        border-radius:1rem;
+        background-color: #BFC0C2;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+     .popover-body b {
+        color: #2D8DFD;
+    }
+    .popover-body::after {
+        content:'';
+        background-color:#2D8DFD;
+        width:15px;
+        height:100%;
+        position:absolute;
+        right:0;
+        top:0;
+        border-radius:0 1rem 1rem 0;
+    }
+
+
+    /* Popover Arrow */
+    .arrow {
+       border-color: #BFC0C2 !important;
+    }
+
+
+
 
 
 @media (max-width: 768px) {
@@ -1190,3 +1235,5 @@ border-top: 10px solid #EFF2F9;
   border: 1px solid #cddc39;
 }
 }
+
+ 

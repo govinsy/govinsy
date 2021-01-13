@@ -156,7 +156,7 @@
                         <div class="col-md-4 color-content mb-3 text-center card border-0" style="width: 18rem;">
                             <div class="card-body rounded color-bg">
                                 <img class="mt-3" src="<?= base_url(); ?>/img/bank.png" width="35%" alt="">
-                                <p class="text-gray-600 font-16 mt-3">APBD</p>
+                                <p class="text-gray-600 font-16 mt-3" data-html="true" data-toggle="popover" data-trigger="hover" data-content="<b>APBD</b> <p class='font-12'>Anggaran Pendapatan dan Belanja Daerah, adalah rencana keuangan tahunan pemerintah daerah di Indonesia yang disetujui oleh Dewan Perwakilan Rakyat Daerah.</p>">APBD</p>
                                 <h2 class="font-weight-bold"><?= $provdesc['apbd'] ?></h2>
                                 <p class="font-10">Miliar rupiah</p>
                             </div>
@@ -165,8 +165,8 @@
                         <div class="col-md-4 color-content mb-3 text-center card border-0" style="width: 18rem;">
                             <div class="card-body rounded color-bg">
                                 <img class="mt-3" src="<?= base_url(); ?>/img/coin.png" width="35%" alt="">
-                                <p class="text-gray-600 font-16 mt-3">PRDB</p>
-                                <h2 class="font-weight-bold"><?= $provdesc['populasi'] ?></h2>
+                                <p class="text-gray-600 font-16 mt-3" data-html="true" data-toggle="popover" data-trigger="hover" data-content="<b>PDRB</b> <p class='font-12'>Produk Domestik Regional Bruto adalah jumlah nilai tambah bruto yang timbul dari seluruh sektor perekonomian di daerah tersebut.</p>">PRDB</p>
+                                <h2 class="font-weight-bold"><?= $provdesc['pdrb'] ?></h2>
                                 <p class="font-10">Triliun rupiah</p>
                             </div>
                         </div>
@@ -174,8 +174,8 @@
                         <div class="col-md-4 color-content mb-3 text-center card border-0" style="width: 18rem;">
                             <div class="card-body rounded color-bg">
                                 <img class="mt-3" src="<?= base_url(); ?>/img/invest.png" width="35%" alt="">
-                                <p class="text-gray-600 font-16 mt-3">PRDB PER KAPITA</p>
-                                <h2 class="font-weight-bold"><?= $provdesc['prdb_per_kapita'] ?></h2>
+                                <p class="text-gray-600 font-16 mt-3">PDRB PER KAPITA</p>
+                                <h2 class="font-weight-bold"><?= $provdesc['pdrb_per_kapita'] ?></h2>
                                 <p class="font-10">Juta rupiah</p>
                             </div>
                         </div>
@@ -251,7 +251,7 @@
                     <div class="progress color-bg mb-4" style="height:25px">
                         <div class="progress-bar" role="progressbar" style="width: <?= $stat['pengangguran']['value'] ?>%" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight">INDEK PEMBANGUNAN MANUSIA<span class="color-green-font float-right font-weight-bold"><?= $provdesc['ipm'] ?>%</span></h4>
+                    <h4 class="small font-weight" title="Indeks Pembangunan Manusia" data-toggle="popover" data-trigger="hover" data-content="Indeks Pembangunan Manusia atau Human Development Index adalah pengukuran perbandingan dari harapan hidup, melek huruf, pendidikan dan standar hidup.">INDEK PEMBANGUNAN MANUSIA<span class="color-green-font float-right"><?= $provdesc['ipm'] ?>%</span></h4>
                     <div class="progress color-bg mb-4" style="height:25px">
                         <div class="progress-bar color-green-bg" role="progressbar" style="width: <?= intval($provdesc['ipm']) ?>%" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -263,8 +263,6 @@
 
     </div>
     <!-- Kependudukan End  -->
-
-
 
 
 </div>
