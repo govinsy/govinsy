@@ -180,29 +180,69 @@ $(document).ready(function () {
 
 
 //Ambil data provinsi
-$(document).ready(function(){
+$(document).ready(function () {
 
-$('#cariProv').keyup(function(){
-    
-    const url = $(this).data('url');
-    const prov_names = $(this).val();
+    let ambilProv = function (input = '', ulProv = '') {
 
- $.ajax({
-    url: 'statistik/cariProv',
-    method: 'POST', dataType: 'JSON',
-    data: {
-            prov_name: prov_names
-          },
-        success: function (data) {
-            let asa = $.each(data, function(i) {
-
-                "<a href="+url+"/statistik/provinsi?domain_id="+data[i].prov_id+"&nama_provinsi="+data[i].prov_name+"><li>"+data[i].prov_name+"</li></a>"
-                });
-            asa = ''+asa;
-            console.log(asa);
-            $('#dataProv').html(asa);
-
+        $(input).on('keypress', function (event) {
+            var keyPressed = event.keyCode || event.which;
+            if (keyPressed === 13) {
+                event.preventDefault();
+                return false;
             }
         });
-    });
- });
+
+        var magicalTimeout = 800;
+        var timeout;
+
+        $(input).keyup(function () {
+            const url = $(this).data('url');
+            const prov_names = $(this).val();
+
+            clearTimeout(timeout);
+            timeout = setTimeout(function () {
+                $.ajax({
+                    url: url + '/Statistik/cariProv',
+                    method: 'POST', dataType: 'JSON',
+                    data: {
+                        prov_name: prov_names
+                    },
+                    success: function (data) {
+
+                        $(ulProv).removeClass('hilang');
+
+
+                        if (data.length == 0) {
+                            $(ulProv).css('width', '100%');
+                            $(ulProv).html("<li style='width: 100%;' class='list-none pl-4 pr-5 d-block py-2 color-content-font'> Data provinsi tidak ditemukan </li>");
+
+                        }
+                        else {
+
+                            var liProv = '';
+                            for (var i = 0; i < data.length; i++) {
+                                liProv += "<li style='width:100%' class='list-none pl-4 d-block py-2'><a style='width:100%;height:100%;' class='d-block color-content-font text-decoration-none' href='" + url + "/statistik/provinsi?domain_id=" + data[i].prov_id + "&nama_provinsi=" + data[i].prov_name + "'><img width='5%' class='mr-2' src='" + url + "/img/provinsi/logo/" + data[i].prov_id + ".png'> Provinsi " + data[i].prov_name + "</a></li>";
+                            }
+                            $(ulProv).html(liProv);
+                        }
+
+                    },
+                    error: function () {
+                        $(ulProv).addClass('hilang');
+                        $(ulProv).html('');
+                    }
+                });
+            }, magicalTimeout);
+        }).trigger("keyup");
+    };
+
+
+    if ($(window).width() < 768) {
+        ambilProv('#cariProvMob', '#dataProvMob');
+    }
+    else {
+        ambilProv('#cariProv', '#dataProv');
+    }
+
+
+});

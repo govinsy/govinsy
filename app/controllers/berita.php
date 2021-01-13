@@ -10,13 +10,18 @@ class Berita extends BaseController
 
     public function index()
     {
-        // Kasus Covid-19 Indonesia
-        $berita = $this->getJSON($this->url['newsapi'], $this->field['key']['newsapi_key']);
+        if (isset($_POST['cari'])) {
+            // Kasus Covid-19 Indonesia
+            $berita = $this->getJSON($this->url['newsapi'], $this->field['key']['newsapi_key'] . '&q=' . $_POST['cari']);
+        } else {
+            // Kasus Covid-19 Indonesia
+            $berita = $this->getJSON($this->url['newsapi'], $this->field['key']['newsapi_key']);
+        }
 
         // Daftar variable yang bisa digunakan di /views/statistik/index.php
-        $data['judul'] = 'Berita';
-        $data['page'] = 'Berita'; //Digunakan untuk indikator di Sidebar
-        $data['berita'] = $berita['articles']; // berita covid se-indonesia
+        $data['judul']      = 'Berita';
+        $data['page']      = 'Berita'; //Digunakan untuk indikator di Sidebar
+        $data['berita']     = $berita['articles']; // berita covid se-indonesia
 
         // Views
         echo view('templates/header', $data);

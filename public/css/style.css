@@ -92,6 +92,10 @@ font-size 42px = 2.625rem
 {
     background: #181C2F;
 }
+.dark-mode .color-content-font
+{
+    color: white;
+}
 .dark-mode .color-font
 {
     color:#0B0F24;   
@@ -425,7 +429,11 @@ font-size 42px = 2.625rem
     border-radius:20px;
     float:left;
 }
-
+.dark-mode .cariProv li:hover
+{
+    background-color:#2d8efd7b !important;
+    width:100%;
+}
 
 
 

@@ -12,22 +12,21 @@ class Statistik extends BaseController
     {
         set_time_limit(500);
     }
-     public function cariProv()
+    public function cariProv()
     {
-        $prov=[];
+        $prov = [];
 
-       // Daftar Domain Provinsi
+        // Daftar Domain Provinsi
         $domain = $this->getJSON($this->url['bps_domain'], $this->field['key']['bps_key'] . $this->field['type']['prov']);
 
         foreach ($domain['data'][1] as $dom) {
-            if(strstr(strtolower( $dom['domain_name']),strtolower($_POST['prov_name']) ))
-            {
+            if (strstr(strtolower($dom['domain_name']), strtolower($_POST['prov_name']))) {
                 array_push($prov, [
                     'prov_id' => $dom['domain_id'],
-                    'prov_name' => $dom['domain_name']  ]);
-            } 
+                    'prov_name' => $dom['domain_name']
+                ]);
+            }
         }
-        // var_dump($prov);
         return json_encode($prov);
     }
     public function index()

@@ -71,46 +71,50 @@
                 </button>
 
 
-                <?php if ($page === "Statistik" || $page === "Berita") : ?>
-                     <div class="row">
-                     <div class="col-sm-10">  
-                    <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <!-- Topbar Search -->
+                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="POST">
 
-                       <!--  <div class="input-group md-form form-sm form-2 pl-0">
-                         <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search" aria-label="Search">
+
+                    <div class="input-group color-content">
+                        <input type="text" id=<?= ($page === "Berita") ? "'cariBerita' placeholder='Cari Berita' " : "'cariProv' placeholder='Cari Provinsi'" ?> data-url="<?= base_url() ?>" class="form-control color-content color-content-font border-0 small" aria-label="Search" aria-describedby="basic-addon2" name="cari" style="z-index:10">
                         <div class="input-group-append">
-                         <span class="input-group-text amber lighten-3" id="basic-text1"><i class="fas fa-search text-grey"
-                            aria-hidden="true"></i></span>
-                        </div>
-                        </div>
- -->
-                        <div class="input-group">
-                            <input type="text" id="cariProv" data-url="<?= base_url() ?>" class="form-control color-content border-0 small" placeholder="Searching " aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
 
-                                <button class="btn color-black-bg" type="button">
-                                    <i class="fas fa-search fa-sm color-black-font"></i>
-                                </button>
-                            </div>
+                            <button class="btn <?= ($page === "Berita") ? "color-blue-bg" : "color-content" ?>" <?= ($page === "Berita") ? "type='submit'" : "type='button'" ?> data-url="<?= base_url() ?>">
+                                <i class="fas fa-search fa-sm color-content-font"></i>
+                            </button>
                         </div>
 
-                    </form>
-                        <ul class="color-red-bg position-absolute" id="dataProv" style="left:0">
-               
-                        </ul>      
-                        </div>
-                   </div>
-                <?php endif; ?>
-                <!-- Topbar Navbar --> 
+                        <ul class="position-absolute mt-4 list-none color-content cariProv pt-3 pl-0 hilang shadow" id="dataProv" style="left:0;"> </ul>
+                    </div>
+
+
+                </form>
+                <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
+
                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                    <li class="nav-item dropdown no-arrow d-ia-haspopup="true aria-expanded="false">
+                    <li class="nav-item dropdown no-arrow d-sm-none">
+                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <!-- Dropdown - Messages -->
+                        <div class="dropdown-menu color-content shadow dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                            <form class="form-inline mr-auto w-100 navbar-search" method="POST">
+                                <div class="input-group">
+                                    <input type="text" id="cariProvMob" data-url="<?= base_url() ?>" class="form-control color-content color-content-font border-0 small" placeholder="Cari Provinsi " aria-label="Search" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fas fa-search fa-sm"></i>
+                                        </button>
+                                    </div>
+                                    <ul class="position-relative mt-4 list-none color-content cariProv pt-0 pl-0 hilang" id="dataProvMob"> </ul>
+                                </div>
+                            </form>
+                        </div>
                     </li>
+
+
                     <!-- Nav Item - User Information -->
                     <?php if (isset($_SESSION['login'])) : ?>
                         <li class="nav-item dropdown no-arrow pr-3">
@@ -151,4 +155,3 @@
             </nav>
             <!-- End of Topbar -->
         </div>
-       
