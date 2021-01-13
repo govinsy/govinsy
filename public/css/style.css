@@ -140,6 +140,10 @@ font-size 42px = 2.625rem
 {
     background-color: #181C2F;
 }
+.dark-mode .color-content-font
+{
+    color: white;
+}
 .dark-mode .color-font
 {
     color:#0B0F24;   
@@ -379,7 +383,7 @@ font-size 42px = 2.625rem
 .light-mode .btn-dark-blue:hover
 {
     text-decoration:none;
-    background-color:rgba(0, 0, 0, 0);
+    background-color:rgba(131, 116, 116, 0);
     box-shadow: #4E73DF 0px 0px 5px 0px;
     color:#4E73DF;
 }
@@ -1103,6 +1107,7 @@ border-top: 10px solid #EFF2F9;
     border-radius:20px;
     float:left;
 }
+
 #map_spot {
     position: relative; 
     background-color:#000000;
@@ -1111,11 +1116,11 @@ border-top: 10px solid #EFF2F9;
 }
 
 
-/* #more
+.dark-mode .cariProv li:hover
 {
-    display:none;
-} */
-
+    background-color:#2d8efd7b !important;
+    width:100%;
+}
 
 
 
@@ -1177,5 +1182,7 @@ border-top: 10px solid #EFF2F9;
       font-size: 1rem;
       display: block;
     }
-
+    .input-group.md-form.form-sm.form-2 input.lime-border {
+  border: 1px solid #cddc39;
+}
 }

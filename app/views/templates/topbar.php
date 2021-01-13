@@ -74,31 +74,50 @@
                 </button>
 
 
-                <?php if ($page === "Statistik" || $page === "Berita") : ?>
-                    <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control color-content border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn color-blue-bg" type="button">
-                                    <i class="fas fa-search fa-sm color-light-font"></i>
-                                </button>
-                            </div>
+                <!-- Topbar Search -->
+                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="POST">
+
+
+                    <div class="input-group color-content">
+                        <input type="text" id=<?= ($page === "Berita") ? "'cariBerita' placeholder='Cari Berita' " : "'cariProv' placeholder='Cari Provinsi'" ?> data-url="<?= base_url() ?>" class="form-control color-content color-content-font border-0 small" aria-label="Search" aria-describedby="basic-addon2" name="cari" style="z-index:10">
+                        <div class="input-group-append">
+
+                            <button class="btn <?= ($page === "Berita") ? "color-blue-bg" : "color-content" ?>" <?= ($page === "Berita") ? "type='submit'" : "type='button'" ?> data-url="<?= base_url() ?>">
+                                <i class="fas fa-search fa-sm color-content-font"></i>
+                            </button>
                         </div>
-                    </form>
-                <?php endif; ?>
+
+                        <ul class="position-absolute mt-4 list-none color-content cariProv pt-3 pl-0 hilang shadow" id="dataProv" style="left:0;"> </ul>
+                    </div>
 
 
+                </form>
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
+
 
                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                     <li class="nav-item dropdown no-arrow d-sm-none">
                         <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <!-- Dropdown - Messages -->
+                        <div class="dropdown-menu color-content shadow dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                            <form class="form-inline mr-auto w-100 navbar-search" method="POST">
+                                <div class="input-group">
+                                    <input type="text" id="cariProvMob" data-url="<?= base_url() ?>" class="form-control color-content color-content-font border-0 small" placeholder="Cari Provinsi " aria-label="Search" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fas fa-search fa-sm"></i>
+                                        </button>
+                                    </div>
+                                    <ul class="position-relative mt-4 list-none color-content cariProv pt-0 pl-0 hilang" id="dataProvMob"> </ul>
+                                </div>
+                            </form>
+                        </div>
                     </li>
+
+
                     <!-- Nav Item - User Information -->
                     <?php if (isset($_SESSION['login'])) : ?>
                         <li class="nav-item dropdown no-arrow pr-3">
