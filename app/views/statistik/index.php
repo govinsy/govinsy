@@ -23,8 +23,8 @@
                   <div class="row">
                     <div class="col-sm-12 text-center">
 
-                      <img width="8%" src="<?= base_url(); ?>/img/provinsi/logo/<?= $des['id_prov'] ?>.png">
-                      <p class="font-20 mt-2 font-weight-bold color-content-font"><?= $des['Provinsi'] ?></p>
+
+                      <p class="font-20 mt-2 font-weight-bold color-content-font"><img width="8%" src="<?= base_url(); ?>/img/provinsi/logo/<?= $des['id_prov'] ?>.png"> <?= $des['Provinsi'] ?></p>
                       <hr class="color-gray-bg">
                       <small class="text-gray-600 font-12" style="margin-top: 0px">JUMLAH PENDUDUK</small>
                       <p class="font-16 font-weight-bold color-content-font"><?= $des['Populasi'] ?> <sub>Jiwa</sub></p>

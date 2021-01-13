@@ -1122,7 +1122,11 @@ border-top: 10px solid #EFF2F9;
     width:100%;
 }
 
-
+.light-mode .cariProv li:hover
+{
+    background-color:#4e72df74 !important;
+    width:100%;
+}
 
 
 
