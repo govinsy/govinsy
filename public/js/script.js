@@ -499,9 +499,23 @@ $(document).ready(function () {
     ////////////////////////////////////////////////////////////
 
 
+    $("#filterProv").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#pilihProv li").filter(function () {
+            {
+                if ($(this).html().toLowerCase().indexOf(value) != -1) {
+                    $(this).show();
+                }
+                else {
+                    $(this).hide();
+                }
+            }
+        });
+    });
+
+
 
 });
-// End fungsi crop dan upload gambar
 
 
 

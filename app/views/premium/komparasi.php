@@ -368,8 +368,8 @@
          <div class="modal-content py-4 px-4 color-content corner-round">
 
            <h2>Pilih Provinsi</h2>
-           <input type="text" class="form-inp-dark corner-round border-gray-1 my-2 color-content-font" placeholder="Cari Provinsi ...">
-           <ul class="list-style-none mt-3" style="margin-left:-40px">
+           <input type="text" class="form-inp-dark corner-round border-gray-1 my-2 color-content-font" id="filterProv" placeholder="Cari Provinsi ...">
+           <ul class="list-style-none mt-3" style="margin-left:-40px" id="pilihProv">
              <?php foreach ($domains as $domain) : ?>
                <li class="color-bg modal-provinsi mr-2 mb-3 float-left corner-round shadow py-4 px-4 text-center pointer press-active position-relative" data-dismiss="modal" data-provid="<?= $domain['domain_id'] ?>" data-provnama="<?= $domain['domain_name'] ?>" style="width:11rem;height:10rem">
                  <input type="checkbox" class="rounded-circle position-absolute mr-3" style="right:0;">

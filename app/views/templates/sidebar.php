@@ -43,7 +43,7 @@
 
           <li class="nav-item <?php if ($page === "Komparasi")  echo "active aktif"; ?>">
               <a class="nav-link" href="<?= base_url(); ?>/premium/komparasi">
-                  <i class="mr-3 ml-4 fas fa-fw fa-info"></i>
+                  <i class="mr-3 ml-4 fas fa-fw  fa-window-restore"></i>
                   <span>KOMPARASI</span></a>
           </li>
 
@@ -51,7 +51,7 @@
 
           <?php if ((isset($_SESSION['profile']['survei']) && $_SESSION['profile']['survei'] != 1) || !isset($_SESSION['profile']['survei'])) : ?>
               <!-- Survei -->
-              <div id="survey" class="row justify-content-center position-relative">
+              <div id=" survey" class="row justify-content-center position-relative">
                   <div class="col-sm-9 text-center d-none d-md-inline color-bg corner-round mt-5 mb-3 pb-3">
                       <img src="<?= base_url(); ?>/img/survey.png" width="70%">
                       <p class="color-content-font mt-2">Tertarik dengan website kami<a href="<?= base_url(); ?>/survei"> ikuti survei</a> sekarang</p>
